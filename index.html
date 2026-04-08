@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>U15 Boys Season Draw 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f5f5;
+  --card: #ffffff;
+  --text: #1a1a1a;
+  --text2: #666;
+  --text3: #999;
+  --border: #e8e8e8;
+  --accent: #1a3c6e;
+  --tab-active: #1a3c6e;
+  --tab-inactive: #999;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); }
+.header {
+  background: #fff;
+  padding: 16px 20px 0;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.header h1 { font-size: 18px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+.header .sub { font-size: 12px; color: var(--text3); margin-bottom: 12px; }
+.tabs {
+  display: flex; gap: 0; border-bottom: 2px solid var(--border);
+}
+.tab {
+  padding: 10px 20px;
+  font-size: 13px; font-weight: 600;
+  color: var(--tab-inactive);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s;
+  user-select: none;
+}
+.tab.active {
+  color: var(--tab-active);
+  border-bottom-color: var(--tab-active);
+}
+.tab:hover { color: var(--text); }
+.content { max-width: 500px; margin: 0 auto; padding: 0 12px 40px; }
+.round-header {
+  padding: 24px 8px 8px;
+}
+.round-header h2 { font-size: 22px; font-weight: 800; color: var(--text); }
+.round-header .date { font-size: 13px; color: var(--text2); margin-top: 2px; }
+.match-card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.teams { display: flex; flex-direction: column; gap: 14px; }
+.team-row {
+  display: flex; align-items: center; gap: 14px;
+}
+.team-badge {
+  width: 48px; height: 48px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 14px; color: #fff;
+  flex-shrink: 0;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+.team-info { flex: 1; min-width: 0; }
+.team-name { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.3; }
+.team-div { font-size: 11px; color: var(--text3); }
+.score-placeholder {
+  font-size: 32px; font-weight: 800; color: #ddd; min-width: 50px; text-align: right;
+}
+.divider {
+  height: 1px; background: var(--border); margin: 16px 0;
+}
+.match-meta {
+  display: flex; flex-direction: column; gap: 6px;
+  font-size: 12px; color: var(--text2);
+}
+.match-meta .row { display: flex; align-items: flex-start; gap: 8px; }
+.match-meta .icon { width: 16px; text-align: center; flex-shrink: 0; color: var(--text3); }
+.upcoming-badge {
+  display: inline-block;
+  background: #f0f0f0;
+  color: var(--text3);
+  font-size: 11px; font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  float: right;
+  margin-top: 4px;
+}
+.bye-card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  display: flex; align-items: center; gap: 14px;
+}
+.bye-card .team-badge { width: 36px; height: 36px; font-size: 11px; }
+.bye-card .bye-text { font-size: 13px; color: var(--text3); }
+.bye-card .bye-label {
+  font-size: 11px; font-weight: 600; color: #bbb;
+  background: #f5f5f5; padding: 3px 10px; border-radius: 12px;
+  margin-left: auto;
+}
+.round-nav {
+  display: flex; gap: 6px; padding: 12px 0; overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.round-nav::-webkit-scrollbar { display: none; }
+.round-pill {
+  padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600;
+  white-space: nowrap; cursor: pointer; border: 1.5px solid var(--border);
+  color: var(--text2); background: #fff; transition: all 0.2s;
+  user-select: none;
+}
+.round-pill.active {
+  background: var(--accent); color: #fff; border-color: var(--accent);
+}
+.round-pill:hover { border-color: var(--accent); }
+.round-pill.next { border-color: #e8a840; color: #c48820; }
+.round-pill.next.active { background: #c48820; color: #fff; border-color: #c48820; }
+.hidden { display: none; }
+@media (min-width: 600px) {
+  .content { padding: 0 20px 40px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>South East Queensland Juniors</h1>
+  <div class="sub">U15 Boys &middot; Season 2026</div>
+  <div class="tabs">
+    <div class="tab active" onclick="switchDiv('div1')">Division 1</div>
+    <div class="tab" onclick="switchDiv('div3')">Division 3 GC/NR</div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="round-nav" id="roundNav"></div>
+  <div id="fixtures"></div>
+</div>
+
+<script>
+const TEAM_COLORS = {
+  "Burleigh Bombers": "#1a1a1a",
+  "Coomera Magpies": "#222",
+  "Broadbeach Cats": "#1a3f7a",
+  "Coorparoo Roos": "#6B1530",
+  "Aspley Hornets": "#c8a800",
+  "Sherwood Magpies": "#333",
+  "Labrador Tigers": "#c8960a",
+  "Tweed Coast Tigers": "#1a5c30",
+  "Palm Beach Currumbin": "#b52025",
+  "Morningside Panthers": "#5a1a2e",
+  "Wilston Grange Gorillas": "#2a6b3a",
+  "Maroochy Roos Juniors": "#7a1a1a",
+  "Surfers Paradise Demons": "#cc1122",
+  "Ormeau Bulldogs": "#003da5",
+  "Pac Power": "#1a3366",
+  "Byron - Ballina": "#5b2c6f"
+};
+
+const TEAM_ABBREV = {
+  "Burleigh Bombers": "BB",
+  "Coomera Magpies": "CM",
+  "Broadbeach Cats": "BC",
+  "Coorparoo Roos": "CR",
+  "Aspley Hornets": "AH",
+  "Sherwood Magpies": "SM",
+  "Labrador Tigers": "LT",
+  "Tweed Coast Tigers": "TCT",
+  "Palm Beach Currumbin": "PBC",
+  "Morningside Panthers": "MP",
+  "Wilston Grange Gorillas": "WGG",
+  "Maroochy Roos Juniors": "MR",
+  "Surfers Paradise Demons": "SPD",
+  "Ormeau Bulldogs": "OB",
+  "Pac Power": "PP",
+  "Byron - Ballina": "BB"
+};
+
+const TEAM_LOGOS = {};
+
+function parseTeamName(fullName) {
+  // Strip "U15 Boys Division 1", "U15 Boys Division 3", "U15 Boys Div 3"
+  return fullName.replace(/\s*U15 Boys (Division \d|Div \d).*$/, '').trim();
+}
+
+function parseCSV(text) {
+  const lines = text.trim().split('\n');
+  const games = [];
+  for (let i = 1; i < lines.length; i++) {
+    const cols = [];
+    let current = '';
+    let inQuotes = false;
+    for (const ch of lines[i]) {
+      if (ch === '"') { inQuotes = !inQuotes; }
+      else if (ch === ',' && !inQuotes) { cols.push(current); current = ''; }
+      else { current += ch; }
+    }
+    cols.push(current);
+    if (cols.length < 11) continue;
+    const home = cols[6].trim();
+    const away = cols[7].trim();
+    const isBye = away === 'BYE' || home === 'BYE';
+    games.push({
+      round: parseInt(cols[5]),
+      roundDate: cols[4].trim(),
+      homeRaw: home,
+      awayRaw: away,
+      home: parseTeamName(home),
+      away: isBye ? 'BYE' : parseTeamName(away),
+      venue: cols[8] ? cols[8].trim() : '',
+      surface: cols[9] ? cols[9].trim() : '',
+      gameDate: cols[10] ? cols[10].trim() : '',
+      gameTime: cols[11] ? cols[11].trim() : '',
+      isBye: isBye
+    });
+  }
+  return games;
+}
+
+function formatDate(dateStr) {
+  // dateStr = "19/04/2026"
+  const [d, m, y] = dateStr.split('/');
+  const dt = new Date(y, m - 1, d);
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  return `${days[dt.getDay()]}, ${parseInt(d)} ${months[dt.getMonth()]}`;
+}
+
+function formatTime(timeStr) {
+  if (!timeStr) return '';
+  return timeStr.replace(/^0/, '');
+}
+
+function teamBadge(name, size) {
+  const color = TEAM_COLORS[name] || '#888';
+  const abbr = TEAM_ABBREV[name] || name.substring(0, 2).toUpperCase();
+  const sz = size || 48;
+  const fs = sz < 40 ? 10 : 14;
+  if (TEAM_LOGOS[name]) {
+    return `<img src="${TEAM_LOGOS[name]}" style="width:${sz}px;height:${sz}px;border-radius:50%;object-fit:cover;">`;
+  }
+  return `<div class="team-badge" style="width:${sz}px;height:${sz}px;background:${color};font-size:${fs}px;">${abbr}</div>`;
+}
+
+function renderFixtures(games, targetRound) {
+  const container = document.getElementById('fixtures');
+  const rounds = {};
+  games.forEach(g => {
+    if (!rounds[g.round]) rounds[g.round] = { date: g.roundDate, games: [] };
+    rounds[g.round].games.push(g);
+  });
+
+  const roundNums = Object.keys(rounds).map(Number).sort((a, b) => a - b);
+  const nav = document.getElementById('roundNav');
+
+  // Find next upcoming round
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  let nextRound = null;
+  for (const rn of roundNums) {
+    const [d, m, y] = rounds[rn].date.split('/');
+    const rd = new Date(y, m - 1, d);
+    if (rd >= today) { nextRound = rn; break; }
+  }
+
+  const showRound = targetRound || nextRound || roundNums[0];
+
+  nav.innerHTML = roundNums.map(rn => {
+    const isNext = rn === nextRound && rn !== showRound;
+    const cls = rn === showRound ? 'round-pill active' : (isNext ? 'round-pill next' : 'round-pill');
+    return `<div class="${cls}" onclick="showRound(${rn})">R${rn}</div>`;
+  }).join('');
+
+  // Scroll active pill into view
+  setTimeout(() => {
+    const active = nav.querySelector('.active');
+    if (active) active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  }, 50);
+
+  const r = rounds[showRound];
+  if (!r) { container.innerHTML = '<p style="padding:20px;color:#999;">No fixtures found.</p>'; return; }
+
+  let html = `<div class="round-header"><h2>Round ${showRound}</h2><div class="date">${formatDate(r.date)}</div></div>`;
+
+  // Sort games: real matches first (by time), then byes
+  const matches = r.games.filter(g => !g.isBye).sort((a, b) => {
+    const ta = a.gameTime || ''; const tb = b.gameTime || '';
+    return ta.localeCompare(tb);
+  });
+  const byes = r.games.filter(g => g.isBye);
+
+  matches.forEach(g => {
+    const [d, m, y] = g.gameDate.split('/');
+    const gd = new Date(y, m - 1, d);
+    const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const monNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const dateLabel = `${formatTime(g.gameTime)}, ${dayNames[gd.getDay()]}, ${parseInt(d)} ${monNames[gd.getMonth()]}`;
+
+    html += `
+    <div class="match-card">
+      <div class="teams">
+        <div class="team-row">
+          ${teamBadge(g.home)}
+          <div class="team-info">
+            <div class="team-name">${g.home}</div>
+          </div>
+          <div class="score-placeholder">&ndash;</div>
+        </div>
+        <div class="team-row">
+          ${teamBadge(g.away)}
+          <div class="team-info">
+            <div class="team-name">${g.away}</div>
+          </div>
+          <div class="score-placeholder">&ndash;</div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="match-meta">
+        <div class="row"><span class="icon">&#128197;</span> ${dateLabel}</div>
+        <div class="row"><span class="icon">&#128205;</span> ${g.venue}${g.surface && g.surface !== g.venue ? ', ' + g.surface : ''}</div>
+        <span class="upcoming-badge">Upcoming</span>
+      </div>
+    </div>`;
+  });
+
+  byes.forEach(g => {
+    const byeTeam = g.home === 'BYE' ? g.away : g.home;
+    html += `
+    <div class="bye-card">
+      ${teamBadge(byeTeam, 36)}
+      <div class="bye-text"><strong>${byeTeam}</strong></div>
+      <div class="bye-label">BYE</div>
+    </div>`;
+  });
+
+  container.innerHTML = html;
+}
+
+// CSV data embedded
+const CSV_DIV1 = `organisation,competition,season,grade,round date,round,home team,away team,venue,playing surface,game date,game time,game alias
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,19/04/2026,1,Burleigh Bombers U15 Boys Division 1,Tweed Coast Tigers U15 Boys Division 1,Alan Nielsen Oval,Alan Nielsen Oval 2,19/04/2026,01:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,19/04/2026,1,Coomera Magpies U15 Boys Division 1,Labrador Tigers U15 Boys Division 1,Coomera Sports Park,Southport Mazda Oval,19/04/2026,11:00AM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,19/04/2026,1,Broadbeach Cats U15 Boys Division 1,Palm Beach Currumbin U15 Boys Division 1,Kombumerri Park,Neptune Homes Oval 1,19/04/2026,12:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,19/04/2026,1,Coorparoo Roos U15 Boys Division 1,Morningside Panthers U15 Boys Division 1,Giffin Park,Giffin Park 1,17/04/2026,07:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,19/04/2026,1,Aspley Hornets U15 Boys Division 1,Maroochy Roos Juniors U15 Boys Division 1,Graham Road,Automall Aspley Oval,19/04/2026,01:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,19/04/2026,1,Sherwood Magpies U15 Boys Division 1,Wilston Grange Gorillas U15 Boys Division 1,Powenyenna Oval,Powenyenna Oval 1,17/04/2026,06:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,26/04/2026,2,Labrador Tigers U15 Boys Division 1,Wilston Grange Gorillas U15 Boys Division 1,Cooke-Murphy Oval,Cooke-Murphy Oval 1,26/04/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,26/04/2026,2,Tweed Coast Tigers U15 Boys Division 1,Sherwood Magpies U15 Boys Division 1,Barry Sheppard Oval,Beaumont Tiles Tweed Oval,26/04/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,26/04/2026,2,Coomera Magpies U15 Boys Division 1,Coorparoo Roos U15 Boys Division 1,Coomera Sports Park,Southport Mazda Oval,26/04/2026,11:00AM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,26/04/2026,2,Palm Beach Currumbin U15 Boys Division 1,Aspley Hornets U15 Boys Division 1,Salk Oval,Stalagmite Oval,26/04/2026,12:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,26/04/2026,2,Burleigh Bombers U15 Boys Division 1,Broadbeach Cats U15 Boys Division 1,Bill Godfrey Oval,PRD Bill Godfrey Oval,26/04/2026,01:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,26/04/2026,2,Maroochy Roos Juniors U15 Boys Division 1,Morningside Panthers U15 Boys Division 1,Maroochydore Multi Sports Complex,Neil Upton Oval,26/04/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,03/05/2026,3,Aspley Hornets U15 Boys Division 1,Coomera Magpies U15 Boys Division 1,Graham Road,Automall Aspley Oval,03/05/2026,11:30AM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,03/05/2026,3,Tweed Coast Tigers U15 Boys Division 1,Maroochy Roos Juniors U15 Boys Division 1,Barry Sheppard Oval,Beaumont Tiles Tweed Oval,03/05/2026,04:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,03/05/2026,3,Morningside Panthers U15 Boys Division 1,Burleigh Bombers U15 Boys Division 1,Jack Esplen Oval,Jack Esplen Oval 1,03/05/2026,01:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,03/05/2026,3,Wilston Grange Gorillas U15 Boys Division 1,Broadbeach Cats U15 Boys Division 1,Hickey Park,Hickey Park,03/05/2026,01:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,03/05/2026,3,Coorparoo Roos U15 Boys Division 1,Labrador Tigers U15 Boys Division 1,Giffin Park,Giffin Park 1,03/05/2026,10:30AM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,03/05/2026,3,Sherwood Magpies U15 Boys Division 1,Palm Beach Currumbin U15 Boys Division 1,Powenyenna Oval,Powenyenna Oval 1,03/05/2026,02:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,10/05/2026,4,Labrador Tigers U15 Boys Division 1,Burleigh Bombers U15 Boys Division 1,Cooke-Murphy Oval,Cooke-Murphy Oval 1,10/05/2026,11:00AM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,10/05/2026,4,Morningside Panthers U15 Boys Division 1,Aspley Hornets U15 Boys Division 1,Jack Esplen Oval,Jack Esplen Oval 1,08/05/2026,07:45PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,10/05/2026,4,Broadbeach Cats U15 Boys Division 1,Tweed Coast Tigers U15 Boys Division 1,Kombumerri Park,Neptune Homes Oval 1,10/05/2026,11:30AM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,10/05/2026,4,Palm Beach Currumbin U15 Boys Division 1,Coomera Magpies U15 Boys Division 1,Salk Oval,Stalagmite Oval,10/05/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,10/05/2026,4,Wilston Grange Gorillas U15 Boys Division 1,Coorparoo Roos U15 Boys Division 1,Hickey Park,Hickey Park,10/05/2026,01:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,10/05/2026,4,Maroochy Roos Juniors U15 Boys Division 1,Sherwood Magpies U15 Boys Division 1,Maroochydore Multi Sports Complex,Neil Upton Oval,10/05/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,17/05/2026,5,Broadbeach Cats U15 Boys Division 1,Aspley Hornets U15 Boys Division 1,Kombumerri Park,Neptune Homes Oval 1,17/05/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,17/05/2026,5,Coorparoo Roos U15 Boys Division 1,Palm Beach Currumbin U15 Boys Division 1,Giffin Park,Giffin Park 1,17/05/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,17/05/2026,5,Morningside Panthers U15 Boys Division 1,Maroochy Roos Juniors U15 Boys Division 1,Jack Esplen Oval,Jack Esplen Oval 1,17/05/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,17/05/2026,5,Labrador Tigers U15 Boys Division 1,Tweed Coast Tigers U15 Boys Division 1,Cooke-Murphy Oval,Cooke-Murphy Oval 1,17/05/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,17/05/2026,5,Burleigh Bombers U15 Boys Division 1,Wilston Grange Gorillas U15 Boys Division 1,Bill Godfrey Oval,PRD Bill Godfrey Oval,17/05/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,17/05/2026,5,Coomera Magpies U15 Boys Division 1,Sherwood Magpies U15 Boys Division 1,Coomera Sports Park,Southport Mazda Oval,17/05/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,24/05/2026,6,Coorparoo Roos U15 Boys Division 1,Coomera Magpies U15 Boys Division 1,Giffin Park,Giffin Park 1,24/05/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,24/05/2026,6,Sherwood Magpies U15 Boys Division 1,Broadbeach Cats U15 Boys Division 1,Powenyenna Oval,Powenyenna Oval 1,24/05/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,24/05/2026,6,Palm Beach Currumbin U15 Boys Division 1,Maroochy Roos Juniors U15 Boys Division 1,Salk Oval,Stalagmite Oval,24/05/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,24/05/2026,6,Aspley Hornets U15 Boys Division 1,Burleigh Bombers U15 Boys Division 1,Graham Road,Automall Aspley Oval,24/05/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,24/05/2026,6,Tweed Coast Tigers U15 Boys Division 1,Morningside Panthers U15 Boys Division 1,Barry Sheppard Oval,Beaumont Tiles Tweed Oval,24/05/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,24/05/2026,6,Wilston Grange Gorillas U15 Boys Division 1,Labrador Tigers U15 Boys Division 1,Hickey Park,Hickey Park,24/05/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,31/05/2026,7,Broadbeach Cats U15 Boys Division 1,Coorparoo Roos U15 Boys Division 1,Kombumerri Park,Neptune Homes Oval 1,31/05/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,31/05/2026,7,Coomera Magpies U15 Boys Division 1,Palm Beach Currumbin U15 Boys Division 1,Coomera Sports Park,Southport Mazda Oval,31/05/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,31/05/2026,7,Labrador Tigers U15 Boys Division 1,Aspley Hornets U15 Boys Division 1,Cooke-Murphy Oval,Cooke-Murphy Oval 1,31/05/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,31/05/2026,7,Morningside Panthers U15 Boys Division 1,Wilston Grange Gorillas U15 Boys Division 1,Jack Esplen Oval,Jack Esplen Oval 1,31/05/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,31/05/2026,7,Burleigh Bombers U15 Boys Division 1,Sherwood Magpies U15 Boys Division 1,Bill Godfrey Oval,PRD Bill Godfrey Oval,31/05/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,31/05/2026,7,Maroochy Roos Juniors U15 Boys Division 1,Tweed Coast Tigers U15 Boys Division 1,Maroochydore Multi Sports Complex,Neil Upton Oval,31/05/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,07/06/2026,8,Wilston Grange Gorillas U15 Boys Division 1,Maroochy Roos Juniors U15 Boys Division 1,Hickey Park,Hickey Park,07/06/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,07/06/2026,8,Coomera Magpies U15 Boys Division 1,Broadbeach Cats U15 Boys Division 1,Coomera Sports Park,Southport Mazda Oval,07/06/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,07/06/2026,8,Sherwood Magpies U15 Boys Division 1,Labrador Tigers U15 Boys Division 1,Powenyenna Oval,Powenyenna Oval 1,07/06/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,07/06/2026,8,Coorparoo Roos U15 Boys Division 1,Burleigh Bombers U15 Boys Division 1,Giffin Park,Giffin Park 1,07/06/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,07/06/2026,8,Aspley Hornets U15 Boys Division 1,Morningside Panthers U15 Boys Division 1,Graham Road,Automall Aspley Oval,07/06/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,07/06/2026,8,Palm Beach Currumbin U15 Boys Division 1,Tweed Coast Tigers U15 Boys Division 1,Salk Oval,Stalagmite Oval,07/06/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,14/06/2026,9,Burleigh Bombers U15 Boys Division 1,Coomera Magpies U15 Boys Division 1,Bill Godfrey Oval,PRD Bill Godfrey Oval,14/06/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,14/06/2026,9,Broadbeach Cats U15 Boys Division 1,Palm Beach Currumbin U15 Boys Division 1,Kombumerri Park,Neptune Homes Oval 1,14/06/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,14/06/2026,9,Morningside Panthers U15 Boys Division 1,Sherwood Magpies U15 Boys Division 1,Jack Esplen Oval,Jack Esplen Oval 1,14/06/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,14/06/2026,9,Maroochy Roos Juniors U15 Boys Division 1,Aspley Hornets U15 Boys Division 1,Maroochydore Multi Sports Complex,Neil Upton Oval,14/06/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,14/06/2026,9,Tweed Coast Tigers U15 Boys Division 1,Wilston Grange Gorillas U15 Boys Division 1,Barry Sheppard Oval,Beaumont Tiles Tweed Oval,14/06/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,14/06/2026,9,Labrador Tigers U15 Boys Division 1,Coorparoo Roos U15 Boys Division 1,Cooke-Murphy Oval,Cooke-Murphy Oval 1,14/06/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,21/06/2026,10,Tweed Coast Tigers U15 Boys Division 1,Sherwood Magpies U15 Boys Division 1,Barry Sheppard Oval,Beaumont Tiles Tweed Oval,21/06/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,21/06/2026,10,Maroochy Roos Juniors U15 Boys Division 1,Coorparoo Roos U15 Boys Division 1,Maroochydore Multi Sports Complex,Neil Upton Oval,21/06/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,21/06/2026,10,Burleigh Bombers U15 Boys Division 1,Palm Beach Currumbin U15 Boys Division 1,Bill Godfrey Oval,PRD Bill Godfrey Oval,21/06/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,21/06/2026,10,Morningside Panthers U15 Boys Division 1,Coomera Magpies U15 Boys Division 1,Jack Esplen Oval,Jack Esplen Oval 1,21/06/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,21/06/2026,10,Wilston Grange Gorillas U15 Boys Division 1,Aspley Hornets U15 Boys Division 1,Hickey Park,Hickey Park,21/06/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,21/06/2026,10,Labrador Tigers U15 Boys Division 1,Broadbeach Cats U15 Boys Division 1,Cooke-Murphy Oval,Cooke-Murphy Oval 1,21/06/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,12/07/2026,11,Coomera Magpies U15 Boys Division 1,Labrador Tigers U15 Boys Division 1,Coomera Sports Park,Southport Mazda Oval,12/07/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,12/07/2026,11,Coorparoo Roos U15 Boys Division 1,Morningside Panthers U15 Boys Division 1,Giffin Park,Giffin Park 1,12/07/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,12/07/2026,11,Palm Beach Currumbin U15 Boys Division 1,Wilston Grange Gorillas U15 Boys Division 1,Salk Oval,Stalagmite Oval,12/07/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,12/07/2026,11,Aspley Hornets U15 Boys Division 1,Tweed Coast Tigers U15 Boys Division 1,Graham Road,Automall Aspley Oval,12/07/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,12/07/2026,11,Sherwood Magpies U15 Boys Division 1,Maroochy Roos Juniors U15 Boys Division 1,Powenyenna Oval,Powenyenna Oval 1,12/07/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,12/07/2026,11,Broadbeach Cats U15 Boys Division 1,Burleigh Bombers U15 Boys Division 1,Kombumerri Park,Neptune Homes Oval 1,12/07/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,19/07/2026,12,Morningside Panthers U15 Boys Division 1,Broadbeach Cats U15 Boys Division 1,Jack Esplen Oval,Jack Esplen Oval 1,19/07/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,19/07/2026,12,Labrador Tigers U15 Boys Division 1,Burleigh Bombers U15 Boys Division 1,Cooke-Murphy Oval,Cooke-Murphy Oval 1,19/07/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,19/07/2026,12,Maroochy Roos Juniors U15 Boys Division 1,Coomera Magpies U15 Boys Division 1,Maroochydore Multi Sports Complex,Neil Upton Oval,19/07/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,19/07/2026,12,Tweed Coast Tigers U15 Boys Division 1,Coorparoo Roos U15 Boys Division 1,Barry Sheppard Oval,Beaumont Tiles Tweed Oval,19/07/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,19/07/2026,12,Palm Beach Currumbin U15 Boys Division 1,Aspley Hornets U15 Boys Division 1,Salk Oval,Stalagmite Oval,19/07/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,19/07/2026,12,Wilston Grange Gorillas U15 Boys Division 1,Sherwood Magpies U15 Boys Division 1,Hickey Park,Hickey Park,19/07/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,26/07/2026,13,Broadbeach Cats U15 Boys Division 1,Maroochy Roos Juniors U15 Boys Division 1,Kombumerri Park,Neptune Homes Oval 1,26/07/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,26/07/2026,13,Labrador Tigers U15 Boys Division 1,Palm Beach Currumbin U15 Boys Division 1,Cooke-Murphy Oval,Cooke-Murphy Oval 1,26/07/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,26/07/2026,13,Burleigh Bombers U15 Boys Division 1,Morningside Panthers U15 Boys Division 1,Bill Godfrey Oval,PRD Bill Godfrey Oval,26/07/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,26/07/2026,13,Sherwood Magpies U15 Boys Division 1,Aspley Hornets U15 Boys Division 1,Powenyenna Oval,Powenyenna Oval 1,26/07/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,26/07/2026,13,Coomera Magpies U15 Boys Division 1,Tweed Coast Tigers U15 Boys Division 1,Coomera Sports Park,Southport Mazda Oval,26/07/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,26/07/2026,13,Coorparoo Roos U15 Boys Division 1,Wilston Grange Gorillas U15 Boys Division 1,Giffin Park,Giffin Park 1,26/07/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,02/08/2026,14,Palm Beach Currumbin U15 Boys Division 1,Sherwood Magpies U15 Boys Division 1,Salk Oval,Stalagmite Oval,02/08/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,02/08/2026,14,Maroochy Roos Juniors U15 Boys Division 1,Burleigh Bombers U15 Boys Division 1,Maroochydore Multi Sports Complex,Neil Upton Oval,02/08/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,02/08/2026,14,Wilston Grange Gorillas U15 Boys Division 1,Coomera Magpies U15 Boys Division 1,Hickey Park,Hickey Park,02/08/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,02/08/2026,14,Tweed Coast Tigers U15 Boys Division 1,Broadbeach Cats U15 Boys Division 1,Barry Sheppard Oval,Beaumont Tiles Tweed Oval,02/08/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,02/08/2026,14,Morningside Panthers U15 Boys Division 1,Labrador Tigers U15 Boys Division 1,Jack Esplen Oval,Jack Esplen Oval 1,02/08/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,02/08/2026,14,Aspley Hornets U15 Boys Division 1,Coorparoo Roos U15 Boys Division 1,Graham Road,Automall Aspley Oval,02/08/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,09/08/2026,15,Coorparoo Roos U15 Boys Division 1,Sherwood Magpies U15 Boys Division 1,Giffin Park,Giffin Park 1,09/08/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,09/08/2026,15,Broadbeach Cats U15 Boys Division 1,Wilston Grange Gorillas U15 Boys Division 1,Kombumerri Park,Neptune Homes Oval 1,09/08/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,09/08/2026,15,Morningside Panthers U15 Boys Division 1,Palm Beach Currumbin U15 Boys Division 1,Jack Esplen Oval,Jack Esplen Oval 1,09/08/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,09/08/2026,15,Labrador Tigers U15 Boys Division 1,Maroochy Roos Juniors U15 Boys Division 1,Cooke-Murphy Oval,Cooke-Murphy Oval 1,09/08/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,09/08/2026,15,Coomera Magpies U15 Boys Division 1,Aspley Hornets U15 Boys Division 1,Coomera Sports Park,Southport Mazda Oval,09/08/2026,02:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 1,09/08/2026,15,Burleigh Bombers U15 Boys Division 1,Tweed Coast Tigers U15 Boys Division 1,Bill Godfrey Oval,PRD Bill Godfrey Oval,09/08/2026,02:00PM`;
+
+const CSV_DIV3 = `organisation,competition,season,grade,round date,round,home team,away team,venue,playing surface,game date,game time,game alias
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,19/04/2026,1,Palm Beach Currumbin U15 Boys Division 3,Burleigh Bombers U15 Boys Division 3,Salk Oval,Stalagmite Oval,19/04/2026,09:00AM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,19/04/2026,1,Broadbeach Cats U15 Boys Division 3,Labrador Tigers U15 Boys Div 3,Kombumerri Park,Neptune Homes Oval 1,17/04/2026,07:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,19/04/2026,1,Surfers Paradise Demons U15 Boys Division 3,Tweed Coast Tigers U15 Boys Division 3,Sir Bruce Small Park,Kallibr Homes Oval,19/04/2026,12:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,19/04/2026,1,Ormeau Bulldogs U15 Boys Division 3,Pac Power U15 Boys Div 3,Ormeau Sports Park,Ormeau Sports Park 1,19/04/2026,12:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,19/04/2026,1,Byron - Ballina U15 Boys Division 3,BYE
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,26/04/2026,2,Byron - Ballina U15 Boys Division 3,Burleigh Bombers U15 Boys Division 3,Fripp Oval,Fripp Oval 1,26/04/2026,12:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,26/04/2026,2,Tweed Coast Tigers U15 Boys Division 3,Broadbeach Cats U15 Boys Division 3,Barry Sheppard Oval,Beaumont Tiles Tweed Oval,26/04/2026,03:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,26/04/2026,2,Pac Power U15 Boys Div 3,Surfers Paradise Demons U15 Boys Division 3,McAuley Parade Oval,Frizelle Sunshine Park,26/04/2026,12:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,26/04/2026,2,Palm Beach Currumbin U15 Boys Division 3,Ormeau Bulldogs U15 Boys Division 3,Salk Oval,Stalagmite Oval,24/04/2026,07:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,26/04/2026,2,Labrador Tigers U15 Boys Div 3,BYE
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,03/05/2026,3,Labrador Tigers U15 Boys Div 3,Tweed Coast Tigers U15 Boys Division 3,Cooke-Murphy Oval,Cooke-Murphy Oval 1,03/05/2026,12:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,03/05/2026,3,Broadbeach Cats U15 Boys Division 3,Pac Power U15 Boys Div 3,Kombumerri Park,Neptune Homes Oval 1,03/05/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,03/05/2026,3,Ormeau Bulldogs U15 Boys Division 3,Byron - Ballina U15 Boys Division 3,Ormeau Sports Park,Ormeau Sports Park 1,03/05/2026,12:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,03/05/2026,3,Surfers Paradise Demons U15 Boys Division 3,Palm Beach Currumbin U15 Boys Division 3,Sir Bruce Small Park,Kallibr Homes Oval,03/05/2026,01:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,03/05/2026,3,Burleigh Bombers U15 Boys Division 3,BYE
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,10/05/2026,4,Burleigh Bombers U15 Boys Division 3,Ormeau Bulldogs U15 Boys Division 3,Bill Godfrey Oval,PRD Bill Godfrey Oval,10/05/2026,12:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,10/05/2026,4,Pac Power U15 Boys Div 3,Labrador Tigers U15 Boys Div 3,McAuley Parade Oval,Frizelle Sunshine Park,10/05/2026,11:30AM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,10/05/2026,4,Palm Beach Currumbin U15 Boys Division 3,Broadbeach Cats U15 Boys Division 3,Salk Oval,Stalagmite Oval,08/05/2026,07:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,10/05/2026,4,Byron - Ballina U15 Boys Division 3,Surfers Paradise Demons U15 Boys Division 3,Fripp Oval,Fripp Oval 1,10/05/2026,12:00PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,10/05/2026,4,Tweed Coast Tigers U15 Boys Division 3,BYE
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,17/05/2026,5,Broadbeach Cats U15 Boys Division 3,Palm Beach Currumbin U15 Boys Division 3,Kombumerri Park,Neptune Homes Oval 1,17/05/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,17/05/2026,5,Burleigh Bombers U15 Boys Division 3,Pac Power U15 Boys Div 3,Bill Godfrey Oval,PRD Bill Godfrey Oval,17/05/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,17/05/2026,5,Tweed Coast Tigers U15 Boys Division 3,Byron - Ballina U15 Boys Division 3,Barry Sheppard Oval,Beaumont Tiles Tweed Oval,17/05/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,17/05/2026,5,Surfers Paradise Demons U15 Boys Division 3,Labrador Tigers U15 Boys Div 3,Sir Bruce Small Park,Kallibr Homes Oval,17/05/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,17/05/2026,5,Ormeau Bulldogs U15 Boys Division 3,BYE
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,24/05/2026,6,Ormeau Bulldogs U15 Boys Division 3,Surfers Paradise Demons U15 Boys Division 3,Ormeau Sports Park,Ormeau Sports Park 1,24/05/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,24/05/2026,6,Byron - Ballina U15 Boys Division 3,Broadbeach Cats U15 Boys Division 3,Byron Bay Cavanbah Centre,Cornell Family Field,24/05/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,24/05/2026,6,Palm Beach Currumbin U15 Boys Division 3,Burleigh Bombers U15 Boys Division 3,Salk Oval,Stalagmite Oval,24/05/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,24/05/2026,6,Labrador Tigers U15 Boys Div 3,Tweed Coast Tigers U15 Boys Division 3,Cooke-Murphy Oval,Cooke-Murphy Oval 1,24/05/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,24/05/2026,6,Pac Power U15 Boys Div 3,BYE
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,31/05/2026,7,Burleigh Bombers U15 Boys Division 3,Byron - Ballina U15 Boys Division 3,Bill Godfrey Oval,PRD Bill Godfrey Oval,31/05/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,31/05/2026,7,Pac Power U15 Boys Div 3,Palm Beach Currumbin U15 Boys Division 3,McAuley Parade Oval,Frizelle Sunshine Park,31/05/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,31/05/2026,7,Broadbeach Cats U15 Boys Division 3,Labrador Tigers U15 Boys Div 3,Kombumerri Park,Neptune Homes Oval 1,31/05/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,31/05/2026,7,Tweed Coast Tigers U15 Boys Division 3,Ormeau Bulldogs U15 Boys Division 3,Barry Sheppard Oval,Beaumont Tiles Tweed Oval,31/05/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,31/05/2026,7,Surfers Paradise Demons U15 Boys Division 3,BYE
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,07/06/2026,8,Palm Beach Currumbin U15 Boys Division 3,Byron - Ballina U15 Boys Division 3,Salk Oval,Stalagmite Oval,07/06/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,07/06/2026,8,Broadbeach Cats U15 Boys Division 3,Surfers Paradise Demons U15 Boys Division 3,Kombumerri Park,Neptune Homes Oval 1,07/06/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,07/06/2026,8,Burleigh Bombers U15 Boys Division 3,Ormeau Bulldogs U15 Boys Division 3,Bill Godfrey Oval,PRD Bill Godfrey Oval,07/06/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,07/06/2026,8,Pac Power U15 Boys Div 3,Labrador Tigers U15 Boys Div 3,McAuley Parade Oval,Frizelle Sunshine Park,07/06/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,07/06/2026,8,Tweed Coast Tigers U15 Boys Division 3,BYE
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,14/06/2026,9,Surfers Paradise Demons U15 Boys Division 3,Tweed Coast Tigers U15 Boys Division 3,Sir Bruce Small Park,Kallibr Homes Oval,14/06/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,14/06/2026,9,Byron - Ballina U15 Boys Division 3,Pac Power U15 Boys Div 3,Byron Bay Cavanbah Centre,Cornell Family Field,14/06/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,14/06/2026,9,Ormeau Bulldogs U15 Boys Division 3,Broadbeach Cats U15 Boys Division 3,Ormeau Sports Park,Ormeau Sports Park 1,14/06/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,14/06/2026,9,Labrador Tigers U15 Boys Div 3,Burleigh Bombers U15 Boys Division 3,Cooke-Murphy Oval,Cooke-Murphy Oval 1,14/06/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,14/06/2026,9,Palm Beach Currumbin U15 Boys Division 3,BYE
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,21/06/2026,10,Burleigh Bombers U15 Boys Division 3,Surfers Paradise Demons U15 Boys Division 3,Bill Godfrey Oval,PRD Bill Godfrey Oval,21/06/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,21/06/2026,10,Palm Beach Currumbin U15 Boys Division 3,Labrador Tigers U15 Boys Div 3,Salk Oval,Stalagmite Oval,21/06/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,21/06/2026,10,Broadbeach Cats U15 Boys Division 3,Tweed Coast Tigers U15 Boys Division 3,Kombumerri Park,Neptune Homes Oval 1,21/06/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,21/06/2026,10,Pac Power U15 Boys Div 3,Ormeau Bulldogs U15 Boys Division 3,McAuley Parade Oval,Frizelle Sunshine Park,21/06/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,21/06/2026,10,Byron - Ballina U15 Boys Division 3,BYE
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,12/07/2026,11,Labrador Tigers U15 Boys Div 3,Byron - Ballina U15 Boys Division 3,Cooke-Murphy Oval,Cooke-Murphy Oval 1,12/07/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,12/07/2026,11,Tweed Coast Tigers U15 Boys Division 3,Burleigh Bombers U15 Boys Division 3,Barry Sheppard Oval,Beaumont Tiles Tweed Oval,12/07/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,12/07/2026,11,Surfers Paradise Demons U15 Boys Division 3,Pac Power U15 Boys Div 3,Sir Bruce Small Park,Kallibr Homes Oval,12/07/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,12/07/2026,11,Ormeau Bulldogs U15 Boys Division 3,Palm Beach Currumbin U15 Boys Division 3,Ormeau Sports Park,Ormeau Sports Park 1,12/07/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,12/07/2026,11,Broadbeach Cats U15 Boys Division 3,BYE
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,19/07/2026,12,Palm Beach Currumbin U15 Boys Division 3,Surfers Paradise Demons U15 Boys Division 3,Salk Oval,Stalagmite Oval,19/07/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,19/07/2026,12,Pac Power U15 Boys Div 3,Tweed Coast Tigers U15 Boys Division 3,McAuley Parade Oval,Frizelle Sunshine Park,19/07/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,19/07/2026,12,Byron - Ballina U15 Boys Division 3,Ormeau Bulldogs U15 Boys Division 3,Byron Bay Cavanbah Centre,Cornell Family Field,19/07/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,19/07/2026,12,Burleigh Bombers U15 Boys Division 3,Broadbeach Cats U15 Boys Division 3,Bill Godfrey Oval,PRD Bill Godfrey Oval,19/07/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,19/07/2026,12,Labrador Tigers U15 Boys Div 3,BYE
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,26/07/2026,13,Ormeau Bulldogs U15 Boys Division 3,Labrador Tigers U15 Boys Div 3,Ormeau Sports Park,Ormeau Sports Park 1,26/07/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,26/07/2026,13,Broadbeach Cats U15 Boys Division 3,Pac Power U15 Boys Div 3,Kombumerri Park,Neptune Homes Oval 1,26/07/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,26/07/2026,13,Surfers Paradise Demons U15 Boys Division 3,Byron - Ballina U15 Boys Division 3,Sir Bruce Small Park,Kallibr Homes Oval,26/07/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,26/07/2026,13,Tweed Coast Tigers U15 Boys Division 3,Palm Beach Currumbin U15 Boys Division 3,Barry Sheppard Oval,Beaumont Tiles Tweed Oval,26/07/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,26/07/2026,13,Burleigh Bombers U15 Boys Division 3,BYE
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,02/08/2026,14,Labrador Tigers U15 Boys Div 3,Surfers Paradise Demons U15 Boys Division 3,Cooke-Murphy Oval,Cooke-Murphy Oval 1,02/08/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,02/08/2026,14,Pac Power U15 Boys Div 3,Burleigh Bombers U15 Boys Division 3,McAuley Parade Oval,Frizelle Sunshine Park,02/08/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,02/08/2026,14,Palm Beach Currumbin U15 Boys Division 3,Broadbeach Cats U15 Boys Division 3,Salk Oval,Stalagmite Oval,02/08/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,02/08/2026,14,Byron - Ballina U15 Boys Division 3,Tweed Coast Tigers U15 Boys Division 3,Byron Bay Cavanbah Centre,Cornell Family Field,02/08/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,02/08/2026,14,Ormeau Bulldogs U15 Boys Division 3,BYE
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,09/08/2026,15,Tweed Coast Tigers U15 Boys Division 3,Labrador Tigers U15 Boys Div 3,Barry Sheppard Oval,Beaumont Tiles Tweed Oval,09/08/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,09/08/2026,15,Burleigh Bombers U15 Boys Division 3,Palm Beach Currumbin U15 Boys Division 3,Bill Godfrey Oval,PRD Bill Godfrey Oval,09/08/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,09/08/2026,15,Broadbeach Cats U15 Boys Division 3,Byron - Ballina U15 Boys Division 3,Kombumerri Park,Neptune Homes Oval 1,09/08/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,09/08/2026,15,Surfers Paradise Demons U15 Boys Division 3,Ormeau Bulldogs U15 Boys Division 3,Sir Bruce Small Park,Kallibr Homes Oval,09/08/2026,01:30PM
+South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,09/08/2026,15,Pac Power U15 Boys Div 3,BYE`;
+
+let currentDiv = 'div1';
+let currentRound = null;
+const div1Games = parseCSV(CSV_DIV1);
+const div3Games = parseCSV(CSV_DIV3);
+
+function switchDiv(div) {
+  currentDiv = div;
+  currentRound = null;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelector(`.tab:nth-child(${div === 'div1' ? 1 : 2})`).classList.add('active');
+  renderFixtures(div === 'div1' ? div1Games : div3Games, currentRound);
+}
+
+window.showRound = function(rn) {
+  currentRound = rn;
+  renderFixtures(currentDiv === 'div1' ? div1Games : div3Games, rn);
+};
+
+// Initial render — show next upcoming round
+renderFixtures(div1Games, null);
+</script>
+
+</body>
+</html>
