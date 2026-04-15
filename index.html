@@ -9,103 +9,98 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#1a1a1a">
 <link rel="manifest" href="manifest.json">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #f5f5f5;
+  --bg: #f7f7f7;
   --card: #ffffff;
   --text: #1a1a1a;
   --text2: #555;
   --text3: #888;
   --border: #e0e0e0;
-  --gold: #FFD200;
-  --gold-dark: #E5B800;
+  --gold: #FFC629;
+  --gold-light: #FFD54F;
+  --gold-pale: #FFF8E1;
   --black: #1a1a1a;
-  --accent: #1a1a1a;
-  --accent-light: #fff8db;
-  --tct: #1a1a1a;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
 
-/* Header - black with gold diagonal stripe pattern */
+/* ── Header ── */
 .header {
-  background: var(--black);
-  padding: 0;
   position: sticky; top: 0; z-index: 100;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+  background: var(--black);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
 }
 .header-top {
   position: relative;
-  padding: 16px 20px 12px;
-  overflow: hidden;
-}
-.header-top::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 10px,
-    rgba(255,210,0,0.06) 10px,
-    rgba(255,210,0,0.06) 20px
-  );
-  pointer-events: none;
+  padding: 18px 20px 14px;
+  background:
+    repeating-linear-gradient(
+      -55deg,
+      var(--gold) 0px,
+      var(--gold) 18px,
+      var(--gold-light) 18px,
+      var(--gold-light) 36px
+    );
+  text-align: center;
 }
 .header h1 {
-  font-size: 20px; font-weight: 800; color: var(--gold);
-  letter-spacing: -0.3px; margin-bottom: 2px;
-  text-transform: uppercase;
+  font-size: 22px; font-weight: 900; color: var(--black);
+  letter-spacing: 1px; text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.3);
   position: relative;
 }
-.header .sub { font-size: 12px; color: rgba(255,255,255,0.5); position: relative; }
+.header .sub {
+  font-size: 11px; font-weight: 700; color: rgba(0,0,0,0.5);
+  text-transform: uppercase; letter-spacing: 1px;
+  position: relative; margin-top: 2px;
+}
 .tabs {
   display: flex; gap: 0;
-  background: rgba(255,255,255,0.05);
-  border-top: 1px solid rgba(255,210,0,0.15);
+  background: var(--black);
 }
 .tab {
-  padding: 11px 18px;
-  font-size: 13px; font-weight: 600;
-  color: rgba(255,255,255,0.4);
+  flex: 1; text-align: center;
+  padding: 12px 16px;
+  font-size: 13px; font-weight: 700;
+  color: rgba(255,255,255,0.35);
   cursor: pointer;
   border-bottom: 3px solid transparent;
   transition: all 0.2s;
   user-select: none;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
 }
 .tab.active {
   color: var(--gold);
   border-bottom-color: var(--gold);
 }
-.tab:hover { color: rgba(255,255,255,0.7); }
+.tab:hover { color: rgba(255,255,255,0.6); }
 
-/* Next game banner - gold */
+/* ── Next game banner ── */
 .next-banner {
-  background: linear-gradient(135deg, #FFD200 0%, #E5B800 100%);
-  color: var(--black);
+  position: relative;
+  background: var(--black);
+  color: #fff;
   padding: 14px 20px;
   font-size: 13px;
   line-height: 1.5;
-  position: relative;
-  overflow: hidden;
+  border-bottom: 3px solid var(--gold);
 }
-.next-banner::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 8px,
-    rgba(0,0,0,0.04) 8px,
-    rgba(0,0,0,0.04) 16px
-  );
-  pointer-events: none;
+.next-banner .label {
+  font-size: 10px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--gold); margin-bottom: 4px;
 }
-.next-banner .label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.6; margin-bottom: 4px; position: relative; }
-.next-banner .detail { font-weight: 800; font-size: 15px; position: relative; }
-.next-banner .meta { font-size: 12px; opacity: 0.7; margin-top: 2px; position: relative; }
+.next-banner .detail { font-weight: 800; font-size: 16px; }
+.next-banner .meta { font-size: 12px; opacity: 0.6; margin-top: 2px; }
 
-/* Filter bar */
+/* ── Filter bar ── */
 .filter-bar {
   max-width: 500px; margin: 0 auto;
   padding: 12px 12px 0;
@@ -113,42 +108,42 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); c
 }
 .tct-toggle {
   display: flex; align-items: center; gap: 8px;
-  font-size: 12px; font-weight: 600; color: var(--text2);
+  font-size: 12px; font-weight: 700; color: var(--text2);
   cursor: pointer; user-select: none;
-  background: #fff; border: 1.5px solid var(--border);
+  background: #fff; border: 2px solid var(--border);
   padding: 7px 14px; border-radius: 20px;
   transition: all 0.2s;
 }
 .tct-toggle.active {
-  background: var(--accent-light); border-color: var(--gold-dark); color: var(--black);
+  background: var(--gold); border-color: var(--gold); color: var(--black);
 }
 .tct-toggle .dot {
-  width: 8px; height: 8px; border-radius: 50%; background: var(--gold);
-  border: 1px solid var(--gold-dark);
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--gold); border: 2px solid var(--black);
 }
 
-/* Content */
+/* ── Content ── */
 .content { max-width: 500px; margin: 0 auto; padding: 0 12px 40px; }
 .round-header { padding: 20px 8px 8px; }
-.round-header h2 { font-size: 22px; font-weight: 800; color: var(--text); }
+.round-header h2 { font-size: 22px; font-weight: 900; color: var(--black); }
 .round-header .date { font-size: 13px; color: var(--text2); margin-top: 2px; }
 
-/* Match cards */
+/* ── Match cards ── */
 .match-card {
   background: var(--card);
   border-radius: 14px;
   padding: 18px;
   margin-bottom: 12px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-  border-left: 4px solid transparent;
+  border-left: 5px solid transparent;
   transition: all 0.2s;
 }
 .match-card.tct-game {
   border-left-color: var(--gold);
-  background: linear-gradient(135deg, #fffde6 0%, #fff 40%);
-  box-shadow: 0 2px 8px rgba(255,210,0,0.15), 0 1px 4px rgba(0,0,0,0.06);
+  background: linear-gradient(135deg, var(--gold-pale) 0%, #fff 50%);
+  box-shadow: 0 2px 12px rgba(255,198,41,0.18), 0 1px 4px rgba(0,0,0,0.06);
 }
-.match-card.played { opacity: 0.55; }
+.match-card.played { opacity: 0.5; }
 
 .teams { display: flex; flex-direction: column; gap: 12px; }
 .team-row { display: flex; align-items: center; gap: 12px; }
@@ -159,6 +154,10 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); c
   flex-shrink: 0;
   text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
+.team-badge.tct-badge {
+  background: var(--black) !important;
+  box-shadow: 0 0 0 3px var(--gold);
+}
 .team-info { flex: 1; min-width: 0; }
 .team-name { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.3; }
 .team-name.is-tct { color: var(--black); font-weight: 800; }
@@ -167,6 +166,7 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); c
   background: #f0f0f0; padding: 2px 7px; border-radius: 4px;
   margin-left: 6px; vertical-align: middle;
 }
+.ha-badge.home { background: var(--gold-pale); color: #9a7b00; }
 
 .score-placeholder {
   font-size: 28px; font-weight: 800; color: #ddd; min-width: 40px; text-align: right;
@@ -181,7 +181,7 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); c
 .match-meta .row { display: flex; align-items: flex-start; gap: 8px; }
 .match-meta .icon { width: 16px; text-align: center; flex-shrink: 0; color: var(--text3); }
 .match-meta a { color: var(--black); text-decoration: none; font-weight: 500; }
-.match-meta a:hover { text-decoration: underline; }
+.match-meta a:hover { text-decoration: underline; color: #9a7b00; }
 
 .match-footer {
   display: flex; align-items: center; justify-content: space-between;
@@ -190,13 +190,16 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); c
 
 .status-badge {
   display: inline-block;
-  font-size: 11px; font-weight: 600;
+  font-size: 11px; font-weight: 700;
   padding: 4px 12px;
   border-radius: 20px;
 }
 .status-badge.upcoming { background: #f0f0f0; color: var(--text3); }
-.status-badge.this-week { background: var(--accent-light); color: #9a7b00; font-weight: 700; }
-.status-badge.today { background: var(--gold); color: var(--black); font-weight: 700; animation: pulse 2s infinite; }
+.status-badge.this-week { background: var(--gold-pale); color: #9a7b00; }
+.status-badge.today {
+  background: var(--gold); color: var(--black);
+  animation: pulse 2s infinite;
+}
 .status-badge.played { background: #f5f5f5; color: #bbb; }
 
 @keyframes pulse {
@@ -205,15 +208,15 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); c
 }
 
 .cal-btn {
-  font-size: 11px; font-weight: 600; color: var(--black);
-  background: var(--accent-light);
-  padding: 4px 10px; border-radius: 12px;
-  text-decoration: none; cursor: pointer; border: 1px solid var(--gold-dark);
+  font-size: 11px; font-weight: 700; color: var(--black);
+  background: var(--gold);
+  padding: 5px 12px; border-radius: 12px;
+  text-decoration: none; cursor: pointer; border: none;
   transition: all 0.15s;
 }
-.cal-btn:hover { background: var(--gold); color: var(--black); }
+.cal-btn:hover { background: var(--gold-light); }
 
-/* Bye cards */
+/* ── Bye cards ── */
 .bye-card {
   background: var(--card);
   border-radius: 14px;
@@ -221,19 +224,19 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); c
   margin-bottom: 12px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   display: flex; align-items: center; gap: 14px;
-  border-left: 4px solid transparent;
+  border-left: 5px solid transparent;
 }
 .bye-card.tct-game { border-left-color: var(--gold); }
 .bye-card .team-badge { width: 36px; height: 36px; font-size: 11px; }
 .bye-card .bye-text { font-size: 13px; color: var(--text3); }
 .bye-card .bye-text strong { color: var(--text); }
 .bye-card .bye-label {
-  font-size: 11px; font-weight: 600; color: #bbb;
-  background: #f5f5f5; padding: 3px 10px; border-radius: 12px;
+  font-size: 11px; font-weight: 700; color: #999;
+  background: #f0f0f0; padding: 3px 10px; border-radius: 12px;
   margin-left: auto;
 }
 
-/* Round nav */
+/* ── Round nav ── */
 .round-nav {
   display: flex; gap: 6px; padding: 12px 0; overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -241,21 +244,23 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); c
 }
 .round-nav::-webkit-scrollbar { display: none; }
 .round-pill {
-  padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600;
-  white-space: nowrap; cursor: pointer; border: 1.5px solid var(--border);
+  padding: 7px 14px; border-radius: 20px; font-size: 12px; font-weight: 700;
+  white-space: nowrap; cursor: pointer; border: 2px solid var(--border);
   color: var(--text2); background: #fff; transition: all 0.2s;
   user-select: none;
 }
 .round-pill.active {
-  background: var(--black); color: var(--gold); border-color: var(--black); font-weight: 700;
+  background: var(--black); color: var(--gold); border-color: var(--black);
 }
 .round-pill:hover { border-color: var(--black); }
-.round-pill.next { border-color: var(--gold-dark); color: #9a7b00; background: var(--accent-light); }
+.round-pill.next {
+  border-color: var(--gold); color: #9a7b00; background: var(--gold-pale);
+}
 .round-pill.next.active { background: var(--black); color: var(--gold); border-color: var(--black); }
-.round-pill.past { opacity: 0.5; }
+.round-pill.past { opacity: 0.45; }
 .hidden { display: none; }
 
-/* Empty state */
+/* ── Empty state ── */
 .empty-state {
   text-align: center; padding: 40px 20px; color: var(--text3);
   font-size: 14px;
@@ -444,7 +449,10 @@ function teamBadge(name, size) {
   const abbr = TEAM_ABBREV[name] || name.substring(0, 2).toUpperCase();
   const sz = size || 44;
   const fs = sz < 40 ? 10 : 13;
-  return `<div class="team-badge" style="width:${sz}px;height:${sz}px;background:${color};font-size:${fs}px;">${abbr}</div>`;
+  const isTCT = name === MY_TEAM;
+  const cls = isTCT ? 'team-badge tct-badge' : 'team-badge';
+  const tctColor = isTCT ? '#FFC629' : '#fff';
+  return `<div class="${cls}" style="width:${sz}px;height:${sz}px;background:${color};font-size:${fs}px;color:${tctColor};">${abbr}</div>`;
 }
 
 function renderNextBanner() {
@@ -553,7 +561,7 @@ function renderFixtures(games, targetRound) {
         <div class="team-row">
           ${teamBadge(g.home)}
           <div class="team-info">
-            <div class="team-name${homeIsTCT ? ' is-tct' : ''}">${g.home}<span class="ha-badge">H</span></div>
+            <div class="team-name${homeIsTCT ? ' is-tct' : ''}">${g.home}<span class="ha-badge home">H</span></div>
           </div>
           <div class="score-placeholder">&ndash;</div>
         </div>
