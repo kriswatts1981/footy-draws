@@ -2,8 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>U15 Boys Season Draw 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Tweed Coast Tigers – U15 Boys 2026</title>
+<meta name="description" content="Season draw for Tweed Coast Tigers U15 Boys – SEQJ 2026">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#1a5c30">
+<link rel="manifest" href="manifest.json">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -13,27 +18,32 @@
   --text2: #666;
   --text3: #999;
   --border: #e8e8e8;
-  --accent: #1a3c6e;
-  --tab-active: #1a3c6e;
+  --accent: #1a5c30;
+  --accent-light: #e8f5ec;
+  --tab-active: #1a5c30;
   --tab-inactive: #999;
+  --tct: #1a5c30;
+  --gold: #c8960a;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+
+/* Header */
 .header {
-  background: #fff;
+  background: var(--accent);
   padding: 16px 20px 0;
   position: sticky; top: 0; z-index: 100;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
-.header h1 { font-size: 18px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
-.header .sub { font-size: 12px; color: var(--text3); margin-bottom: 12px; }
+.header h1 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 2px; letter-spacing: -0.3px; }
+.header .sub { font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
 .tabs {
-  display: flex; gap: 0; border-bottom: 2px solid var(--border);
+  display: flex; gap: 0; border-bottom: 2px solid rgba(255,255,255,0.15);
 }
 .tab {
-  padding: 10px 20px;
+  padding: 10px 16px;
   font-size: 13px; font-weight: 600;
-  color: var(--tab-inactive);
+  color: rgba(255,255,255,0.55);
   cursor: pointer;
   border-bottom: 3px solid transparent;
   margin-bottom: -2px;
@@ -41,74 +51,151 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); c
   user-select: none;
 }
 .tab.active {
-  color: var(--tab-active);
-  border-bottom-color: var(--tab-active);
+  color: #fff;
+  border-bottom-color: #fff;
 }
-.tab:hover { color: var(--text); }
+.tab:hover { color: rgba(255,255,255,0.85); }
+
+/* Next game banner */
+.next-banner {
+  background: linear-gradient(135deg, #1a5c30 0%, #2a7a44 100%);
+  color: #fff;
+  padding: 14px 20px;
+  font-size: 13px;
+  line-height: 1.5;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.next-banner .label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.7; margin-bottom: 4px; }
+.next-banner .detail { font-weight: 700; font-size: 15px; }
+.next-banner .meta { font-size: 12px; opacity: 0.8; margin-top: 2px; }
+
+/* Filter bar */
+.filter-bar {
+  max-width: 500px; margin: 0 auto;
+  padding: 12px 12px 0;
+  display: flex; align-items: center; gap: 10px;
+}
+.tct-toggle {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 600; color: var(--text2);
+  cursor: pointer; user-select: none;
+  background: #fff; border: 1.5px solid var(--border);
+  padding: 7px 14px; border-radius: 20px;
+  transition: all 0.2s;
+}
+.tct-toggle.active {
+  background: var(--accent-light); border-color: var(--accent); color: var(--accent);
+}
+.tct-toggle .dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--tct);
+}
+
+/* Content */
 .content { max-width: 500px; margin: 0 auto; padding: 0 12px 40px; }
-.round-header {
-  padding: 24px 8px 8px;
-}
+.round-header { padding: 20px 8px 8px; }
 .round-header h2 { font-size: 22px; font-weight: 800; color: var(--text); }
 .round-header .date { font-size: 13px; color: var(--text2); margin-top: 2px; }
+
+/* Match cards */
 .match-card {
   background: var(--card);
   border-radius: 14px;
-  padding: 20px;
-  margin-bottom: 14px;
+  padding: 18px;
+  margin-bottom: 12px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  border-left: 4px solid transparent;
+  transition: all 0.2s;
 }
-.teams { display: flex; flex-direction: column; gap: 14px; }
-.team-row {
-  display: flex; align-items: center; gap: 14px;
+.match-card.tct-game {
+  border-left-color: var(--tct);
+  background: linear-gradient(135deg, #f8fdf9 0%, #fff 40%);
 }
+.match-card.played { opacity: 0.55; }
+
+.teams { display: flex; flex-direction: column; gap: 12px; }
+.team-row { display: flex; align-items: center; gap: 12px; }
 .team-badge {
-  width: 48px; height: 48px; border-radius: 50%;
+  width: 44px; height: 44px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-weight: 800; font-size: 14px; color: #fff;
+  font-weight: 800; font-size: 13px; color: #fff;
   flex-shrink: 0;
   text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 .team-info { flex: 1; min-width: 0; }
 .team-name { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.3; }
-.team-div { font-size: 11px; color: var(--text3); }
+.team-name.is-tct { color: var(--tct); }
+.ha-badge {
+  font-size: 10px; font-weight: 700; color: var(--text3);
+  background: #f0f0f0; padding: 2px 7px; border-radius: 4px;
+  margin-left: 6px; vertical-align: middle;
+}
+
 .score-placeholder {
-  font-size: 32px; font-weight: 800; color: #ddd; min-width: 50px; text-align: right;
+  font-size: 28px; font-weight: 800; color: #ddd; min-width: 40px; text-align: right;
 }
-.divider {
-  height: 1px; background: var(--border); margin: 16px 0;
-}
+
+.divider { height: 1px; background: var(--border); margin: 14px 0; }
+
 .match-meta {
-  display: flex; flex-direction: column; gap: 6px;
+  display: flex; flex-direction: column; gap: 5px;
   font-size: 12px; color: var(--text2);
 }
 .match-meta .row { display: flex; align-items: flex-start; gap: 8px; }
 .match-meta .icon { width: 16px; text-align: center; flex-shrink: 0; color: var(--text3); }
-.upcoming-badge {
+.match-meta a { color: var(--accent); text-decoration: none; }
+.match-meta a:hover { text-decoration: underline; }
+
+.match-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 10px;
+}
+
+.status-badge {
   display: inline-block;
-  background: #f0f0f0;
-  color: var(--text3);
   font-size: 11px; font-weight: 600;
   padding: 4px 12px;
   border-radius: 20px;
-  float: right;
-  margin-top: 4px;
 }
+.status-badge.upcoming { background: #f0f0f0; color: var(--text3); }
+.status-badge.this-week { background: #fff3e0; color: #e67e00; }
+.status-badge.today { background: #e8f5e9; color: #2e7d32; animation: pulse 2s infinite; }
+.status-badge.played { background: #f5f5f5; color: #bbb; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.cal-btn {
+  font-size: 11px; font-weight: 600; color: var(--accent);
+  background: var(--accent-light);
+  padding: 4px 10px; border-radius: 12px;
+  text-decoration: none; cursor: pointer; border: none;
+  transition: all 0.15s;
+}
+.cal-btn:hover { background: var(--accent); color: #fff; }
+
+/* Bye cards */
 .bye-card {
   background: var(--card);
   border-radius: 14px;
-  padding: 16px 20px;
-  margin-bottom: 14px;
+  padding: 14px 18px;
+  margin-bottom: 12px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   display: flex; align-items: center; gap: 14px;
+  border-left: 4px solid transparent;
 }
+.bye-card.tct-game { border-left-color: var(--tct); }
 .bye-card .team-badge { width: 36px; height: 36px; font-size: 11px; }
 .bye-card .bye-text { font-size: 13px; color: var(--text3); }
+.bye-card .bye-text strong { color: var(--text); }
 .bye-card .bye-label {
   font-size: 11px; font-weight: 600; color: #bbb;
   background: #f5f5f5; padding: 3px 10px; border-radius: 12px;
   margin-left: auto;
 }
+
+/* Round nav */
 .round-nav {
   display: flex; gap: 6px; padding: 12px 0; overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -126,21 +213,38 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); c
 }
 .round-pill:hover { border-color: var(--accent); }
 .round-pill.next { border-color: #e8a840; color: #c48820; }
-.round-pill.next.active { background: #c48820; color: #fff; border-color: #c48820; }
+.round-pill.next.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.round-pill.past { opacity: 0.5; }
 .hidden { display: none; }
+
+/* Empty state */
+.empty-state {
+  text-align: center; padding: 40px 20px; color: var(--text3);
+  font-size: 14px;
+}
+
 @media (min-width: 600px) {
   .content { padding: 0 20px 40px; }
+  .filter-bar { padding: 12px 20px 0; }
 }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>South East Queensland Juniors</h1>
-  <div class="sub">U15 Boys &middot; Season 2026</div>
+  <h1>Tweed Coast Tigers</h1>
+  <div class="sub">U15 Boys &middot; SEQJ 2026</div>
   <div class="tabs">
     <div class="tab active" onclick="switchDiv('div1')">Division 1</div>
     <div class="tab" onclick="switchDiv('div3')">Division 3 GC/NR</div>
+  </div>
+</div>
+
+<div id="nextBanner" class="next-banner"></div>
+
+<div class="filter-bar">
+  <div class="tct-toggle" id="tctToggle" onclick="toggleTCT()">
+    <span class="dot"></span> TCT games only
   </div>
 </div>
 
@@ -150,6 +254,8 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); c
 </div>
 
 <script>
+const MY_TEAM = "Tweed Coast Tigers";
+
 const TEAM_COLORS = {
   "Burleigh Bombers": "#1a1a1a",
   "Coomera Magpies": "#222",
@@ -188,10 +294,7 @@ const TEAM_ABBREV = {
   "Byron - Ballina": "BB"
 };
 
-const TEAM_LOGOS = {};
-
 function parseTeamName(fullName) {
-  // Strip "U15 Boys Division 1", "U15 Boys Division 3", "U15 Boys Div 3"
   return fullName.replace(/\s*U15 Boys (Division \d|Div \d).*$/, '').trim();
 }
 
@@ -229,8 +332,12 @@ function parseCSV(text) {
   return games;
 }
 
+function parseDate(dateStr) {
+  const [d, m, y] = dateStr.split('/');
+  return new Date(y, m - 1, d);
+}
+
 function formatDate(dateStr) {
-  // dateStr = "19/04/2026"
   const [d, m, y] = dateStr.split('/');
   const dt = new Date(y, m - 1, d);
   const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -243,15 +350,94 @@ function formatTime(timeStr) {
   return timeStr.replace(/^0/, '');
 }
 
+function getGameStatus(dateStr) {
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const gd = parseDate(dateStr);
+  gd.setHours(0,0,0,0);
+  const diff = (gd - today) / (1000 * 60 * 60 * 24);
+  if (diff < 0) return 'played';
+  if (diff === 0) return 'today';
+  if (diff <= 6) return 'this-week';
+  return 'upcoming';
+}
+
+function statusLabel(status) {
+  if (status === 'played') return 'Played';
+  if (status === 'today') return 'Game Day!';
+  if (status === 'this-week') return 'This Week';
+  return 'Upcoming';
+}
+
+function isTCTGame(g) {
+  return g.home === MY_TEAM || g.away === MY_TEAM;
+}
+
+function mapsUrl(venue, surface) {
+  const q = encodeURIComponent((surface && surface !== venue ? surface + ', ' : '') + venue + ', QLD, Australia');
+  return `https://maps.google.com/?q=${q}`;
+}
+
+function calendarUrl(g) {
+  if (!g.gameDate || !g.gameTime) return null;
+  const [d, m, y] = g.gameDate.split('/');
+  const time = g.gameTime.replace(/\s/g, '');
+  const match = time.match(/^(\d{1,2}):(\d{2})(AM|PM)$/i);
+  if (!match) return null;
+  let h = parseInt(match[1]);
+  const min = match[2];
+  const ampm = match[3].toUpperCase();
+  if (ampm === 'PM' && h !== 12) h += 12;
+  if (ampm === 'AM' && h === 12) h = 0;
+  const hh = String(h).padStart(2, '0');
+  // AEST = UTC+10
+  const startUTC = `${y}${m}${d}T${hh}${min}00`;
+  const endH = String(h + 2).padStart(2, '0');
+  const endUTC = `${y}${m}${d}T${endH}${min}00`;
+  const title = encodeURIComponent(`${g.home} vs ${g.away} – U15 Boys`);
+  const loc = encodeURIComponent(g.surface && g.surface !== g.venue ? `${g.surface}, ${g.venue}` : g.venue);
+  return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startUTC}/${endUTC}&location=${loc}&ctz=Australia/Brisbane`;
+}
+
 function teamBadge(name, size) {
   const color = TEAM_COLORS[name] || '#888';
   const abbr = TEAM_ABBREV[name] || name.substring(0, 2).toUpperCase();
-  const sz = size || 48;
-  const fs = sz < 40 ? 10 : 14;
-  if (TEAM_LOGOS[name]) {
-    return `<img src="${TEAM_LOGOS[name]}" style="width:${sz}px;height:${sz}px;border-radius:50%;object-fit:cover;">`;
-  }
+  const sz = size || 44;
+  const fs = sz < 40 ? 10 : 13;
   return `<div class="team-badge" style="width:${sz}px;height:${sz}px;background:${color};font-size:${fs}px;">${abbr}</div>`;
+}
+
+function renderNextBanner() {
+  const allGames = [...div1Games, ...div3Games];
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  let next = null;
+  for (const g of allGames) {
+    if (!isTCTGame(g) || g.isBye || !g.gameDate) continue;
+    const gd = parseDate(g.gameDate);
+    gd.setHours(0,0,0,0);
+    if (gd >= today) {
+      if (!next || gd < parseDate(next.gameDate)) next = g;
+    }
+  }
+  const banner = document.getElementById('nextBanner');
+  if (!next) {
+    banner.style.display = 'none';
+    return;
+  }
+  const gd = parseDate(next.gameDate);
+  const diff = Math.round((gd - today) / (1000 * 60 * 60 * 24));
+  const opp = next.home === MY_TEAM ? next.away : next.home;
+  const ha = next.home === MY_TEAM ? 'Home' : 'Away';
+  let when;
+  if (diff === 0) when = 'Today!';
+  else if (diff === 1) when = 'Tomorrow';
+  else when = `${diff} days away`;
+  banner.innerHTML = `
+    <div class="label">Next TCT Game &middot; ${when}</div>
+    <div class="detail">${ha} vs ${opp}</div>
+    <div class="meta">${formatTime(next.gameTime)}, ${formatDate(next.gameDate)} &middot; ${next.surface || next.venue}</div>
+  `;
 }
 
 function renderFixtures(games, targetRound) {
@@ -264,42 +450,50 @@ function renderFixtures(games, targetRound) {
 
   const roundNums = Object.keys(rounds).map(Number).sort((a, b) => a - b);
   const nav = document.getElementById('roundNav');
-
-  // Find next upcoming round
   const today = new Date();
   today.setHours(0,0,0,0);
+
   let nextRound = null;
   for (const rn of roundNums) {
-    const [d, m, y] = rounds[rn].date.split('/');
-    const rd = new Date(y, m - 1, d);
+    const rd = parseDate(rounds[rn].date);
     if (rd >= today) { nextRound = rn; break; }
   }
 
   const showRound = targetRound || nextRound || roundNums[0];
 
   nav.innerHTML = roundNums.map(rn => {
+    const rd = parseDate(rounds[rn].date);
+    const isPast = rd < today;
     const isNext = rn === nextRound && rn !== showRound;
-    const cls = rn === showRound ? 'round-pill active' : (isNext ? 'round-pill next' : 'round-pill');
+    let cls = 'round-pill';
+    if (rn === showRound) cls += ' active';
+    else if (isNext) cls += ' next';
+    if (isPast && rn !== showRound) cls += ' past';
     return `<div class="${cls}" onclick="showRound(${rn})">R${rn}</div>`;
   }).join('');
 
-  // Scroll active pill into view
   setTimeout(() => {
     const active = nav.querySelector('.active');
     if (active) active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
   }, 50);
 
   const r = rounds[showRound];
-  if (!r) { container.innerHTML = '<p style="padding:20px;color:#999;">No fixtures found.</p>'; return; }
+  if (!r) { container.innerHTML = '<div class="empty-state">No fixtures found.</div>'; return; }
+
+  let matches = r.games.filter(g => !g.isBye).sort((a, b) => (a.gameTime || '').localeCompare(b.gameTime || ''));
+  let byes = r.games.filter(g => g.isBye);
+
+  if (tctOnly) {
+    matches = matches.filter(g => isTCTGame(g));
+    byes = byes.filter(g => { const t = g.home === 'BYE' ? g.away : g.home; return t === MY_TEAM; });
+  }
+
+  if (matches.length === 0 && byes.length === 0) {
+    container.innerHTML = `<div class="round-header"><h2>Round ${showRound}</h2><div class="date">${formatDate(r.date)}</div></div><div class="empty-state">No TCT games this round</div>`;
+    return;
+  }
 
   let html = `<div class="round-header"><h2>Round ${showRound}</h2><div class="date">${formatDate(r.date)}</div></div>`;
-
-  // Sort games: real matches first (by time), then byes
-  const matches = r.games.filter(g => !g.isBye).sort((a, b) => {
-    const ta = a.gameTime || ''; const tb = b.gameTime || '';
-    return ta.localeCompare(tb);
-  });
-  const byes = r.games.filter(g => g.isBye);
 
   matches.forEach(g => {
     const [d, m, y] = g.gameDate.split('/');
@@ -307,21 +501,26 @@ function renderFixtures(games, targetRound) {
     const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
     const monNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     const dateLabel = `${formatTime(g.gameTime)}, ${dayNames[gd.getDay()]}, ${parseInt(d)} ${monNames[gd.getMonth()]}`;
+    const tct = isTCTGame(g);
+    const status = getGameStatus(g.gameDate);
+    const calUrl = calendarUrl(g);
+    const homeIsTCT = g.home === MY_TEAM;
+    const awayIsTCT = g.away === MY_TEAM;
 
     html += `
-    <div class="match-card">
+    <div class="match-card${tct ? ' tct-game' : ''}${status === 'played' ? ' played' : ''}">
       <div class="teams">
         <div class="team-row">
           ${teamBadge(g.home)}
           <div class="team-info">
-            <div class="team-name">${g.home}</div>
+            <div class="team-name${homeIsTCT ? ' is-tct' : ''}">${g.home}<span class="ha-badge">H</span></div>
           </div>
           <div class="score-placeholder">&ndash;</div>
         </div>
         <div class="team-row">
           ${teamBadge(g.away)}
           <div class="team-info">
-            <div class="team-name">${g.away}</div>
+            <div class="team-name${awayIsTCT ? ' is-tct' : ''}">${g.away}<span class="ha-badge">A</span></div>
           </div>
           <div class="score-placeholder">&ndash;</div>
         </div>
@@ -329,16 +528,20 @@ function renderFixtures(games, targetRound) {
       <div class="divider"></div>
       <div class="match-meta">
         <div class="row"><span class="icon">&#128197;</span> ${dateLabel}</div>
-        <div class="row"><span class="icon">&#128205;</span> ${g.venue}${g.surface && g.surface !== g.venue ? ', ' + g.surface : ''}</div>
-        <span class="upcoming-badge">Upcoming</span>
+        <div class="row"><span class="icon">&#128205;</span> <a href="${mapsUrl(g.venue, g.surface)}" target="_blank" rel="noopener">${g.venue}${g.surface && g.surface !== g.venue ? ', ' + g.surface : ''}</a></div>
+      </div>
+      <div class="match-footer">
+        <span class="status-badge ${status}">${statusLabel(status)}</span>
+        ${calUrl && status !== 'played' ? `<a class="cal-btn" href="${calUrl}" target="_blank" rel="noopener">+ Calendar</a>` : ''}
       </div>
     </div>`;
   });
 
   byes.forEach(g => {
     const byeTeam = g.home === 'BYE' ? g.away : g.home;
+    const tct = byeTeam === MY_TEAM;
     html += `
-    <div class="bye-card">
+    <div class="bye-card${tct ? ' tct-game' : ''}">
       ${teamBadge(byeTeam, 36)}
       <div class="bye-text"><strong>${byeTeam}</strong></div>
       <div class="bye-label">BYE</div>
@@ -520,6 +723,7 @@ South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys
 
 let currentDiv = 'div1';
 let currentRound = null;
+let tctOnly = false;
 const div1Games = parseCSV(CSV_DIV1);
 const div3Games = parseCSV(CSV_DIV3);
 
@@ -528,7 +732,13 @@ function switchDiv(div) {
   currentRound = null;
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelector(`.tab:nth-child(${div === 'div1' ? 1 : 2})`).classList.add('active');
-  renderFixtures(div === 'div1' ? div1Games : div3Games, currentRound);
+  renderFixtures(currentDiv === 'div1' ? div1Games : div3Games, currentRound);
+}
+
+function toggleTCT() {
+  tctOnly = !tctOnly;
+  document.getElementById('tctToggle').classList.toggle('active', tctOnly);
+  renderFixtures(currentDiv === 'div1' ? div1Games : div3Games, currentRound);
 }
 
 window.showRound = function(rn) {
@@ -536,7 +746,8 @@ window.showRound = function(rn) {
   renderFixtures(currentDiv === 'div1' ? div1Games : div3Games, rn);
 };
 
-// Initial render — show next upcoming round
+// Initial render
+renderNextBanner();
 renderFixtures(div1Games, null);
 </script>
 
