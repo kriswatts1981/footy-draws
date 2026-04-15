@@ -285,9 +285,9 @@ body {
     <div class="sub">U15 Boys &middot; SEQJ 2026</div>
   </div>
   <div class="tabs">
-    <div class="tab" onclick="switchDiv('tct')">TCT Games</div>
-    <div class="tab active" onclick="switchDiv('div1')">Division 1</div>
-    <div class="tab" onclick="switchDiv('div3')">Division 3 GC/NR</div>
+    <div class="tab active" onclick="switchDiv('div1')">Div 1</div>
+    <div class="tab" onclick="switchDiv('div3')">Div 3</div>
+    <div class="tab" onclick="switchDiv('both')">Both</div>
   </div>
 </div>
 
@@ -561,7 +561,7 @@ function renderFixtures(games, targetRound) {
     const homeIsTCT = g.home === MY_TEAM;
     const awayIsTCT = g.away === MY_TEAM;
 
-    const divLabel = (currentDiv === 'tct' && g.division) ? `<div class="div-label">${g.division}</div>` : '';
+    const divLabel = (currentDiv === 'both' && g.division) ? `<div class="div-label">${g.division}</div>` : '';
 
     html += `
     <div class="match-card${tct ? ' tct-game' : ''}${status === 'played' ? ' played' : ''}">
@@ -597,7 +597,7 @@ function renderFixtures(games, targetRound) {
   byes.forEach(g => {
     const byeTeam = g.home === 'BYE' ? g.away : g.home;
     const tct = byeTeam === MY_TEAM;
-    const byeDivLabel = (currentDiv === 'tct' && g.division) ? ` <span style="font-size:10px;font-weight:700;opacity:0.5;">${g.division}</span>` : '';
+    const byeDivLabel = (currentDiv === 'both' && g.division) ? ` <span style="font-size:10px;font-weight:700;opacity:0.5;">${g.division}</span>` : '';
     html += `
     <div class="bye-card${tct ? ' tct-game' : ''}">
       ${teamBadge(byeTeam, 36)}
@@ -779,16 +779,14 @@ South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys
 South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,09/08/2026,15,Surfers Paradise Demons U15 Boys Division 3,Ormeau Bulldogs U15 Boys Division 3,Sir Bruce Small Park,Kallibr Homes Oval,09/08/2026,01:30PM
 South East Queensland Juniors (SEQJ),South East Queensland Juniors,2026,U15 Boys Division 3 Gold Coast/Northern Rivers,09/08/2026,15,Pac Power U15 Boys Div 3,BYE`;
 
-let currentDiv = 'tct';
+let currentDiv = 'div1';
 let currentRound = null;
 let tctOnly = false;
 const div1Games = parseCSV(CSV_DIV1).map(g => ({...g, division: 'Div 1'}));
 const div3Games = parseCSV(CSV_DIV3).map(g => ({...g, division: 'Div 3'}));
 
 function getGamesForView() {
-  if (currentDiv === 'tct') {
-    return [...div1Games, ...div3Games].filter(g => isTCTGame(g) || (g.isBye && (g.home === MY_TEAM || g.away === MY_TEAM)));
-  }
+  if (currentDiv === 'both') return [...div1Games, ...div3Games];
   return currentDiv === 'div1' ? div1Games : div3Games;
 }
 
@@ -797,12 +795,8 @@ function switchDiv(div) {
   currentRound = null;
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   const tabs = document.querySelectorAll('.tab');
-  const idx = div === 'tct' ? 0 : div === 'div1' ? 1 : 2;
+  const idx = div === 'div1' ? 0 : div === 'div3' ? 1 : 2;
   tabs[idx].classList.add('active');
-  // Hide the TCT toggle when in TCT tab (already filtered)
-  document.getElementById('tctToggle').style.display = div === 'tct' ? 'none' : '';
-  if (div !== 'tct') tctOnly = false;
-  document.getElementById('tctToggle').classList.remove('active');
   renderFixtures(getGamesForView(), currentRound);
 }
 
@@ -817,9 +811,8 @@ window.showRound = function(rn) {
   renderFixtures(getGamesForView(), rn);
 };
 
-// Initial render — TCT Games tab
+// Initial render
 renderNextBanner();
-document.getElementById('tctToggle').style.display = 'none';
 renderFixtures(getGamesForView(), null);
 </script>
 
