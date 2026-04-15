@@ -173,6 +173,15 @@ body {
   background: var(--black) !important;
   box-shadow: 0 0 0 3px var(--gold);
 }
+.team-logo {
+  width: 40px; height: 40px; border-radius: 50%;
+  object-fit: cover; flex-shrink: 0;
+  background: #fff;
+  border: 2px solid var(--border);
+}
+.team-logo.tct-badge {
+  border: 3px solid var(--gold);
+}
 .team-info { flex: 1; min-width: 0; }
 .team-name {
   font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.3;
@@ -511,12 +520,34 @@ function calendarUrl(g) {
   return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startUTC}/${endUTC}&location=${loc}&ctz=Australia/Brisbane`;
 }
 
+const TEAM_LOGOS = {
+  "Burleigh Bombers": "https://burleighbombers.com/wp-content/uploads/2024/03/Burleigh-Bombers-site-logo.png",
+  "Coomera Magpies": "https://cdn.prod.website-files.com/67e58eedc6f754b062667cca/67e58eedc6f754b062667d62_logo.png",
+  "Broadbeach Cats": "https://broadbeachcats.com.au/wp-content/uploads/cropped-Broadbeach-Cats-Logo_500x500.jpg",
+  "Aspley Hornets": "https://footballclub.aspleyhornets.com.au/wp-content/uploads/2018/04/ASPLEY-2.png",
+  "Labrador Tigers": "https://www.ljafc.com.au/wp-content/uploads/2023/01/Labrador-new-logo-yellow-writing-black-background-150x150.png",
+  "Wilston Grange Gorillas": "https://gorillas.com.au/wp-content/uploads/2023/10/Wilston-Grange-Site-Logo-125x168.png",
+  "Surfers Paradise Demons": "https://assets.cdn.filesafe.space/j0stA4wiRQ6OgAwf4CEA/media/696f6f78fc6c327930b3ca2b.png",
+  "Pac Power": "https://pacpowerafc.com.au/wp-content/uploads/2018/01/pac-power-logo.002-1_preview.jpeg",
+  "Ormeau Bulldogs": "https://static.wixstatic.com/media/05deb0_bd25ec6f24d64b73bca8ba7730dfe305~mv2.png",
+  "Maroochy Roos Juniors": "https://s3.tidyhq.com/orgs/6c54be9f538f/org/logo/a2b20e22487e9a832563b626308a81285ab39951/medjpg/MJAFL_Logo.jpg",
+  "Coorparoo Roos": "https://static.wixstatic.com/media/2d8ba5_46e7c7d450274df2aacb589c0d751bd9~mv2.png",
+  "Palm Beach Currumbin": "https://static.wixstatic.com/media/f61d69_f000aa22bd42474495587ee658424e0e~mv2.png",
+  "Sherwood Magpies": "https://images.squarespace-cdn.com/content/v1/5508c915e4b07e7ce6887457/1575031193425-A4NKIU9C54JNK7W32M2G/29472246_1767525353310299_5494349897094135808_n.png?format=1500w",
+  "Morningside Panthers": "https://static.wixstatic.com/media/839ac8_46d9f5e1232a40d4a4e3db86a58343cf~mv2.png"
+};
+
 function teamBadge(name, size) {
   const color = TEAM_COLORS[name] || '#888';
   const abbr = TEAM_ABBREV[name] || name.substring(0, 2).toUpperCase();
-  const sz = size || 44;
-  const fs = sz < 40 ? 10 : 13;
+  const sz = size || 40;
+  const fs = sz < 34 ? 10 : 12;
   const isTCT = name === MY_TEAM;
+  const logo = TEAM_LOGOS[name];
+  if (logo) {
+    const cls = isTCT ? 'team-logo tct-badge' : 'team-logo';
+    return `<img class="${cls}" src="${logo}" alt="${abbr}" style="width:${sz}px;height:${sz}px;" loading="lazy" onerror="this.outerHTML='<div class=\\'team-badge\\' style=\\'width:${sz}px;height:${sz}px;background:${color};font-size:${fs}px;\\'>${abbr}</div>'">`;
+  }
   const cls = isTCT ? 'team-badge tct-badge' : 'team-badge';
   const tctColor = isTCT ? '#FFC629' : '#fff';
   return `<div class="${cls}" style="width:${sz}px;height:${sz}px;background:${color};font-size:${fs}px;color:${tctColor};">${abbr}</div>`;
