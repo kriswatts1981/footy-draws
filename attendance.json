@@ -2,8 +2,38 @@
   "season": "SEQJ 2026",
   "age_group": "U15 Boys",
   "restricted_player_list": {
-    "submitted": false,
-    "players": [],
+    "submitted": true,
+    "submitted_date": "2026-04-19",
+    "round_1_players": [
+      "Samuel Ella",
+      "Archer Abbott",
+      "Levi Baker",
+      "Wyatt Greenhill",
+      "William France",
+      "Jarrah Star-Webb",
+      "Jack Koschitzke",
+      "Beau Halliday",
+      "Lewis Cunynghame",
+      "Saxon Healey",
+      "Suryan Raju",
+      "Riley Kippax"
+    ],
+    "round_8_additional_due": "2026-06-10",
+    "round_8_additional_players": [],
+    "players": [
+      "Samuel Ella",
+      "Archer Abbott",
+      "Levi Baker",
+      "Wyatt Greenhill",
+      "William France",
+      "Jarrah Star-Webb",
+      "Jack Koschitzke",
+      "Beau Halliday",
+      "Lewis Cunynghame",
+      "Saxon Healey",
+      "Suryan Raju",
+      "Riley Kippax"
+    ],
     "note": "U15 Boys: 12 players required before Round 1, +4 more before Round 8 (16 total). RPL players cannot play Div 3."
   },
   "finals_rules": {
