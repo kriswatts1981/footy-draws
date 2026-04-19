@@ -151,7 +151,11 @@
     "rounds": [
       {
         "round": 1,
-        "div1_voters": [],
+        "div1_voters": [
+          {"voter": "Matt", "5": "William France", "4": "Noah Barry", "3": "Hudson Vecht", "2": "Jack Koschitzke", "1": "Lewis Cunynghame"},
+          {"voter": "Jimmy", "5": "William France", "4": "Jack Koschitzke", "3": "Archer Abbott", "2": "Noah Barry", "1": "Hudson Vecht"},
+          {"voter": "Bones", "5": "William France", "4": "Hudson Vecht", "3": "Archer Abbott", "2": "Noah Barry", "1": "Jack Koschitzke"}
+        ],
         "div3_voters": [
           {"voter": "Jono", "5": "Jarrah O'Brien", "4": "Daniel Thompson", "3": "Elijah Jones", "2": "Tommy Bourke", "1": "Mason McAuliffe"},
           {"voter": "Cam", "5": "Jarrah O'Brien", "4": "Tommy Bourke", "3": "Mason McAuliffe", "2": "Elijah Jones", "1": "Daniel Thompson"},
