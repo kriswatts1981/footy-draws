@@ -732,6 +732,10 @@ body {
   margin-bottom: 8px;
   padding-bottom: 6px; border-bottom: 1px solid var(--border);
 }
+.vrd-pool {
+  font-size: 10px; font-weight: 600; color: var(--text3);
+  text-transform: none; letter-spacing: 0;
+}
 .voter-row {
   display: flex; gap: 10px; align-items: flex-start;
   padding: 6px 0;
@@ -1706,33 +1710,28 @@ function trkRenderVotes(data) {
     return;
   }
 
-  // Aggregate season totals per division from raw voter records
+  // Aggregate season totals per division from anonymous vote cards
   function seasonTotals(divKey) {
     const totals = {};          // player -> total points
     const perRound = {};        // player -> {round -> points}
-    const perVoter = {};        // player -> {voter -> points}
     for (const r of rounds) {
-      const voters = r[divKey + '_voters'] || [];
-      for (const v of voters) {
+      const cards = r[divKey + '_cards'] || [];
+      for (const card of cards) {
         for (const pts of [5,4,3,2,1]) {
-          const player = v[String(pts)];
+          const player = card[String(pts)];
           if (!player) continue;
           totals[player] = (totals[player] || 0) + pts;
           if (!perRound[player]) perRound[player] = {};
           perRound[player][r.round] = (perRound[player][r.round] || 0) + pts;
-          if (!perVoter[player]) perVoter[player] = {};
-          perVoter[player][v.voter] = (perVoter[player][v.voter] || 0) + pts;
         }
       }
     }
-    const list = Object.entries(totals)
+    return Object.entries(totals)
       .sort((a,b) => b[1] - a[1])
       .map(([player, points], i) => ({
         rank: i+1, player, points,
-        perRound: perRound[player] || {},
-        perVoter: perVoter[player] || {}
+        perRound: perRound[player] || {}
       }));
-    return list;
   }
 
   // Build the HTML for a division
@@ -1750,17 +1749,19 @@ function trkRenderVotes(data) {
       `;
     }
 
-    // BOG of most recent round for this division
+    // BOG of most recent round for this division (from anonymous cards)
+    const mostRecentCards = mostRecent[divKey + '_cards'] || [];
+    const voterPool = mostRecent[divKey + '_voters'] || [];
     const recentTotals = {};
-    for (const v of mostRecentVoters) {
+    for (const card of mostRecentCards) {
       for (const pts of [5,4,3,2,1]) {
-        const p = v[String(pts)];
+        const p = card[String(pts)];
         if (p) recentTotals[p] = (recentTotals[p] || 0) + pts;
       }
     }
     const bogEntries = Object.entries(recentTotals).sort((a,b) => b[1] - a[1]);
     const bog = bogEntries[0] || null;
-    const maxRoundPts = 15; // 5+4+3+2+1
+    const maxRoundPts = mostRecentCards.length * 5; // max per voter × voters
     const unanimous = bog && bog[1] === maxRoundPts;
 
     // Podium
@@ -1778,13 +1779,16 @@ function trkRenderVotes(data) {
 
     // BOG hero card (most recent round)
     if (bog) {
+      const voterLine = voterPool.length
+        ? `Voted by ${voterPool.join(', ')}`
+        : `Votes tallied`;
       html += `
         <div class="votes-bog">
           <div class="votes-bog-label">Round ${mostRecent.round} · Best on Ground</div>
           <div class="votes-bog-name">${bog[0]}</div>
           <div class="votes-bog-footer">
             <div class="votes-bog-pts">${bog[1]}<span>pts</span></div>
-            <div class="votes-bog-note">${unanimous ? 'Unanimous — 5 from every voter' : 'Topped the vote'}</div>
+            <div class="votes-bog-note">${unanimous ? 'Unanimous — 5 from every voter' : 'Topped the vote'}<br><span style="opacity:0.6;font-size:10px;">${voterLine}</span></div>
           </div>
         </div>
       `;
@@ -1836,14 +1840,13 @@ function trkRenderVotes(data) {
     for (const row of list) {
       const pct = Math.round((row.points / maxPts) * 100);
       const roundChips = Object.entries(row.perRound).map(([r, p]) => `<span class="vchip">R${r} · ${p}</span>`).join('');
-      const voterChips = Object.entries(row.perVoter).map(([vname, p]) => `<span class="vchip vchip-v">${vname}: ${p}</span>`).join('');
       html += `
         <div class="votes-lb-row">
           <div class="lb-rank ${row.rank <= 3 ? 'lb-medal-' + row.rank : ''}">${row.rank}</div>
           <div class="lb-main">
             <div class="lb-name">${row.player}</div>
             <div class="lb-bar-wrap"><div class="lb-bar" style="width:${pct}%"></div></div>
-            <div class="lb-chips">${roundChips}${voterChips}</div>
+            <div class="lb-chips">${roundChips}</div>
           </div>
           <div class="lb-pts">${row.points}</div>
         </div>
@@ -1851,22 +1854,23 @@ function trkRenderVotes(data) {
     }
     html += `</div>`;
 
-    // Per-round raw voter breakdown (collapsed detail)
+    // Per-round anonymous cards (vote sheets)
     html += `<div class="votes-lb-title">Vote sheets</div>`;
     for (const r of rounds.slice().reverse()) {
-      const voters = r[divKey + '_voters'] || [];
-      if (voters.length === 0) continue;
+      const cards = r[divKey + '_cards'] || [];
+      const pool = r[divKey + '_voters'] || [];
+      if (cards.length === 0) continue;
       html += `<div class="votes-round-card">`;
-      html += `<div class="votes-round-head">Round ${r.round}</div>`;
-      for (const v of voters) {
-        html += `<div class="voter-row"><div class="voter-name">${v.voter}</div><div class="voter-votes">`;
+      html += `<div class="votes-round-head">Round ${r.round}${pool.length ? `<span class="vrd-pool"> · ${pool.join(', ')}</span>` : ''}</div>`;
+      cards.forEach((card, idx) => {
+        html += `<div class="voter-row"><div class="voter-name">Card ${idx+1}</div><div class="voter-votes">`;
         for (const pts of [5,4,3,2,1]) {
-          if (v[String(pts)]) {
-            html += `<span class="voter-vote"><span class="vv-pts">${pts}</span> ${v[String(pts)]}</span>`;
+          if (card[String(pts)]) {
+            html += `<span class="voter-vote"><span class="vv-pts">${pts}</span> ${card[String(pts)]}</span>`;
           }
         }
         html += `</div></div>`;
-      }
+      });
       html += `</div>`;
     }
 
