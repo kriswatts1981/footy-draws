@@ -148,6 +148,20 @@
       "voters_per_week": 3,
       "note": "3 voters per division per round, each casting 5-4-3-2-1. Max 15 points per player per round."
     },
-    "rounds": []
+    "rounds": [
+      {
+        "round": 1,
+        "div1": [],
+        "div3": [
+          {"player": "Jarrah O'Brien", "points": 15},
+          {"player": "Tommy Bourke", "points": 10},
+          {"player": "Daniel Thompson", "points": 8},
+          {"player": "Mason McAuliffe", "points": 6},
+          {"player": "Elijah Jones", "points": 5},
+          {"player": "Xavier Caine", "points": 1}
+        ],
+        "div3_voters": ["Jono", "Cam", "Kris"]
+      }
+    ]
   }
 }
