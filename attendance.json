@@ -72,7 +72,8 @@
         {"no": null, "name": "Jarrah Star-Webb"},
         {"no": null, "name": "Brodie Campbell"},
         {"no": null, "name": "Billy McLeay"},
-        {"no": null, "name": "Tyghe Maher"}
+        {"no": null, "name": "Tyghe Maher"},
+        {"no": null, "name": "Suryan Raju"}
       ]
     },
     "div3": {
@@ -101,7 +102,6 @@
         {"no": 28, "name": "William Ozolins"},
         {"no": 30, "name": "Daniel Thompson"},
         {"no": null, "name": "Taylen Howard"},
-        {"no": null, "name": "Suryan Raju"},
         {"no": null, "name": "Taj Williams"},
         {"no": null, "name": "Ollie Palmer"},
         {"no": null, "name": "Jacob Schutt"}
@@ -123,7 +123,7 @@
           "Jack Koschitzke", "Declan Bone", "Riley Kippax", "Archer Abbott",
           "Wyatt Greenhill", "Charlie Kemp"
         ],
-        "dnp": ["Jarrah Star-Webb", "Brodie Campbell", "Billy McLeay", "Tyghe Maher"],
+        "dnp": ["Jarrah Star-Webb", "Brodie Campbell", "Billy McLeay", "Tyghe Maher", "Suryan Raju"],
         "late_outs": []
       },
       "div3": {
@@ -137,9 +137,17 @@
           "Elijah Jones", "Kade O'Shea", "Oliver Lang", "Joel Andrews",
           "Daniel Thompson"
         ],
-        "dnp": ["Taylen Howard", "Suryan Raju", "Taj Williams", "Ollie Palmer", "Jacob Schutt"],
+        "dnp": ["Taylen Howard", "Taj Williams", "Ollie Palmer", "Jacob Schutt"],
         "late_outs": ["William Ozolins"]
       }
     }
-  ]
+  ],
+  "votes": {
+    "config": {
+      "scale": [5, 4, 3, 2, 1],
+      "voters_per_week": 3,
+      "note": "3 voters per division per round, each casting 5-4-3-2-1. Max 15 points per player per round."
+    },
+    "rounds": []
+  }
 }

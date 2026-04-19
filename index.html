@@ -708,6 +708,7 @@ body {
   <div class="tracker-subtabs">
     <div class="tracker-subtab active" data-subtab="div1">Div 1 <span class="count" id="trk-d1-count">0</span></div>
     <div class="tracker-subtab" data-subtab="div3">Div 3 <span class="count" id="trk-d3-count">0</span></div>
+    <div class="tracker-subtab" data-subtab="votes">Votes</div>
     <div class="tracker-subtab" data-subtab="rpl">RPL</div>
     <div class="tracker-subtab" data-subtab="rounds">Rounds</div>
   </div>
@@ -724,6 +725,7 @@ body {
 
       <div id="trk-view-div1"></div>
       <div id="trk-view-div3" style="display:none;"></div>
+      <div id="trk-view-votes" style="display:none;"></div>
       <div id="trk-view-rpl" style="display:none;"></div>
       <div id="trk-view-rounds" style="display:none;"></div>
     </div>
@@ -1503,13 +1505,89 @@ function renderTracker(data) {
   }
 }
 
+// Votes leaderboard per division
+function trkRenderVotes(data) {
+  const rounds = (data.votes && data.votes.rounds) || [];
+  const scale = (data.votes && data.votes.config && data.votes.config.scale) || [5,4,3,2,1];
+  const voters = (data.votes && data.votes.config && data.votes.config.voters_per_week) || 3;
+
+  const view = document.getElementById('trk-view-votes');
+
+  if (rounds.length === 0) {
+    view.innerHTML = `
+      <div class="trk-section-header"><div class="trk-section-title">Best & Fairest Votes</div></div>
+      <div class="trk-empty">
+        <strong>No votes logged yet</strong>
+        ${voters} voters per division per round, scale ${scale.join('-')}.<br>
+        Max ${scale.reduce((a,b)=>a+b,0) * voters} points per player per round.<br>
+        Send me the vote sheet each week and I'll update.
+      </div>
+    `;
+    return;
+  }
+
+  function leaderboard(div) {
+    const totals = {};
+    const roundPts = {};
+    for (const r of rounds) {
+      const roundVotes = r[div] || [];
+      for (const v of roundVotes) {
+        totals[v.player] = (totals[v.player] || 0) + v.points;
+        if (!roundPts[v.player]) roundPts[v.player] = {};
+        roundPts[v.player][r.round] = v.points;
+      }
+    }
+    return Object.entries(totals)
+      .sort((a, b) => b[1] - a[1])
+      .map(([player, pts], i) => ({ rank: i+1, player, points: pts, rounds: roundPts[player] }));
+  }
+
+  function renderBoard(title, list) {
+    if (list.length === 0) {
+      return `<div class="trk-empty" style="margin-bottom:12px;">No ${title} votes yet</div>`;
+    }
+    return `
+      <div class="trk-group-header"><span class="dot ok"></span>${title}</div>
+      ${list.map(row => `
+        <div class="trk-pcard" style="display:flex;align-items:center;gap:12px;padding:10px 14px;">
+          <div class="trk-jersey" style="background:${row.rank===1?'var(--gold)':'var(--black)'};color:${row.rank===1?'var(--black)':'var(--gold)'};box-shadow:0 0 0 2px var(--gold);">${row.rank}</div>
+          <div class="trk-pinfo">
+            <div class="trk-pname">${row.player}</div>
+            <div class="trk-psub">${Object.entries(row.rounds).map(([r,p])=>`R${r}: ${p}`).join(' · ')}</div>
+          </div>
+          <div class="trk-badge ok" style="font-size:14px;padding:8px 14px;">${row.points}</div>
+        </div>
+      `).join('')}
+    `;
+  }
+
+  view.innerHTML = `
+    <div class="trk-section-header">
+      <div class="trk-section-title">Best & Fairest Votes</div>
+      <div class="trk-section-count">${rounds.length} round${rounds.length!==1?'s':''}</div>
+    </div>
+    <div class="trk-rule-note">
+      <strong>Format:</strong> ${voters} voters per round, scale ${scale.join('-')}. Max ${scale.reduce((a,b)=>a+b,0) * voters} pts/round.
+    </div>
+    ${renderBoard('Div 1 leaderboard', leaderboard('div1'))}
+    ${renderBoard('Div 3 leaderboard', leaderboard('div3'))}
+  `;
+}
+
+// Hook into render
+const _origRender = renderTracker;
+renderTracker = function(data) {
+  _origRender(data);
+  trkRenderVotes(data);
+};
+
 // Tracker subtab switching
 document.querySelectorAll('.tracker-subtab').forEach(t => {
   t.addEventListener('click', () => {
     document.querySelectorAll('.tracker-subtab').forEach(x => x.classList.remove('active'));
     t.classList.add('active');
     const target = t.dataset.subtab;
-    ['div1','div3','rpl','rounds'].forEach(k => {
+    ['div1','div3','votes','rpl','rounds'].forEach(k => {
       document.getElementById('trk-view-' + k).style.display = k === target ? 'block' : 'none';
     });
   });
