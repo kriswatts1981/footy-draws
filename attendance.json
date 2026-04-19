@@ -1,0 +1,115 @@
+{
+  "season": "SEQJ 2026",
+  "age_group": "U15 Boys",
+  "restricted_player_list": {
+    "submitted": false,
+    "players": [],
+    "note": "U15 Boys: 12 players required before Round 1, +4 more before Round 8 (16 total). RPL players cannot play Div 3."
+  },
+  "finals_rules": {
+    "min_games_per_team": 4,
+    "min_games_if_registered_after_june_30": 3,
+    "lower_div_lockout": "To play finals for a lower-division team, player must have played MORE matches for that team than total matches in all higher divisions/age groups combined.",
+    "one_team_only_per_age_group": true,
+    "source": "AFL Queensland Community Rules & Procedures 2026, clause 14.1"
+  },
+  "squads": {
+    "div1": {
+      "coach": "Matthew France",
+      "players": [
+        {"no": 1,  "name": "Willo Bennett"},
+        {"no": 2,  "name": "Hudson Vecht"},
+        {"no": 3,  "name": "Levi Baker"},
+        {"no": 4,  "name": "William France"},
+        {"no": 5,  "name": "Samuel Ella"},
+        {"no": 6,  "name": "Noah Barry"},
+        {"no": 7,  "name": "Skooda Walle"},
+        {"no": 9,  "name": "Serge Popov"},
+        {"no": 10, "name": "Beau Halliday"},
+        {"no": 11, "name": "Saxon Healey"},
+        {"no": 13, "name": "Louis Beaumont"},
+        {"no": 14, "name": "Oliver De Yong"},
+        {"no": 15, "name": "Lewis Cunynghame"},
+        {"no": 16, "name": "Remy Elliott"},
+        {"no": 19, "name": "Noah Griffiths"},
+        {"no": 20, "name": "Zavier Schneider"},
+        {"no": 23, "name": "Jack Koschitzke"},
+        {"no": 24, "name": "Declan Bone"},
+        {"no": 25, "name": "Riley Kippax"},
+        {"no": 26, "name": "Archer Abbott"},
+        {"no": 27, "name": "Wyatt Greenhill"},
+        {"no": 28, "name": "Charlie Kemp"},
+        {"no": null, "name": "Jarrah Star-Webb"},
+        {"no": null, "name": "Brodie Campbell"},
+        {"no": null, "name": "Billy McLeay"},
+        {"no": null, "name": "Tyghe Maher"}
+      ]
+    },
+    "div3": {
+      "coach": "Matt",
+      "players": [
+        {"no": 1,  "name": "Max Bradley"},
+        {"no": 3,  "name": "Grayson Watts"},
+        {"no": 5,  "name": "Lenny McPhee"},
+        {"no": 6,  "name": "Beau Kingston"},
+        {"no": 7,  "name": "Jenson Crichton"},
+        {"no": 8,  "name": "Samuel Buchanan"},
+        {"no": 9,  "name": "Daylan Braby"},
+        {"no": 10, "name": "Mason Maynard"},
+        {"no": 11, "name": "Tommy Bourke"},
+        {"no": 13, "name": "Archer Dobell"},
+        {"no": 14, "name": "Xavier Caine"},
+        {"no": 15, "name": "Mason McAuliffe"},
+        {"no": 16, "name": "Lukas Bele"},
+        {"no": 18, "name": "Soren Hoopmann"},
+        {"no": 19, "name": "Zhyal Blackburne"},
+        {"no": 21, "name": "Jarrah O'Brien"},
+        {"no": 22, "name": "Elijah Jones"},
+        {"no": 23, "name": "Kade O'Shea"},
+        {"no": 25, "name": "Oliver Lang"},
+        {"no": 27, "name": "Joel Andrews"},
+        {"no": 28, "name": "William Ozolins"},
+        {"no": 30, "name": "Daniel Thompson"},
+        {"no": null, "name": "Taylen Howard"},
+        {"no": null, "name": "Suryan Raju"},
+        {"no": null, "name": "Taj Williams"},
+        {"no": null, "name": "Ollie Palmer"},
+        {"no": null, "name": "Jacob Schutt"}
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-04-19",
+      "div1": {
+        "opponent": null,
+        "ground": null,
+        "played": [
+          "Willo Bennett", "Hudson Vecht", "Levi Baker", "William France",
+          "Samuel Ella", "Noah Barry", "Skooda Walle", "Serge Popov",
+          "Beau Halliday", "Saxon Healey", "Louis Beaumont", "Oliver De Yong",
+          "Lewis Cunynghame", "Remy Elliott", "Noah Griffiths", "Zavier Schneider",
+          "Jack Koschitzke", "Declan Bone", "Riley Kippax", "Archer Abbott",
+          "Wyatt Greenhill", "Charlie Kemp"
+        ],
+        "dnp": ["Jarrah Star-Webb", "Brodie Campbell", "Billy McLeay", "Tyghe Maher"],
+        "late_outs": []
+      },
+      "div3": {
+        "opponent": "Surfers Paradise Demons",
+        "ground": "SiWV7 / SiRW7",
+        "played": [
+          "Max Bradley", "Grayson Watts", "Lenny McPhee", "Beau Kingston",
+          "Jenson Crichton", "Samuel Buchanan", "Daylan Braby", "Mason Maynard",
+          "Tommy Bourke", "Archer Dobell", "Xavier Caine", "Mason McAuliffe",
+          "Lukas Bele", "Soren Hoopmann", "Zhyal Blackburne", "Jarrah O'Brien",
+          "Elijah Jones", "Kade O'Shea", "Oliver Lang", "Joel Andrews",
+          "Daniel Thompson"
+        ],
+        "dnp": ["Taylen Howard", "Suryan Raju", "Taj Williams", "Ollie Palmer", "Jacob Schutt"],
+        "late_outs": ["William Ozolins"]
+      }
+    }
+  ]
+}

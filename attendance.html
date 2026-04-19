@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>TCT U15 — Attendance & Finals Tracker</title>
+<meta name="description" content="TCT U15 Boys attendance, division splits, finals eligibility tracker">
+<meta name="theme-color" content="#1a1a1a">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f7f7;
+  --card: #ffffff;
+  --text: #1a1a1a;
+  --text2: #555;
+  --text3: #888;
+  --border: #e0e0e0;
+  --gold: #FFC629;
+  --gold-light: #FFD54F;
+  --gold-pale: #FFF8E1;
+  --black: #1a1a1a;
+  --ok: #1f9d55;
+  --warn: #e67e22;
+  --danger: #c0392b;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  padding-bottom: var(--safe-bottom);
+  line-height: 1.4;
+}
+
+.header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--black);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+.header-top {
+  padding: 14px 16px 10px;
+  padding-top: calc(14px + var(--safe-top));
+  background:
+    repeating-linear-gradient(
+      -55deg,
+      var(--gold) 0px, var(--gold) 18px,
+      var(--gold-light) 18px, var(--gold-light) 36px
+    );
+  text-align: center;
+}
+.header h1 {
+  font-size: 17px; font-weight: 900; color: var(--black);
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.header .sub {
+  font-size: 10px; font-weight: 700; color: rgba(0,0,0,0.55);
+  text-transform: uppercase; letter-spacing: 1.2px;
+  margin-top: 3px;
+}
+.tabs {
+  display: flex; background: var(--black);
+}
+.tab {
+  flex: 1; text-align: center; padding: 12px 6px;
+  font-size: 11px; font-weight: 800;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer; user-select: none;
+  border-bottom: 3px solid transparent;
+  min-height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+.tab .count {
+  background: rgba(255,198,41,0.2);
+  padding: 2px 8px; border-radius: 10px;
+  margin-left: 6px; font-size: 10px;
+}
+.tab.active .count { background: var(--gold); color: var(--black); }
+
+.content {
+  max-width: 620px; margin: 0 auto;
+  padding: 12px 10px calc(24px + var(--safe-bottom));
+}
+
+.summary {
+  background: var(--card); border-radius: 12px;
+  padding: 12px 14px; margin-bottom: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+}
+.summary .stat { text-align: center; }
+.summary .stat .v {
+  font-size: 22px; font-weight: 900; color: var(--black);
+  line-height: 1;
+}
+.summary .stat .l {
+  font-size: 10px; font-weight: 700; color: var(--text3);
+  text-transform: uppercase; letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+.rule-note {
+  background: var(--gold-pale);
+  border-left: 4px solid var(--gold);
+  border-radius: 8px;
+  padding: 10px 12px; margin-bottom: 12px;
+  font-size: 12px; line-height: 1.5;
+  color: var(--text2);
+}
+.rule-note strong { color: var(--black); font-weight: 800; }
+
+.section-title {
+  font-size: 11px; font-weight: 800;
+  color: var(--text3); text-transform: uppercase;
+  letter-spacing: 1.2px; margin: 14px 4px 8px;
+}
+
+.player-card {
+  background: var(--card); border-radius: 10px;
+  padding: 10px 12px; margin-bottom: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  display: grid; grid-template-columns: 34px 1fr auto auto; gap: 10px;
+  align-items: center;
+}
+.player-card.alert {
+  border-left: 4px solid var(--danger);
+  background: #fff5f4;
+}
+.player-card.warn {
+  border-left: 4px solid var(--warn);
+  background: #fef6ee;
+}
+.player-card.rpl {
+  border-left: 4px solid var(--black);
+}
+.player-card .jersey {
+  background: var(--gold-pale); color: var(--black);
+  font-size: 11px; font-weight: 800;
+  padding: 4px 0; border-radius: 8px; text-align: center;
+}
+.player-card .jersey.blank { background: #f0f0f0; color: var(--text3); }
+.player-card .pname {
+  font-size: 13px; font-weight: 700; color: var(--text);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.player-card .pname .sub {
+  display: block; font-size: 10px; font-weight: 500;
+  color: var(--text3); margin-top: 1px;
+}
+.split { display: flex; gap: 4px; align-items: center; }
+.pill {
+  font-size: 10px; font-weight: 800;
+  padding: 3px 7px; border-radius: 10px;
+  letter-spacing: 0.3px;
+}
+.pill.d1 { background: #1a1a1a; color: var(--gold); }
+.pill.d3 { background: var(--gold); color: var(--black); }
+.pill.zero { opacity: 0.35; }
+
+.status {
+  display: flex; flex-direction: column; gap: 2px;
+  align-items: flex-end;
+}
+.status .badge {
+  font-size: 9px; font-weight: 800;
+  padding: 3px 8px; border-radius: 8px;
+  letter-spacing: 0.3px; text-transform: uppercase;
+}
+.status .badge.ok { background: #d6f0df; color: var(--ok); }
+.status .badge.warn { background: #fdebd3; color: var(--warn); }
+.status .badge.danger { background: #fadbd8; color: var(--danger); }
+.status .badge.neutral { background: #eee; color: var(--text3); }
+
+.rpl-empty {
+  background: var(--card); border-radius: 10px;
+  padding: 16px; text-align: center;
+  color: var(--text3); font-size: 13px;
+  border: 2px dashed var(--border);
+}
+
+.round-list {
+  background: var(--card); border-radius: 10px;
+  padding: 10px 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.round-row {
+  display: grid; grid-template-columns: 60px 1fr; gap: 10px;
+  padding: 8px 0; border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.round-row:last-child { border-bottom: none; }
+.round-row .rnum {
+  font-weight: 800; color: var(--black);
+}
+.round-row .rdet { color: var(--text2); font-size: 12px; }
+.round-row .rdet .lbl {
+  font-size: 10px; font-weight: 700; color: var(--text3);
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+
+.loading { text-align: center; padding: 40px; color: var(--text3); }
+.error {
+  background: #fadbd8; border-left: 4px solid var(--danger);
+  padding: 12px; border-radius: 8px; font-size: 13px;
+  color: var(--danger); margin: 12px 0;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <h1>U15 Attendance Tracker</h1>
+    <div class="sub" id="season-label">Loading…</div>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="div3">Div 3 <span class="count" id="d3-count">0</span></div>
+    <div class="tab" data-tab="div1">Div 1 <span class="count" id="d1-count">0</span></div>
+    <div class="tab" data-tab="rpl">RPL</div>
+    <div class="tab" data-tab="rounds">Rounds</div>
+  </div>
+</div>
+
+<main class="content">
+  <div id="loading" class="loading">Loading attendance data…</div>
+  <div id="app" style="display:none;">
+
+    <div class="summary">
+      <div class="stat"><div class="v" id="stat-round">–</div><div class="l">Round</div></div>
+      <div class="stat"><div class="v" id="stat-squad">–</div><div class="l">Total Squad</div></div>
+      <div class="stat"><div class="v" id="stat-played">–</div><div class="l">Played Total</div></div>
+    </div>
+
+    <div class="rule-note" id="rule-note"></div>
+
+    <div id="view-div3"></div>
+    <div id="view-div1" style="display:none;"></div>
+    <div id="view-rpl" style="display:none;"></div>
+    <div id="view-rounds" style="display:none;"></div>
+
+  </div>
+</main>
+
+<script>
+const MIN_FINALS_GAMES = 4;
+
+async function load() {
+  try {
+    const res = await fetch('attendance.json?v=' + Date.now());
+    const data = await res.json();
+    render(data);
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+  } catch (e) {
+    document.getElementById('loading').innerHTML =
+      '<div class="error">Failed to load attendance.json: ' + e.message + '</div>';
+  }
+}
+
+function playerStats(data, playerName) {
+  // Count games per division across all rounds
+  let d1 = 0, d3 = 0, lateOuts = 0, dnp = 0;
+  const history = [];
+  for (const r of data.rounds) {
+    const inD1 = r.div1.played.includes(playerName);
+    const inD3 = r.div3.played.includes(playerName);
+    const lateOutD1 = r.div1.late_outs.includes(playerName);
+    const lateOutD3 = r.div3.late_outs.includes(playerName);
+    const dnpD1 = r.div1.dnp.includes(playerName);
+    const dnpD3 = r.div3.dnp.includes(playerName);
+
+    if (inD1) { d1++; history.push({r: r.round, d: 'Div 1', s: 'played'}); }
+    if (inD3) { d3++; history.push({r: r.round, d: 'Div 3', s: 'played'}); }
+    if (lateOutD1) { lateOuts++; history.push({r: r.round, d: 'Div 1', s: 'late out'}); }
+    if (lateOutD3) { lateOuts++; history.push({r: r.round, d: 'Div 3', s: 'late out'}); }
+    if (dnpD1 || dnpD3) { dnp++; history.push({r: r.round, d: dnpD1 ? 'Div 1' : 'Div 3', s: 'DNP'}); }
+  }
+  return { d1, d3, lateOuts, dnp, history };
+}
+
+function finalsEligibility(d1, d3, primaryDiv) {
+  // Rule 14.1(i): 4 games min for that team
+  // Rule 14.1(ii): for lower div, must have MORE games for that team than total in higher divs
+  const d1Elig = d1 >= MIN_FINALS_GAMES;
+  const d3Elig = d3 >= MIN_FINALS_GAMES && d3 > d1;
+
+  if (primaryDiv === 'div3') {
+    if (d3Elig) return { badge: 'ok', label: 'D3 finals ✓' };
+    if (d1 >= d3 && d3 > 0) return { badge: 'danger', label: `D3 locked: ${d1}≥${d3}` };
+    if (d3 < MIN_FINALS_GAMES) return { badge: 'warn', label: `${MIN_FINALS_GAMES - d3} to qualify` };
+    return { badge: 'neutral', label: 'No games' };
+  } else {
+    if (d1Elig) return { badge: 'ok', label: 'D1 finals ✓' };
+    if (d1 < MIN_FINALS_GAMES && d1 > 0) return { badge: 'warn', label: `${MIN_FINALS_GAMES - d1} to qualify` };
+    return { badge: 'neutral', label: 'No games' };
+  }
+}
+
+function playerRow(p, primaryDiv, data, rpl) {
+  const stats = playerStats(data, p.name);
+  const elig = finalsEligibility(stats.d1, stats.d3, primaryDiv);
+  const onRPL = rpl && rpl.includes(p.name);
+  const violationRPL = onRPL && stats.d3 > 0;
+
+  let cls = '';
+  if (violationRPL) cls = 'alert';
+  else if (elig.badge === 'danger') cls = 'alert';
+  else if (elig.badge === 'warn') cls = 'warn';
+  else if (onRPL) cls = 'rpl';
+
+  const jerseyHtml = p.no !== null && p.no !== undefined
+    ? `<div class="jersey">${p.no}</div>`
+    : `<div class="jersey blank">–</div>`;
+
+  const d1Class = stats.d1 === 0 ? 'pill d1 zero' : 'pill d1';
+  const d3Class = stats.d3 === 0 ? 'pill d3 zero' : 'pill d3';
+
+  return `
+    <div class="player-card ${cls}">
+      ${jerseyHtml}
+      <div>
+        <div class="pname">${p.name}${onRPL ? ' 🔒' : ''}</div>
+        ${stats.lateOuts ? `<span class="pname sub">${stats.lateOuts} late out${stats.lateOuts>1?'s':''}, ${stats.dnp} DNP</span>` : stats.dnp ? `<span class="pname sub">${stats.dnp} DNP</span>` : ''}
+      </div>
+      <div class="split">
+        <span class="${d1Class}">D1 ${stats.d1}</span>
+        <span class="${d3Class}">D3 ${stats.d3}</span>
+      </div>
+      <div class="status">
+        <span class="badge ${elig.badge}">${elig.label}</span>
+        ${violationRPL ? '<span class="badge danger">RPL Breach</span>' : ''}
+      </div>
+    </div>
+  `;
+}
+
+function render(data) {
+  // Header
+  document.getElementById('season-label').textContent = `${data.season} · ${data.age_group}`;
+  const currentRound = data.rounds.length ? data.rounds[data.rounds.length-1].round : 0;
+  document.getElementById('stat-round').textContent = currentRound;
+  document.getElementById('stat-squad').textContent =
+    data.squads.div1.players.length + data.squads.div3.players.length;
+  let totalPlayed = 0;
+  for (const r of data.rounds) {
+    totalPlayed += r.div1.played.length + r.div3.played.length;
+  }
+  document.getElementById('stat-played').textContent = totalPlayed;
+  document.getElementById('d1-count').textContent = data.squads.div1.players.length;
+  document.getElementById('d3-count').textContent = data.squads.div3.players.length;
+
+  // Rule note
+  document.getElementById('rule-note').innerHTML = `
+    <strong>Finals rules (AFLQ 14.1):</strong> Need ≥${MIN_FINALS_GAMES} games for that team.
+    To play <strong>Div 3 finals</strong>, a player's Div 3 games must exceed Div 1 games.
+    Red ⚠ = locked out. Orange = below 4 games.
+  `;
+
+  const rpl = (data.restricted_player_list && data.restricted_player_list.players) || [];
+
+  // Sort by jersey
+  const sortByJersey = (a, b) => {
+    if (a.no === null) return 1;
+    if (b.no === null) return -1;
+    return a.no - b.no;
+  };
+
+  // Div 3 view
+  const div3Sorted = [...data.squads.div3.players].sort(sortByJersey);
+  document.getElementById('view-div3').innerHTML =
+    '<div class="section-title">Div 3 Squad (' + div3Sorted.length + ')</div>' +
+    div3Sorted.map(p => playerRow(p, 'div3', data, rpl)).join('');
+
+  // Div 1 view
+  const div1Sorted = [...data.squads.div1.players].sort(sortByJersey);
+  document.getElementById('view-div1').innerHTML =
+    '<div class="section-title">Div 1 Squad (' + div1Sorted.length + ')</div>' +
+    div1Sorted.map(p => playerRow(p, 'div1', data, rpl)).join('');
+
+  // RPL view
+  const rplView = document.getElementById('view-rpl');
+  if (rpl.length === 0) {
+    rplView.innerHTML = `
+      <div class="section-title">Restricted Player List</div>
+      <div class="rpl-empty">
+        <strong>No RPL submitted yet</strong><br>
+        U15 Boys: 12 required before Round 1, +4 more before Round 8 (16 total).<br>
+        RPL players cannot play Div 3.
+      </div>
+    `;
+  } else {
+    rplView.innerHTML =
+      '<div class="section-title">Restricted Player List (' + rpl.length + ')</div>' +
+      rpl.map(name => `<div class="player-card rpl"><div class="jersey blank">🔒</div><div class="pname">${name}</div><div></div><div></div></div>`).join('');
+  }
+
+  // Rounds view
+  const roundsView = document.getElementById('view-rounds');
+  if (data.rounds.length === 0) {
+    roundsView.innerHTML = '<div class="rpl-empty">No rounds logged yet.</div>';
+  } else {
+    const rows = data.rounds.slice().reverse().map(r => `
+      <div class="round-row">
+        <div class="rnum">R${r.round}<div class="rdet" style="font-size:10px;color:var(--text3);font-weight:500;margin-top:2px;">${r.date}</div></div>
+        <div class="rdet">
+          <div><span class="lbl">Div 1</span> ${r.div1.opponent || '—'}: ${r.div1.played.length} played${r.div1.late_outs.length ? ', ' + r.div1.late_outs.length + ' late out' : ''}${r.div1.dnp.length ? ', ' + r.div1.dnp.length + ' DNP' : ''}</div>
+          <div style="margin-top:4px;"><span class="lbl">Div 3</span> ${r.div3.opponent || '—'}: ${r.div3.played.length} played${r.div3.late_outs.length ? ', ' + r.div3.late_outs.length + ' late out' : ''}${r.div3.dnp.length ? ', ' + r.div3.dnp.length + ' DNP' : ''}</div>
+        </div>
+      </div>
+    `).join('');
+    roundsView.innerHTML =
+      '<div class="section-title">Rounds Logged</div>' +
+      '<div class="round-list">' + rows + '</div>';
+  }
+}
+
+// Tab switching
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    const target = t.dataset.tab;
+    ['div3','div1','rpl','rounds'].forEach(k => {
+      document.getElementById('view-' + k).style.display = k === target ? 'block' : 'none';
+    });
+  });
+});
+
+load();
+</script>
+
+</body>
+</html>
