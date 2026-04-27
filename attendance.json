@@ -69,7 +69,7 @@
         {"no": 26, "name": "Archer Abbott"},
         {"no": 27, "name": "Wyatt Greenhill"},
         {"no": 28, "name": "Charlie Kemp"},
-        {"no": null, "name": "Jarrah Star-Webb"},
+        {"no": 8,    "name": "Jarrah Star-Webb"},
         {"no": null, "name": "Brodie Campbell"},
         {"no": null, "name": "Billy McLeay"},
         {"no": null, "name": "Tyghe Maher"},
@@ -99,12 +99,12 @@
         {"no": 23, "name": "Kade O'Shea"},
         {"no": 25, "name": "Oliver Lang"},
         {"no": 27, "name": "Joel Andrews"},
-        {"no": 28, "name": "William Ozolins"},
+        {"no": 17, "name": "William Ozolins"},
         {"no": 30, "name": "Daniel Thompson"},
         {"no": null, "name": "Taylen Howard"},
-        {"no": null, "name": "Taj Williams"},
+        {"no": 28, "name": "Taj Williams"},
         {"no": null, "name": "Ollie Palmer"},
-        {"no": null, "name": "Jacob Schutt"}
+        {"no": 20, "name": "Jacob Schutt"}
       ]
     }
   },
