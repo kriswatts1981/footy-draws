@@ -706,6 +706,15 @@ a { color: inherit; text-decoration: none; }
 .pl-table .col-status .badge.danger { background: rgba(185,28,28,0.1); color: var(--danger); }
 .pl-table .col-status .badge.warn { background: rgba(180,83,9,0.1); color: var(--warn); }
 .pl-table .col-status .badge.ok { background: rgba(21,128,61,0.1); color: var(--ok); }
+.rank-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px; border-radius: 50%;
+  font-size: 10px; font-weight: 800; color: var(--text-3);
+  background: var(--bg-2);
+}
+.rank-badge.r-1 { background: var(--gold); color: var(--black); }
+.rank-badge.r-2 { background: #C0C5CC; color: var(--black); }
+.rank-badge.r-3 { background: #B87333; color: #fff; }
 
 .pl-row {
   display: grid; grid-template-columns: 32px 1fr auto;
@@ -859,6 +868,7 @@ body { overflow-x: hidden; }
   <nav class="section-nav">
     <button class="nav-btn active" data-section="fixtures">Fixtures</button>
     <button class="nav-btn" data-section="squad">Squad</button>
+    <button class="nav-btn" data-section="votes">Votes</button>
   </nav>
 </header>
 
@@ -891,7 +901,6 @@ body { overflow-x: hidden; }
 
       <div class="squad-grid">
         <div class="col-left">
-          <div id="bog-hero-container"></div>
           <div class="block">
             <div class="block-head">
               <h3>Players</h3>
@@ -919,13 +928,6 @@ body { overflow-x: hidden; }
               <div class="rule-row"><span class="icon">4</span><div><strong>One team only</strong> per age group in finals.</div></div>
             </div>
           </div>
-          <div class="block" id="bf-block">
-            <div class="block-head">
-              <h3>Best &amp; Fairest</h3>
-              <span class="sub" id="bf-sub">Season leaderboard</span>
-            </div>
-            <div id="votes-board"></div>
-          </div>
           <div class="block">
             <div class="block-head">
               <h3>Restricted list</h3>
@@ -939,6 +941,46 @@ body { overflow-x: hidden; }
               <span class="sub" id="rnd-sub"></span>
             </div>
             <div id="rounds-log"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ VOTES ═════════ -->
+  <section id="section-votes" class="section">
+    <div class="chip-row">
+      <button class="chip active" data-vd="div1">Div 1</button>
+      <button class="chip" data-vd="div3">Div 3</button>
+    </div>
+    <div id="votes-loading" class="empty" style="margin-top:24px;">Loading votes…</div>
+    <div id="votes-body" style="display:none;">
+      <div class="squad-grid">
+        <div class="col-left">
+          <div id="votes-bog"></div>
+          <div class="block">
+            <div class="block-head">
+              <h3>Best &amp; Fairest</h3>
+              <span class="sub" id="vt-bf-sub">Season leaderboard</span>
+            </div>
+            <div id="votes-board-tab"></div>
+          </div>
+        </div>
+        <div class="col-right">
+          <div class="rules-card">
+            <h4>How votes work</h4>
+            <div class="rules-list">
+              <div class="rule-row"><span class="icon">·</span><div>3 voters per round, each casts <strong>5 · 4 · 3 · 2 · 1</strong>.</div></div>
+              <div class="rule-row"><span class="icon">·</span><div>Max <strong>15 points</strong> per player per round.</div></div>
+              <div class="rule-row"><span class="icon">·</span><div>Voters anonymised; pool listed per round.</div></div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="block-head">
+              <h3>Round cards</h3>
+              <span class="sub" id="vt-rounds-sub"></span>
+            </div>
+            <div id="votes-rounds-tab"></div>
           </div>
         </div>
       </div>
@@ -1267,6 +1309,7 @@ let fxFilter = 'tct'; // tct, div1, div3, all
 let activeRound = null;
 let squadDiv = 'all';
 let playerFilter = 'all';
+let votesDiv = 'div1';
 let attendanceData = null;
 
 const div1Games = parseCSV(CSV_DIV1).map(g => ({...g, division: 'Div 1'}));
@@ -1542,33 +1585,6 @@ function renderSquad() {
 
   renderWarnings();
 
-  // Hero BOG (hidden in 'all' mode — div-specific)
-  const heroHost = document.getElementById('bog-hero-container');
-  const bfBlock = document.getElementById('bf-block');
-  if (isAll) {
-    heroHost.innerHTML = '';
-    if (bfBlock) bfBlock.style.display = 'none';
-  } else {
-    if (bfBlock) bfBlock.style.display = '';
-  }
-  if (!isAll) {
-    const bog = recentBog(squadDiv);
-    if (bog) {
-      heroHost.innerHTML = `
-        <div class="bog-hero">
-          <div class="bog-label">R${bog.round} · Best on ground</div>
-          <div class="bog-player">${bog.player}</div>
-          <div class="bog-foot">
-            <div class="bog-pts">${bog.points}<small>pts</small></div>
-            <div class="bog-note">${bog.unanimous ? 'Unanimous — 5 from every voter' : 'Topped the vote'}${bog.voters.length?`<br><span style="opacity:0.55;font-size:10px;">Voted by ${bog.voters.join(', ')}</span>`:''}</div>
-          </div>
-        </div>
-      `;
-    } else {
-      heroHost.innerHTML = `<div class="empty" style="margin-bottom:12px;"><strong>No ${squadDiv === 'div1' ? 'Div 1' : 'Div 3'} votes yet</strong>Votes appear here after each round.</div>`;
-    }
-  }
-
   // Quick stats
   const allStats = squad.map(p => ({ p, s: playerStats(p.name), e: finalsStatus(playerStats(p.name).d1, playerStats(p.name).d3, p.primary) }));
   const played = allStats.filter(x => x.s.d1 + x.s.d3 > 0).length;
@@ -1579,54 +1595,6 @@ function renderSquad() {
     <div class="stat-tile"><div class="n">${played}</div><div class="l">Played</div></div>
     <div class="stat-tile"><div class="n" style="color:${alerts?'var(--danger)':'var(--text)'}">${alerts}</div><div class="l">Alerts</div></div>
   `;
-
-  // Votes leaderboard (skipped in 'all' mode)
-  if (isAll) {
-    document.getElementById('bf-sub').textContent = '';
-  } else {
-  const votes = seasonVotes(squadDiv);
-  const vhost = document.getElementById('votes-board');
-  if (!votes.length) {
-    vhost.innerHTML = `<div class="votes-empty">No votes logged yet for ${squadDiv === 'div1' ? 'Div 1' : 'Div 3'}.</div>`;
-  } else {
-    const maxPts = votes[0].points;
-    vhost.innerHTML = `<div class="votes-lb">` + votes.map(v => {
-      const pct = Math.round((v.points / maxPts) * 100);
-      return `<div class="lb-row r-${v.rank <= 3 ? v.rank : 'x'}">
-        <div class="lb-rank">${v.rank}</div>
-        <div class="lb-main">
-          <div class="lb-name">${v.player}</div>
-          <div class="lb-bar"><div class="lb-fill" style="width:${pct}%"></div></div>
-        </div>
-        <div class="lb-pts">${v.points}</div>
-      </div>`;
-    }).join('') + `</div>`;
-
-    // Vote sheets (collapsed by default)
-    const rounds = (attendanceData.votes && attendanceData.votes.rounds) || [];
-    let vsHtml = '<details class="vote-sheets-wrap" style="margin-top:10px;"><summary style="cursor:pointer;font-size:11px;color:var(--text-3);font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:6px 0;">Per-round cards</summary><div class="vote-sheets">';
-    for (const r of rounds.slice().reverse()) {
-      const cards = r[squadDiv + '_cards'] || [];
-      const pool = r[squadDiv + '_voters'] || [];
-      if (!cards.length) continue;
-      vsHtml += `<div class="vs-round">
-        <div class="vs-head"><span>Round ${r.round}</span>${pool.length?`<span class="pool">${pool.join(', ')}</span>`:''}</div>`;
-      cards.forEach((card, idx) => {
-        vsHtml += `<div class="vs-card"><div class="vs-card-title">Card ${idx+1}</div><div class="vs-card-votes">`;
-        for (const pts of [5,4,3,2,1]) {
-          if (card[String(pts)]) {
-            vsHtml += `<span class="vs-vote"><span class="pts">${pts}</span>${card[String(pts)]}</span>`;
-          }
-        }
-        vsHtml += `</div></div>`;
-      });
-      vsHtml += `</div>`;
-    }
-    vsHtml += '</div></details>';
-    vhost.innerHTML += vsHtml;
-  }
-  document.getElementById('bf-sub').textContent = votes.length ? `${votes.length} player${votes.length!==1?'s':''} with votes` : '';
-  } // end !isAll votes block
 
   // Players
   renderPlayers(allStats, rpl, isAll);
@@ -1743,12 +1711,104 @@ function setPlayerFilter(f) {
   }
 }
 
+// ═══════════════════ VOTES TAB ═══════════════════
+function renderVotesTab() {
+  if (!attendanceData) return;
+  document.getElementById('votes-loading').style.display = 'none';
+  document.getElementById('votes-body').style.display = 'block';
+
+  const divLabel = votesDiv === 'div1' ? 'Div 1' : 'Div 3';
+
+  // BoG hero
+  const bogHost = document.getElementById('votes-bog');
+  const bog = recentBog(votesDiv);
+  if (bog) {
+    bogHost.innerHTML = `<div class="bog-hero">
+      <div class="bog-label">R${bog.round} · ${divLabel} · Best on ground</div>
+      <div class="bog-player">${bog.player}</div>
+      <div class="bog-foot">
+        <div class="bog-pts">${bog.points}<small>pts</small></div>
+        <div class="bog-note">${bog.unanimous ? 'Unanimous — 5 from every voter' : 'Topped the vote'}${bog.voters.length?`<br><span style="opacity:0.55;font-size:10px;">Voted by ${bog.voters.join(', ')}</span>`:''}</div>
+      </div>
+    </div>`;
+  } else {
+    bogHost.innerHTML = `<div class="empty"><strong>No ${divLabel} votes yet</strong>Votes appear here after each round.</div>`;
+  }
+
+  // B&F leaderboard — Brownlow-style table with per-round columns
+  const votes = seasonVotes(votesDiv);
+  const lb = document.getElementById('votes-board-tab');
+  if (!votes.length) {
+    lb.innerHTML = `<div class="votes-empty">No votes logged yet for ${divLabel}.</div>`;
+  } else {
+    const allRounds = (attendanceData.votes && attendanceData.votes.rounds) || [];
+    const roundNumbers = allRounds.filter(r => (r[votesDiv + '_cards'] || []).length).map(r => r.round);
+    const headRow = `<thead><tr>
+      <th class="num">#</th>
+      <th>Player</th>
+      ${roundNumbers.map(rn => `<th class="center">R${rn}</th>`).join('')}
+      <th class="center">Total</th>
+    </tr></thead>`;
+    const body = votes.map(v => {
+      const cells = roundNumbers.map(rn => {
+        const pts = v.perRound[rn] || 0;
+        return `<td class="col-games ${pts ? '' : 'zero'}">${pts || '–'}</td>`;
+      }).join('');
+      return `<tr>
+        <td class="col-num"><span class="rank-badge r-${v.rank <= 3 ? v.rank : 'x'}">${v.rank}</span></td>
+        <td class="col-name">${v.player}</td>
+        ${cells}
+        <td class="col-total">${v.points}</td>
+      </tr>`;
+    }).join('');
+    lb.innerHTML = `<div class="player-list" style="max-height:none;"><table class="pl-table">${headRow}<tbody>${body}</tbody></table></div>`;
+  }
+  document.getElementById('vt-bf-sub').textContent = votes.length ? `Running tally · ${votes.length} player${votes.length!==1?'s':''} polled` : '';
+
+  // Round cards (full, no toggle since this is a dedicated tab)
+  const rounds = (attendanceData.votes && attendanceData.votes.rounds) || [];
+  const rh = document.getElementById('votes-rounds-tab');
+  let vsHtml = '<div class="vote-sheets">';
+  let hasAny = false;
+  for (const r of rounds.slice().reverse()) {
+    const cards = r[votesDiv + '_cards'] || [];
+    const pool = r[votesDiv + '_voters'] || [];
+    if (!cards.length) continue;
+    hasAny = true;
+    vsHtml += `<div class="vs-round">
+      <div class="vs-head"><span>Round ${r.round}</span>${pool.length?`<span class="pool">${pool.join(', ')}</span>`:''}</div>`;
+    cards.forEach((card, idx) => {
+      vsHtml += `<div class="vs-card"><div class="vs-card-title">Card ${idx+1}</div><div class="vs-card-votes">`;
+      for (const pts of [5,4,3,2,1]) {
+        if (card[String(pts)]) {
+          vsHtml += `<span class="vs-vote"><span class="pts">${pts}</span>${card[String(pts)]}</span>`;
+        }
+      }
+      vsHtml += `</div></div>`;
+    });
+    vsHtml += `</div>`;
+  }
+  vsHtml += '</div>';
+  rh.innerHTML = hasAny ? vsHtml : `<div class="empty">No ${divLabel} round cards yet.</div>`;
+  document.getElementById('vt-rounds-sub').textContent = hasAny ? `${rounds.filter(r => (r[votesDiv+'_cards']||[]).length).length} round${rounds.length!==1?'s':''} logged` : '';
+}
+
+function setVotesDiv(d) {
+  votesDiv = d;
+  document.querySelectorAll('#section-votes > .chip-row .chip').forEach(c => c.classList.toggle('active', c.dataset.vd === d));
+  renderVotesTab();
+}
+
 // ═══════════════════ SECTION SWITCHING ═══════════════════
 function switchSection(name) {
   activeSection = name;
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.section === name));
   document.querySelectorAll('.section').forEach(s => s.classList.toggle('active', s.id === 'section-' + name));
-  if (name === 'squad' && !attendanceData) loadAttendance();
+  if ((name === 'squad' || name === 'votes') && !attendanceData) {
+    loadAttendance().then(() => { if (name === 'votes') renderVotesTab(); });
+  } else if (name === 'votes' && attendanceData) {
+    renderVotesTab();
+  }
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
 
@@ -1756,6 +1816,7 @@ function switchSection(name) {
 document.querySelectorAll('.nav-btn').forEach(b => b.addEventListener('click', () => switchSection(b.dataset.section)));
 document.querySelectorAll('#fx-filters .chip').forEach(b => b.addEventListener('click', () => setFxFilter(b.dataset.filter)));
 document.querySelectorAll('#section-squad > .chip-row .chip').forEach(b => b.addEventListener('click', () => setSquadDiv(b.dataset.div)));
+document.querySelectorAll('#section-votes > .chip-row .chip').forEach(b => b.addEventListener('click', () => setVotesDiv(b.dataset.vd)));
 document.querySelectorAll('#player-filters .sq-filter').forEach(b => b.addEventListener('click', () => setPlayerFilter(b.dataset.pf)));
 
 // ═══════════════════ INIT ═══════════════════
