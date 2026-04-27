@@ -7,25 +7,27 @@
 <meta name="description" content="TCT U15 Boys fixtures, game day plans and squad tracking">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#0B0B0F">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="manifest" href="manifest.json">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0B0B0F;
-  --bg-1: #141419;
-  --bg-2: #1B1B23;
-  --bg-3: #24242E;
-  --border: #242430;
-  --border-bright: #33333F;
-  --text: #F2F2F5;
-  --text-2: #A8A8B4;
-  --text-3: #68687A;
-  --gold: #FFC629;
-  --gold-dim: #C99A1F;
-  --ok: #34D399;
-  --warn: #FBBF24;
-  --danger: #F87171;
+  --bg: #F7F8FA;
+  --bg-1: #FFFFFF;
+  --bg-2: #F1F3F7;
+  --bg-3: #E6E8EE;
+  --border: #E3E5EB;
+  --border-bright: #CFD2DA;
+  --text: #0E1117;
+  --text-2: #4B5060;
+  --text-3: #8A8F9C;
+  --gold: #E8AD0A;
+  --gold-dim: #B68500;
+  --gold-bg: #FFF7DD;
+  --black: #0E1117;
+  --ok: #15803D;
+  --warn: #B45309;
+  --danger: #B91C1C;
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-top: env(safe-area-inset-top, 0px);
 }
@@ -48,7 +50,7 @@ a { color: inherit; text-decoration: none; }
 /* ═════════ Header ═════════ */
 .app-header {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(11,11,15,0.92);
+  background: rgba(255,255,255,0.94);
   backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--border);
 }
@@ -78,53 +80,86 @@ a { color: inherit; text-decoration: none; }
   padding: 0 18px 12px;
   max-width: 720px; margin: 0 auto;
   display: flex; gap: 6px;
+  justify-content: center;
 }
 .nav-btn {
-  flex: 1;
-  min-height: 44px;
-  padding: 12px 10px;
+  flex: 0 1 auto;
+  min-width: 120px;
+  min-height: 40px;
+  padding: 10px 22px;
   font-size: 13px; font-weight: 700; color: var(--text-2);
   background: var(--bg-1);
-  border-radius: 12px;
-  transition: background 0.15s, color 0.15s;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
   letter-spacing: -0.1px;
 }
+.nav-btn:hover { border-color: var(--border-bright); color: var(--text); }
 .nav-btn.active {
-  background: var(--gold); color: #0B0B0F; font-weight: 800;
+  background: var(--gold); color: var(--black); font-weight: 800;
+  border-color: var(--gold);
 }
 .nav-btn:active { opacity: 0.85; }
 
 /* ═════════ Main ═════════ */
 .app-main {
-  max-width: 720px; margin: 0 auto;
-  padding: 20px 18px;
+  max-width: 1600px; margin: 0 auto;
+  padding: 16px 32px;
+}
+@media (max-width: 720px) {
+  .app-main { padding: 14px 16px; }
+}
+
+/* Squad desktop layout */
+@media (min-width: 1100px) {
+  .squad-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
+  }
+  .squad-grid > .col-left { min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+  .squad-grid > .col-right { min-width: 0; display: flex; flex-direction: column; gap: 12px; position: sticky; top: 130px; }
+  .squad-grid .block { margin-bottom: 0; }
+  .squad-grid .player-list { max-height: calc(100vh - 220px); }
 }
 .section { display: none; }
 .section.active { display: block; }
 
 /* ═════════ Shared blocks ═════════ */
 .block {
-  margin-bottom: 28px;
+  margin-bottom: 16px;
 }
 .block-head {
   display: flex; align-items: baseline; justify-content: space-between;
-  margin-bottom: 12px; padding: 0 2px;
+  margin-bottom: 8px; padding: 0 2px;
 }
 .block-head h2 {
   font-size: 22px; font-weight: 800; color: var(--text);
   letter-spacing: -0.3px;
 }
 .block-head h3 {
-  font-size: 17px; font-weight: 800; color: var(--text);
+  font-size: 14px; font-weight: 800; color: var(--text);
   letter-spacing: -0.2px;
+  text-transform: uppercase;
+  font-size: 11px; letter-spacing: 1px;
+  color: var(--text-3);
 }
 .block-head .sub {
-  font-size: 12px; color: var(--text-3); font-weight: 500;
+  font-size: 11px; color: var(--text-3); font-weight: 500;
+}
+.section-grid {
+  display: grid;
+  gap: 12px;
+}
+@media (min-width: 720px) {
+  .section-grid { grid-template-columns: 1fr 1fr; }
+  .section-grid > .full { grid-column: 1 / -1; }
 }
 
 /* Chip row */
 .chip-row {
-  display: flex; gap: 8px; margin-bottom: 18px;
+  display: flex; gap: 6px; margin-bottom: 10px;
   overflow-x: auto; -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   padding: 2px 0;
@@ -132,11 +167,11 @@ a { color: inherit; text-decoration: none; }
 .chip-row::-webkit-scrollbar { display: none; }
 .chip {
   white-space: nowrap;
-  min-height: 40px;
-  padding: 10px 16px;
-  font-size: 13px; font-weight: 600; color: var(--text-2);
+  min-height: 32px;
+  padding: 6px 14px;
+  font-size: 12px; font-weight: 600; color: var(--text-2);
   background: var(--bg-1); border: 1px solid var(--border);
-  border-radius: 22px;
+  border-radius: 16px;
   display: inline-flex; align-items: center;
 }
 .chip.active {
@@ -169,16 +204,18 @@ a { color: inherit; text-decoration: none; }
 
 /* ═════════ Hero: next game ═════════ */
 .next-game {
-  background: linear-gradient(135deg, #1C1C24 0%, #0E0E13 100%);
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFF7DD 100%);
+  border: 1px solid var(--border-bright);
+  border-left: 4px solid var(--gold);
   border-radius: 18px; padding: 18px 20px;
   margin-bottom: 22px;
   position: relative; overflow: hidden;
+  box-shadow: 0 1px 3px rgba(14,17,23,0.04);
 }
 .next-game::before {
   content: ''; position: absolute; top: -60px; right: -60px;
   width: 180px; height: 180px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,198,41,0.14) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(232,173,10,0.18) 0%, transparent 70%);
 }
 .ng-label {
   font-size: 11px; font-weight: 700; color: var(--gold);
@@ -215,7 +252,7 @@ a { color: inherit; text-decoration: none; }
   align-items: start;
 }
 .fx-row:last-child { border-bottom: none; }
-.fx-row.tct-game { background: linear-gradient(90deg, rgba(255,198,41,0.06) 0%, transparent 60%); }
+.fx-row.tct-game { background: linear-gradient(90deg, rgba(232,173,10,0.06) 0%, transparent 60%); }
 .fx-row.played { opacity: 0.55; }
 
 .fx-teams { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
@@ -245,7 +282,7 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.4px;
   padding: 2px 6px; border-radius: 4px; background: var(--bg-2);
 }
-.fx-team .ha.home { color: var(--gold); background: rgba(255,198,41,0.1); }
+.fx-team .ha.home { color: var(--gold); background: rgba(232,173,10,0.1); }
 
 .fx-meta {
   text-align: right;
@@ -260,7 +297,7 @@ a { color: inherit; text-decoration: none; }
   background: var(--gold); color: #0B0B0F;
   animation: pulse 2s infinite;
 }
-.fx-status.this-week { background: rgba(255,198,41,0.15); color: var(--gold); }
+.fx-status.this-week { background: rgba(232,173,10,0.15); color: var(--gold); }
 .fx-status.upcoming { background: var(--bg-3); color: var(--text-2); }
 .fx-status.played { background: var(--bg-3); color: var(--text-3); }
 .fx-time { font-size: 12px; color: var(--text-2); font-weight: 600; }
@@ -379,22 +416,24 @@ a { color: inherit; text-decoration: none; }
 .rest-row .pname { font-size: 13px; font-weight: 600; color: var(--text); }
 .rest-row .rest-when {
   font-size: 12px; font-weight: 700; color: var(--gold);
-  background: rgba(255,198,41,0.1);
+  background: rgba(232,173,10,0.1);
   padding: 4px 10px; border-radius: 12px;
 }
 
 /* ═════════ Squad: BOG hero ═════════ */
 .bog-hero {
-  background: linear-gradient(135deg, #18181F 0%, #0B0B0F 100%);
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFF7DD 100%);
+  border: 1px solid var(--border-bright);
+  border-left: 4px solid var(--gold);
   border-radius: 18px; padding: 20px 22px;
   margin-bottom: 18px;
   position: relative; overflow: hidden;
+  box-shadow: 0 1px 3px rgba(14,17,23,0.04);
 }
 .bog-hero::before {
   content: ''; position: absolute; top: -50px; right: -30px;
   width: 200px; height: 200px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,198,41,0.22) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(232,173,10,0.22) 0%, transparent 70%);
 }
 .bog-label {
   font-size: 10px; font-weight: 800; color: var(--gold);
@@ -419,41 +458,99 @@ a { color: inherit; text-decoration: none; }
   font-size: 11px; color: var(--text-2); text-align: right; max-width: 60%;
 }
 
+/* ═════════ Squad: rules card ═════════ */
+.rules-card {
+  background: var(--bg-1); border: 1px solid var(--border);
+  border-radius: 10px; padding: 10px 12px;
+  font-size: 11px; color: var(--text-2); line-height: 1.45;
+}
+.rules-card h4 {
+  font-size: 10px; font-weight: 800; color: var(--text-3);
+  letter-spacing: 1px; text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.rules-list { display: flex; flex-direction: column; gap: 4px; }
+.rule-row { display: flex; gap: 6px; }
+.rule-row .icon {
+  font-size: 10px; font-weight: 800; color: var(--gold);
+  flex-shrink: 0;
+}
+.rule-row strong { color: var(--text); font-weight: 700; }
+
+/* ═════════ Squad: warnings card ═════════ */
+.warn-card {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--warn);
+  border-radius: 10px; padding: 10px 12px;
+}
+.warn-card.danger { border-left-color: var(--danger); }
+.warn-card.ok { border-left-color: var(--ok); }
+.warn-card h4 {
+  font-size: 10px; font-weight: 800;
+  letter-spacing: 1px; text-transform: uppercase;
+  margin-bottom: 6px;
+  color: var(--warn);
+}
+.warn-card.danger h4 { color: var(--danger); }
+.warn-card.ok h4 { color: var(--ok); }
+.warn-list { display: flex; flex-direction: column; gap: 4px; }
+.warn-row {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 8px; align-items: center;
+  font-size: 12px; color: var(--text);
+  padding: 4px 0;
+  border-top: 1px solid var(--border);
+}
+.warn-row:first-child { border-top: none; padding-top: 0; }
+.warn-row .who { font-weight: 600; }
+.warn-row .why { font-size: 10px; color: var(--text-2); font-weight: 500; margin-top: 1px; }
+.warn-row .badge {
+  font-size: 9px; font-weight: 800;
+  padding: 3px 6px; border-radius: 6px;
+  background: var(--bg-3); color: var(--text-2);
+  letter-spacing: 0.3px; text-transform: uppercase;
+}
+.warn-row.danger .badge { background: rgba(185,28,28,0.1); color: var(--danger); }
+.warn-row.warn .badge { background: rgba(180,83,9,0.1); color: var(--warn); }
+
 /* ═════════ Squad: quick stats strip ═════════ */
 .stat-strip {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 8px; margin-bottom: 24px;
+  gap: 6px;
 }
 .stat-tile {
   background: var(--bg-1); border: 1px solid var(--border);
-  border-radius: 14px; padding: 14px 12px;
-  text-align: center;
+  border-radius: 10px; padding: 8px 10px;
+  display: flex; align-items: baseline; gap: 8px;
 }
 .stat-tile .n {
-  font-size: 24px; font-weight: 900; color: var(--text);
+  font-size: 18px; font-weight: 900; color: var(--text);
   line-height: 1; letter-spacing: -0.5px;
+  font-variant-numeric: tabular-nums;
 }
 .stat-tile .l {
-  font-size: 10px; font-weight: 700; color: var(--text-3);
-  margin-top: 6px; letter-spacing: 0.4px; text-transform: uppercase;
+  font-size: 9px; font-weight: 700; color: var(--text-3);
+  letter-spacing: 0.4px; text-transform: uppercase;
 }
 
 /* ═════════ Squad: votes leaderboard ═════════ */
 .votes-lb {
   background: var(--bg-1); border: 1px solid var(--border);
-  border-radius: 14px; overflow: hidden;
+  border-radius: 10px; overflow: hidden;
+  max-height: 320px; overflow-y: auto;
 }
 .lb-row {
-  display: grid; grid-template-columns: 36px 1fr auto;
-  gap: 12px; padding: 12px 16px;
+  display: grid; grid-template-columns: 28px 1fr auto;
+  gap: 8px; padding: 6px 10px;
   align-items: center;
   border-top: 1px solid var(--border);
 }
 .lb-row:first-child { border-top: none; }
 .lb-rank {
   display: flex; align-items: center; justify-content: center;
-  width: 28px; height: 28px; border-radius: 50%;
-  font-size: 12px; font-weight: 800; color: var(--text-3);
+  width: 22px; height: 22px; border-radius: 50%;
+  font-size: 10px; font-weight: 800; color: var(--text-3);
   background: var(--bg-2);
 }
 .lb-row.r-1 .lb-rank { background: var(--gold); color: #0B0B0F; }
@@ -461,17 +558,18 @@ a { color: inherit; text-decoration: none; }
 .lb-row.r-3 .lb-rank { background: #B87333; color: #fff; }
 .lb-main { min-width: 0; }
 .lb-name {
-  font-size: 14px; font-weight: 600; color: var(--text);
+  font-size: 12px; font-weight: 600; color: var(--text);
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .lb-bar {
-  height: 4px; background: var(--bg-3); border-radius: 2px;
-  margin-top: 6px; overflow: hidden;
+  height: 3px; background: var(--bg-3); border-radius: 2px;
+  margin-top: 3px; overflow: hidden;
 }
 .lb-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-dim)); border-radius: 2px; }
 .lb-pts {
-  font-size: 18px; font-weight: 900; color: var(--text);
-  letter-spacing: -0.5px;
+  font-size: 14px; font-weight: 900; color: var(--text);
+  letter-spacing: -0.3px;
+  font-variant-numeric: tabular-nums;
 }
 .votes-empty {
   background: var(--bg-1); border: 1px dashed var(--border);
@@ -516,14 +614,15 @@ a { color: inherit; text-decoration: none; }
 
 /* ═════════ Squad: players ═════════ */
 .squad-filter {
-  display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap;
+  display: flex; gap: 4px; margin-bottom: 8px; flex-wrap: wrap;
 }
 .sq-filter {
-  min-height: 36px;
-  font-size: 12px; font-weight: 700; color: var(--text-3);
+  min-height: 26px;
+  font-size: 10px; font-weight: 700; color: var(--text-3);
   background: var(--bg-1); border: 1px solid var(--border);
-  padding: 8px 12px; border-radius: 16px;
+  padding: 4px 9px; border-radius: 12px;
   display: inline-flex; align-items: center;
+  letter-spacing: 0.2px; text-transform: uppercase;
 }
 .sq-filter:active { transform: scale(0.96); }
 .sq-filter.active { background: var(--bg-3); color: var(--text); border-color: var(--border-bright); }
@@ -533,8 +632,81 @@ a { color: inherit; text-decoration: none; }
 
 .player-list {
   background: var(--bg-1); border: 1px solid var(--border);
-  border-radius: 14px; overflow: hidden;
+  border-radius: 10px; overflow: hidden;
+  max-height: 420px;
+  overflow-y: auto;
 }
+.pl-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.pl-table thead th {
+  text-align: left;
+  font-size: 9px; font-weight: 800; color: var(--text-3);
+  letter-spacing: 0.5px; text-transform: uppercase;
+  padding: 6px 8px;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 1;
+}
+.pl-table thead th.num { text-align: center; }
+.pl-table thead th.center { text-align: center; }
+.pl-table tbody td {
+  padding: 5px 8px;
+  border-top: 1px solid var(--border);
+  vertical-align: middle;
+  line-height: 1.25;
+}
+.pl-table tbody tr:first-child td { border-top: none; }
+.pl-table tbody tr:hover { background: var(--bg-2); }
+.pl-table .col-num {
+  font-weight: 800; color: var(--gold);
+  text-align: center; width: 28px;
+  font-size: 11px;
+}
+.pl-table .col-num.blank { color: var(--text-3); font-weight: 500; }
+.pl-table .col-name { font-weight: 600; color: var(--text); font-size: 12px; }
+.pl-table .col-name .rpl-mark { color: var(--gold); font-size: 10px; margin-left: 3px; }
+.pl-table .col-name .sub-line { display: block; font-size: 9px; color: var(--text-3); font-weight: 500; margin-top: 0; }
+.pl-table .col-div {
+  font-size: 9px; font-weight: 800;
+  letter-spacing: 0.3px;
+  text-align: center; width: 36px;
+}
+.pl-table .col-div.div1 { color: var(--gold); }
+.pl-table .col-div.div3 { color: var(--text-2); }
+.pl-table .col-games {
+  text-align: center;
+  font-weight: 700; color: var(--text);
+  width: 32px;
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+}
+.pl-table .col-games.zero { color: var(--text-3); font-weight: 500; }
+.pl-table .col-total {
+  text-align: center;
+  font-weight: 800; color: var(--text);
+  width: 36px;
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+}
+.pl-table .col-total.zero { color: var(--text-3); font-weight: 500; }
+.pl-table .col-status {
+  text-align: right;
+  width: 78px;
+}
+.pl-table .col-status .badge {
+  font-size: 9px; font-weight: 800;
+  padding: 3px 6px; border-radius: 6px;
+  background: var(--bg-3); color: var(--text-2);
+  letter-spacing: 0.2px; text-transform: uppercase;
+  white-space: nowrap;
+}
+.pl-table .col-status .badge.danger { background: rgba(185,28,28,0.1); color: var(--danger); }
+.pl-table .col-status .badge.warn { background: rgba(180,83,9,0.1); color: var(--warn); }
+.pl-table .col-status .badge.ok { background: rgba(21,128,61,0.1); color: var(--ok); }
+
 .pl-row {
   display: grid; grid-template-columns: 32px 1fr auto;
   gap: 12px; padding: 12px 14px;
@@ -582,31 +754,30 @@ a { color: inherit; text-decoration: none; }
 /* ═════════ Rounds log ═════════ */
 .rnd-log {
   background: var(--bg-1); border: 1px solid var(--border);
-  border-radius: 14px; padding: 16px; margin-bottom: 10px;
+  border-radius: 10px; padding: 8px 12px; margin-bottom: 6px;
+  display: grid; grid-template-columns: 50px 1fr 1fr; gap: 12px;
+  align-items: center;
 }
-.rnd-log-head {
-  display: flex; align-items: baseline; justify-content: space-between;
-  margin-bottom: 12px;
-}
-.rnd-log-r { font-size: 16px; font-weight: 800; color: var(--text); letter-spacing: -0.2px; }
-.rnd-log-date { font-size: 12px; color: var(--text-3); }
-.rnd-log-div {
-  padding: 10px 0; border-top: 1px solid var(--border);
-}
-.rnd-log-div:first-of-type { border-top: none; padding-top: 0; }
-.rnd-log-div .dlabel { font-size: 10px; font-weight: 800; color: var(--text-3); letter-spacing: 0.8px; margin-bottom: 4px; }
-.rnd-log-div .dopp { font-size: 13px; font-weight: 600; color: var(--text); }
-.rnd-log-div .dcount { font-size: 11px; color: var(--text-2); margin-top: 3px; }
+.rnd-log-head { display: flex; flex-direction: column; }
+.rnd-log-r { font-size: 13px; font-weight: 800; color: var(--text); letter-spacing: -0.2px; }
+.rnd-log-date { font-size: 10px; color: var(--text-3); }
+.rnd-log-div { font-size: 11px; line-height: 1.4; }
+.rnd-log-div .dlabel { font-size: 9px; font-weight: 800; color: var(--text-3); letter-spacing: 0.5px; }
+.rnd-log-div .dopp { font-weight: 600; color: var(--text); }
+.rnd-log-div .dcount { color: var(--text-2); }
 .rnd-log-div .dcount b { color: var(--text); font-weight: 700; }
+@media (max-width: 540px) {
+  .rnd-log { grid-template-columns: 1fr; gap: 4px; }
+}
 
 /* ═════════ Empty states ═════════ */
 .empty {
   background: var(--bg-1); border: 1px dashed var(--border);
-  border-radius: 14px; padding: 28px 20px;
-  text-align: center; color: var(--text-3); font-size: 13px;
-  line-height: 1.55;
+  border-radius: 10px; padding: 12px 14px;
+  text-align: center; color: var(--text-3); font-size: 12px;
+  line-height: 1.4;
 }
-.empty strong { color: var(--text); display: block; margin-bottom: 6px; font-size: 14px; }
+.empty strong { color: var(--text); display: inline-block; margin-right: 6px; font-size: 12px; }
 
 /* Scroll anchor pad */
 [id^="section-"] { scroll-margin-top: 140px; }
@@ -687,7 +858,6 @@ body { overflow-x: hidden; }
   </div>
   <nav class="section-nav">
     <button class="nav-btn active" data-section="fixtures">Fixtures</button>
-    <button class="nav-btn" data-section="gameday">Game Day</button>
     <button class="nav-btn" data-section="squad">Squad</button>
   </nav>
 </header>
@@ -707,171 +877,70 @@ body { overflow-x: hidden; }
     <div id="fixtures-body"></div>
   </section>
 
-  <!-- ═════════ GAME DAY ═════════ -->
-  <section id="section-gameday" class="section">
-    <div class="block-head">
-      <h2>Game Day</h2>
-      <span class="sub">Round 1 · 19 Apr</span>
-    </div>
-    <div class="chip-row">
-      <button class="chip active">R1 · Div 3 vs Surfers</button>
-    </div>
-
-    <div class="block">
-      <div class="block-head"><h3>Starting 18</h3></div>
-      <div class="lineup">
-        <div class="lineup-group">
-          <div class="lineup-head"><span class="title">Forwards</span><span class="count">6</span></div>
-          <div class="lineup-row"><span class="pos">FF</span><span class="pname">Elijah Jones</span><span class="jnum">22</span></div>
-          <div class="lineup-row"><span class="pos">LFP</span><span class="pname">Grayson Watts</span><span class="jnum">3</span></div>
-          <div class="lineup-row"><span class="pos">RFP</span><span class="pname">Max Bradley</span><span class="jnum">1</span></div>
-          <div class="lineup-row"><span class="pos">LHFF</span><span class="pname">Samuel Buchanan</span><span class="jnum">8</span></div>
-          <div class="lineup-row"><span class="pos">CHF</span><span class="pname">Mason McAuliffe</span><span class="jnum">15</span></div>
-          <div class="lineup-row"><span class="pos">RHFF</span><span class="pname">Lenny McPhee</span><span class="jnum">5</span></div>
-        </div>
-        <div class="lineup-group">
-          <div class="lineup-head"><span class="title">Midfield</span><span class="count">6</span></div>
-          <div class="lineup-row"><span class="pos">Ruck</span><span class="pname">Tommy Bourke</span><span class="jnum">11</span></div>
-          <div class="lineup-row"><span class="pos">Centre</span><span class="pname">Daniel Thompson</span><span class="jnum">30</span></div>
-          <div class="lineup-row"><span class="pos">R.Rov</span><span class="pname">Jarrah O'Brien</span><span class="jnum">21</span></div>
-          <div class="lineup-row"><span class="pos">Rover</span><span class="pname">Soren Hoopmann</span><span class="jnum">18</span></div>
-          <div class="lineup-row"><span class="pos">L Wing</span><span class="pname">Lukas Bele</span><span class="jnum">16</span></div>
-          <div class="lineup-row"><span class="pos">R Wing</span><span class="pname">Jenson Crichton</span><span class="jnum">7</span></div>
-        </div>
-        <div class="lineup-group">
-          <div class="lineup-head"><span class="title">Backs</span><span class="count">6</span></div>
-          <div class="lineup-row"><span class="pos">LHBF</span><span class="pname">Daylan Braby</span><span class="jnum">9</span></div>
-          <div class="lineup-row"><span class="pos">CHB</span><span class="pname">Xavier Caine</span><span class="jnum">14</span></div>
-          <div class="lineup-row"><span class="pos">RHBF</span><span class="pname">Beau Kingston</span><span class="jnum">6</span></div>
-          <div class="lineup-row"><span class="pos">LBP</span><span class="pname">Oliver Lang</span><span class="jnum">25</span></div>
-          <div class="lineup-row"><span class="pos">FB</span><span class="pname">William Ozolins</span><span class="jnum">28</span></div>
-          <div class="lineup-row"><span class="pos">RBP</span><span class="pname">Mason Maynard</span><span class="jnum">10</span></div>
-        </div>
-        <div class="lineup-group">
-          <div class="lineup-head"><span class="title">Interchange</span><span class="count">4</span></div>
-          <div class="lineup-row"><span class="pos">IC</span><span class="pname">Kade O'Shea</span><span class="jnum">23</span></div>
-          <div class="lineup-row"><span class="pos">IC</span><span class="pname">Zhyal Blackburne</span><span class="jnum">19</span></div>
-          <div class="lineup-row"><span class="pos">IC</span><span class="pname">Joel Andrews</span><span class="jnum">27</span></div>
-          <div class="lineup-row"><span class="pos">IC</span><span class="pname">Archer Dobell</span><span class="jnum">13</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="block">
-      <div class="block-head"><h3>Bench rotation</h3><span class="sub">4 off every half‑Q</span></div>
-      <div class="rot-timeline">
-        <div class="rot-line"><div class="rot-when"><span class="q">Q1 H1</span><span class="when">Start</span></div><div class="rot-bench">Kade · Zhyal · Joel · Archer</div></div>
-        <div class="rot-line"><div class="rot-when"><span class="q">Q1 H2</span><span class="when">Mid‑Q1</span></div><div class="rot-bench">Jenson · Max B · Elijah · Oliver</div></div>
-        <div class="rot-line"><div class="rot-when"><span class="q">Q2 H1</span><span class="when">¼ time</span></div><div class="rot-bench">Jarrah · Sam B · Mason M · Daylan</div></div>
-        <div class="rot-line"><div class="rot-when"><span class="q">Q2 H2</span><span class="when">Mid‑Q2</span></div><div class="rot-bench">Soren · Lukas · Lenny · Zhyal</div></div>
-        <div class="rot-line"><div class="rot-when"><span class="q">Q3 H1</span><span class="when">½ time</span></div><div class="rot-bench">Tommy · Grayson · X Caine · Beau K</div></div>
-        <div class="rot-line"><div class="rot-when"><span class="q">Q3 H2</span><span class="when">Mid‑Q3</span></div><div class="rot-bench">Daniel · Max B · Mason M · Will Oz</div></div>
-        <div class="rot-line"><div class="rot-when"><span class="q">Q4 H1</span><span class="when">¾ time</span></div><div class="rot-bench">Lukas · Elijah · Lenny · Archer</div></div>
-        <div class="rot-line"><div class="rot-when"><span class="q">Q4 H2</span><span class="when">Mid‑Q4</span></div><div class="rot-bench">Oliver · Mason Mc · Will Oz · Joel</div></div>
-      </div>
-    </div>
-
-    <div class="block">
-      <div class="block-head"><h3>Mid rest windows</h3></div>
-      <div class="fact-list">
-        <div class="rest-row"><span class="pname">Tommy Bourke</span><span class="rest-when">Q3 H1</span></div>
-        <div class="rest-row"><span class="pname">Daniel Thompson</span><span class="rest-when">Q3 H2</span></div>
-        <div class="rest-row"><span class="pname">Jarrah O'Brien</span><span class="rest-when">Q2 H1</span></div>
-        <div class="rest-row"><span class="pname">Soren Hoopmann</span><span class="rest-when">Q2 H2</span></div>
-        <div class="rest-row"><span class="pname">Lukas Bele</span><span class="rest-when">Q2 H2 + Q4 H1</span></div>
-        <div class="rest-row"><span class="pname">Jenson Crichton</span><span class="rest-when">Q1 H2</span></div>
-      </div>
-    </div>
-
-    <div class="block">
-      <div class="block-head"><h3>Ruck plan</h3></div>
-      <div class="fact-list">
-        <div class="fact-row"><strong>Tommy</strong> rucks all game except Q3 H1.</div>
-        <div class="fact-row"><strong>Q3 H1</strong> — Mason Mc rucks, Will Oz backup.</div>
-        <div class="fact-row"><strong>Q4 H2</strong> — Tommy back rucking.</div>
-      </div>
-    </div>
-
-    <div class="block">
-      <div class="block-head"><h3>Good times to swap</h3></div>
-      <div class="fact-list">
-        <div class="fact-row"><strong>After we score a goal</strong> — ball resets at centre.</div>
-        <div class="fact-row"><strong>Ball locked in opposition's back 50</strong> — low‑cost window.</div>
-        <div class="fact-row"><strong>Boundary throw‑in our end</strong> — natural stoppage.</div>
-      </div>
-    </div>
-
-    <div class="block">
-      <div class="block-head"><h3>Avoid</h3></div>
-      <div class="fact-list">
-        <div class="fact-row warn"><strong>First 2–3 min</strong> of any quarter — lose centre bounce impact.</div>
-        <div class="fact-row warn"><strong>Last 5–6 min</strong> of Q4 — best mids stay on.</div>
-        <div class="fact-row warn"><strong>Two top mids off</strong> at the same time.</div>
-      </div>
-    </div>
-
-    <div class="block">
-      <div class="block-head"><h3>Key reminders</h3></div>
-      <div class="fact-list">
-        <div class="fact-row"><strong>Max B</strong> unfit — rests Q1 H2 + Q3 H2.</div>
-        <div class="fact-row"><strong>Archer</strong> not match fit — down back, kick‑ins.</div>
-        <div class="fact-row"><strong>Oliver, Mason M, Lenny</strong> — small, stay in fwd/back lines.</div>
-        <div class="fact-row"><strong>Mason Mc</strong> — tall, rucks and can go back. Not fast.</div>
-        <div class="fact-row"><strong>Elijah</strong> — best‑suited forward to rotate into centre.</div>
-      </div>
-    </div>
-
-  </section>
-
   <!-- ═════════ SQUAD ═════════ -->
   <section id="section-squad" class="section">
     <div class="chip-row">
-      <button class="chip active" data-div="div1">Div 1</button>
+      <button class="chip active" data-div="all">Both divs</button>
+      <button class="chip" data-div="div1">Div 1</button>
       <button class="chip" data-div="div3">Div 3</button>
     </div>
 
     <div id="squad-loading" class="empty" style="margin-top:24px;">Loading squad data…</div>
     <div id="squad-body" style="display:none;">
-      <div id="bog-hero-container"></div>
-      <div id="stat-strip" class="stat-strip"></div>
+      <div id="stat-strip" class="stat-strip" style="margin-bottom:10px;"></div>
 
-      <div class="block">
-        <div class="block-head">
-          <h3>Best &amp; Fairest</h3>
-          <span class="sub" id="bf-sub">Season leaderboard</span>
+      <div class="squad-grid">
+        <div class="col-left">
+          <div id="bog-hero-container"></div>
+          <div class="block">
+            <div class="block-head">
+              <h3>Players</h3>
+              <span class="sub" id="pl-sub"></span>
+            </div>
+            <div class="squad-filter" id="player-filters">
+              <button class="sq-filter active" data-pf="all">All</button>
+              <button class="sq-filter" data-pf="danger">Locked out</button>
+              <button class="sq-filter" data-pf="warn">Working</button>
+              <button class="sq-filter" data-pf="ok">Qualified</button>
+              <button class="sq-filter" data-pf="none">Not played</button>
+            </div>
+            <div id="player-list"></div>
+          </div>
         </div>
-        <div id="votes-board"></div>
-      </div>
 
-      <div class="block">
-        <div class="block-head">
-          <h3>Players</h3>
-          <span class="sub" id="pl-sub"></span>
+        <div class="col-right">
+          <div id="warnings-host"></div>
+          <div class="rules-card">
+            <h4>Finals eligibility — rules</h4>
+            <div class="rules-list">
+              <div class="rule-row"><span class="icon">1</span><div><strong>Min:</strong> 4 games for that team (3 if reg'd after 30 Jun).</div></div>
+              <div class="rule-row"><span class="icon">2</span><div><strong>Lockout:</strong> for a lower-div team you must have played MORE for them than higher divs combined.</div></div>
+              <div class="rule-row"><span class="icon">3</span><div><strong>RPL:</strong> 12 named players (+4 by R8) can't play Div 3.</div></div>
+              <div class="rule-row"><span class="icon">4</span><div><strong>One team only</strong> per age group in finals.</div></div>
+            </div>
+          </div>
+          <div class="block" id="bf-block">
+            <div class="block-head">
+              <h3>Best &amp; Fairest</h3>
+              <span class="sub" id="bf-sub">Season leaderboard</span>
+            </div>
+            <div id="votes-board"></div>
+          </div>
+          <div class="block">
+            <div class="block-head">
+              <h3>Restricted list</h3>
+              <span class="sub" id="rpl-sub"></span>
+            </div>
+            <div id="rpl-list"></div>
+          </div>
+          <div class="block">
+            <div class="block-head">
+              <h3>Rounds played</h3>
+              <span class="sub" id="rnd-sub"></span>
+            </div>
+            <div id="rounds-log"></div>
+          </div>
         </div>
-        <div class="squad-filter" id="player-filters">
-          <button class="sq-filter active" data-pf="all">All</button>
-          <button class="sq-filter" data-pf="danger">Locked out</button>
-          <button class="sq-filter" data-pf="warn">Working</button>
-          <button class="sq-filter" data-pf="ok">Qualified</button>
-          <button class="sq-filter" data-pf="none">Not played</button>
-        </div>
-        <div id="player-list"></div>
-      </div>
-
-      <div class="block">
-        <div class="block-head">
-          <h3>Restricted list</h3>
-          <span class="sub" id="rpl-sub"></span>
-        </div>
-        <div id="rpl-list"></div>
-      </div>
-
-      <div class="block">
-        <div class="block-head">
-          <h3>Rounds played</h3>
-          <span class="sub" id="rnd-sub"></span>
-        </div>
-        <div id="rounds-log"></div>
       </div>
     </div>
   </section>
@@ -1196,7 +1265,7 @@ function teamBadge(name, isTCT) {
 let activeSection = 'fixtures';
 let fxFilter = 'tct'; // tct, div1, div3, all
 let activeRound = null;
-let squadDiv = 'div1';
+let squadDiv = 'all';
 let playerFilter = 'all';
 let attendanceData = null;
 
@@ -1409,30 +1478,99 @@ function recentBog(divKey) {
   };
 }
 
+function buildWarnings() {
+  const rpl = (attendanceData.restricted_player_list && attendanceData.restricted_player_list.players) || [];
+  const allPlayers = [
+    ...attendanceData.squads.div1.players.map(p => ({ ...p, primary: 'div1' })),
+    ...attendanceData.squads.div3.players.map(p => ({ ...p, primary: 'div3' }))
+  ];
+  const warnings = [];
+  for (const p of allPlayers) {
+    const s = playerStats(p.name);
+    const total = s.d1 + s.d3;
+    if (total === 0) continue;
+    if (rpl.includes(p.name) && s.d3 > 0) {
+      warnings.push({ name: p.name, primary: p.primary, level: 'danger', why: `RPL breach — played ${s.d3} Div 3 game${s.d3>1?'s':''}`, badge: 'RPL' });
+      continue;
+    }
+    if (p.primary === 'div3' && s.d1 > 0 && s.d1 >= s.d3) {
+      warnings.push({ name: p.name, primary: p.primary, level: 'danger', why: `${s.d1} Div 1 vs ${s.d3} Div 3 — locked out of Div 3 finals`, badge: 'Locked' });
+    } else if (p.primary === 'div3' && s.d1 > 0 && s.d1 === s.d3 - 1) {
+      warnings.push({ name: p.name, primary: p.primary, level: 'warn', why: `${s.d1} Div 1 vs ${s.d3} Div 3 — one more Div 1 game = locked`, badge: 'At risk' });
+    }
+  }
+  return warnings;
+}
+
+function renderWarnings() {
+  const host = document.getElementById('warnings-host');
+  if (!host) return;
+  const warnings = buildWarnings();
+  if (!warnings.length) {
+    const totalRounds = attendanceData.rounds.length;
+    host.innerHTML = `<div class="warn-card ok">
+      <h4>All clear</h4>
+      <div style="font-size:12px;color:var(--text-2);line-height:1.5;">No active warnings after ${totalRounds} round${totalRounds!==1?'s':''}. Players approaching lockout or below 4 games will appear here as the season runs.</div>
+    </div>`;
+    return;
+  }
+  const danger = warnings.filter(w => w.level === 'danger');
+  const cardLevel = danger.length ? 'danger' : 'warn';
+  host.innerHTML = `<div class="warn-card ${cardLevel}">
+    <h4>${warnings.length} active warning${warnings.length!==1?'s':''}</h4>
+    <div class="warn-list">${warnings.map(w => `
+      <div class="warn-row ${w.level}">
+        <div><div class="who">${w.name} <span style="font-size:10px;color:var(--text-3);font-weight:600;">· ${w.primary === 'div1' ? 'Div 1' : 'Div 3'}</span></div><div class="why">${w.why}</div></div>
+        <span class="badge">${w.badge}</span>
+      </div>`).join('')}</div>
+  </div>`;
+}
+
 function renderSquad() {
-  const squad = attendanceData.squads[squadDiv].players;
+  const isAll = squadDiv === 'all';
   const rpl = (attendanceData.restricted_player_list && attendanceData.restricted_player_list.players) || [];
 
-  // Hero BOG
-  const bog = recentBog(squadDiv);
-  const heroHost = document.getElementById('bog-hero-container');
-  if (bog) {
-    heroHost.innerHTML = `
-      <div class="bog-hero">
-        <div class="bog-label">R${bog.round} · Best on ground</div>
-        <div class="bog-player">${bog.player}</div>
-        <div class="bog-foot">
-          <div class="bog-pts">${bog.points}<small>pts</small></div>
-          <div class="bog-note">${bog.unanimous ? 'Unanimous — 5 from every voter' : 'Topped the vote'}${bog.voters.length?`<br><span style="opacity:0.55;font-size:10px;">Voted by ${bog.voters.join(', ')}</span>`:''}</div>
-        </div>
-      </div>
-    `;
+  let squad;
+  if (isAll) {
+    squad = [
+      ...attendanceData.squads.div1.players.map(p => ({ ...p, primary: 'div1' })),
+      ...attendanceData.squads.div3.players.map(p => ({ ...p, primary: 'div3' }))
+    ];
   } else {
-    heroHost.innerHTML = `<div class="empty" style="margin-bottom:18px;"><strong>No ${squadDiv === 'div1' ? 'Div 1' : 'Div 3'} votes yet</strong>Votes appear here after each round.</div>`;
+    squad = attendanceData.squads[squadDiv].players.map(p => ({ ...p, primary: squadDiv }));
+  }
+
+  renderWarnings();
+
+  // Hero BOG (hidden in 'all' mode — div-specific)
+  const heroHost = document.getElementById('bog-hero-container');
+  const bfBlock = document.getElementById('bf-block');
+  if (isAll) {
+    heroHost.innerHTML = '';
+    if (bfBlock) bfBlock.style.display = 'none';
+  } else {
+    if (bfBlock) bfBlock.style.display = '';
+  }
+  if (!isAll) {
+    const bog = recentBog(squadDiv);
+    if (bog) {
+      heroHost.innerHTML = `
+        <div class="bog-hero">
+          <div class="bog-label">R${bog.round} · Best on ground</div>
+          <div class="bog-player">${bog.player}</div>
+          <div class="bog-foot">
+            <div class="bog-pts">${bog.points}<small>pts</small></div>
+            <div class="bog-note">${bog.unanimous ? 'Unanimous — 5 from every voter' : 'Topped the vote'}${bog.voters.length?`<br><span style="opacity:0.55;font-size:10px;">Voted by ${bog.voters.join(', ')}</span>`:''}</div>
+          </div>
+        </div>
+      `;
+    } else {
+      heroHost.innerHTML = `<div class="empty" style="margin-bottom:12px;"><strong>No ${squadDiv === 'div1' ? 'Div 1' : 'Div 3'} votes yet</strong>Votes appear here after each round.</div>`;
+    }
   }
 
   // Quick stats
-  const allStats = squad.map(p => ({ p, s: playerStats(p.name), e: finalsStatus(playerStats(p.name).d1, playerStats(p.name).d3, squadDiv) }));
+  const allStats = squad.map(p => ({ p, s: playerStats(p.name), e: finalsStatus(playerStats(p.name).d1, playerStats(p.name).d3, p.primary) }));
   const played = allStats.filter(x => x.s.d1 + x.s.d3 > 0).length;
   const qualified = allStats.filter(x => x.e.key === 'ok').length;
   const alerts = allStats.filter(x => x.e.key === 'danger').length;
@@ -1442,7 +1580,10 @@ function renderSquad() {
     <div class="stat-tile"><div class="n" style="color:${alerts?'var(--danger)':'var(--text)'}">${alerts}</div><div class="l">Alerts</div></div>
   `;
 
-  // Votes leaderboard
+  // Votes leaderboard (skipped in 'all' mode)
+  if (isAll) {
+    document.getElementById('bf-sub').textContent = '';
+  } else {
   const votes = seasonVotes(squadDiv);
   const vhost = document.getElementById('votes-board');
   if (!votes.length) {
@@ -1461,9 +1602,9 @@ function renderSquad() {
       </div>`;
     }).join('') + `</div>`;
 
-    // Vote sheets
+    // Vote sheets (collapsed by default)
     const rounds = (attendanceData.votes && attendanceData.votes.rounds) || [];
-    let vsHtml = '<div class="vote-sheets">';
+    let vsHtml = '<details class="vote-sheets-wrap" style="margin-top:10px;"><summary style="cursor:pointer;font-size:11px;color:var(--text-3);font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:6px 0;">Per-round cards</summary><div class="vote-sheets">';
     for (const r of rounds.slice().reverse()) {
       const cards = r[squadDiv + '_cards'] || [];
       const pool = r[squadDiv + '_voters'] || [];
@@ -1481,14 +1622,15 @@ function renderSquad() {
       });
       vsHtml += `</div>`;
     }
-    vsHtml += '</div>';
+    vsHtml += '</div></details>';
     vhost.innerHTML += vsHtml;
   }
   document.getElementById('bf-sub').textContent = votes.length ? `${votes.length} player${votes.length!==1?'s':''} with votes` : '';
+  } // end !isAll votes block
 
   // Players
-  renderPlayers(allStats, rpl);
-  document.getElementById('pl-sub').textContent = `${squad.length} squad`;
+  renderPlayers(allStats, rpl, isAll);
+  document.getElementById('pl-sub').textContent = `${squad.length} ${isAll ? 'across both divs' : 'squad'}`;
 
   // RPL
   const rplHost = document.getElementById('rpl-list');
@@ -1496,18 +1638,18 @@ function renderSquad() {
     rplHost.innerHTML = `<div class="empty"><strong>No RPL yet</strong>12 players required before R1, +4 before R8.</div>`;
   } else {
     const rplPlayers = [...attendanceData.squads.div1.players, ...attendanceData.squads.div3.players].filter(p => rpl.includes(p.name));
-    rplHost.innerHTML = `<div class="player-list">` + rplPlayers.map(p => {
+    const rplBody = rplPlayers.map(p => {
       const s = playerStats(p.name);
       const breach = s.d3 > 0;
-      return `<div class="pl-row">
-        <span class="pl-num ${p.no === null ? 'blank' : ''}">${p.no !== null ? p.no : '–'}</span>
-        <div class="pl-name-col"><div class="pl-name">${p.name} <span class="pl-rpl">🔒</span></div><div class="pl-sub">${breach ? 'Played Div 3 — breach' : 'Locked to Div 1+'}</div></div>
-        <div class="pl-right">
-          <span class="pl-split"><span class="lbl">D1</span>&nbsp;<span class="d1-n">${s.d1}</span><span class="sep">·</span><span class="lbl">D3</span>&nbsp;<span class="d3-n">${s.d3}</span></span>
-          <span class="pl-status ${breach ? 'danger' : ''}">${breach ? 'Breach' : 'OK'}</span>
-        </div>
-      </div>`;
-    }).join('') + `</div>`;
+      return `<tr>
+        <td class="col-num ${p.no === null ? 'blank' : ''}">${p.no !== null ? p.no : '–'}</td>
+        <td class="col-name">${p.name}<span class="rpl-mark">🔒</span></td>
+        <td class="col-games ${s.d1 ? '' : 'zero'}">${s.d1}</td>
+        <td class="col-games ${s.d3 ? '' : 'zero'}">${s.d3}</td>
+        <td class="col-status"><span class="badge ${breach ? 'danger' : 'ok'}">${breach ? 'Breach' : 'OK'}</span></td>
+      </tr>`;
+    }).join('');
+    rplHost.innerHTML = `<div class="player-list" style="max-height:none;"><table class="pl-table"><thead><tr><th class="num">#</th><th>Player</th><th class="center">D1</th><th class="center">D3</th><th class="center">Status</th></tr></thead><tbody>${rplBody}</tbody></table></div>`;
   }
   document.getElementById('rpl-sub').textContent = `${rpl.length} of 16`;
 
@@ -1518,16 +1660,14 @@ function renderSquad() {
   } else {
     rHost.innerHTML = attendanceData.rounds.slice().reverse().map(r => `
       <div class="rnd-log">
-        <div class="rnd-log-head"><span class="rnd-log-r">Round ${r.round}</span><span class="rnd-log-date">${r.date}</span></div>
+        <div class="rnd-log-head"><span class="rnd-log-r">R${r.round}</span><span class="rnd-log-date">${r.date}</span></div>
         <div class="rnd-log-div">
-          <div class="dlabel">DIV 1</div>
-          <div class="dopp">${r.div1.opponent || '—'}</div>
-          <div class="dcount"><b>${r.div1.played.length}</b> played${r.div1.late_outs.length?` · <b>${r.div1.late_outs.length}</b> late out`:''}${r.div1.dnp.length?` · <b>${r.div1.dnp.length}</b> DNP`:''}</div>
+          <span class="dlabel">D1</span> <span class="dopp">${r.div1.opponent || '—'}</span>
+          <div class="dcount"><b>${r.div1.played.length}</b> played${r.div1.late_outs.length?` · <b>${r.div1.late_outs.length}</b> LO`:''}${r.div1.dnp.length?` · <b>${r.div1.dnp.length}</b> DNP`:''}</div>
         </div>
         <div class="rnd-log-div">
-          <div class="dlabel">DIV 3</div>
-          <div class="dopp">${r.div3.opponent || '—'}</div>
-          <div class="dcount"><b>${r.div3.played.length}</b> played${r.div3.late_outs.length?` · <b>${r.div3.late_outs.length}</b> late out`:''}${r.div3.dnp.length?` · <b>${r.div3.dnp.length}</b> DNP`:''}</div>
+          <span class="dlabel">D3</span> <span class="dopp">${r.div3.opponent || '—'}</span>
+          <div class="dcount"><b>${r.div3.played.length}</b> played${r.div3.late_outs.length?` · <b>${r.div3.late_outs.length}</b> LO`:''}${r.div3.dnp.length?` · <b>${r.div3.dnp.length}</b> DNP`:''}</div>
         </div>
       </div>
     `).join('');
@@ -1535,33 +1675,43 @@ function renderSquad() {
   document.getElementById('rnd-sub').textContent = `${attendanceData.rounds.length} round${attendanceData.rounds.length!==1?'s':''}`;
 }
 
-function renderPlayers(allStats, rpl) {
+function renderPlayers(allStats, rpl, isAll) {
   const sortOrder = { danger: 0, warn: 1, ok: 2, none: 3 };
   const filtered = playerFilter === 'all' ? allStats : allStats.filter(x => x.e.key === playerFilter);
   filtered.sort((a,b) => {
     if (a.e.key !== b.e.key) return sortOrder[a.e.key] - sortOrder[b.e.key];
+    if (isAll && a.p.primary !== b.p.primary) return a.p.primary === 'div1' ? -1 : 1;
     if (a.p.no === null) return 1; if (b.p.no === null) return -1;
     return a.p.no - b.p.no;
   });
   const host = document.getElementById('player-list');
   if (!filtered.length) { host.innerHTML = `<div class="empty">No players match.</div>`; return; }
-  host.innerHTML = `<div class="player-list">` + filtered.map(({p, s, e}) => {
+  const headRow = `<thead><tr>
+    <th class="num">#</th>
+    <th>Player</th>
+    ${isAll ? '<th class="center">Div</th>' : ''}
+    <th class="center">D1</th>
+    <th class="center">D3</th>
+    <th class="center">Total</th>
+    <th class="center">Status</th>
+  </tr></thead>`;
+  const body = filtered.map(({p, s, e}) => {
     const onRpl = rpl.includes(p.name);
+    const total = s.d1 + s.d3;
     const subbits = [];
     if (s.lateOuts) subbits.push(`${s.lateOuts} late out${s.lateOuts>1?'s':''}`);
     if (s.dnp) subbits.push(`${s.dnp} DNP`);
-    return `<div class="pl-row">
-      <span class="pl-num ${p.no === null ? 'blank' : ''}">${p.no !== null ? p.no : '–'}</span>
-      <div class="pl-name-col">
-        <div class="pl-name">${p.name}${onRpl ? ' <span class="pl-rpl">🔒</span>' : ''}</div>
-        ${subbits.length ? `<div class="pl-sub">${subbits.join(' · ')}</div>` : ''}
-      </div>
-      <div class="pl-right">
-        <span class="pl-split"><span class="lbl">D1</span>&nbsp;<span class="d1-n">${s.d1}</span><span class="sep">·</span><span class="lbl">D3</span>&nbsp;<span class="d3-n">${s.d3}</span></span>
-        <span class="pl-status ${e.key === 'none' ? '' : e.key}">${e.label}</span>
-      </div>
-    </div>`;
-  }).join('') + `</div>`;
+    return `<tr>
+      <td class="col-num ${p.no === null ? 'blank' : ''}">${p.no !== null ? p.no : '–'}</td>
+      <td class="col-name">${p.name}${onRpl ? '<span class="rpl-mark">🔒</span>' : ''}${subbits.length ? `<span class="sub-line">${subbits.join(' · ')}</span>` : ''}</td>
+      ${isAll ? `<td class="col-div ${p.primary}">${p.primary === 'div1' ? 'D1' : 'D3'}</td>` : ''}
+      <td class="col-games ${s.d1 ? '' : 'zero'}">${s.d1}</td>
+      <td class="col-games ${s.d3 ? '' : 'zero'}">${s.d3}</td>
+      <td class="col-total ${total ? '' : 'zero'}">${total}</td>
+      <td class="col-status"><span class="badge ${e.key === 'none' ? '' : e.key}">${e.label}</span></td>
+    </tr>`;
+  }).join('');
+  host.innerHTML = `<div class="player-list" style="overflow-x:auto;"><table class="pl-table">${headRow}<tbody>${body}</tbody></table></div>`;
 }
 
 function setSquadDiv(d) {
@@ -1582,10 +1732,14 @@ function setPlayerFilter(f) {
     }
   });
   if (attendanceData) {
-    const squad = attendanceData.squads[squadDiv].players;
+    const isAll = squadDiv === 'all';
+    const squad = isAll
+      ? [...attendanceData.squads.div1.players.map(p => ({ ...p, primary: 'div1' })),
+         ...attendanceData.squads.div3.players.map(p => ({ ...p, primary: 'div3' }))]
+      : attendanceData.squads[squadDiv].players.map(p => ({ ...p, primary: squadDiv }));
     const rpl = (attendanceData.restricted_player_list && attendanceData.restricted_player_list.players) || [];
-    const allStats = squad.map(p => ({ p, s: playerStats(p.name), e: finalsStatus(playerStats(p.name).d1, playerStats(p.name).d3, squadDiv) }));
-    renderPlayers(allStats, rpl);
+    const allStats = squad.map(p => ({ p, s: playerStats(p.name), e: finalsStatus(playerStats(p.name).d1, playerStats(p.name).d3, p.primary) }));
+    renderPlayers(allStats, rpl, isAll);
   }
 }
 

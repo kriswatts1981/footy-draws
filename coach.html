@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Coach — TCT U15 Boys</title>
+<meta name="description" content="Game day rotations and tactical plan (private)">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0B0B0F">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0B0B0F;
+  --bg-1: #141419;
+  --bg-2: #1B1B23;
+  --bg-3: #24242E;
+  --border: #242430;
+  --border-bright: #33333F;
+  --text: #F2F2F5;
+  --text-2: #A8A8B4;
+  --text-3: #68687A;
+  --gold: #FFC629;
+  --gold-dim: #C99A1F;
+  --ok: #34D399;
+  --warn: #FBBF24;
+  --danger: #F87171;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--bg); }
+body {
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  padding-bottom: calc(20px + var(--safe-bottom));
+  font-size: 14px;
+  line-height: 1.45;
+  font-feature-settings: "tnum" 1, "cv11" 1;
+}
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+
+/* ═════════ Header ═════════ */
+.app-header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(11,11,15,0.92);
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+}
+.brand-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 18px;
+  padding-top: calc(14px + var(--safe-top));
+  max-width: 720px; margin: 0 auto;
+}
+.brand-logo {
+  width: 36px; height: 36px; border-radius: 10px;
+  object-fit: cover;
+  background: var(--bg-2);
+}
+.brand-text { min-width: 0; }
+.brand-title {
+  font-size: 17px; font-weight: 800; color: var(--text);
+  letter-spacing: -0.2px;
+}
+.brand-sub {
+  font-size: 11px; color: var(--text-3); font-weight: 500;
+  margin-top: 2px;
+}
+
+/* ═════════ Primary nav (inside header) ═════════ */
+.section-nav {
+  padding: 0 18px 12px;
+  max-width: 720px; margin: 0 auto;
+  display: flex; gap: 6px;
+}
+.nav-btn {
+  flex: 1;
+  min-height: 44px;
+  padding: 12px 10px;
+  font-size: 13px; font-weight: 700; color: var(--text-2);
+  background: var(--bg-1);
+  border-radius: 12px;
+  transition: background 0.15s, color 0.15s;
+  letter-spacing: -0.1px;
+}
+.nav-btn.active {
+  background: var(--gold); color: #0B0B0F; font-weight: 800;
+}
+.nav-btn:active { opacity: 0.85; }
+
+/* ═════════ Main ═════════ */
+.app-main {
+  max-width: 720px; margin: 0 auto;
+  padding: 20px 18px;
+}
+.section { display: none; }
+.section.active { display: block; }
+
+/* ═════════ Shared blocks ═════════ */
+.block {
+  margin-bottom: 28px;
+}
+.block-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 12px; padding: 0 2px;
+}
+.block-head h2 {
+  font-size: 22px; font-weight: 800; color: var(--text);
+  letter-spacing: -0.3px;
+}
+.block-head h3 {
+  font-size: 17px; font-weight: 800; color: var(--text);
+  letter-spacing: -0.2px;
+}
+.block-head .sub {
+  font-size: 12px; color: var(--text-3); font-weight: 500;
+}
+
+/* Chip row */
+.chip-row {
+  display: flex; gap: 8px; margin-bottom: 18px;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 2px 0;
+}
+.chip-row::-webkit-scrollbar { display: none; }
+.chip {
+  white-space: nowrap;
+  min-height: 40px;
+  padding: 10px 16px;
+  font-size: 13px; font-weight: 600; color: var(--text-2);
+  background: var(--bg-1); border: 1px solid var(--border);
+  border-radius: 22px;
+  display: inline-flex; align-items: center;
+}
+.chip.active {
+  background: var(--text); color: var(--bg);
+  border-color: var(--text);
+}
+.chip:active { opacity: 0.85; transform: scale(0.97); }
+
+/* Round picker */
+.round-picker {
+  display: flex; gap: 6px; padding: 4px 0 16px;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.round-picker::-webkit-scrollbar { display: none; }
+.round-pill {
+  min-width: 44px; min-height: 40px;
+  padding: 10px 14px;
+  font-size: 13px; font-weight: 700; color: var(--text-2);
+  background: var(--bg-1); border: 1px solid var(--border);
+  border-radius: 22px; text-align: center;
+  white-space: nowrap;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.round-pill.active { background: var(--gold); color: #0B0B0F; border-color: var(--gold); }
+.round-pill.played { opacity: 0.5; }
+.round-pill.next { border-color: var(--gold); color: var(--gold); }
+.round-pill.next.active { color: #0B0B0F; }
+.round-pill:active { transform: scale(0.95); }
+
+/* ═════════ Hero: next game ═════════ */
+.next-game {
+  background: linear-gradient(135deg, #1C1C24 0%, #0E0E13 100%);
+  border: 1px solid var(--border);
+  border-radius: 18px; padding: 18px 20px;
+  margin-bottom: 22px;
+  position: relative; overflow: hidden;
+}
+.next-game::before {
+  content: ''; position: absolute; top: -60px; right: -60px;
+  width: 180px; height: 180px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,198,41,0.14) 0%, transparent 70%);
+}
+.ng-label {
+  font-size: 11px; font-weight: 700; color: var(--gold);
+  letter-spacing: 0.5px;
+  position: relative;
+}
+.ng-teams {
+  font-size: 22px; font-weight: 800; color: var(--text);
+  margin: 6px 0 4px; letter-spacing: -0.3px;
+  position: relative; line-height: 1.2;
+}
+.ng-meta {
+  font-size: 13px; color: var(--text-2); font-weight: 500;
+  position: relative;
+}
+.ng-empty {
+  font-size: 14px; color: var(--text-3); font-weight: 500;
+  position: relative;
+}
+
+/* ═════════ Fixture rows ═════════ */
+.fixtures-list {
+  display: flex; flex-direction: column;
+  border-radius: 14px; overflow: hidden;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+}
+.fx-row {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: start;
+}
+.fx-row:last-child { border-bottom: none; }
+.fx-row.tct-game { background: linear-gradient(90deg, rgba(255,198,41,0.06) 0%, transparent 60%); }
+.fx-row.played { opacity: 0.55; }
+
+.fx-teams { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.fx-team { display: flex; align-items: center; gap: 10px; }
+.fx-team .logo {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--bg-2); object-fit: cover;
+  border: 1px solid var(--border-bright);
+  flex-shrink: 0;
+}
+.fx-team.tct .logo { border: 1.5px solid var(--gold); }
+.fx-team .team-fallback {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--bg-2); color: var(--text-2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 800; flex-shrink: 0;
+  border: 1px solid var(--border-bright);
+}
+.fx-team .tname {
+  font-size: 14px; color: var(--text); font-weight: 600;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  min-width: 0; flex: 1;
+}
+.fx-team.tct .tname { color: var(--text); font-weight: 700; }
+.fx-team .ha {
+  font-size: 10px; font-weight: 700; color: var(--text-3);
+  letter-spacing: 0.4px;
+  padding: 2px 6px; border-radius: 4px; background: var(--bg-2);
+}
+.fx-team .ha.home { color: var(--gold); background: rgba(255,198,41,0.1); }
+
+.fx-meta {
+  text-align: right;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
+  white-space: nowrap;
+}
+.fx-status {
+  font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 10px;
+  letter-spacing: 0.3px;
+}
+.fx-status.today {
+  background: var(--gold); color: #0B0B0F;
+  animation: pulse 2s infinite;
+}
+.fx-status.this-week { background: rgba(255,198,41,0.15); color: var(--gold); }
+.fx-status.upcoming { background: var(--bg-3); color: var(--text-2); }
+.fx-status.played { background: var(--bg-3); color: var(--text-3); }
+.fx-time { font-size: 12px; color: var(--text-2); font-weight: 600; }
+.fx-div { font-size: 10px; color: var(--text-3); font-weight: 700; letter-spacing: 0.5px; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.fx-details {
+  grid-column: 1 / -1;
+  padding-top: 10px; margin-top: 4px;
+  border-top: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; gap: 12px 18px;
+  font-size: 12px; color: var(--text-2);
+}
+.fx-details .det { display: flex; align-items: center; gap: 6px; }
+.fx-details .icon { width: 14px; color: var(--text-3); }
+.fx-details a { color: var(--gold); font-weight: 600; }
+.fx-bye { padding: 14px 16px; font-size: 14px; color: var(--text-3); border-bottom: 1px solid var(--border); }
+.fx-bye:last-child { border-bottom: none; }
+.fx-bye .tct-bye { color: var(--gold); font-weight: 700; }
+
+/* ═════════ Round heading inside list ═════════ */
+.rnd-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 4px 4px 10px; margin-top: 8px;
+}
+.rnd-head h3 {
+  font-size: 16px; font-weight: 800; letter-spacing: -0.2px;
+}
+.rnd-head .rd-date { font-size: 12px; color: var(--text-3); font-weight: 500; }
+
+/* ═════════ Game Day: lineup ═════════ */
+.lineup {
+  background: var(--bg-1); border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden;
+}
+.lineup-group { border-bottom: 1px solid var(--border); }
+.lineup-group:last-child { border-bottom: none; }
+.lineup-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px;
+  background: var(--bg-2);
+}
+.lineup-head .title {
+  font-size: 11px; font-weight: 800; color: var(--gold);
+  letter-spacing: 1.5px; text-transform: uppercase;
+}
+.lineup-head .count { font-size: 11px; color: var(--text-3); font-weight: 600; }
+.lineup-row {
+  display: grid; grid-template-columns: 48px 1fr 32px;
+  gap: 12px; padding: 10px 16px;
+  align-items: center;
+  border-top: 1px solid var(--border);
+}
+.lineup-row .pos {
+  font-size: 11px; font-weight: 700; color: var(--text-3);
+  letter-spacing: 0.3px;
+}
+.lineup-row .pname {
+  font-size: 14px; font-weight: 600; color: var(--text);
+}
+.lineup-row .jnum {
+  font-size: 13px; font-weight: 800; color: var(--gold);
+  text-align: center;
+}
+
+/* Game Day: bench rotation table */
+.rot-timeline {
+  background: var(--bg-1); border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden;
+}
+.rot-line {
+  display: grid; grid-template-columns: 88px 1fr;
+  gap: 14px; padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  align-items: start;
+}
+.rot-line:first-child { border-top: none; }
+.rot-when {
+  display: flex; flex-direction: column; gap: 2px;
+}
+.rot-when .q {
+  font-size: 13px; font-weight: 800; color: var(--text);
+  letter-spacing: -0.2px;
+}
+.rot-when .when { font-size: 11px; color: var(--text-3); font-weight: 500; }
+.rot-bench {
+  font-size: 13px; color: var(--text); font-weight: 500;
+  line-height: 1.5;
+}
+
+/* Game Day: simple fact list */
+.fact-list {
+  background: var(--bg-1); border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden;
+}
+.fact-row {
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  font-size: 13px; color: var(--text); line-height: 1.5;
+}
+.fact-row:first-child { border-top: none; }
+.fact-row strong { color: var(--gold); font-weight: 700; }
+.fact-row.warn strong { color: var(--danger); }
+
+.rest-row {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 12px; padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  align-items: center;
+}
+.rest-row:first-child { border-top: none; }
+.rest-row .pname { font-size: 13px; font-weight: 600; color: var(--text); }
+.rest-row .rest-when {
+  font-size: 12px; font-weight: 700; color: var(--gold);
+  background: rgba(255,198,41,0.1);
+  padding: 4px 10px; border-radius: 12px;
+}
+
+/* ═════════ Squad: BOG hero ═════════ */
+.bog-hero {
+  background: linear-gradient(135deg, #18181F 0%, #0B0B0F 100%);
+  border: 1px solid var(--border);
+  border-radius: 18px; padding: 20px 22px;
+  margin-bottom: 18px;
+  position: relative; overflow: hidden;
+}
+.bog-hero::before {
+  content: ''; position: absolute; top: -50px; right: -30px;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,198,41,0.22) 0%, transparent 70%);
+}
+.bog-label {
+  font-size: 10px; font-weight: 800; color: var(--gold);
+  letter-spacing: 2px; text-transform: uppercase;
+  position: relative;
+}
+.bog-player {
+  font-size: 28px; font-weight: 900; color: var(--text);
+  margin-top: 6px; letter-spacing: -0.5px; line-height: 1.05;
+  position: relative;
+}
+.bog-foot {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+  margin-top: 12px; position: relative;
+}
+.bog-pts {
+  font-size: 36px; font-weight: 900; color: var(--gold);
+  line-height: 1; letter-spacing: -1.5px;
+}
+.bog-pts small { font-size: 12px; font-weight: 700; color: var(--text-3); margin-left: 4px; letter-spacing: 0.5px; }
+.bog-note {
+  font-size: 11px; color: var(--text-2); text-align: right; max-width: 60%;
+}
+
+/* ═════════ Squad: quick stats strip ═════════ */
+.stat-strip {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 8px; margin-bottom: 24px;
+}
+.stat-tile {
+  background: var(--bg-1); border: 1px solid var(--border);
+  border-radius: 14px; padding: 14px 12px;
+  text-align: center;
+}
+.stat-tile .n {
+  font-size: 24px; font-weight: 900; color: var(--text);
+  line-height: 1; letter-spacing: -0.5px;
+}
+.stat-tile .l {
+  font-size: 10px; font-weight: 700; color: var(--text-3);
+  margin-top: 6px; letter-spacing: 0.4px; text-transform: uppercase;
+}
+
+/* ═════════ Squad: votes leaderboard ═════════ */
+.votes-lb {
+  background: var(--bg-1); border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden;
+}
+.lb-row {
+  display: grid; grid-template-columns: 36px 1fr auto;
+  gap: 12px; padding: 12px 16px;
+  align-items: center;
+  border-top: 1px solid var(--border);
+}
+.lb-row:first-child { border-top: none; }
+.lb-rank {
+  display: flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 50%;
+  font-size: 12px; font-weight: 800; color: var(--text-3);
+  background: var(--bg-2);
+}
+.lb-row.r-1 .lb-rank { background: var(--gold); color: #0B0B0F; }
+.lb-row.r-2 .lb-rank { background: #9AA0A6; color: #0B0B0F; }
+.lb-row.r-3 .lb-rank { background: #B87333; color: #fff; }
+.lb-main { min-width: 0; }
+.lb-name {
+  font-size: 14px; font-weight: 600; color: var(--text);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.lb-bar {
+  height: 4px; background: var(--bg-3); border-radius: 2px;
+  margin-top: 6px; overflow: hidden;
+}
+.lb-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-dim)); border-radius: 2px; }
+.lb-pts {
+  font-size: 18px; font-weight: 900; color: var(--text);
+  letter-spacing: -0.5px;
+}
+.votes-empty {
+  background: var(--bg-1); border: 1px dashed var(--border);
+  border-radius: 14px; padding: 20px;
+  text-align: center; color: var(--text-3); font-size: 13px;
+}
+
+/* Vote sheets per round */
+.vote-sheets { margin-top: 14px; }
+.vs-round {
+  background: var(--bg-1); border: 1px solid var(--border);
+  border-radius: 14px; padding: 14px 16px; margin-bottom: 10px;
+}
+.vs-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  font-size: 12px; font-weight: 800; letter-spacing: 0.4px;
+  color: var(--text); padding-bottom: 10px;
+  border-bottom: 1px solid var(--border); margin-bottom: 10px;
+}
+.vs-head .pool { font-size: 11px; color: var(--text-3); font-weight: 500; }
+.vs-card {
+  padding: 8px 0; border-top: 1px solid var(--border);
+  display: grid; grid-template-columns: 56px 1fr; gap: 12px;
+  align-items: start;
+}
+.vs-card:first-child { border-top: none; padding-top: 0; }
+.vs-card-title {
+  font-size: 10px; font-weight: 800; color: var(--text-3);
+  letter-spacing: 0.5px; padding-top: 4px;
+}
+.vs-card-votes { display: flex; flex-wrap: wrap; gap: 5px; }
+.vs-vote {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 8px 3px 4px; border-radius: 12px;
+  background: var(--bg-2); font-size: 11px; color: var(--text-2);
+}
+.vs-vote .pts {
+  font-weight: 900; font-size: 10px; color: #0B0B0F;
+  background: var(--gold); width: 18px; height: 18px;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+}
+
+/* ═════════ Squad: players ═════════ */
+.squad-filter {
+  display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap;
+}
+.sq-filter {
+  min-height: 36px;
+  font-size: 12px; font-weight: 700; color: var(--text-3);
+  background: var(--bg-1); border: 1px solid var(--border);
+  padding: 8px 12px; border-radius: 16px;
+  display: inline-flex; align-items: center;
+}
+.sq-filter:active { transform: scale(0.96); }
+.sq-filter.active { background: var(--bg-3); color: var(--text); border-color: var(--border-bright); }
+.sq-filter.active.r-danger { color: var(--danger); border-color: rgba(248,113,113,0.35); background: rgba(248,113,113,0.08); }
+.sq-filter.active.r-warn { color: var(--warn); border-color: rgba(251,191,36,0.35); background: rgba(251,191,36,0.08); }
+.sq-filter.active.r-ok { color: var(--ok); border-color: rgba(52,211,153,0.35); background: rgba(52,211,153,0.08); }
+
+.player-list {
+  background: var(--bg-1); border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden;
+}
+.pl-row {
+  display: grid; grid-template-columns: 32px 1fr auto;
+  gap: 12px; padding: 12px 14px;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  min-height: 52px;
+}
+.pl-row:first-child { border-top: none; }
+.pl-num {
+  font-size: 14px; font-weight: 800; color: var(--gold);
+  text-align: center;
+}
+.pl-num.blank { color: var(--text-3); font-weight: 500; }
+.pl-name-col { min-width: 0; }
+.pl-name {
+  font-size: 14px; font-weight: 600; color: var(--text);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  display: flex; align-items: center; gap: 6px;
+}
+.pl-rpl { font-size: 11px; color: var(--gold); }
+.pl-sub { font-size: 11px; color: var(--text-3); margin-top: 2px; }
+.pl-right {
+  display: flex; flex-direction: column; gap: 4px; align-items: flex-end;
+}
+.pl-split {
+  font-size: 11px; font-weight: 700; color: var(--text-2);
+  padding: 3px 8px; border-radius: 10px;
+  background: var(--bg-2);
+  white-space: nowrap;
+}
+.pl-split .d1-n, .pl-split .d3-n { color: var(--text); font-weight: 800; }
+.pl-split .sep { color: var(--text-3); margin: 0 4px; }
+.pl-split .lbl { color: var(--text-3); font-weight: 700; font-size: 10px; letter-spacing: 0.3px; }
+.pl-status {
+  font-size: 10px; font-weight: 700; color: var(--text-3);
+  padding: 3px 8px; border-radius: 10px;
+  background: var(--bg-2);
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+.pl-status.ok { color: var(--ok); background: rgba(52,211,153,0.12); }
+.pl-status.warn { color: var(--warn); background: rgba(251,191,36,0.12); }
+.pl-status.danger { color: var(--danger); background: rgba(248,113,113,0.12); }
+
+/* ═════════ Rounds log ═════════ */
+.rnd-log {
+  background: var(--bg-1); border: 1px solid var(--border);
+  border-radius: 14px; padding: 16px; margin-bottom: 10px;
+}
+.rnd-log-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 12px;
+}
+.rnd-log-r { font-size: 16px; font-weight: 800; color: var(--text); letter-spacing: -0.2px; }
+.rnd-log-date { font-size: 12px; color: var(--text-3); }
+.rnd-log-div {
+  padding: 10px 0; border-top: 1px solid var(--border);
+}
+.rnd-log-div:first-of-type { border-top: none; padding-top: 0; }
+.rnd-log-div .dlabel { font-size: 10px; font-weight: 800; color: var(--text-3); letter-spacing: 0.8px; margin-bottom: 4px; }
+.rnd-log-div .dopp { font-size: 13px; font-weight: 600; color: var(--text); }
+.rnd-log-div .dcount { font-size: 11px; color: var(--text-2); margin-top: 3px; }
+.rnd-log-div .dcount b { color: var(--text); font-weight: 700; }
+
+/* ═════════ Empty states ═════════ */
+.empty {
+  background: var(--bg-1); border: 1px dashed var(--border);
+  border-radius: 14px; padding: 28px 20px;
+  text-align: center; color: var(--text-3); font-size: 13px;
+  line-height: 1.55;
+}
+.empty strong { color: var(--text); display: block; margin-bottom: 6px; font-size: 14px; }
+
+/* Scroll anchor pad */
+[id^="section-"] { scroll-margin-top: 140px; }
+
+/* Prevent horizontal scroll */
+body { overflow-x: hidden; }
+
+/* ═════════ Responsive ═════════ */
+@media (min-width: 720px) {
+  .lineup-row { grid-template-columns: 60px 1fr 40px; }
+}
+
+/* Narrow (iPhone SE / mini) */
+@media (max-width: 390px) {
+  .brand-row { padding: 12px 14px; gap: 10px; }
+  .brand-logo { width: 32px; height: 32px; }
+  .brand-title { font-size: 15px; }
+  .brand-sub { font-size: 10px; }
+  .section-nav { padding: 0 14px 10px; gap: 5px; }
+  .nav-btn { font-size: 12px; padding: 11px 6px; }
+  .app-main { padding: 16px 14px; }
+
+  .block { margin-bottom: 22px; }
+  .block-head h2 { font-size: 20px; }
+  .block-head h3 { font-size: 15px; }
+
+  .next-game { padding: 16px 18px; }
+  .ng-teams { font-size: 19px; }
+  .ng-meta { font-size: 12px; }
+
+  .bog-hero { padding: 18px 18px; }
+  .bog-player { font-size: 22px; }
+  .bog-pts { font-size: 30px; }
+  .bog-note { font-size: 10px; }
+
+  .stat-tile { padding: 12px 8px; }
+  .stat-tile .n { font-size: 22px; }
+  .stat-tile .l { font-size: 9px; letter-spacing: 0.3px; }
+
+  .fx-row { padding: 12px 14px; gap: 8px; }
+  .fx-team .tname { font-size: 13px; }
+  .fx-team .logo, .fx-team .team-fallback { width: 24px; height: 24px; }
+  .fx-status { font-size: 9px; padding: 3px 7px; }
+  .fx-time { font-size: 11px; }
+
+  .lineup-row { padding: 10px 14px; grid-template-columns: 42px 1fr 28px; gap: 10px; }
+  .lineup-row .pname { font-size: 13px; }
+  .lineup-row .jnum { font-size: 12px; }
+  .lineup-head { padding: 10px 14px; }
+
+  .rot-line { padding: 12px 14px; grid-template-columns: 72px 1fr; gap: 12px; }
+  .rot-when .q { font-size: 12px; }
+  .rot-bench { font-size: 12px; }
+
+  .pl-row { padding: 11px 12px; gap: 10px; min-height: 48px; }
+  .pl-name { font-size: 13px; }
+  .pl-split, .pl-status { font-size: 10px; padding: 3px 7px; }
+
+  .lb-row { padding: 11px 14px; }
+  .lb-pts { font-size: 16px; }
+  .lb-name { font-size: 13px; }
+
+  .vs-round { padding: 12px 14px; }
+  .vs-card { grid-template-columns: 46px 1fr; gap: 10px; }
+  .vs-vote { font-size: 10px; padding: 2px 7px 2px 3px; }
+}
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="brand-row">
+    <img class="brand-logo" src="tct-logo.png" alt="Tweed Coast Tigers">
+    <div class="brand-text">
+      <div class="brand-title">Tweed Coast Tigers</div>
+      <div class="brand-sub">U15 Boys · SEQJ 2026</div>
+    </div>
+  </div>
+  <nav class="section-nav">
+    <a class="nav-btn" href="index.html">← Public site</a>
+  </nav>
+</header>
+
+<main class="app-main">
+
+  <!-- ═════════ GAME DAY ═════════ -->
+  <section id="section-gameday" class="section active">
+    <div class="block-head">
+      <h2>Game Day</h2>
+      <span class="sub">Round 2 · vs Broadbeach</span>
+    </div>
+    <div class="chip-row">
+      <button class="chip active">R2 · Div 3 vs Broadbeach</button>
+    </div>
+
+    <div class="block">
+      <div class="block-head"><h3>Starting 18</h3></div>
+      <div class="lineup">
+        <div class="lineup-group">
+          <div class="lineup-head"><span class="title">Forwards</span><span class="count">6</span></div>
+          <div class="lineup-row"><span class="pos">FF</span><span class="pname">Lukas Bele</span><span class="jnum">16</span></div>
+          <div class="lineup-row"><span class="pos">LFP</span><span class="pname">Grayson Watts</span><span class="jnum">3</span></div>
+          <div class="lineup-row"><span class="pos">RFP</span><span class="pname">Joel Andrews</span><span class="jnum">27</span></div>
+          <div class="lineup-row"><span class="pos">LHFF</span><span class="pname">Samuel Buchanan</span><span class="jnum">8</span></div>
+          <div class="lineup-row"><span class="pos">CHF</span><span class="pname">Jacob Schutt</span><span class="jnum">20</span></div>
+          <div class="lineup-row"><span class="pos">RHFF</span><span class="pname">Lenny McPhee</span><span class="jnum">5</span></div>
+        </div>
+        <div class="lineup-group">
+          <div class="lineup-head"><span class="title">Midfield</span><span class="count">6</span></div>
+          <div class="lineup-row"><span class="pos">Ruck</span><span class="pname">Tommy Bourke</span><span class="jnum">11</span></div>
+          <div class="lineup-row"><span class="pos">Centre</span><span class="pname">Daniel Thompson</span><span class="jnum">30</span></div>
+          <div class="lineup-row"><span class="pos">R.Rov</span><span class="pname">Jarrah O'Brien</span><span class="jnum">21</span></div>
+          <div class="lineup-row"><span class="pos">Rover</span><span class="pname">Ollie Palmer</span><span class="jnum">18</span></div>
+          <div class="lineup-row"><span class="pos">L Wing</span><span class="pname">Taylen Howard</span><span class="jnum">15</span></div>
+          <div class="lineup-row"><span class="pos">R Wing</span><span class="pname">Taj Williams</span><span class="jnum">28</span></div>
+        </div>
+        <div class="lineup-group">
+          <div class="lineup-head"><span class="title">Backs</span><span class="count">6</span></div>
+          <div class="lineup-row"><span class="pos">LHBF</span><span class="pname">Jenson Crichton</span><span class="jnum">7</span></div>
+          <div class="lineup-row"><span class="pos">CHB</span><span class="pname">Xavier Caine</span><span class="jnum">14</span></div>
+          <div class="lineup-row"><span class="pos">RHBF</span><span class="pname">Beau Kingston</span><span class="jnum">6</span></div>
+          <div class="lineup-row"><span class="pos">LBP</span><span class="pname">Oliver Lang</span><span class="jnum">25</span></div>
+          <div class="lineup-row"><span class="pos">FB</span><span class="pname">William Ozolins</span><span class="jnum">17</span></div>
+          <div class="lineup-row"><span class="pos">RBP</span><span class="pname">Mason Maynard</span><span class="jnum">10</span></div>
+        </div>
+        <div class="lineup-group">
+          <div class="lineup-head"><span class="title">Interchange</span><span class="count">3</span></div>
+          <div class="lineup-row"><span class="pos">IC</span><span class="pname">Kade O'Shea</span><span class="jnum">23</span></div>
+          <div class="lineup-row"><span class="pos">IC</span><span class="pname">Zhyal Blackburne</span><span class="jnum">19</span></div>
+          <div class="lineup-row"><span class="pos">IC</span><span class="pname">Archer Dobell</span><span class="jnum">13</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-head"><h3>Bench rotation</h3><span class="sub">4 off every half‑Q</span></div>
+      <div class="rot-timeline">
+        <div class="rot-line"><div class="rot-when"><span class="q">Q1 H1</span><span class="when">Start</span></div><div class="rot-bench">Kade · Zhyal · Joel · Archer</div></div>
+        <div class="rot-line"><div class="rot-when"><span class="q">Q1 H2</span><span class="when">Mid‑Q1</span></div><div class="rot-bench">Taj · Jacob · Lukas · Oliver</div></div>
+        <div class="rot-line"><div class="rot-when"><span class="q">Q2 H1</span><span class="when">¼ time</span></div><div class="rot-bench">Jarrah · Sam B · Mason M · Jenson</div></div>
+        <div class="rot-line"><div class="rot-when"><span class="q">Q2 H2</span><span class="when">Mid‑Q2</span></div><div class="rot-bench">Ollie · Taylen · Lenny · Zhyal</div></div>
+        <div class="rot-line"><div class="rot-when"><span class="q">Q3 H1</span><span class="when">½ time</span></div><div class="rot-bench">Tommy · Grayson · X Caine · Beau K</div></div>
+        <div class="rot-line"><div class="rot-when"><span class="q">Q3 H2</span><span class="when">Mid‑Q3</span></div><div class="rot-bench">Daniel · Sam B · Mason M · Will Oz</div></div>
+        <div class="rot-line"><div class="rot-when"><span class="q">Q4 H1</span><span class="when">¾ time</span></div><div class="rot-bench">Jenson · Lukas · Lenny · Archer</div></div>
+        <div class="rot-line"><div class="rot-when"><span class="q">Q4 H2</span><span class="when">Mid‑Q4</span></div><div class="rot-bench">Oliver · Jacob · Will Oz · Joel</div></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-head"><h3>Mid rest windows</h3></div>
+      <div class="fact-list">
+        <div class="rest-row"><span class="pname">Tommy Bourke</span><span class="rest-when">Q3 H1</span></div>
+        <div class="rest-row"><span class="pname">Daniel Thompson</span><span class="rest-when">Q3 H2</span></div>
+        <div class="rest-row"><span class="pname">Jarrah O'Brien</span><span class="rest-when">Q2 H1</span></div>
+        <div class="rest-row"><span class="pname">Ollie Palmer</span><span class="rest-when">Q2 H2</span></div>
+        <div class="rest-row"><span class="pname">Taylen Howard</span><span class="rest-when">Q2 H2</span></div>
+        <div class="rest-row"><span class="pname">Taj Williams</span><span class="rest-when">Q1 H2</span></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-head"><h3>Ruck plan</h3></div>
+      <div class="fact-list">
+        <div class="fact-row"><strong>Tommy</strong> rucks all game except Q3 H1.</div>
+        <div class="fact-row"><strong>Q3 H1</strong> — Will Oz rucks, Kade backup ("Follow"). Jacob third option.</div>
+        <div class="fact-row"><strong>Q4 H2</strong> — Tommy back rucking.</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-head"><h3>Good times to swap</h3></div>
+      <div class="fact-list">
+        <div class="fact-row"><strong>After we score a goal</strong> — ball resets at centre.</div>
+        <div class="fact-row"><strong>Ball locked in opposition's back 50</strong> — low‑cost window.</div>
+        <div class="fact-row"><strong>Boundary throw‑in our end</strong> — natural stoppage.</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-head"><h3>Avoid</h3></div>
+      <div class="fact-list">
+        <div class="fact-row warn"><strong>First 2–3 min</strong> of any quarter — lose centre bounce impact.</div>
+        <div class="fact-row warn"><strong>Last 5–6 min</strong> of Q4 — best mids stay on.</div>
+        <div class="fact-row warn"><strong>Two top mids off</strong> at the same time.</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-head"><h3>Key reminders</h3></div>
+      <div class="fact-list">
+        <div class="fact-row warn"><strong>Max B late out</strong> — squad of 21 (3 IC instead of 4). Joel promoted to RFP.</div>
+        <div class="fact-row"><strong>Archer</strong> not match fit — down back, kick‑ins.</div>
+        <div class="fact-row"><strong>Oliver, Mason M, Lenny, Joel</strong> — small, stay in fwd/back lines.</div>
+        <div class="fact-row"><strong>Ollie Palmer</strong> — small fwd, in centre square as Rover. Can swing fwd/mid.</div>
+        <div class="fact-row"><strong>Taylen + Taj</strong> — fast, on wings. Both midfield-capable.</div>
+        <div class="fact-row"><strong>Jacob</strong> — CHF, tall option. Third ruck if needed.</div>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+</body>
+</html>
