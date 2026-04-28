@@ -854,6 +854,99 @@ body { overflow-x: hidden; }
   .vs-vote { font-size: 10px; padding: 2px 7px 2px 3px; }
 }
 
+/* ═════════ Available (parent submission form) ═════════ */
+.av-intro {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+}
+.av-intro h3 { margin: 0 0 6px; font-size: 16px; font-weight: 800; color: var(--text); }
+.av-intro p { margin: 0; font-size: 13px; line-height: 1.45; color: var(--text-2); }
+
+.av-form {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px 18px;
+}
+.av-label {
+  display: block;
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--text-3);
+  margin: 14px 0 6px;
+}
+.av-label:first-child { margin-top: 0; }
+.av-optional { text-transform: none; letter-spacing: 0; font-weight: 500; color: var(--text-3); opacity: 0.7; }
+
+.av-select, .av-input, .av-textarea {
+  width: 100%; box-sizing: border-box;
+  padding: 11px 12px; font-size: 15px;
+  border: 1px solid var(--border-bright); border-radius: 8px;
+  background: var(--bg-2); color: var(--text);
+  font-family: inherit;
+}
+.av-textarea { resize: vertical; min-height: 56px; line-height: 1.4; }
+.av-select:focus, .av-input:focus, .av-textarea:focus {
+  outline: none; border-color: var(--gold); background: var(--bg-1);
+}
+
+.av-rounds {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px;
+}
+.av-round {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 10px 12px;
+  border: 1px solid var(--border-bright);
+  border-radius: 8px;
+  background: var(--bg-1);
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.12s, background 0.12s;
+}
+.av-round:hover { border-color: var(--gold-dim); }
+.av-round.away {
+  background: var(--gold-bg);
+  border-color: var(--gold);
+}
+.av-round-head {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; font-weight: 700; color: var(--text);
+}
+.av-round-rn { color: var(--gold-dim); }
+.av-round-date { font-size: 11px; color: var(--text-3); font-weight: 600; }
+.av-round-opp { font-size: 11px; color: var(--text-2); margin-top: 2px; line-height: 1.3; }
+.av-round.away .av-round-opp { color: var(--text); }
+.av-round-tag {
+  display: inline-block; margin-top: 4px; padding: 1px 6px; border-radius: 4px;
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+  background: transparent; color: var(--text-3); border: 1px solid var(--border-bright);
+}
+.av-round.away .av-round-tag { background: var(--gold); color: var(--black); border-color: var(--gold-dim); }
+
+.av-submit {
+  width: 100%; margin-top: 18px;
+  padding: 13px;
+  font-size: 15px; font-weight: 800;
+  background: var(--gold); color: var(--black);
+  border: 1px solid var(--gold-dim); border-radius: 10px;
+  cursor: pointer; font-family: inherit;
+  transition: background 0.12s, color 0.12s, opacity 0.12s;
+}
+.av-submit:hover:not(:disabled) { background: var(--gold-dim); color: #fff; }
+.av-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.av-status { margin-top: 10px; font-size: 13px; min-height: 18px; }
+.av-status.ok { color: #1F7A38; }
+.av-status.err { color: #B0001A; }
+
+@media (max-width: 600px) {
+  .av-rounds { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+}
+
 /* ═════════ Coach gate (Votes password) ═════════ */
 .nav-lock {
   display: inline-flex; align-items: center; justify-content: center;
@@ -924,6 +1017,7 @@ body { overflow-x: hidden; }
   <nav class="section-nav">
     <button class="nav-btn active" data-section="fixtures">Fixtures</button>
     <button class="nav-btn" data-section="squad">Squad</button>
+    <button class="nav-btn" data-section="available">Available</button>
     <button class="nav-btn" data-section="votes" id="nav-votes">
       <span class="nav-lock" id="nav-votes-lock" aria-hidden="true">
         <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
@@ -1008,6 +1102,32 @@ body { overflow-x: hidden; }
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ═════════ AVAILABLE ═════════ -->
+  <section id="section-available" class="section">
+    <div class="av-intro">
+      <h3>Mark when your son is unavailable</h3>
+      <p>Pick your son, tap any rounds he'll be away for, add a note if helpful, then submit. You can submit again any time to update.</p>
+    </div>
+    <div class="av-form">
+      <label class="av-label" for="av-player">Player</label>
+      <select class="av-select" id="av-player">
+        <option value="">Select your son…</option>
+      </select>
+
+      <label class="av-label">Rounds unavailable</label>
+      <div class="av-rounds" id="av-rounds"></div>
+
+      <label class="av-label" for="av-note">Note <span class="av-optional">(optional)</span></label>
+      <textarea class="av-textarea" id="av-note" rows="2" placeholder="e.g. school camp, family holiday"></textarea>
+
+      <label class="av-label" for="av-parent">Your name <span class="av-optional">(optional)</span></label>
+      <input class="av-input" id="av-parent" type="text" autocomplete="name" placeholder="e.g. Sarah">
+
+      <button class="av-submit" id="av-submit" type="button" disabled>Submit availability</button>
+      <div class="av-status" id="av-status"></div>
     </div>
   </section>
 
@@ -1863,16 +1983,148 @@ function setVotesDiv(d) {
   renderVotesTab();
 }
 
+// ═══════════════════ AVAILABILITY (parent submission) ═══════════════════
+// Replace this with the Apps Script web app URL once deployed.
+const AVAILABILITY_ENDPOINT = 'PASTE_APPS_SCRIPT_WEB_APP_URL_HERE';
+
+let avSelectedPlayer = '';
+let avAwayRounds = new Set();
+
+function buildAvailRounds() {
+  const tctGames = [...div1Games, ...div3Games].filter(isTCTGame).filter(g => !g.isBye);
+  const byRound = {};
+  for (const g of tctGames) {
+    const k = g.round;
+    if (!byRound[k]) byRound[k] = { round: k, date: g.gameDate, games: [] };
+    byRound[k].games.push(g);
+    if (parseDate(g.gameDate) < parseDate(byRound[k].date)) byRound[k].date = g.gameDate;
+  }
+  return Object.values(byRound).sort((a, b) => a.round - b.round);
+}
+
+function renderAvailRounds() {
+  const host = document.getElementById('av-rounds');
+  if (!host) return;
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const rounds = buildAvailRounds().filter(r => parseDate(r.date) >= today);
+  if (!rounds.length) {
+    host.innerHTML = '<div style="grid-column:1/-1; color:var(--text-3); font-size:13px;">No upcoming rounds.</div>';
+    return;
+  }
+  host.innerHTML = rounds.map(r => {
+    const isAway = avAwayRounds.has(r.round);
+    const opponents = r.games.map(g => {
+      const opp = g.home === MY_TEAM ? g.away : g.home;
+      const ha = g.home === MY_TEAM ? 'vs' : '@';
+      const div = g.division.replace('Div ', 'D');
+      return `${div} ${ha} ${opp}`;
+    }).join('<br>');
+    return `
+      <div class="av-round ${isAway ? 'away' : ''}" data-round="${r.round}" role="button" tabindex="0">
+        <div class="av-round-head">
+          <span class="av-round-rn">R${r.round}</span>
+          <span class="av-round-date">${formatDate(r.date)}</span>
+        </div>
+        <div class="av-round-opp">${opponents}</div>
+        <span class="av-round-tag">${isAway ? 'Away' : 'Available'}</span>
+      </div>`;
+  }).join('');
+  host.querySelectorAll('.av-round').forEach(el => {
+    const toggle = () => {
+      const rn = parseInt(el.dataset.round);
+      if (avAwayRounds.has(rn)) avAwayRounds.delete(rn);
+      else avAwayRounds.add(rn);
+      renderAvailRounds();
+      updateAvailSubmit();
+    };
+    el.addEventListener('click', toggle);
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+  });
+}
+
+function renderAvailPlayers() {
+  const sel = document.getElementById('av-player');
+  if (!sel || !attendanceData) return;
+  const all = [
+    ...((attendanceData.squads && attendanceData.squads.div1 && attendanceData.squads.div1.players) || []),
+    ...((attendanceData.squads && attendanceData.squads.div3 && attendanceData.squads.div3.players) || []),
+  ];
+  const names = [...new Set(all.map(p => p.name))].sort();
+  const current = sel.value;
+  sel.innerHTML = '<option value="">Select your son…</option>' +
+    names.map(n => `<option value="${n}">${n}</option>`).join('');
+  if (names.includes(current)) sel.value = current;
+}
+
+function updateAvailSubmit() {
+  const btn = document.getElementById('av-submit');
+  if (!btn) return;
+  btn.disabled = !(avSelectedPlayer && avAwayRounds.size > 0);
+}
+
+async function submitAvailability() {
+  const btn = document.getElementById('av-submit');
+  const status = document.getElementById('av-status');
+  const note = document.getElementById('av-note').value.trim();
+  const parent = document.getElementById('av-parent').value.trim();
+
+  if (AVAILABILITY_ENDPOINT === 'PASTE_APPS_SCRIPT_WEB_APP_URL_HERE') {
+    status.className = 'av-status err';
+    status.textContent = 'Submit endpoint not set up yet.';
+    return;
+  }
+
+  const payload = {
+    player: avSelectedPlayer,
+    rounds: [...avAwayRounds].sort((a, b) => a - b),
+    note,
+    parent,
+    submitted_at: new Date().toISOString(),
+  };
+
+  btn.disabled = true;
+  status.className = 'av-status';
+  status.textContent = 'Submitting…';
+
+  try {
+    await fetch(AVAILABILITY_ENDPOINT, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload),
+    });
+    const n = avAwayRounds.size;
+    status.className = 'av-status ok';
+    status.textContent = `Thanks! Submitted ${n} round${n === 1 ? '' : 's'} for ${avSelectedPlayer}.`;
+    avAwayRounds = new Set();
+    document.getElementById('av-note').value = '';
+    renderAvailRounds();
+    updateAvailSubmit();
+  } catch (e) {
+    status.className = 'av-status err';
+    status.textContent = 'Submit failed. Please try again.';
+    btn.disabled = false;
+  }
+}
+
 // ═══════════════════ SECTION SWITCHING ═══════════════════
 function switchSection(name) {
   activeSection = name;
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.section === name));
   document.querySelectorAll('.section').forEach(s => s.classList.toggle('active', s.id === 'section-' + name));
-  if ((name === 'squad' || name === 'votes') && !attendanceData) {
-    loadAttendance().then(() => { if (name === 'votes') renderVotesTab(); });
+  if ((name === 'squad' || name === 'votes' || name === 'available') && !attendanceData) {
+    loadAttendance().then(() => {
+      if (name === 'votes') renderVotesTab();
+      if (name === 'available') renderAvailPlayers();
+    });
   } else if (name === 'votes' && attendanceData) {
     renderVotesTab();
+  } else if (name === 'available' && attendanceData) {
+    renderAvailPlayers();
   }
+  if (name === 'available') renderAvailRounds();
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
 
@@ -1882,6 +2134,12 @@ document.querySelectorAll('#fx-filters .chip').forEach(b => b.addEventListener('
 document.querySelectorAll('#section-squad > .chip-row .chip').forEach(b => b.addEventListener('click', () => setSquadDiv(b.dataset.div)));
 document.querySelectorAll('#section-votes > .chip-row .chip').forEach(b => b.addEventListener('click', () => setVotesDiv(b.dataset.vd)));
 document.querySelectorAll('#player-filters .sq-filter').forEach(b => b.addEventListener('click', () => setPlayerFilter(b.dataset.pf)));
+
+document.getElementById('av-player').addEventListener('change', e => {
+  avSelectedPlayer = e.target.value;
+  updateAvailSubmit();
+});
+document.getElementById('av-submit').addEventListener('click', submitAvailability);
 
 // ═══════════════════ INIT ═══════════════════
 renderNextGame();
