@@ -853,6 +853,62 @@ body { overflow-x: hidden; }
   .vs-card { grid-template-columns: 46px 1fr; gap: 10px; }
   .vs-vote { font-size: 10px; padding: 2px 7px 2px 3px; }
 }
+
+/* ═════════ Coach gate (Votes password) ═════════ */
+.nav-lock {
+  display: inline-flex; align-items: center; justify-content: center;
+  margin-right: 5px;
+  color: var(--text-3);
+  vertical-align: -1px;
+}
+.nav-btn.active .nav-lock { color: var(--gold-dim); }
+.nav-lock.hidden { display: none; }
+
+.gate-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(14,17,23,0.55);
+  display: none; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.gate-overlay.active { display: flex; }
+.gate-card {
+  width: 100%; max-width: 360px;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 20px 18px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+}
+.gate-title {
+  font-size: 16px; font-weight: 800; color: var(--text);
+  margin-bottom: 4px;
+}
+.gate-sub {
+  font-size: 12px; color: var(--text-3); margin-bottom: 14px;
+}
+.gate-input {
+  width: 100%; box-sizing: border-box;
+  padding: 11px 12px; font-size: 15px;
+  border: 1px solid var(--border-bright); border-radius: 8px;
+  background: var(--bg-2); color: var(--text);
+  font-family: inherit;
+}
+.gate-input:focus { outline: none; border-color: var(--gold); background: var(--bg-1); }
+.gate-error {
+  font-size: 12px; color: #B0001A;
+  margin-top: 8px; min-height: 16px;
+}
+.gate-actions { display: flex; gap: 8px; margin-top: 12px; }
+.gate-btn {
+  flex: 1; padding: 10px 12px;
+  font-size: 13px; font-weight: 700;
+  border-radius: 8px; cursor: pointer;
+  font-family: inherit;
+}
+.gate-btn.primary { background: var(--gold); color: var(--black); border: 1px solid var(--gold-dim); }
+.gate-btn.primary:hover { background: var(--gold-dim); color: #fff; }
+.gate-btn.ghost { background: var(--bg-1); color: var(--text-2); border: 1px solid var(--border); }
+.gate-btn.ghost:hover { border-color: var(--border-bright); color: var(--text); }
 </style>
 </head>
 <body>
@@ -868,7 +924,15 @@ body { overflow-x: hidden; }
   <nav class="section-nav">
     <button class="nav-btn active" data-section="fixtures">Fixtures</button>
     <button class="nav-btn" data-section="squad">Squad</button>
-    <button class="nav-btn" data-section="votes">Votes</button>
+    <button class="nav-btn" data-section="votes" id="nav-votes">
+      <span class="nav-lock" id="nav-votes-lock" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="11" width="16" height="10" rx="2"></rect>
+          <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
+        </svg>
+      </span>
+      Votes
+    </button>
   </nav>
 </header>
 
@@ -1825,6 +1889,85 @@ renderRoundPicker();
 renderFixturesBody();
 
 window.pickRound = pickRound;
+</script>
+
+<!-- ═════════ COACH GATE ═════════ -->
+<div class="gate-overlay" id="coach-gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+  <div class="gate-card">
+    <div class="gate-title" id="gate-title">Coaches only</div>
+    <div class="gate-sub">Enter the coach password to view votes.</div>
+    <input class="gate-input" id="gate-input" type="password" autocomplete="off" inputmode="text" placeholder="Password">
+    <div class="gate-error" id="gate-error"></div>
+    <div class="gate-actions">
+      <button class="gate-btn ghost" id="gate-cancel" type="button">Cancel</button>
+      <button class="gate-btn primary" id="gate-submit" type="button">Unlock</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════ COACH GATE ═══════════════════
+// Soft gate — hides Votes section from casual viewers. attendance.json is
+// publicly fetchable, so this is UI-level protection, not real auth.
+const COACH_PASSWORD = 'tigers2026';
+const GATE_KEY = 'coachUnlocked';
+
+function coachUnlocked() { return sessionStorage.getItem(GATE_KEY) === '1'; }
+
+function syncCoachLock() {
+  const lock = document.getElementById('nav-votes-lock');
+  if (lock) lock.classList.toggle('hidden', coachUnlocked());
+}
+
+function openCoachGate() {
+  const overlay = document.getElementById('coach-gate');
+  const input = document.getElementById('gate-input');
+  const err = document.getElementById('gate-error');
+  err.textContent = '';
+  input.value = '';
+  overlay.classList.add('active');
+  setTimeout(() => input.focus(), 50);
+}
+
+function closeCoachGate() {
+  document.getElementById('coach-gate').classList.remove('active');
+}
+
+function submitCoachGate() {
+  const input = document.getElementById('gate-input');
+  const err = document.getElementById('gate-error');
+  if (input.value === COACH_PASSWORD) {
+    sessionStorage.setItem(GATE_KEY, '1');
+    syncCoachLock();
+    closeCoachGate();
+    switchSection('votes');
+  } else {
+    err.textContent = 'Wrong password.';
+    input.select();
+  }
+}
+
+// Wrap switchSection so the Votes nav button triggers the gate.
+const _switchSection = window.switchSection;
+window.switchSection = function(name) {
+  if (name === 'votes' && !coachUnlocked()) {
+    openCoachGate();
+    return;
+  }
+  _switchSection(name);
+};
+
+document.getElementById('gate-submit').addEventListener('click', submitCoachGate);
+document.getElementById('gate-cancel').addEventListener('click', closeCoachGate);
+document.getElementById('gate-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') submitCoachGate();
+  else if (e.key === 'Escape') closeCoachGate();
+});
+document.getElementById('coach-gate').addEventListener('click', e => {
+  if (e.target.id === 'coach-gate') closeCoachGate();
+});
+
+syncCoachLock();
 </script>
 
 </body>
