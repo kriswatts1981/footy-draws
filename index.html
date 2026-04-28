@@ -1880,7 +1880,7 @@ function renderPlayers(allStats, rpl, isAll) {
     if (s.dnp) subbits.push(`${s.dnp} DNP`);
     return `<tr>
       <td class="col-num ${p.no === null ? 'blank' : ''}">${p.no !== null ? p.no : '–'}</td>
-      <td class="col-name">${p.name}${onRpl ? '<span class="rpl-mark">🔒</span>' : ''}${subbits.length ? `<span class="sub-line">${subbits.join(' · ')}</span>` : ''}</td>
+      <td class="col-name">${p.name}${onRpl && coachUnlocked() ? '<span class="rpl-mark">🔒</span>' : ''}${subbits.length ? `<span class="sub-line">${subbits.join(' · ')}</span>` : ''}</td>
       ${isAll ? `<td class="col-div ${p.primary}">${p.primary === 'div1' ? 'D1' : 'D3'}</td>` : ''}
       <td class="col-games ${s.d1 ? '' : 'zero'}">${s.d1}</td>
       <td class="col-games ${s.d3 ? '' : 'zero'}">${s.d3}</td>
@@ -2287,6 +2287,10 @@ function submitCoachGate() {
   if (input.value === COACH_PASSWORD) {
     sessionStorage.setItem(GATE_KEY, '1');
     syncCoachLock();
+    // Re-render squad so RPL lock marks reappear next to player names.
+    if (typeof renderSquad === 'function' && typeof attendanceData !== 'undefined' && attendanceData) {
+      try { renderSquad(); } catch (e) {}
+    }
     const next = pendingGateSection || 'votes';
     closeCoachGate();
     switchSection(next);
