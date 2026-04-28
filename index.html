@@ -1757,7 +1757,10 @@ function buildWarnings() {
 function renderWarnings() {
   const host = document.getElementById('warnings-host');
   if (!host) return;
-  const warnings = buildWarnings();
+  let warnings = buildWarnings();
+  if (!coachUnlocked()) {
+    warnings = warnings.filter(w => w.badge !== 'RPL');
+  }
   if (!warnings.length) {
     const totalRounds = attendanceData.rounds.length;
     host.innerHTML = `<div class="warn-card ok">
@@ -2290,6 +2293,7 @@ function submitCoachGate() {
     // Re-render squad so RPL lock marks reappear next to player names.
     if (typeof renderSquad === 'function' && typeof attendanceData !== 'undefined' && attendanceData) {
       try { renderSquad(); } catch (e) {}
+      try { renderWarnings(); } catch (e) {}
     }
     const next = pendingGateSection || 'votes';
     closeCoachGate();
