@@ -920,9 +920,21 @@ body { overflow-x: hidden; }
   font-size: 12px; line-height: 1.45; color: var(--text);
   display: flex; flex-direction: column; gap: 3px;
 }
-.av-round-name { display: flex; align-items: baseline; gap: 6px; }
+.av-round-name { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
 .av-round-name .nm { font-weight: 700; }
 .av-round-name .note { font-size: 11px; color: var(--text-3); font-style: italic; }
+.div-pill {
+  display: inline-block;
+  padding: 1px 5px;
+  font-size: 9px; font-weight: 800; letter-spacing: 0.04em;
+  border-radius: 3px;
+  background: var(--bg-2); color: var(--text-2);
+  border: 1px solid var(--border-bright);
+  text-transform: uppercase;
+  align-self: center;
+}
+.div-pill.div1 { background: var(--gold-bg); color: var(--gold-dim); border-color: var(--gold-dim); }
+.div-pill.div3 { background: var(--bg-2); color: var(--text-2); }
 
 @media (max-width: 600px) {
   .av-rounds { grid-template-columns: 1fr; }
@@ -2078,6 +2090,15 @@ function escapeHtml(s) {
   }[c]));
 }
 
+// Returns array of div keys ('div1', 'div3') the player appears in.
+function getPlayerDivs(name) {
+  if (!attendanceData || !attendanceData.squads) return [];
+  const out = [];
+  if ((attendanceData.squads.div1 && attendanceData.squads.div1.players || []).some(p => p.name === name)) out.push('div1');
+  if ((attendanceData.squads.div3 && attendanceData.squads.div3.players || []).some(p => p.name === name)) out.push('div3');
+  return out;
+}
+
 function renderAvailRounds() {
   const host = document.getElementById('av-rounds');
   if (!host) return;
@@ -2091,14 +2112,36 @@ function renderAvailRounds() {
   host.innerHTML = rounds.map(r => {
     const away = awayByRound[r.round] || [];
     const has = away.length > 0;
+    const playingDivs = new Set(r.games.map(g => g.division === 'Div 1' ? 'div1' : 'div3'));
     const opponents = r.games.map(g => {
       const opp = g.home === MY_TEAM ? g.away : g.home;
       const ha = g.home === MY_TEAM ? 'vs' : '@';
       const div = g.division.replace('Div ', 'D');
       return `${div} ${ha} ${opp}`;
     }).join('<br>');
-    const tag = has ? `Away (${away.length})` : 'No-one away';
-    const names = has ? `<div class="av-round-names">${away.map(a => `<div class="av-round-name"><span class="nm">${escapeHtml(a.player)}</span>${a.note ? `<span class="note">${escapeHtml(a.note)}</span>` : ''}</div>`).join('')}</div>` : '';
+
+    // Per-division counts (only count divs actually playing this round).
+    const counts = { div1: 0, div3: 0 };
+    const annotated = away.map(a => {
+      const divs = getPlayerDivs(a.player).filter(d => playingDivs.has(d));
+      for (const d of divs) counts[d]++;
+      return { ...a, divs: divs.length ? divs : getPlayerDivs(a.player) };
+    });
+
+    let tag;
+    if (!has) tag = 'No-one away';
+    else {
+      const parts = [];
+      if (playingDivs.has('div1')) parts.push(`D1: ${counts.div1}`);
+      if (playingDivs.has('div3')) parts.push(`D3: ${counts.div3}`);
+      tag = parts.join(' · ') || `Away (${away.length})`;
+    }
+
+    const names = has ? `<div class="av-round-names">${annotated.map(a => {
+      const badges = a.divs.map(d => `<span class="div-pill ${d}">${d === 'div1' ? 'D1' : 'D3'}</span>`).join('');
+      return `<div class="av-round-name">${badges}<span class="nm">${escapeHtml(a.player)}</span>${a.note ? `<span class="note">${escapeHtml(a.note)}</span>` : ''}</div>`;
+    }).join('')}</div>` : '';
+
     return `
       <div class="av-round ${has ? 'has-away' : ''}" data-round="${r.round}">
         <div class="av-round-head">
@@ -2122,6 +2165,7 @@ function switchSection(name) {
   if ((name === 'squad' || name === 'votes' || name === 'available') && !attendanceData) {
     loadAttendance().then(() => {
       if (name === 'votes') renderVotesTab();
+      if (name === 'available') renderAvailRounds();
     });
   } else if (name === 'votes' && attendanceData) {
     renderVotesTab();
