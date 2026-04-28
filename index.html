@@ -998,7 +998,15 @@ body { overflow-x: hidden; }
   <nav class="section-nav">
     <button class="nav-btn active" data-section="fixtures">Fixtures</button>
     <button class="nav-btn" data-section="squad">Squad</button>
-    <button class="nav-btn" data-section="available">Available</button>
+    <button class="nav-btn" data-section="available" id="nav-available">
+      <span class="nav-lock" id="nav-available-lock" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="11" width="16" height="10" rx="2"></rect>
+          <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
+        </svg>
+      </span>
+      Available
+    </button>
     <button class="nav-btn" data-section="votes" id="nav-votes">
       <span class="nav-lock" id="nav-votes-lock" aria-hidden="true">
         <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
@@ -1090,8 +1098,8 @@ body { overflow-x: hidden; }
   <section id="section-available" class="section">
     <div class="av-intro">
       <h3>Who's away</h3>
-      <p>Parents — tap below to mark which rounds your son will miss. Submissions appear here within a few minutes. Submit again any time to update.</p>
-      <a class="av-cta" id="av-cta" href="https://forms.gle/hGrTMgdHBmLxUgeP8" target="_blank" rel="noopener">Submit / update availability →</a>
+      <p>Submissions from the parent away-dates form. Each new submission replaces that player's previous list — so a parent who's now available again for a round just re-submits with their updated list (or no rounds at all).</p>
+      <a class="av-cta" id="av-cta" href="https://forms.gle/hGrTMgdHBmLxUgeP8" target="_blank" rel="noopener">Open submission form ↗</a>
       <div class="av-meta" id="av-meta"></div>
     </div>
     <div class="av-rounds" id="av-rounds"></div>
@@ -2143,7 +2151,7 @@ window.pickRound = pickRound;
 <div class="gate-overlay" id="coach-gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
   <div class="gate-card">
     <div class="gate-title" id="gate-title">Coaches only</div>
-    <div class="gate-sub">Enter the coach password to view votes.</div>
+    <div class="gate-sub" id="gate-sub">Enter the coach password to continue.</div>
     <input class="gate-input" id="gate-input" type="password" autocomplete="off" inputmode="text" placeholder="Password">
     <div class="gate-error" id="gate-error"></div>
     <div class="gate-actions">
@@ -2163,11 +2171,17 @@ const GATE_KEY = 'coachUnlocked';
 function coachUnlocked() { return sessionStorage.getItem(GATE_KEY) === '1'; }
 
 function syncCoachLock() {
-  const lock = document.getElementById('nav-votes-lock');
-  if (lock) lock.classList.toggle('hidden', coachUnlocked());
+  const unlocked = coachUnlocked();
+  const v = document.getElementById('nav-votes-lock');
+  const a = document.getElementById('nav-available-lock');
+  if (v) v.classList.toggle('hidden', unlocked);
+  if (a) a.classList.toggle('hidden', unlocked);
 }
 
-function openCoachGate() {
+let pendingGateSection = null;
+
+function openCoachGate(section) {
+  pendingGateSection = section;
   const overlay = document.getElementById('coach-gate');
   const input = document.getElementById('gate-input');
   const err = document.getElementById('gate-error');
@@ -2179,6 +2193,7 @@ function openCoachGate() {
 
 function closeCoachGate() {
   document.getElementById('coach-gate').classList.remove('active');
+  pendingGateSection = null;
 }
 
 function submitCoachGate() {
@@ -2187,19 +2202,20 @@ function submitCoachGate() {
   if (input.value === COACH_PASSWORD) {
     sessionStorage.setItem(GATE_KEY, '1');
     syncCoachLock();
+    const next = pendingGateSection || 'votes';
     closeCoachGate();
-    switchSection('votes');
+    switchSection(next);
   } else {
     err.textContent = 'Wrong password.';
     input.select();
   }
 }
 
-// Wrap switchSection so the Votes nav button triggers the gate.
+// Wrap switchSection so gated nav buttons trigger the password modal.
 const _switchSection = window.switchSection;
 window.switchSection = function(name) {
-  if (name === 'votes' && !coachUnlocked()) {
-    openCoachGate();
+  if ((name === 'votes' || name === 'available') && !coachUnlocked()) {
+    openCoachGate(name);
     return;
   }
   _switchSection(name);
