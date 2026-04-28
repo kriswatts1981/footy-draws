@@ -2116,6 +2116,7 @@ function renderAvailRounds() {
 // ═══════════════════ SECTION SWITCHING ═══════════════════
 function switchSection(name) {
   activeSection = name;
+  try { sessionStorage.setItem('activeSection', name); } catch (e) {}
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.section === name));
   document.querySelectorAll('.section').forEach(s => s.classList.toggle('active', s.id === 'section-' + name));
   if ((name === 'squad' || name === 'votes' || name === 'available') && !attendanceData) {
@@ -2232,6 +2233,15 @@ document.getElementById('coach-gate').addEventListener('click', e => {
 });
 
 syncCoachLock();
+
+// Restore last active section on reload (skip gated sections if not unlocked).
+try {
+  const saved = sessionStorage.getItem('activeSection');
+  const isGated = (s) => s === 'votes' || s === 'available';
+  if (saved && saved !== 'fixtures' && !(isGated(saved) && !coachUnlocked())) {
+    window.switchSection(saved);
+  }
+} catch (e) {}
 </script>
 
 </body>
