@@ -940,6 +940,35 @@ body { overflow-x: hidden; }
   .av-rounds { grid-template-columns: 1fr; }
 }
 
+/* ═════════ Coach-only inline lock (Restricted List etc.) ═════════ */
+.coach-only { position: relative; }
+.coach-lock-overlay { display: none; }
+.coach-only.locked > *:not(.coach-lock-overlay) {
+  filter: blur(5px);
+  pointer-events: none;
+  user-select: none;
+}
+.coach-only.locked .coach-lock-overlay {
+  display: flex;
+  position: absolute; inset: 0;
+  flex-direction: column; align-items: center; justify-content: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: none;
+  border-radius: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--text-2);
+  padding: 12px;
+  text-align: center;
+}
+.coach-only.locked .coach-lock-overlay:hover { color: var(--text); background: rgba(255, 255, 255, 0.7); }
+.coach-lock-overlay .lock-icon { color: var(--gold-dim); }
+.coach-lock-overlay .lock-title { font-size: 13px; font-weight: 800; color: var(--text); }
+.coach-lock-overlay .lock-sub { font-size: 11px; color: var(--text-3); }
+
 /* ═════════ Coach gate (Votes password) ═════════ */
 .nav-lock {
   display: inline-flex; align-items: center; justify-content: center;
@@ -1087,12 +1116,22 @@ body { overflow-x: hidden; }
               <div class="rule-row"><span class="icon">4</span><div><strong>One team only</strong> per age group in finals.</div></div>
             </div>
           </div>
-          <div class="block">
+          <div class="block coach-only" id="rpl-block">
             <div class="block-head">
               <h3>Restricted list</h3>
               <span class="sub" id="rpl-sub"></span>
             </div>
             <div id="rpl-list"></div>
+            <button class="coach-lock-overlay" type="button" data-unlock="squad" aria-label="Unlock coaches-only section">
+              <span class="lock-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="4" y="11" width="16" height="10" rx="2"></rect>
+                  <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
+                </svg>
+              </span>
+              <span class="lock-title">Coaches only</span>
+              <span class="lock-sub">Tap to unlock</span>
+            </button>
           </div>
           <div class="block">
             <div class="block-head">
@@ -2221,6 +2260,7 @@ function syncCoachLock() {
   const a = document.getElementById('nav-available-lock');
   if (v) v.classList.toggle('hidden', unlocked);
   if (a) a.classList.toggle('hidden', unlocked);
+  document.querySelectorAll('.coach-only').forEach(el => el.classList.toggle('locked', !unlocked));
 }
 
 let pendingGateSection = null;
@@ -2274,6 +2314,15 @@ document.getElementById('gate-input').addEventListener('keydown', e => {
 });
 document.getElementById('coach-gate').addEventListener('click', e => {
   if (e.target.id === 'coach-gate') closeCoachGate();
+});
+
+// Inline coach-only sections (e.g. Restricted List): tap to unlock without leaving the current tab.
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.coach-lock-overlay');
+  if (!btn) return;
+  e.preventDefault();
+  if (coachUnlocked()) { syncCoachLock(); return; }
+  openCoachGate(activeSection || 'squad');
 });
 
 syncCoachLock();
