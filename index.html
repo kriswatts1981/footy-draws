@@ -854,7 +854,7 @@ body { overflow-x: hidden; }
   .vs-vote { font-size: 10px; padding: 2px 7px 2px 3px; }
 }
 
-/* ═════════ Available (parent submission form) ═════════ */
+/* ═════════ Available (away-rounds view) ═════════ */
 .av-intro {
   background: var(--bg-1);
   border: 1px solid var(--border);
@@ -863,52 +863,40 @@ body { overflow-x: hidden; }
   margin-bottom: 14px;
 }
 .av-intro h3 { margin: 0 0 6px; font-size: 16px; font-weight: 800; color: var(--text); }
-.av-intro p { margin: 0; font-size: 13px; line-height: 1.45; color: var(--text-2); }
+.av-intro p { margin: 0 0 12px; font-size: 13px; line-height: 1.45; color: var(--text-2); }
 
-.av-form {
-  background: var(--bg-1);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 16px 18px 18px;
-}
-.av-label {
-  display: block;
-  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
-  color: var(--text-3);
-  margin: 14px 0 6px;
-}
-.av-label:first-child { margin-top: 0; }
-.av-optional { text-transform: none; letter-spacing: 0; font-weight: 500; color: var(--text-3); opacity: 0.7; }
-
-.av-select, .av-input, .av-textarea {
-  width: 100%; box-sizing: border-box;
-  padding: 11px 12px; font-size: 15px;
-  border: 1px solid var(--border-bright); border-radius: 8px;
-  background: var(--bg-2); color: var(--text);
+.av-cta {
+  display: inline-block;
+  padding: 11px 16px;
+  font-size: 14px; font-weight: 800;
+  background: var(--gold); color: var(--black);
+  border: 1px solid var(--gold-dim); border-radius: 10px;
+  text-decoration: none;
   font-family: inherit;
+  transition: background 0.12s, color 0.12s;
 }
-.av-textarea { resize: vertical; min-height: 56px; line-height: 1.4; }
-.av-select:focus, .av-input:focus, .av-textarea:focus {
-  outline: none; border-color: var(--gold); background: var(--bg-1);
+.av-cta:hover { background: var(--gold-dim); color: #fff; }
+
+.av-meta {
+  margin-top: 10px;
+  font-size: 12px; color: var(--text-3);
+  font-variant-numeric: tabular-nums;
 }
+.av-meta.err { color: var(--danger); }
 
 .av-rounds {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 8px;
 }
 .av-round {
-  display: flex; flex-direction: column; gap: 2px;
+  display: flex; flex-direction: column; gap: 4px;
   padding: 10px 12px;
   border: 1px solid var(--border-bright);
   border-radius: 8px;
   background: var(--bg-1);
-  cursor: pointer;
-  user-select: none;
-  transition: border-color 0.12s, background 0.12s;
 }
-.av-round:hover { border-color: var(--gold-dim); }
-.av-round.away {
+.av-round.has-away {
   background: var(--gold-bg);
   border-color: var(--gold);
 }
@@ -919,32 +907,25 @@ body { overflow-x: hidden; }
 .av-round-rn { color: var(--gold-dim); }
 .av-round-date { font-size: 11px; color: var(--text-3); font-weight: 600; }
 .av-round-opp { font-size: 11px; color: var(--text-2); margin-top: 2px; line-height: 1.3; }
-.av-round.away .av-round-opp { color: var(--text); }
+.av-round.has-away .av-round-opp { color: var(--text); }
 .av-round-tag {
   display: inline-block; margin-top: 4px; padding: 1px 6px; border-radius: 4px;
   font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
   background: transparent; color: var(--text-3); border: 1px solid var(--border-bright);
+  align-self: flex-start;
 }
-.av-round.away .av-round-tag { background: var(--gold); color: var(--black); border-color: var(--gold-dim); }
-
-.av-submit {
-  width: 100%; margin-top: 18px;
-  padding: 13px;
-  font-size: 15px; font-weight: 800;
-  background: var(--gold); color: var(--black);
-  border: 1px solid var(--gold-dim); border-radius: 10px;
-  cursor: pointer; font-family: inherit;
-  transition: background 0.12s, color 0.12s, opacity 0.12s;
+.av-round.has-away .av-round-tag { background: var(--gold); color: var(--black); border-color: var(--gold-dim); }
+.av-round-names {
+  margin-top: 6px;
+  font-size: 12px; line-height: 1.45; color: var(--text);
+  display: flex; flex-direction: column; gap: 3px;
 }
-.av-submit:hover:not(:disabled) { background: var(--gold-dim); color: #fff; }
-.av-submit:disabled { opacity: 0.5; cursor: not-allowed; }
-
-.av-status { margin-top: 10px; font-size: 13px; min-height: 18px; }
-.av-status.ok { color: #1F7A38; }
-.av-status.err { color: #B0001A; }
+.av-round-name { display: flex; align-items: baseline; gap: 6px; }
+.av-round-name .nm { font-weight: 700; }
+.av-round-name .note { font-size: 11px; color: var(--text-3); font-style: italic; }
 
 @media (max-width: 600px) {
-  .av-rounds { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+  .av-rounds { grid-template-columns: 1fr; }
 }
 
 /* ═════════ Coach gate (Votes password) ═════════ */
@@ -1108,27 +1089,12 @@ body { overflow-x: hidden; }
   <!-- ═════════ AVAILABLE ═════════ -->
   <section id="section-available" class="section">
     <div class="av-intro">
-      <h3>Mark when your son is unavailable</h3>
-      <p>Pick your son, tap any rounds he'll be away for, add a note if helpful, then submit. You can submit again any time to update.</p>
+      <h3>Who's away</h3>
+      <p>Parents — tap below to mark which rounds your son will miss. Submissions appear here within a few minutes. Submit again any time to update.</p>
+      <a class="av-cta" id="av-cta" href="https://forms.gle/hGrTMgdHBmLxUgeP8" target="_blank" rel="noopener">Submit / update availability →</a>
+      <div class="av-meta" id="av-meta"></div>
     </div>
-    <div class="av-form">
-      <label class="av-label" for="av-player">Player</label>
-      <select class="av-select" id="av-player">
-        <option value="">Select your son…</option>
-      </select>
-
-      <label class="av-label">Rounds unavailable</label>
-      <div class="av-rounds" id="av-rounds"></div>
-
-      <label class="av-label" for="av-note">Note <span class="av-optional">(optional)</span></label>
-      <textarea class="av-textarea" id="av-note" rows="2" placeholder="e.g. school camp, family holiday"></textarea>
-
-      <label class="av-label" for="av-parent">Your name <span class="av-optional">(optional)</span></label>
-      <input class="av-input" id="av-parent" type="text" autocomplete="name" placeholder="e.g. Sarah">
-
-      <button class="av-submit" id="av-submit" type="button" disabled>Submit availability</button>
-      <div class="av-status" id="av-status"></div>
-    </div>
+    <div class="av-rounds" id="av-rounds"></div>
   </section>
 
   <!-- ═════════ VOTES ═════════ -->
@@ -1983,12 +1949,12 @@ function setVotesDiv(d) {
   renderVotesTab();
 }
 
-// ═══════════════════ AVAILABILITY (parent submission) ═══════════════════
-// Replace this with the Apps Script web app URL once deployed.
-const AVAILABILITY_ENDPOINT = 'PASTE_APPS_SCRIPT_WEB_APP_URL_HERE';
+// ═══════════════════ AVAILABILITY (responses from Google Form) ═══════════════════
+const RESPONSES_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSxNR8w-J7mhGJdwvUbgAZR091ZhVYE_Cd8hczi7W74PTU3O_tgO6uOyQVye6hHQkzOAcKNxAmZQoZc/pub?gid=922913732&single=true&output=csv';
 
-let avSelectedPlayer = '';
-let avAwayRounds = new Set();
+let awayByRound = {};
+let responsesLoadedAt = 0;
+let responsesTotal = 0;
 
 function buildAvailRounds() {
   const tctGames = [...div1Games, ...div3Games].filter(isTCTGame).filter(g => !g.isBye);
@@ -2002,6 +1968,108 @@ function buildAvailRounds() {
   return Object.values(byRound).sort((a, b) => a.round - b.round);
 }
 
+function parseGFormCSV(text) {
+  const rows = [];
+  let row = [];
+  let field = '';
+  let inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (inQuotes) {
+      if (c === '"') {
+        if (text[i + 1] === '"') { field += '"'; i++; }
+        else inQuotes = false;
+      } else field += c;
+    } else {
+      if (c === '"') inQuotes = true;
+      else if (c === ',') { row.push(field); field = ''; }
+      else if (c === '\n') { row.push(field); rows.push(row); row = []; field = ''; }
+      else if (c === '\r') { /* skip */ }
+      else field += c;
+    }
+  }
+  if (field.length || row.length) { row.push(field); rows.push(row); }
+  return rows;
+}
+
+async function loadResponses() {
+  if (Date.now() - responsesLoadedAt < 30000 && responsesLoadedAt > 0) return;
+  try {
+    const res = await fetch(RESPONSES_CSV_URL + '&_=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const text = await res.text();
+    const rows = parseGFormCSV(text);
+    if (!rows.length) { awayByRound = {}; responsesTotal = 0; responsesLoadedAt = Date.now(); return; }
+
+    const header = rows[0].map(h => h.trim().toLowerCase());
+    const colTs     = header.findIndex(h => h === 'timestamp');
+    const colPlayer = header.findIndex(h => h.startsWith('player'));
+    const colRounds = header.findIndex(h => h.startsWith('rounds'));
+    const colNote   = header.findIndex(h => h === 'note');
+    const colParent = header.findIndex(h => h.startsWith('parent'));
+
+    const latestByPlayer = {};
+    for (let i = 1; i < rows.length; i++) {
+      const r = rows[i];
+      if (!r || r.length < 2) continue;
+      const player = (r[colPlayer] || '').trim();
+      if (!player) continue;
+      const ts = (r[colTs] || '').trim();
+      const prev = latestByPlayer[player];
+      if (!prev || ts > prev.ts) {
+        latestByPlayer[player] = {
+          ts,
+          player,
+          rounds: (r[colRounds] || '').trim(),
+          note: colNote >= 0 ? (r[colNote] || '').trim() : '',
+          parent: colParent >= 0 ? (r[colParent] || '').trim() : '',
+        };
+      }
+    }
+
+    const next = {};
+    for (const sub of Object.values(latestByPlayer)) {
+      const items = sub.rounds.split(',').map(s => s.trim()).filter(Boolean);
+      for (const item of items) {
+        const m = item.match(/^R(\d+)/i);
+        if (!m) continue;
+        const rn = parseInt(m[1], 10);
+        if (!next[rn]) next[rn] = [];
+        next[rn].push({ player: sub.player, parent: sub.parent, note: sub.note, ts: sub.ts });
+      }
+    }
+    for (const rn of Object.keys(next)) next[rn].sort((a, b) => a.player.localeCompare(b.player));
+
+    awayByRound = next;
+    responsesTotal = Object.keys(latestByPlayer).length;
+    responsesLoadedAt = Date.now();
+  } catch (e) {
+    const meta = document.getElementById('av-meta');
+    if (meta) {
+      meta.className = 'av-meta err';
+      meta.textContent = 'Could not load responses. Try again in a moment.';
+    }
+  }
+}
+
+function renderAvailMeta() {
+  const meta = document.getElementById('av-meta');
+  if (!meta) return;
+  if (!responsesLoadedAt) { meta.textContent = ''; return; }
+  const t = new Date(responsesLoadedAt);
+  const hh = t.getHours().toString().padStart(2, '0');
+  const mm = t.getMinutes().toString().padStart(2, '0');
+  const n = responsesTotal;
+  meta.className = 'av-meta';
+  meta.textContent = `Last refreshed ${hh}:${mm} • ${n} player${n === 1 ? '' : 's'} submitted`;
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
 function renderAvailRounds() {
   const host = document.getElementById('av-rounds');
   if (!host) return;
@@ -2009,104 +2077,32 @@ function renderAvailRounds() {
   const rounds = buildAvailRounds().filter(r => parseDate(r.date) >= today);
   if (!rounds.length) {
     host.innerHTML = '<div style="grid-column:1/-1; color:var(--text-3); font-size:13px;">No upcoming rounds.</div>';
+    renderAvailMeta();
     return;
   }
   host.innerHTML = rounds.map(r => {
-    const isAway = avAwayRounds.has(r.round);
+    const away = awayByRound[r.round] || [];
+    const has = away.length > 0;
     const opponents = r.games.map(g => {
       const opp = g.home === MY_TEAM ? g.away : g.home;
       const ha = g.home === MY_TEAM ? 'vs' : '@';
       const div = g.division.replace('Div ', 'D');
       return `${div} ${ha} ${opp}`;
     }).join('<br>');
+    const tag = has ? `Away (${away.length})` : 'No-one away';
+    const names = has ? `<div class="av-round-names">${away.map(a => `<div class="av-round-name"><span class="nm">${escapeHtml(a.player)}</span>${a.note ? `<span class="note">${escapeHtml(a.note)}</span>` : ''}</div>`).join('')}</div>` : '';
     return `
-      <div class="av-round ${isAway ? 'away' : ''}" data-round="${r.round}" role="button" tabindex="0">
+      <div class="av-round ${has ? 'has-away' : ''}" data-round="${r.round}">
         <div class="av-round-head">
           <span class="av-round-rn">R${r.round}</span>
           <span class="av-round-date">${formatDate(r.date)}</span>
         </div>
         <div class="av-round-opp">${opponents}</div>
-        <span class="av-round-tag">${isAway ? 'Away' : 'Available'}</span>
+        <span class="av-round-tag">${tag}</span>
+        ${names}
       </div>`;
   }).join('');
-  host.querySelectorAll('.av-round').forEach(el => {
-    const toggle = () => {
-      const rn = parseInt(el.dataset.round);
-      if (avAwayRounds.has(rn)) avAwayRounds.delete(rn);
-      else avAwayRounds.add(rn);
-      renderAvailRounds();
-      updateAvailSubmit();
-    };
-    el.addEventListener('click', toggle);
-    el.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
-    });
-  });
-}
-
-function renderAvailPlayers() {
-  const sel = document.getElementById('av-player');
-  if (!sel || !attendanceData) return;
-  const all = [
-    ...((attendanceData.squads && attendanceData.squads.div1 && attendanceData.squads.div1.players) || []),
-    ...((attendanceData.squads && attendanceData.squads.div3 && attendanceData.squads.div3.players) || []),
-  ];
-  const names = [...new Set(all.map(p => p.name))].sort();
-  const current = sel.value;
-  sel.innerHTML = '<option value="">Select your son…</option>' +
-    names.map(n => `<option value="${n}">${n}</option>`).join('');
-  if (names.includes(current)) sel.value = current;
-}
-
-function updateAvailSubmit() {
-  const btn = document.getElementById('av-submit');
-  if (!btn) return;
-  btn.disabled = !(avSelectedPlayer && avAwayRounds.size > 0);
-}
-
-async function submitAvailability() {
-  const btn = document.getElementById('av-submit');
-  const status = document.getElementById('av-status');
-  const note = document.getElementById('av-note').value.trim();
-  const parent = document.getElementById('av-parent').value.trim();
-
-  if (AVAILABILITY_ENDPOINT === 'PASTE_APPS_SCRIPT_WEB_APP_URL_HERE') {
-    status.className = 'av-status err';
-    status.textContent = 'Submit endpoint not set up yet.';
-    return;
-  }
-
-  const payload = {
-    player: avSelectedPlayer,
-    rounds: [...avAwayRounds].sort((a, b) => a - b),
-    note,
-    parent,
-    submitted_at: new Date().toISOString(),
-  };
-
-  btn.disabled = true;
-  status.className = 'av-status';
-  status.textContent = 'Submitting…';
-
-  try {
-    await fetch(AVAILABILITY_ENDPOINT, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(payload),
-    });
-    const n = avAwayRounds.size;
-    status.className = 'av-status ok';
-    status.textContent = `Thanks! Submitted ${n} round${n === 1 ? '' : 's'} for ${avSelectedPlayer}.`;
-    avAwayRounds = new Set();
-    document.getElementById('av-note').value = '';
-    renderAvailRounds();
-    updateAvailSubmit();
-  } catch (e) {
-    status.className = 'av-status err';
-    status.textContent = 'Submit failed. Please try again.';
-    btn.disabled = false;
-  }
+  renderAvailMeta();
 }
 
 // ═══════════════════ SECTION SWITCHING ═══════════════════
@@ -2117,14 +2113,14 @@ function switchSection(name) {
   if ((name === 'squad' || name === 'votes' || name === 'available') && !attendanceData) {
     loadAttendance().then(() => {
       if (name === 'votes') renderVotesTab();
-      if (name === 'available') renderAvailPlayers();
     });
   } else if (name === 'votes' && attendanceData) {
     renderVotesTab();
-  } else if (name === 'available' && attendanceData) {
-    renderAvailPlayers();
   }
-  if (name === 'available') renderAvailRounds();
+  if (name === 'available') {
+    renderAvailRounds();
+    loadResponses().then(renderAvailRounds);
+  }
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
 
@@ -2134,12 +2130,6 @@ document.querySelectorAll('#fx-filters .chip').forEach(b => b.addEventListener('
 document.querySelectorAll('#section-squad > .chip-row .chip').forEach(b => b.addEventListener('click', () => setSquadDiv(b.dataset.div)));
 document.querySelectorAll('#section-votes > .chip-row .chip').forEach(b => b.addEventListener('click', () => setVotesDiv(b.dataset.vd)));
 document.querySelectorAll('#player-filters .sq-filter').forEach(b => b.addEventListener('click', () => setPlayerFilter(b.dataset.pf)));
-
-document.getElementById('av-player').addEventListener('change', e => {
-  avSelectedPlayer = e.target.value;
-  updateAvailSubmit();
-});
-document.getElementById('av-submit').addEventListener('click', submitAvailability);
 
 // ═══════════════════ INIT ═══════════════════
 renderNextGame();
