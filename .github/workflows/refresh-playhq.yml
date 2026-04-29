@@ -1,0 +1,44 @@
+name: Refresh PlayHQ data
+
+on:
+  schedule:
+    # Hourly on Saturdays/Sundays (game days), every 6h other days
+    - cron: '5 * * * 6,0'
+    - cron: '5 */6 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      refetch_all:
+        description: 'Force re-fetch of all cached seasons'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Fetch PlayHQ data
+        env:
+          PLAYHQ_API_KEY: ${{ secrets.PLAYHQ_API_KEY }}
+          PLAYHQ_REFETCH_ALL: ${{ inputs.refetch_all && '1' || '0' }}
+        run: python3 scripts/fetch_playhq.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "data: refresh PlayHQ ($(date -u +%Y-%m-%dT%H:%MZ))"
+            git push
+          fi
