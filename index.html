@@ -1673,15 +1673,92 @@ async function loadPlayHQ() {
     phqLadder = lad;
     phqPlayers = pl;
     phqPlayerIndex = buildPlayerIndex();
-    // If fixtures or squad already rendered, refresh them so new info shows.
+    // Swap fixtures from CSV → PlayHQ as the source of truth.
+    try { if (typeof applyPhqFixture === 'function') applyPhqFixture(); } catch (e) {}
+    // Re-render anything already on screen.
+    try { if (typeof renderNextGame === 'function') renderNextGame(); } catch (e) {}
+    try { if (typeof renderRoundPicker === 'function') renderRoundPicker(); } catch (e) {}
     try { if (typeof renderFixturesBody === 'function') renderFixturesBody(); } catch (e) {}
     try { if (typeof renderSquad === 'function' && attendanceData) renderSquad(); } catch (e) {}
   })();
   return phqLoadPromise;
 }
 
-const div1Games = parseCSV(CSV_DIV1).map(g => ({...g, division: 'Div 1'}));
-const div3Games = parseCSV(CSV_DIV3).map(g => ({...g, division: 'Div 3'}));
+let div1Games = parseCSV(CSV_DIV1).map(g => ({...g, division: 'Div 1'}));
+let div3Games = parseCSV(CSV_DIV3).map(g => ({...g, division: 'Div 3'}));
+
+// ─── Translate PlayHQ fixture into the CSV shape the renderer expects ───
+function phqGameToCsv(g, divisionLabel) {
+  const home = g.competitors.find(c => c.is_home) || g.competitors[0];
+  const away = g.competitors.find(c => !c.is_home) || g.competitors[1];
+  if (!home || !away) return null;
+  const [y, m, d] = (g.date || '').split('-');
+  const gameDate = (y && m && d) ? `${d}/${m}/${y}` : '';
+  let gameTime = '';
+  if (g.time) {
+    const [hhRaw, mm] = g.time.split(':');
+    let h = parseInt(hhRaw, 10);
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    gameTime = `${String(h).padStart(2, '0')}:${mm}${ampm}`;
+  }
+  const round = g.round_num || parseInt((g.round || '').replace('Round ', ''), 10) || null;
+  return {
+    round,
+    roundDate: gameDate,
+    homeRaw: home.name,
+    awayRaw: away.name,
+    home: parseTeamName(home.name),
+    away: parseTeamName(away.name),
+    venue: g.venue || '',
+    surface: g.surface || '',
+    gameDate,
+    gameTime,
+    isBye: false,
+    division: divisionLabel,
+  };
+}
+
+function buildPhqDivisionGames(divKey, divLabel) {
+  if (!phqFixture || !phqFixture.divisions || !phqFixture.divisions[divKey]) return null;
+  const div = phqFixture.divisions[divKey];
+  const games = (div.games || []).map(g => phqGameToCsv(g, divLabel)).filter(Boolean);
+  if (!games.length) return null;
+  // Infer BYEs: any team in the competition that doesn't play in a given round.
+  const allTeams = new Set();
+  for (const g of games) { allTeams.add(g.home); allTeams.add(g.away); }
+  const rounds = [...new Set(games.map(g => g.round).filter(Boolean))].sort((a,b)=>a-b);
+  for (const rn of rounds) {
+    const playing = new Set();
+    for (const g of games) if (g.round === rn) { playing.add(g.home); playing.add(g.away); }
+    for (const t of allTeams) {
+      if (!playing.has(t)) {
+        const dateRef = games.find(g => g.round === rn);
+        games.push({
+          round: rn,
+          roundDate: dateRef ? dateRef.roundDate : '',
+          home: t,
+          away: 'BYE',
+          venue: '',
+          surface: '',
+          gameDate: dateRef ? dateRef.gameDate : '',
+          gameTime: '',
+          isBye: true,
+          division: divLabel,
+        });
+      }
+    }
+  }
+  return games;
+}
+
+function applyPhqFixture() {
+  if (!phqFixture) return;
+  const newDiv1 = buildPhqDivisionGames('div1', 'Div 1');
+  const newDiv3 = buildPhqDivisionGames('div3', 'Div 3');
+  if (newDiv1 && newDiv1.length) div1Games = newDiv1;
+  if (newDiv3 && newDiv3.length) div3Games = newDiv3;
+}
 
 // ═══════════════════ FIXTURES ═══════════════════
 function getFilteredGames() {
