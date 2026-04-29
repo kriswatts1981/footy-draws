@@ -757,6 +757,97 @@ a { color: inherit; text-decoration: none; }
   white-space: nowrap;
 }
 .pl-status.ok { color: var(--ok); background: rgba(52,211,153,0.12); }
+
+/* ═════════ Career-games badge (PlayHQ) ═════════ */
+.pl-career {
+  display: inline-block;
+  font-size: 9px; font-weight: 700;
+  color: var(--text-3);
+  letter-spacing: 0.2px;
+  margin-left: 4px;
+}
+.pl-career.veteran { color: var(--gold); }
+
+/* ═════════ Ladder ═════════ */
+.lad-wrap { display: flex; flex-direction: column; gap: 18px; }
+.lad-block {
+  background: var(--bg-1); border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+}
+.lad-head {
+  padding: 12px 14px;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
+}
+.lad-head h3 {
+  font-size: 14px; font-weight: 800; letter-spacing: -0.2px;
+  color: var(--text);
+}
+.lad-head .lad-sub {
+  font-size: 10px; color: var(--text-3); font-weight: 600;
+  letter-spacing: 0.4px; text-transform: uppercase;
+}
+.lad-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.lad-table thead th {
+  text-align: left;
+  font-size: 9px; font-weight: 800; color: var(--text-3);
+  letter-spacing: 0.5px; text-transform: uppercase;
+  padding: 8px 10px;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+}
+.lad-table thead th.center { text-align: center; }
+.lad-table thead th.right { text-align: right; }
+.lad-table tbody td {
+  padding: 8px 10px;
+  border-top: 1px solid var(--border);
+  vertical-align: middle;
+}
+.lad-table tbody tr.tct-row td { background: linear-gradient(90deg, rgba(232,173,10,0.10) 0%, rgba(232,173,10,0.02) 100%); }
+.lad-table tbody tr.tct-row td.lad-team { color: var(--text); font-weight: 800; }
+.lad-table .lad-rank {
+  text-align: center; width: 30px;
+  font-weight: 800; color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+.lad-table .lad-team { font-weight: 600; color: var(--text); }
+.lad-table .lad-num {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600; color: var(--text-2);
+  width: 28px;
+}
+.lad-table .lad-pct {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600; color: var(--text-2);
+  width: 56px;
+}
+.lad-table .lad-pts {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800; color: var(--text);
+  width: 36px;
+}
+.lad-meta {
+  font-size: 10px; color: var(--text-3); font-weight: 500;
+  padding: 8px 14px; text-align: right;
+}
+.lad-meta a { color: var(--text-3); text-decoration: underline; }
+
+/* Score chip on fixture rows */
+.fx-score {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 800;
+  padding: 3px 8px; border-radius: 8px;
+  background: var(--bg-2); color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.fx-score.tct-won { background: rgba(52,211,153,0.12); color: var(--ok); }
+.fx-score.tct-lost { background: rgba(185,28,28,0.08); color: var(--danger); }
+.fx-score.tct-drew { background: rgba(232,173,10,0.12); color: var(--gold); }
+.fx-score .vs { color: var(--text-3); font-weight: 600; }
 .pl-status.warn { color: var(--warn); background: rgba(251,191,36,0.12); }
 .pl-status.danger { color: var(--danger); background: rgba(248,113,113,0.12); }
 
@@ -1038,6 +1129,7 @@ body { overflow-x: hidden; }
   </div>
   <nav class="section-nav">
     <button class="nav-btn active" data-section="fixtures">Fixtures</button>
+    <button class="nav-btn" data-section="ladder">Ladder</button>
     <button class="nav-btn" data-section="squad">Squad</button>
     <button class="nav-btn" data-section="available" id="nav-available">
       <span class="nav-lock" id="nav-available-lock" aria-hidden="true">
@@ -1073,6 +1165,17 @@ body { overflow-x: hidden; }
     </div>
     <div class="round-picker" id="round-picker"></div>
     <div id="fixtures-body"></div>
+  </section>
+
+  <!-- ═════════ LADDER ═════════ -->
+  <section id="section-ladder" class="section">
+    <div class="chip-row">
+      <button class="chip active" data-lad="all">Both divs</button>
+      <button class="chip" data-lad="div1">Div 1</button>
+      <button class="chip" data-lad="div3">Div 3</button>
+    </div>
+    <div id="ladder-loading" class="empty" style="margin-top:24px;">Loading ladder…</div>
+    <div id="ladder-body" style="display:none;"></div>
   </section>
 
   <!-- ═════════ SQUAD ═════════ -->
@@ -1520,6 +1623,62 @@ let squadDiv = 'all';
 let playerFilter = 'all';
 let votesDiv = 'div1';
 let attendanceData = null;
+let ladderFilter = 'all'; // all, div1, div3
+let phqFixture = null;
+let phqLadder = null;
+let phqPlayers = null; // { players: { "Name": {games_total, by_year, ...} } }
+let phqLoadPromise = null;
+
+// Build a lookup from "First Last" lowercased to player record.
+function buildPlayerIndex() {
+  const idx = {};
+  if (!phqPlayers) return idx;
+  for (const [name, p] of Object.entries(phqPlayers.players || {})) {
+    idx[name.toLowerCase().trim()] = p;
+    // Also index by last-name only for fallback
+    const parts = name.split(' ');
+    if (parts.length >= 2) {
+      const fl = (parts[0][0] + ' ' + parts.slice(1).join(' ')).toLowerCase().trim();
+      // first-initial + last name (e.g. "G Watts")
+      if (!idx[fl]) idx[fl] = p;
+    }
+  }
+  return idx;
+}
+let phqPlayerIndex = {};
+
+function getCareerGames(name) {
+  if (!phqPlayerIndex) return null;
+  const k = name.toLowerCase().trim();
+  return phqPlayerIndex[k] || null;
+}
+
+async function loadPlayHQ() {
+  if (phqLoadPromise) return phqLoadPromise;
+  phqLoadPromise = (async () => {
+    const v = '?v=' + Date.now();
+    const tryFetch = async (path) => {
+      try {
+        const r = await fetch(path + v);
+        if (!r.ok) return null;
+        return await r.json();
+      } catch (e) { return null; }
+    };
+    const [fx, lad, pl] = await Promise.all([
+      tryFetch('data/fixture.json'),
+      tryFetch('data/ladder.json'),
+      tryFetch('data/players.json'),
+    ]);
+    phqFixture = fx;
+    phqLadder = lad;
+    phqPlayers = pl;
+    phqPlayerIndex = buildPlayerIndex();
+    // If fixtures or squad already rendered, refresh them so new info shows.
+    try { if (typeof renderFixturesBody === 'function') renderFixturesBody(); } catch (e) {}
+    try { if (typeof renderSquad === 'function' && attendanceData) renderSquad(); } catch (e) {}
+  })();
+  return phqLoadPromise;
+}
 
 const div1Games = parseCSV(CSV_DIV1).map(g => ({...g, division: 'Div 1'}));
 const div3Games = parseCSV(CSV_DIV3).map(g => ({...g, division: 'Div 3'}));
@@ -1611,6 +1770,7 @@ function renderFixturesBody() {
     const awayIsTCT = g.away === MY_TEAM;
     const cal = calendarUrl(g);
     const addrLink = g.venue ? `<a href="${mapsUrl(g.venue, g.surface)}" target="_blank">${g.surface || g.venue}</a>` : '';
+    const scoreChip = phqScoreChip(g);
     html += `<div class="fx-row ${tctCls} ${playedCls}">
       <div class="fx-teams">
         <div class="fx-team ${homeIsTCT?'tct':''}">
@@ -1625,7 +1785,7 @@ function renderFixturesBody() {
         </div>
       </div>
       <div class="fx-meta">
-        <span class="fx-status ${status}">${statusLabel(status)}</span>
+        ${scoreChip || `<span class="fx-status ${status}">${statusLabel(status)}</span>`}
         <span class="fx-time">${formatTime(g.gameTime)}</span>
         ${fxFilter === 'all' || fxFilter === 'tct' ? `<span class="fx-div">${g.division}</span>` : ''}
       </div>
@@ -1643,6 +1803,122 @@ function setFxFilter(f) {
   fxFilter = f; activeRound = null;
   document.querySelectorAll('#fx-filters .chip').forEach(c => c.classList.toggle('active', c.dataset.filter === f));
   renderRoundPicker(); renderFixturesBody();
+}
+
+// ═══════════════════ PlayHQ score lookup for fixture rows ═══════════════════
+// Match an existing CSV game to PlayHQ data by date + opponent name (substring) + division.
+function findPhqGame(g) {
+  if (!phqFixture || !phqFixture.divisions) return null;
+  const divKey = g.division === 'Div 1' ? 'div1' : 'div3';
+  const div = phqFixture.divisions[divKey];
+  if (!div) return null;
+  const gameDate = g.gameDate; // YYYY-MM-DD
+  const opp = (g.home === MY_TEAM ? g.away : g.home || '').toLowerCase();
+  // First try date match
+  const candidates = (div.games || []).filter(pg => pg.date === gameDate);
+  if (!candidates.length) return null;
+  // Prefer one where opponent name matches
+  const oppKey = opp.split(' ')[0]; // e.g. "byron"
+  const match = candidates.find(pg => {
+    return pg.competitors.some(c => !c.is_tct && c.name.toLowerCase().includes(oppKey));
+  });
+  return match || candidates[0];
+}
+
+function phqScoreChip(g) {
+  const pg = findPhqGame(g);
+  if (!pg || pg.status !== 'FINAL') return '';
+  const tct = pg.competitors.find(c => c.is_tct);
+  const opp = pg.competitors.find(c => !c.is_tct);
+  if (!tct || !opp || tct.score === null || tct.score === undefined) return '';
+  const cls = tct.outcome === 'WON' ? 'tct-won' : tct.outcome === 'LOST' ? 'tct-lost' : 'tct-drew';
+  return `<span class="fx-score ${cls}">${tct.score}<span class="vs">vs</span>${opp.score ?? '?'}</span>`;
+}
+
+// ═══════════════════ LADDER ═══════════════════
+function setLadderFilter(f) {
+  ladderFilter = f;
+  document.querySelectorAll('#section-ladder > .chip-row .chip').forEach(c => c.classList.toggle('active', c.dataset.lad === f));
+  renderLadder();
+}
+
+function renderLadder() {
+  const loading = document.getElementById('ladder-loading');
+  const body = document.getElementById('ladder-body');
+  if (!phqLadder || !phqLadder.divisions) {
+    loading.style.display = 'block';
+    loading.textContent = 'Ladder unavailable — data not loaded yet.';
+    body.style.display = 'none';
+    return;
+  }
+  loading.style.display = 'none';
+  body.style.display = 'block';
+  const divs = [];
+  if (ladderFilter === 'all' || ladderFilter === 'div1') divs.push(['div1', 'Div 1']);
+  if (ladderFilter === 'all' || ladderFilter === 'div3') divs.push(['div3', 'Div 3']);
+
+  const updated = phqLadder.updated ? new Date(phqLadder.updated) : null;
+  const updatedStr = updated ? updated.toLocaleDateString('en-AU', {day:'numeric', month:'short'}) + ' · ' + updated.toLocaleTimeString('en-AU', {hour:'numeric', minute:'2-digit', hour12:true}) : '';
+
+  let html = `<div class="lad-wrap">`;
+  for (const [k, label] of divs) {
+    const d = phqLadder.divisions[k];
+    if (!d) continue;
+    const standings = d.standings || [];
+    html += `
+      <div class="lad-block">
+        <div class="lad-head">
+          <h3>${label}</h3>
+          <span class="lad-sub">${d.grade_name || ''}</span>
+        </div>
+        <table class="lad-table">
+          <thead>
+            <tr>
+              <th class="center">#</th>
+              <th>Team</th>
+              <th class="center">P</th>
+              <th class="center">W</th>
+              <th class="center">L</th>
+              <th class="center">B</th>
+              <th class="right">%</th>
+              <th class="right">Pts</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${standings.map(s => `
+              <tr class="${s.is_tct ? 'tct-row' : ''}">
+                <td class="lad-rank">${s.rank}</td>
+                <td class="lad-team">${shortenTeamName(s.team_name, label)}</td>
+                <td class="lad-num">${s.played ?? '–'}</td>
+                <td class="lad-num">${s.won ?? '–'}</td>
+                <td class="lad-num">${s.lost ?? '–'}</td>
+                <td class="lad-num">${s.byes ?? '–'}</td>
+                <td class="lad-pct">${formatPct(s.percentage)}</td>
+                <td class="lad-pts">${s.competition_points ?? '–'}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>`;
+  }
+  html += `</div>`;
+  if (updatedStr) html += `<div class="lad-meta">Auto-synced from PlayHQ · ${updatedStr}</div>`;
+  body.innerHTML = html;
+}
+
+function shortenTeamName(name, divLabel) {
+  if (!name) return '';
+  // Strip the division suffix that PlayHQ appends ("U15 Boys Division 3" etc.)
+  return name
+    .replace(/U15 Boys Division \d+( South| North)?( Gold Coast\/Northern Rivers)?/g, '')
+    .replace(/U15 Boys Div \d+/g, '')
+    .trim();
+}
+
+function formatPct(p) {
+  if (p === null || p === undefined) return '–';
+  if (p >= 1000) return Math.round(p) + '';
+  return p.toFixed(1);
 }
 
 // ═══════════════════ SQUAD ═══════════════════
@@ -1881,6 +2157,13 @@ function renderPlayers(allStats, rpl, isAll) {
     const subbits = [];
     if (s.lateOuts) subbits.push(`${s.lateOuts} late out${s.lateOuts>1?'s':''}`);
     if (s.dnp) subbits.push(`${s.dnp} DNP`);
+    const career = getCareerGames(p.name);
+    if (career && career.games_total > 0) {
+      const veteranCls = career.games_total >= 50 ? ' veteran' : '';
+      const yrs = career.first_year && career.last_year && career.first_year !== career.last_year
+        ? ` since ${career.first_year}` : '';
+      subbits.unshift(`<span class="pl-career${veteranCls}">${career.games_total} games${yrs}</span>`);
+    }
     return `<tr>
       <td class="col-num ${p.no === null ? 'blank' : ''}">${p.no !== null ? p.no : '–'}</td>
       <td class="col-name">${p.name}${onRpl && coachUnlocked() ? '<span class="rpl-mark">🔒</span>' : ''}${subbits.length ? `<span class="sub-line">${subbits.join(' · ')}</span>` : ''}</td>
@@ -2216,6 +2499,9 @@ function switchSection(name) {
     renderAvailRounds();
     loadResponses().then(renderAvailRounds);
   }
+  if (name === 'ladder') {
+    loadPlayHQ().then(renderLadder);
+  }
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
 
@@ -2224,12 +2510,15 @@ document.querySelectorAll('.nav-btn').forEach(b => b.addEventListener('click', (
 document.querySelectorAll('#fx-filters .chip').forEach(b => b.addEventListener('click', () => setFxFilter(b.dataset.filter)));
 document.querySelectorAll('#section-squad > .chip-row .chip').forEach(b => b.addEventListener('click', () => setSquadDiv(b.dataset.div)));
 document.querySelectorAll('#section-votes > .chip-row .chip').forEach(b => b.addEventListener('click', () => setVotesDiv(b.dataset.vd)));
+document.querySelectorAll('#section-ladder > .chip-row .chip').forEach(b => b.addEventListener('click', () => setLadderFilter(b.dataset.lad)));
 document.querySelectorAll('#player-filters .sq-filter').forEach(b => b.addEventListener('click', () => setPlayerFilter(b.dataset.pf)));
 
 // ═══════════════════ INIT ═══════════════════
 renderNextGame();
 renderRoundPicker();
 renderFixturesBody();
+// Kick off PlayHQ data load in background — fixtures will re-render with scores once it lands.
+loadPlayHQ();
 
 window.pickRound = pickRound;
 </script>
