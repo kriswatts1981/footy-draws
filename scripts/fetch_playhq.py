@@ -24,6 +24,7 @@ import time
 import urllib.request
 import urllib.error
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -45,6 +46,7 @@ CURRENT_YEAR = datetime.now().year
 SEASONS_TO_FETCH = list(range(2022, CURRENT_YEAR + 1))
 REFETCH_ALL = os.environ.get("PLAYHQ_REFETCH_ALL") == "1"
 CACHE_SCHEMA_VERSION = 3  # bump when per-season cache shape changes
+SUMMARY_WORKERS = int(os.environ.get("PLAYHQ_WORKERS", "8"))
 
 HEADERS = {"x-api-key": API_KEY, "x-phq-tenant": TENANT}
 
@@ -214,16 +216,26 @@ def fetch_season_summary(season):
                     "url": g.get("url"),
                 })
 
+        # Concurrent /summary calls — these are independent and the bottleneck.
+        summaries = {}
+        if finals:
+            with ThreadPoolExecutor(max_workers=SUMMARY_WORKERS) as ex:
+                futs = {ex.submit(game_summary, g["id"]): g for g in finals}
+                for fut in as_completed(futs):
+                    g = futs[fut]
+                    try:
+                        s = fut.result()
+                        if s:
+                            summaries[g["id"]] = s
+                    except Exception as e:
+                        print(f"    summary err {g['id'][:8]}: {e}")
+            summary_calls += len(summaries)
+            final_games_seen += len(finals)
+
         for g in finals:
-            try:
-                summary = game_summary(g["id"])
-            except Exception as e:
-                print(f"    summary err {g['id'][:8]}: {e}")
-                continue
+            summary = summaries.get(g["id"])
             if not summary:
                 continue
-            summary_calls += 1
-            final_games_seen += 1
             for app in summary.get("appearances", []):
                 if app.get("roleType") != "Player":
                     continue
