@@ -1630,17 +1630,17 @@ let phqPlayers = null; // { players: { "Name": {games_total, by_year, ...} } }
 let phqLoadPromise = null;
 
 // Build a lookup from "First Last" lowercased to player record.
+// players.json is keyed by PlayHQ player UUID; the actual name lives in p.name.
 function buildPlayerIndex() {
   const idx = {};
-  if (!phqPlayers) return idx;
-  for (const [name, p] of Object.entries(phqPlayers.players || {})) {
-    idx[name.toLowerCase().trim()] = p;
-    // Also index by last-name only for fallback
-    const parts = name.split(' ');
-    if (parts.length >= 2) {
-      const fl = (parts[0][0] + ' ' + parts.slice(1).join(' ')).toLowerCase().trim();
-      // first-initial + last name (e.g. "G Watts")
-      if (!idx[fl]) idx[fl] = p;
+  if (!phqPlayers || !phqPlayers.players) return idx;
+  for (const p of Object.values(phqPlayers.players)) {
+    if (!p.name) continue;
+    const k = p.name.toLowerCase().trim();
+    // If the same name maps to multiple players (rare — twins / homonyms),
+    // keep the one with more games so we don't under-count.
+    if (!idx[k] || (p.games_total || 0) > (idx[k].games_total || 0)) {
+      idx[k] = p;
     }
   }
   return idx;
