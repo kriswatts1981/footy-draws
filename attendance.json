@@ -1,41 +1,6 @@
 {
   "season": "SEQJ 2026",
   "age_group": "U15 Boys",
-  "restricted_player_list": {
-    "submitted": true,
-    "submitted_date": "2026-04-19",
-    "round_1_players": [
-      "Samuel Ella",
-      "Archer Abbott",
-      "Levi Baker",
-      "Wyatt Greenhill",
-      "William France",
-      "Jarrah Star-Webb",
-      "Jack Koschitzke",
-      "Beau Halliday",
-      "Lewis Cunynghame",
-      "Saxon Healey",
-      "Suryan Raju",
-      "Riley Kippax"
-    ],
-    "round_8_additional_due": "2026-06-10",
-    "round_8_additional_players": [],
-    "players": [
-      "Samuel Ella",
-      "Archer Abbott",
-      "Levi Baker",
-      "Wyatt Greenhill",
-      "William France",
-      "Jarrah Star-Webb",
-      "Jack Koschitzke",
-      "Beau Halliday",
-      "Lewis Cunynghame",
-      "Saxon Healey",
-      "Suryan Raju",
-      "Riley Kippax"
-    ],
-    "note": "U15 Boys: 12 players required before Round 1, +4 more before Round 8 (16 total). RPL players cannot play Div 3."
-  },
   "finals_rules": {
     "min_games_per_team": 4,
     "min_games_if_registered_after_june_30": 3,
@@ -47,64 +12,223 @@
     "div1": {
       "coach": "Matthew France",
       "players": [
-        {"no": 1,  "name": "Willo Bennett"},
-        {"no": 2,  "name": "Hudson Vecht"},
-        {"no": 3,  "name": "Levi Baker"},
-        {"no": 4,  "name": "William France"},
-        {"no": 5,  "name": "Samuel Ella"},
-        {"no": 6,  "name": "Noah Barry"},
-        {"no": 7,  "name": "Skooda Walle"},
-        {"no": 9,  "name": "Serge Popov"},
-        {"no": 10, "name": "Beau Halliday"},
-        {"no": 11, "name": "Saxon Healey"},
-        {"no": 13, "name": "Louis Beaumont"},
-        {"no": 14, "name": "Oliver De Yong"},
-        {"no": 15, "name": "Lewis Cunynghame"},
-        {"no": 16, "name": "Remy Elliott"},
-        {"no": 19, "name": "Noah Griffiths"},
-        {"no": 20, "name": "Zavier Schneider"},
-        {"no": 23, "name": "Jack Koschitzke"},
-        {"no": 24, "name": "Declan Bone"},
-        {"no": 25, "name": "Riley Kippax"},
-        {"no": 26, "name": "Archer Abbott"},
-        {"no": 27, "name": "Wyatt Greenhill"},
-        {"no": 28, "name": "Charlie Kemp"},
-        {"no": 8,    "name": "Jarrah Star-Webb"},
-        {"no": null, "name": "Brodie Campbell"},
-        {"no": null, "name": "Billy McLeay"},
-        {"no": null, "name": "Tyghe Maher"},
-        {"no": null, "name": "Suryan Raju"}
+        {
+          "no": 1,
+          "name": "Willo Bennett"
+        },
+        {
+          "no": 2,
+          "name": "Hudson Vecht"
+        },
+        {
+          "no": 3,
+          "name": "Levi Baker"
+        },
+        {
+          "no": 4,
+          "name": "William France"
+        },
+        {
+          "no": 5,
+          "name": "Samuel Ella"
+        },
+        {
+          "no": 6,
+          "name": "Noah Barry"
+        },
+        {
+          "no": 7,
+          "name": "Skooda Walle"
+        },
+        {
+          "no": 9,
+          "name": "Serge Popov"
+        },
+        {
+          "no": 10,
+          "name": "Beau Halliday"
+        },
+        {
+          "no": 11,
+          "name": "Saxon Healey"
+        },
+        {
+          "no": 13,
+          "name": "Louis Beaumont"
+        },
+        {
+          "no": 14,
+          "name": "Oliver De Yong"
+        },
+        {
+          "no": 15,
+          "name": "Lewis Cunynghame"
+        },
+        {
+          "no": 16,
+          "name": "Remy Elliott"
+        },
+        {
+          "no": 19,
+          "name": "Noah Griffiths"
+        },
+        {
+          "no": 20,
+          "name": "Zavier Schneider"
+        },
+        {
+          "no": 23,
+          "name": "Jack Koschitzke"
+        },
+        {
+          "no": 24,
+          "name": "Declan Bone"
+        },
+        {
+          "no": 25,
+          "name": "Riley Kippax"
+        },
+        {
+          "no": 26,
+          "name": "Archer Abbott"
+        },
+        {
+          "no": 27,
+          "name": "Wyatt Greenhill"
+        },
+        {
+          "no": 28,
+          "name": "Charlie Kemp"
+        },
+        {
+          "no": 8,
+          "name": "Jarrah Star-Webb"
+        },
+        {
+          "no": null,
+          "name": "Brodie Campbell"
+        },
+        {
+          "no": null,
+          "name": "Billy McLeay"
+        },
+        {
+          "no": null,
+          "name": "Tyghe Maher"
+        },
+        {
+          "no": null,
+          "name": "Suryan Raju"
+        }
       ]
     },
     "div3": {
       "coach": "Matt",
       "players": [
-        {"no": 1,  "name": "Max Bradley"},
-        {"no": 3,  "name": "Grayson Watts"},
-        {"no": 5,  "name": "Lenny McPhee"},
-        {"no": 6,  "name": "Beau Kingston"},
-        {"no": 7,  "name": "Jenson Crichton"},
-        {"no": 8,  "name": "Samuel Buchanan"},
-        {"no": 9,  "name": "Daylan Braby"},
-        {"no": 10, "name": "Mason Maynard"},
-        {"no": 11, "name": "Tommy Bourke"},
-        {"no": 13, "name": "Archer Dobell"},
-        {"no": 14, "name": "Xavier Caine"},
-        {"no": 15, "name": "Mason McAuliffe"},
-        {"no": 16, "name": "Lukas Bele"},
-        {"no": 18, "name": "Soren Hoopmann"},
-        {"no": 19, "name": "Zhyal Blackburne"},
-        {"no": 21, "name": "Jarrah O'Brien"},
-        {"no": 22, "name": "Elijah Jones"},
-        {"no": 23, "name": "Kade O'Shea"},
-        {"no": 25, "name": "Oliver Lang"},
-        {"no": 27, "name": "Joel Andrews"},
-        {"no": 17, "name": "William Ozolins"},
-        {"no": 30, "name": "Daniel Thompson"},
-        {"no": null, "name": "Taylen Howard"},
-        {"no": 28, "name": "Taj Williams"},
-        {"no": null, "name": "Ollie Palmer"},
-        {"no": 20, "name": "Jacob Schutt"}
+        {
+          "no": 1,
+          "name": "Max Bradley"
+        },
+        {
+          "no": 3,
+          "name": "Grayson Watts"
+        },
+        {
+          "no": 5,
+          "name": "Lenny McPhee"
+        },
+        {
+          "no": 6,
+          "name": "Beau Kingston"
+        },
+        {
+          "no": 7,
+          "name": "Jenson Crichton"
+        },
+        {
+          "no": 8,
+          "name": "Samuel Buchanan"
+        },
+        {
+          "no": 9,
+          "name": "Daylan Braby"
+        },
+        {
+          "no": 10,
+          "name": "Mason Maynard"
+        },
+        {
+          "no": 11,
+          "name": "Tommy Bourke"
+        },
+        {
+          "no": 13,
+          "name": "Archer Dobell"
+        },
+        {
+          "no": 14,
+          "name": "Xavier Caine"
+        },
+        {
+          "no": 15,
+          "name": "Mason McAuliffe"
+        },
+        {
+          "no": 16,
+          "name": "Lukas Bele"
+        },
+        {
+          "no": 18,
+          "name": "Soren Hoopmann"
+        },
+        {
+          "no": 19,
+          "name": "Zhyal Blackburne"
+        },
+        {
+          "no": 21,
+          "name": "Jarrah O'Brien"
+        },
+        {
+          "no": 22,
+          "name": "Elijah Jones"
+        },
+        {
+          "no": 23,
+          "name": "Kade O'Shea"
+        },
+        {
+          "no": 25,
+          "name": "Oliver Lang"
+        },
+        {
+          "no": 27,
+          "name": "Joel Andrews"
+        },
+        {
+          "no": 17,
+          "name": "William Ozolins"
+        },
+        {
+          "no": 30,
+          "name": "Daniel Thompson"
+        },
+        {
+          "no": null,
+          "name": "Taylen Howard"
+        },
+        {
+          "no": 28,
+          "name": "Taj Williams"
+        },
+        {
+          "no": null,
+          "name": "Ollie Palmer"
+        },
+        {
+          "no": 20,
+          "name": "Jacob Schutt"
+        }
       ]
     }
   },
@@ -116,29 +240,56 @@
         "opponent": null,
         "ground": null,
         "played": [
-          "Willo Bennett", "Hudson Vecht", "Levi Baker", "William France",
-          "Samuel Ella", "Noah Barry", "Skooda Walle", "Serge Popov",
-          "Beau Halliday", "Saxon Healey", "Louis Beaumont", "Oliver De Yong",
-          "Lewis Cunynghame", "Remy Elliott", "Noah Griffiths", "Zavier Schneider",
-          "Jack Koschitzke", "Declan Bone", "Riley Kippax", "Archer Abbott",
-          "Wyatt Greenhill", "Charlie Kemp"
-        ],
-        "dnp": ["Jarrah Star-Webb", "Brodie Campbell", "Billy McLeay", "Tyghe Maher", "Suryan Raju"],
-        "late_outs": []
+          "Willo Bennett",
+          "Hudson Vecht",
+          "Levi Baker",
+          "William France",
+          "Samuel Ella",
+          "Noah Barry",
+          "Skooda Walle",
+          "Serge Popov",
+          "Beau Halliday",
+          "Saxon Healey",
+          "Louis Beaumont",
+          "Oliver De Yong",
+          "Lewis Cunynghame",
+          "Remy Elliott",
+          "Noah Griffiths",
+          "Zavier Schneider",
+          "Jack Koschitzke",
+          "Declan Bone",
+          "Riley Kippax",
+          "Archer Abbott",
+          "Wyatt Greenhill",
+          "Charlie Kemp"
+        ]
       },
       "div3": {
         "opponent": "Surfers Paradise Demons",
         "ground": "SiWV7 / SiRW7",
         "played": [
-          "Max Bradley", "Grayson Watts", "Lenny McPhee", "Beau Kingston",
-          "Jenson Crichton", "Samuel Buchanan", "Daylan Braby", "Mason Maynard",
-          "Tommy Bourke", "Archer Dobell", "Xavier Caine", "Mason McAuliffe",
-          "Lukas Bele", "Soren Hoopmann", "Zhyal Blackburne", "Jarrah O'Brien",
-          "Elijah Jones", "Kade O'Shea", "Oliver Lang", "Joel Andrews",
+          "Max Bradley",
+          "Grayson Watts",
+          "Lenny McPhee",
+          "Beau Kingston",
+          "Jenson Crichton",
+          "Samuel Buchanan",
+          "Daylan Braby",
+          "Mason Maynard",
+          "Tommy Bourke",
+          "Archer Dobell",
+          "Xavier Caine",
+          "Mason McAuliffe",
+          "Lukas Bele",
+          "Soren Hoopmann",
+          "Zhyal Blackburne",
+          "Jarrah O'Brien",
+          "Elijah Jones",
+          "Kade O'Shea",
+          "Oliver Lang",
+          "Joel Andrews",
           "Daniel Thompson"
-        ],
-        "dnp": ["Taylen Howard", "Taj Williams", "Ollie Palmer", "Jacob Schutt"],
-        "late_outs": ["William Ozolins"]
+        ]
       }
     },
     {
@@ -148,69 +299,65 @@
         "opponent": "Sherwood Magpies",
         "ground": "RoYR8 / RoBC3",
         "played": [
-          "Willo Bennett", "Hudson Vecht", "Levi Baker", "William France",
-          "Samuel Ella", "Noah Barry", "Skooda Walle", "Serge Popov",
-          "Beau Halliday", "Saxon Healey", "Louis Beaumont", "Oliver De Yong",
-          "Lewis Cunynghame", "Remy Elliott", "Noah Griffiths", "Zavier Schneider",
-          "Jack Koschitzke", "Declan Bone", "Riley Kippax", "Wyatt Greenhill",
+          "Willo Bennett",
+          "Hudson Vecht",
+          "Levi Baker",
+          "William France",
+          "Samuel Ella",
+          "Noah Barry",
+          "Skooda Walle",
+          "Serge Popov",
+          "Beau Halliday",
+          "Saxon Healey",
+          "Louis Beaumont",
+          "Oliver De Yong",
+          "Lewis Cunynghame",
+          "Remy Elliott",
+          "Noah Griffiths",
+          "Zavier Schneider",
+          "Jack Koschitzke",
+          "Declan Bone",
+          "Riley Kippax",
+          "Wyatt Greenhill",
           "Charlie Kemp"
-        ],
-        "dnp": ["Archer Abbott", "Jarrah Star-Webb", "Brodie Campbell", "Billy McLeay", "Tyghe Maher", "Suryan Raju"],
-        "late_outs": []
+        ]
       },
       "div3": {
         "opponent": "Broadbeach Cats",
         "ground": "RoYR8 / RoBC3",
         "played": [
-          "Grayson Watts", "Lenny McPhee", "Beau Kingston", "Jenson Crichton",
-          "Samuel Buchanan", "Mason Maynard", "Tommy Bourke", "Archer Dobell",
-          "Xavier Caine", "Lukas Bele", "Zhyal Blackburne", "Jarrah O'Brien",
-          "Kade O'Shea", "Oliver Lang", "Joel Andrews", "William Ozolins",
-          "Daniel Thompson", "Taylen Howard", "Ollie Palmer", "Jacob Schutt",
+          "Grayson Watts",
+          "Lenny McPhee",
+          "Beau Kingston",
+          "Jenson Crichton",
+          "Samuel Buchanan",
+          "Mason Maynard",
+          "Tommy Bourke",
+          "Archer Dobell",
+          "Xavier Caine",
+          "Lukas Bele",
+          "Zhyal Blackburne",
+          "Jarrah O'Brien",
+          "Kade O'Shea",
+          "Oliver Lang",
+          "Joel Andrews",
+          "William Ozolins",
+          "Daniel Thompson",
+          "Taylen Howard",
+          "Ollie Palmer",
+          "Jacob Schutt",
           "Taj Williams"
-        ],
-        "dnp": ["Daylan Braby", "Mason McAuliffe", "Soren Hoopmann", "Elijah Jones"],
-        "late_outs": ["Max Bradley"]
+        ]
       }
     }
   ],
-  "votes": {
-    "config": {
-      "scale": [5, 4, 3, 2, 1],
-      "voters_per_week": 3,
-      "note": "3 voters per division per round, each casting 5-4-3-2-1. Max 15 points per player per round."
-    },
-    "rounds": [
-      {
-        "round": 1,
-        "div1_voters": ["Matt", "Jimmy", "Bones"],
-        "div1_cards": [
-          {"5": "William France", "4": "Noah Barry", "3": "Hudson Vecht", "2": "Jack Koschitzke", "1": "Lewis Cunynghame"},
-          {"5": "William France", "4": "Jack Koschitzke", "3": "Archer Abbott", "2": "Noah Barry", "1": "Hudson Vecht"},
-          {"5": "William France", "4": "Hudson Vecht", "3": "Archer Abbott", "2": "Noah Barry", "1": "Jack Koschitzke"}
-        ],
-        "div3_voters": ["Jono", "Cam", "Kris"],
-        "div3_cards": [
-          {"5": "Jarrah O'Brien", "4": "Daniel Thompson", "3": "Elijah Jones", "2": "Tommy Bourke", "1": "Mason McAuliffe"},
-          {"5": "Jarrah O'Brien", "4": "Tommy Bourke", "3": "Mason McAuliffe", "2": "Elijah Jones", "1": "Daniel Thompson"},
-          {"5": "Jarrah O'Brien", "4": "Tommy Bourke", "3": "Daniel Thompson", "2": "Mason McAuliffe", "1": "Xavier Caine"}
-        ]
-      },
-      {
-        "round": 2,
-        "div1_voters": [],
-        "div1_cards": [
-          {"5": "Jack Koschitzke", "4": "Saxon Healey", "3": "William France", "2": "Samuel Ella", "1": "Riley Kippax"},
-          {"5": "Samuel Ella", "4": "Serge Popov", "3": "Saxon Healey", "2": "Jack Koschitzke", "1": "William France"},
-          {"5": "Samuel Ella", "4": "Serge Popov", "3": "Jack Koschitzke", "2": "William France", "1": "Saxon Healey"}
-        ],
-        "div3_voters": [],
-        "div3_cards": [
-          {"5": "Jarrah O'Brien", "4": "Tommy Bourke", "3": "Ollie Palmer", "2": "Jacob Schutt", "1": "Zhyal Blackburne"},
-          {"5": "Jarrah O'Brien", "4": "Tommy Bourke", "3": "Ollie Palmer", "2": "Zhyal Blackburne", "1": "Daniel Thompson"},
-          {"5": "Jarrah O'Brien", "4": "Taj Williams", "3": "Jacob Schutt", "2": "Tommy Bourke", "1": "Ollie Palmer"}
-        ]
-      }
-    ]
+  "encrypted": {
+    "v": 1,
+    "alg": "AES-GCM",
+    "kdf": "PBKDF2-HMAC-SHA256",
+    "iter": 100000,
+    "salt": "Rr/MatKJ2FyjXf3ELa/cOw==",
+    "nonce": "yMO48VT1WC9/6oXn",
+    "ciphertext": "p8y5+ZAkslCFUgzhDTtiwM4mnKhKBZfWsh0edOFHpynehu/Mz06OXd6HsJfZ30s4cAvUaahClGhESuPx8G1hRTtb47GwU28jiXMd4HEIDkzHbUY2dYQimzkCaUCb/DHvMMY7jr37KlK+765Vb7WK4GqhYuiHVbcbNmLNPhauzwlVpwYccvU8Mwy85FRgQTj0imZjxKlN1RNybWbIf4NbXDM9NO36INGAP4DVVSvQH5B1ocHbkVEheTAAmchxLAG3j5YuZe3FVIcDQp5RvO5tTzI1o1lAg+1t+HiXnKJBF8JuleN0Zhb0hb64uObLo3u602G8hIyNTp9THie250juBMU22zOOBcvAqZrI633oQVSelSPf6jH5EOYTs5qbSpaPP/86ix9I1yQCXUFA6DSyy4b9BaDlQK8sym7KEGiwnlsQp/wI6NI1BQKDdCKkaLBNZ9516jK+EgnyO7hl5gP9TBxIVL2KPvS8Y+Th1g+HPCZz8iMCukIb31Rt8C/jVcXgtemRh6v2cuecyTH3qIx8Ri+uaqZbGUzF1VCSJDf6UPt9mIvEhmD5s3d/nCnBIGqkksv8IK2wI4g204iCxFX/fLJB+h5PIymzvdqruwsr+qO1sca2/CzWVHG/WKyOLhfs/YiMBD1R0uFGtath7U9uBhpHInEqwoYt+9xW7t5w+fMAUWR6xZVcpYYw5zcmfxtVJ2LD3gzHW5HtC+jPF4pVg2VdxBmxy2W5fKKiDYKPtxXk0U9EwLkRF0MCnFVhXs3Q18QC0qXYKLy9gCs5YmGP4lfID7EBwmDBl9DIMxvmgA5OPWmPi5NKsTVA4YB8HOEQXPe0dEHkj8e9RUVylLJqXbwfbLGnWgpQYPjdeJLcyONi6OjuM6o46gj2jqBMaYI5VUJ/AClHN0wZMMJY6odT/71AjOCvac+7IwMk5qu8J56HkKJp+w8h/ZjsExS/+GOX+M5OJ78qvlJP0lzsYmBqF7skG8Av8Fgj26tZEoaNoC7OvVf3XpZEvqLmUIdtnSLtV93gwNCoWn2kbcdTATXAQPIkUSeZ/HGGKlx95/bku6fNjyFVZI9X4KXITjMFTigmWBIT+cKxBw6JRinv9wp8YIUD94C6ND4Yvrw0RBfI9htJcv3vuz9QsP3sDWFKMe0wgJ0X1NzNDZoDU1uTWKdfmqUfnS68kquWBN8qQGWIkguTKky8JAV4xrhY6as8vasZf2ydYTFA9HNVSmEf/5Iyv8mjsbtTQsc1graWuOHE04Z69NIBK4TeNrc5DmshUOhZfavnwxkP+DD6u0e+ptg0+WCNwNepMgKnv81vOXu/wLLL3nSWL7ZSx6xki09ssIS6YY4SescEolj89O323insclIT904JE4hJMHwIuMFctCEJrEwxQhOm+XotTYtce+sSau0u+ph/qXuqPboVRzdzF0ld3v+3iWpsQp86ZxQ3j0IIMZDaJmh4RAKi909QGfnGHv2EDec3521+TrMIwPqCO7R5uf0vnFxN72BmirQDDiyHNmE9HxO2Th0raInG8rZYRtygy3dBYqoV+/nsa+VI0RXN876jNxakz4kUJxFY4M7OzAlRHDXLhStVpsLAUjiPRrFJaiDbws7Q9Jb2voXkes0Omow9Y6Ph+6FL/RsWpTrdE3/iJ/8H7POqXaCURrxYeyyjIuwhVeq3EwSwih4mIW5Ev3GDwbOTksKIrRiwoYXTxXxf9jj0UkjVwr8GePO1g4SJe29zBwVdbmK7QW0ES9FxZqzBJW4PFMEFTL3odrZN9VSNEySlksunhySHKnd9tcjNejikR3Y6kmVNb4u5ydTLExmw1DxpiuL5pABvUz5X/4b3dFSW91Pmb0L67sxipUTQYmKmrlpaHoS/rvSyHHAm6c4Blk+zVQT0XdKyEEaoYabyNj4M0HVBBcKPLQrEOZpXNww/fgEoSHzvnW1EJ++GMMxTQvK5m13zDClaTJ8MlcvcYmr74OcMsknGcZrNti2BOtiWR7xAk0JZepMd+1gmUVAUsxPGA+d7zGwhXYjqT+9JKQqBYLU7+W6vN3dZIv4MPNJw+Xhxz+ihcvP1Y31/ytJurNSlFL7jlXkZh+bhLm3bJok9E5Wu/9Hx1kQw0v4q9wtaQ/iieoZf8fNF7QAMsFUZANKr0wXY/8KkrSFIFf+DdqcS7enYTm9QlShaJOUJsIQBF5sEAyWJv8is3DaowP56PfXkdnRC7zggTOQp60kszzNtATHaSOVT63mxCo28mBNwp1UUcmbJftMmTUMyuoH8jx8/+VdqnKowalyE31oAZJv+tom4n5fd8sznrM9b8IkccnYyMBKQ0EBbGj33vqMLfR4GoIgTKk6Lx08ZKc4ImL/prH+7TEGoxBWw6YuK5evwyar9rZRqh5aQZL14h93xPUdDVXSfx5J5LBPFnLJujgK5N+vfGXQIuUSNf/bp6yYzHbw5dRBgNfcy30TUIqZ8R2xXTZNsitF7ZS2USsWb38ghsVPuGcKA4XAunnq8hPT8Wq+am8TAqBsRUr9PIdAR+XWqCXJ225ft7Gg2R2bHbgT+BZftdfDGGztu1M7waEJA2oe4GeV/yGyDDu5uwjUTfc6xcq5PZQF4ljU9bhEQDEZ2Bh60mvfFZabTc53k1DPCEV25b9NDcgrJ6ivmhFSSzNNXNQo0XlW0vh2gb56hRNTf6INzPzimXYCWiL1H4r283g2vhNdCxBaV2IQqt26SB2pLnzbmRZK4Qg/UhCgtSqZL59Ctr6T1aSDNQTdOwI8oAJZJDGrDmYorbXzM9wu0DPR2CSGU7sh1bSu+GNcC2SqAoiuk+mbpcebEMCQ62tQQfDfzixc2BQ7YeHG2VUWbEHqmMjNi/gEQF/Ut17UzVwFvU7uGLxnScbeQfiDcEjg3TywA15e+dVtHA1bB3r4mD5ykVxRMl0q19Lx9ozsowfkiiDxwdXYGG0lktI7zSoNycaTJWZ+8n9GzZrvSVEYf8VoHMwVRURtqyWhMCxnX5NGHsuEIaDC6PXFd7gWHjqIWKPfYoNVy0r5JGIeYgWNj6eRQxX1ZjgTSApUlBBvWCnRQhW7wENEhrsVNvfvQn6+YKu/+3W59QL7LoUR4rCwkpVpeEvhdcvveIuyjVNRjMiYPWA/nZJgrh6yLJ2GOspilr0PVJ+559tNfOAac0feNt2MojbszPWamPuY0uNfB/Qm74bhnPsKs+2drhCsPVPaHMz7HFClBBhqPcqW/Bb2LP60tpXH0YzOuQJuHwjAjTBV2MFa5Hh2mp0/0tIFTY3LT2sx61dlahSdp8PSQUO+6iww72tIYijV6n7ARdcGMTGeZqXUza+VkMqSanoGNKmRN+a/k1MmkWcQ/oUUEgGhinfEP4xr8mx/G5OHp3bAmaMRPASzBbvQHbFHi+wf/gCJjEFBWFw/C2+dt4ctdYpUwymG2yqVMibEcMu0rKRsgo01PCWpvlmeSnsG7Egk7UMkd/1fHaloj9GWCeFFhI4Fd7wI8rGWhOvaX5I8vNeTmS5gakL/D4ucuQhH5JqcFa3JIDEFwoZ9DxyFfpg+cRfI6go80w4NXfru05AONgMRIwnjLRC7/xwqhnEZ+CMK/TcqxkiFjcOTpnEVLjB7HvIdZYzqDXi608xnRzNPMlnnfXg23ScwZSAaznDWEM3mXYrC9GNZssI9M1vpEY1+uXIPnzZ5EG9OR0TAfmjfHTIVZ0iyWXU8NetNaH4bXoVi1wY5/GfSVlE1cIDfIX1uscqnuNyyHXBoGSm3DTmZ1YVB4+d3TCIaRn4DvSnH47H4qLdA318BKqqTnDSz1ZRvTYAOG5RTowXjzTl9CsNAagIpfyf2IbiecmZAzBX9OwE80oBAV3a+c/kXW6qpeFBpzU/WxAbda+bsOIIncu3mZlBoNOFaXOKxsB390FsmfFsoxzQpdqsYlkwQWku6GuJSMQCa7D8hYKoFnwDlvQ8PdVcfYjnTxrtkgr9nJ5l9mlMVc3Ud71PHCDuYmmgtZ4blz3/huXBUXXKqNZvX3tLeT8qSqu8leYt4tzkiU/skWU59AYQE="
   }
 }

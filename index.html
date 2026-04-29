@@ -2005,6 +2005,17 @@ async function loadAttendance() {
   try {
     const res = await fetch('attendance.json?v=' + Date.now());
     attendanceData = await res.json();
+    // Stub coach-only arrays so the public renderer can't crash on .includes/.length.
+    for (const r of (attendanceData.rounds || [])) {
+      for (const div of ['div1', 'div3']) {
+        if (r[div]) {
+          r[div].late_outs = r[div].late_outs || [];
+          r[div].dnp = r[div].dnp || [];
+        }
+      }
+    }
+    // If the coach unlocked earlier this session, re-apply the decrypted blob.
+    if (typeof applyCachedCoachSecret === 'function') applyCachedCoachSecret();
     document.getElementById('squad-loading').style.display = 'none';
     document.getElementById('squad-body').style.display = 'block';
     renderSquad();
@@ -2615,13 +2626,77 @@ window.pickRound = pickRound;
 </div>
 
 <script>
-// ═══════════════════ COACH GATE ═══════════════════
-// Soft gate — hides Votes section from casual viewers. attendance.json is
-// publicly fetchable, so this is UI-level protection, not real auth.
-const COACH_PASSWORD = 'tigers2026';
+// ═══════════════════ COACH GATE — encrypted ═══════════════════
+// attendance.json's sensitive fields (RPL list, votes, late-outs, DNP) are
+// AES-GCM ciphertext. The coach password is the only thing that can decrypt
+// them. No password is stored in this source, and the file in the repo is
+// unreadable without it.
 const GATE_KEY = 'coachUnlocked';
+const SECRET_CACHE_KEY = 'coachSecret';
 
 function coachUnlocked() { return sessionStorage.getItem(GATE_KEY) === '1'; }
+
+// ── Web Crypto helpers ──
+function _b64ToBytes(s) {
+  const bin = atob(s);
+  const out = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+  return out;
+}
+
+async function _deriveAesKey(password, salt, iterations) {
+  const baseKey = await crypto.subtle.importKey(
+    'raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveKey']
+  );
+  return crypto.subtle.deriveKey(
+    { name: 'PBKDF2', salt, iterations, hash: 'SHA-256' },
+    baseKey,
+    { name: 'AES-GCM', length: 256 },
+    false,
+    ['decrypt']
+  );
+}
+
+async function decryptCoachBlob(encMeta, password) {
+  if (!encMeta || encMeta.alg !== 'AES-GCM') throw new Error('unsupported');
+  const salt = _b64ToBytes(encMeta.salt);
+  const nonce = _b64ToBytes(encMeta.nonce);
+  const ct = _b64ToBytes(encMeta.ciphertext);
+  const key = await _deriveAesKey(password, salt, encMeta.iter);
+  const pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: nonce }, key, ct);
+  return JSON.parse(new TextDecoder().decode(pt));
+}
+
+// Merge decrypted sensitive fields back onto the live attendanceData object.
+function mergeCoachSecret(secret) {
+  if (!attendanceData || !secret) return;
+  if (secret.restricted_player_list) attendanceData.restricted_player_list = secret.restricted_player_list;
+  if (secret.votes) attendanceData.votes = secret.votes;
+  if (Array.isArray(secret.round_extras) && Array.isArray(attendanceData.rounds)) {
+    const byRound = {};
+    for (const r of secret.round_extras) byRound[r.round] = r;
+    for (const r of attendanceData.rounds) {
+      const ex = byRound[r.round];
+      if (!ex) continue;
+      for (const div of ['div1', 'div3']) {
+        if (ex[div] && r[div]) {
+          if (ex[div].late_outs) r[div].late_outs = ex[div].late_outs;
+          if (ex[div].dnp) r[div].dnp = ex[div].dnp;
+        }
+      }
+    }
+  }
+}
+
+// Try to apply a previously-cached decryption (so reloading in the same tab
+// keeps the user unlocked without re-prompting).
+function applyCachedCoachSecret() {
+  try {
+    const cached = sessionStorage.getItem(SECRET_CACHE_KEY);
+    if (!cached || !attendanceData) return;
+    mergeCoachSecret(JSON.parse(cached));
+  } catch (e) {}
+}
 
 function syncCoachLock() {
   const unlocked = coachUnlocked();
@@ -2650,23 +2725,37 @@ function closeCoachGate() {
   pendingGateSection = null;
 }
 
-function submitCoachGate() {
+async function submitCoachGate() {
   const input = document.getElementById('gate-input');
   const err = document.getElementById('gate-error');
-  if (input.value === COACH_PASSWORD) {
+  const submitBtn = document.getElementById('gate-submit');
+  err.textContent = '';
+  // Need attendanceData loaded so we can grab the encrypted blob.
+  if (!attendanceData) {
+    try { await loadAttendance(); } catch (e) { err.textContent = 'Could not load data.'; return; }
+  }
+  const encMeta = attendanceData && attendanceData.encrypted;
+  if (!encMeta) { err.textContent = 'No encrypted payload found.'; return; }
+  submitBtn.disabled = true;
+  try {
+    const secret = await decryptCoachBlob(encMeta, input.value);
+    // Success — cache for the rest of the session and re-render.
+    try { sessionStorage.setItem(SECRET_CACHE_KEY, JSON.stringify(secret)); } catch (e) {}
     sessionStorage.setItem(GATE_KEY, '1');
+    mergeCoachSecret(secret);
     syncCoachLock();
-    // Re-render squad so RPL lock marks reappear next to player names.
-    if (typeof renderSquad === 'function' && typeof attendanceData !== 'undefined' && attendanceData) {
+    if (typeof renderSquad === 'function' && attendanceData) {
       try { renderSquad(); } catch (e) {}
       try { renderWarnings(); } catch (e) {}
     }
     const next = pendingGateSection || 'votes';
     closeCoachGate();
     switchSection(next);
-  } else {
+  } catch (e) {
     err.textContent = 'Wrong password.';
     input.select();
+  } finally {
+    submitBtn.disabled = false;
   }
 }
 
