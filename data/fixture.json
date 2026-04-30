@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-30T08:35:51.021987+00:00",
+  "updated": "2026-04-30T17:44:08.327275+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -405,17 +405,17 @@
           "suburb": "Carseldine",
           "competitors": [
             {
-              "id": "937f7e78-7a83-4e00-9606-2069eccf9ad0",
-              "name": "Aspley Hornets U15 Boys Division 1",
-              "is_home": true,
+              "id": "7e11edb8-1701-4038-9b0a-b1c52780bad1",
+              "name": "Coomera Magpies U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "7e11edb8-1701-4038-9b0a-b1c52780bad1",
-              "name": "Coomera Magpies U15 Boys Division 1",
-              "is_home": false,
+              "id": "937f7e78-7a83-4e00-9606-2069eccf9ad0",
+              "name": "Aspley Hornets U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
@@ -469,17 +469,17 @@
           "suburb": "Coorparoo",
           "competitors": [
             {
-              "id": "81bf2d43-8900-4176-96c0-df33081d8570",
-              "name": "Labrador Tigers U15 Boys Division 1",
-              "is_home": false,
+              "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
+              "name": "Coorparoo Roos U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
-              "name": "Coorparoo Roos U15 Boys Division 1",
-              "is_home": true,
+              "id": "81bf2d43-8900-4176-96c0-df33081d8570",
+              "name": "Labrador Tigers U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
@@ -565,20 +565,20 @@
           "suburb": "Yeronga",
           "competitors": [
             {
-              "id": "b7b18446-72b0-4722-a5e3-498ffa9f5135",
-              "name": "Tweed Coast Tigers U15 Boys Division 1",
-              "is_home": true,
-              "score": null,
-              "outcome": null,
-              "is_tct": true
-            },
-            {
               "id": "10f62735-bdac-48e7-89e5-69a6b681993a",
               "name": "Maroochy Roos Juniors U15 Boys Division 1",
               "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
+            },
+            {
+              "id": "b7b18446-72b0-4722-a5e3-498ffa9f5135",
+              "name": "Tweed Coast Tigers U15 Boys Division 1",
+              "is_home": true,
+              "score": null,
+              "outcome": null,
+              "is_tct": true
             }
           ],
           "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/f58b4ef5"
@@ -1190,17 +1190,17 @@
           "suburb": "Benowa",
           "competitors": [
             {
-              "id": "2144da5b-3f13-4552-b595-378222bf8a16",
-              "name": "Palm Beach Currumbin U15 Boys Division 3",
-              "is_home": false,
+              "id": "9dc898ad-8e96-4efe-9e50-475c44499928",
+              "name": "Surfers Paradise Demons U15 Boys Division 3",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "9dc898ad-8e96-4efe-9e50-475c44499928",
-              "name": "Surfers Paradise Demons U15 Boys Division 3",
-              "is_home": true,
+              "id": "2144da5b-3f13-4552-b595-378222bf8a16",
+              "name": "Palm Beach Currumbin U15 Boys Division 3",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
