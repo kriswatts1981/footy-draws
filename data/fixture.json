@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-02T22:48:04.806222+00:00",
+  "updated": "2026-05-03T06:08:20.926670+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -393,7 +393,7 @@
         },
         {
           "id": "bb3e5a56-b236-4352-ad78-232492141c23",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "round": "Round 3",
           "round_num": 3,
           "is_final_round": false,
@@ -408,16 +408,16 @@
               "id": "7e11edb8-1701-4038-9b0a-b1c52780bad1",
               "name": "Coomera Magpies U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 6,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "937f7e78-7a83-4e00-9606-2069eccf9ad0",
               "name": "Aspley Hornets U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 102,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -425,7 +425,7 @@
         },
         {
           "id": "8d3497cb-5849-42a9-876a-ec99260f1faa",
-          "status": "UPCOMING",
+          "status": "PENDING",
           "round": "Round 3",
           "round_num": 3,
           "is_final_round": false,
@@ -457,7 +457,7 @@
         },
         {
           "id": "878f5f6f-afd9-4960-be27-22eae51638b2",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "round": "Round 3",
           "round_num": 3,
           "is_final_round": false,
@@ -472,16 +472,16 @@
               "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
               "name": "Coorparoo Roos U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 84,
+              "outcome": "WON",
               "is_tct": false
             },
             {
               "id": "81bf2d43-8900-4176-96c0-df33081d8570",
               "name": "Labrador Tigers U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 40,
+              "outcome": "LOST",
               "is_tct": false
             }
           ],
@@ -489,7 +489,7 @@
         },
         {
           "id": "3fc36d46-57b0-4050-aa6e-35dc46039b38",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "round": "Round 3",
           "round_num": 3,
           "is_final_round": false,
@@ -504,16 +504,16 @@
               "id": "162b505a-d2bf-467e-8aba-577f9039d1ea",
               "name": "Morningside Panthers U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 27,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "199f79c2-5296-4ac5-86b2-9341f2103655",
               "name": "Burleigh Bombers U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 29,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -521,7 +521,7 @@
         },
         {
           "id": "557a2e3b-4d2b-42da-84b7-15a584d16be1",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "round": "Round 3",
           "round_num": 3,
           "is_final_round": false,
@@ -536,16 +536,16 @@
               "id": "741dada3-0717-46d1-ba32-7ad28de74109",
               "name": "Wilston Grange Gorillas U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 22,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
               "name": "Broadbeach Cats U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 95,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -553,7 +553,7 @@
         },
         {
           "id": "f58b4ef5-fb38-4411-8b1f-c66ba17b09dc",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "round": "Round 3",
           "round_num": 3,
           "is_final_round": false,
@@ -568,16 +568,16 @@
               "id": "10f62735-bdac-48e7-89e5-69a6b681993a",
               "name": "Maroochy Roos Juniors U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 92,
+              "outcome": "WON",
               "is_tct": false
             },
             {
               "id": "b7b18446-72b0-4722-a5e3-498ffa9f5135",
               "name": "Tweed Coast Tigers U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 17,
+              "outcome": "LOST",
               "is_tct": true
             }
           ],
@@ -1146,7 +1146,7 @@
         },
         {
           "id": "8fd0e43a-cc11-4294-9e17-c37c03867d6d",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "round": "Round 3",
           "round_num": 3,
           "is_final_round": false,
@@ -1161,16 +1161,16 @@
               "id": "6fd561fa-fd43-4190-b865-e665a3bdb694",
               "name": "Byron - Ballina U15 Boys Division 3",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 66,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "10fc3295-bb82-4de4-a694-14d96539b31b",
               "name": "Ormeau Bulldogs U15 Boys Division 3",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 72,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -1210,7 +1210,7 @@
         },
         {
           "id": "261febca-26a4-4db4-afce-8a2e717ad1cf",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "round": "Round 3",
           "round_num": 3,
           "is_final_round": false,
@@ -1225,16 +1225,16 @@
               "id": "3344820e-0b07-429c-9052-88da120683d1",
               "name": "Broadbeach Cats U15 Boys Division 3",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 106,
+              "outcome": "WON",
               "is_tct": false
             },
             {
               "id": "2d0ba14a-45b8-4d68-8873-9648e42e132a",
               "name": "Pac Power U15 Boys Division 3",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 1,
+              "outcome": "LOST",
               "is_tct": false
             }
           ],
@@ -1242,7 +1242,7 @@
         },
         {
           "id": "bd391f0a-e313-4b93-803e-a7350bb59d74",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "round": "Round 3",
           "round_num": 3,
           "is_final_round": false,
@@ -1257,16 +1257,16 @@
               "id": "375c16c4-12f4-499e-9e4a-94ba4f5283cf",
               "name": "Tweed Coast Tigers U15 Boys Division 3",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 19,
+              "outcome": "LOST",
               "is_tct": true
             },
             {
               "id": "2c63657f-a39e-4e5d-938f-a16541502f84",
               "name": "Labrador Tigers U15 Boys Div 3",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 58,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
