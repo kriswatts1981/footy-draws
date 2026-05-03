@@ -39,11 +39,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin main
           git add data/
           if git diff --cached --quiet; then
             echo "No changes."
           else
             git commit -m "data: refresh PlayHQ ($(date -u +%Y-%m-%dT%H:%MZ))"
+            git pull --rebase origin main
             git push
           fi
