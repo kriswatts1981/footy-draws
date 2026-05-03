@@ -1,22 +1,18 @@
-name: Refresh PlayHQ data
+name: Refresh PlayHQ (fast)
 
 on:
   schedule:
-    # Once daily — refreshes players.json (player career stats). Fixture/ladder
-    # are kept current by refresh-playhq-fast.yml every 15 min on weekends.
-    - cron: '15 14 * * *'  # 14:15 UTC = 00:15 AEST
+    # Weekends (game days): every 15 min
+    - cron: '*/15 * * * 6,0'
+    # Weekdays: every hour
+    - cron: '5 * * * 1-5'
   workflow_dispatch:
-    inputs:
-      refetch_all:
-        description: 'Force re-fetch of all cached seasons'
-        type: boolean
-        default: false
 
 permissions:
   contents: write
 
 concurrency:
-  group: refresh-playhq
+  group: refresh-playhq-fast
   cancel-in-progress: false
 
 jobs:
@@ -29,21 +25,21 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Fetch PlayHQ data
+      - name: Fetch PlayHQ (fast)
         env:
           PLAYHQ_API_KEY: ${{ secrets.PLAYHQ_API_KEY }}
-          PLAYHQ_REFETCH_ALL: ${{ inputs.refetch_all && '1' || '0' }}
-        run: python3 scripts/fetch_playhq.py
+        working-directory: scripts
+        run: python3 fetch_playhq_fast.py
 
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git pull --rebase origin main
-          git add data/
+          git add data/fixture.json data/ladder.json
           if git diff --cached --quiet; then
             echo "No changes."
           else
-            git commit -m "data: refresh PlayHQ ($(date -u +%Y-%m-%dT%H:%MZ))"
+            git commit -m "data: fast refresh ($(date -u +%Y-%m-%dT%H:%MZ))"
             git push
           fi
