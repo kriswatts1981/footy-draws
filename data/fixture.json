@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-03T06:08:20.926670+00:00",
+  "updated": "2026-05-03T09:57:11.936900+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -425,7 +425,7 @@
         },
         {
           "id": "8d3497cb-5849-42a9-876a-ec99260f1faa",
-          "status": "PENDING",
+          "status": "FINAL",
           "round": "Round 3",
           "round_num": 3,
           "is_final_round": false,
@@ -440,16 +440,16 @@
               "id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
               "name": "Palm Beach Currumbin U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 61,
+              "outcome": "WON",
               "is_tct": false
             },
             {
               "id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
               "name": "Sherwood Magpies U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 35,
+              "outcome": "LOST",
               "is_tct": false
             }
           ],

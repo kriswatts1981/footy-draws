@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-03T06:08:22.880509+00:00",
+  "updated": "2026-05-03T09:57:13.529913+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -53,21 +53,6 @@
         },
         {
           "rank": 4,
-          "team_id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
-          "team_name": "Sherwood Magpies U15 Boys Division 1",
-          "is_tct": false,
-          "played": 2,
-          "won": 2,
-          "lost": 0,
-          "drawn": 0,
-          "byes": 0,
-          "points_for": 84,
-          "points_against": 45,
-          "percentage": 186.67,
-          "competition_points": 8
-        },
-        {
-          "rank": 5,
           "team_id": "81bf2d43-8900-4176-96c0-df33081d8570",
           "team_name": "Labrador Tigers U15 Boys Division 1",
           "is_tct": false,
@@ -82,7 +67,37 @@
           "competition_points": 8
         },
         {
+          "rank": 5,
+          "team_id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
+          "team_name": "Palm Beach Currumbin U15 Boys Division 1",
+          "is_tct": false,
+          "played": 3,
+          "won": 2,
+          "lost": 1,
+          "drawn": 0,
+          "byes": 0,
+          "points_for": 142,
+          "points_against": 97,
+          "percentage": 146.39,
+          "competition_points": 8
+        },
+        {
           "rank": 6,
+          "team_id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
+          "team_name": "Sherwood Magpies U15 Boys Division 1",
+          "is_tct": false,
+          "played": 3,
+          "won": 2,
+          "lost": 1,
+          "drawn": 0,
+          "byes": 0,
+          "points_for": 119,
+          "points_against": 106,
+          "percentage": 112.26,
+          "competition_points": 8
+        },
+        {
+          "rank": 7,
           "team_id": "199f79c2-5296-4ac5-86b2-9341f2103655",
           "team_name": "Burleigh Bombers U15 Boys Division 1",
           "is_tct": false,
@@ -97,7 +112,7 @@
           "competition_points": 8
         },
         {
-          "rank": 7,
+          "rank": 8,
           "team_id": "937f7e78-7a83-4e00-9606-2069eccf9ad0",
           "team_name": "Aspley Hornets U15 Boys Division 1",
           "is_tct": false,
@@ -109,21 +124,6 @@
           "points_for": 174,
           "points_against": 108,
           "percentage": 161.11,
-          "competition_points": 4
-        },
-        {
-          "rank": 8,
-          "team_id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
-          "team_name": "Palm Beach Currumbin U15 Boys Division 1",
-          "is_tct": false,
-          "played": 2,
-          "won": 1,
-          "lost": 1,
-          "drawn": 0,
-          "byes": 0,
-          "points_for": 81,
-          "points_against": 62,
-          "percentage": 130.65,
           "competition_points": 4
         },
         {
