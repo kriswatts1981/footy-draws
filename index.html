@@ -1018,6 +1018,12 @@ body { overflow-x: hidden; }
 .av-round-name { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
 .av-round-name .nm { font-weight: 700; }
 .av-round-name .note { font-size: 11px; color: var(--text-3); font-style: italic; }
+.av-round-name .upd {
+  font-size: 10px; color: var(--text-3); text-decoration: none;
+  border: 1px solid var(--border-bright); border-radius: 3px;
+  padding: 0 4px; line-height: 1.4;
+}
+.av-round-name .upd:hover { color: var(--gold-dim); border-color: var(--gold-dim); }
 .div-pill {
   display: inline-block;
   padding: 1px 5px;
@@ -1256,7 +1262,7 @@ body { overflow-x: hidden; }
   <section id="section-available" class="section">
     <div class="av-intro">
       <h3>Who's away</h3>
-      <p>Submissions from the parent away-dates form. Each new submission replaces that player's previous list — so a parent who's now available again for a round just re-submits with their updated list (or no rounds at all).</p>
+      <p>Submissions from the parent away-dates form. <strong>To change a player's away list (e.g. now available again), just re-submit the form</strong> — the latest submission per player replaces the previous one. Submit with no rounds ticked to clear all away dates.</p>
       <a class="av-cta" id="av-cta" href="https://forms.gle/hGrTMgdHBmLxUgeP8" target="_blank" rel="noopener">Open submission form ↗</a>
       <div class="av-meta" id="av-meta"></div>
     </div>
@@ -2561,9 +2567,10 @@ function renderAvailRounds() {
       tag = parts.join(' · ') || `Away (${away.length})`;
     }
 
+    const formHref = (document.getElementById('av-cta') || {}).href || 'https://forms.gle/hGrTMgdHBmLxUgeP8';
     const names = has ? `<div class="av-round-names">${annotated.map(a => {
       const badges = a.divs.map(d => `<span class="div-pill ${d}">${d === 'div1' ? 'D1' : 'D3'}</span>`).join('');
-      return `<div class="av-round-name">${badges}<span class="nm">${escapeHtml(a.player)}</span>${a.note ? `<span class="note">${escapeHtml(a.note)}</span>` : ''}</div>`;
+      return `<div class="av-round-name">${badges}<span class="nm">${escapeHtml(a.player)}</span>${a.note ? `<span class="note">${escapeHtml(a.note)}</span>` : ''}<a class="upd" href="${formHref}" target="_blank" rel="noopener" title="Re-submit the form to update ${escapeHtml(a.player)}'s away list">↻ update</a></div>`;
     }).join('')}</div>` : '';
 
     const dateLabel = r.tbd ? 'Date TBD' : formatDate(r.date);
