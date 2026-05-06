@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-05T23:58:31.867277+00:00",
+  "updated": "2026-05-06T03:56:46.579571+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -31,9 +31,9 @@
           "lost": 0,
           "drawn": 0,
           "byes": 0,
-          "points_for": 189,
+          "points_for": 176,
           "points_against": 54,
-          "percentage": 350,
+          "percentage": 325.93,
           "competition_points": 12
         },
         {
@@ -46,9 +46,9 @@
           "lost": 0,
           "drawn": 0,
           "byes": 0,
-          "points_for": 206,
+          "points_for": 191,
           "points_against": 70,
-          "percentage": 294.29,
+          "percentage": 272.86,
           "competition_points": 12
         },
         {
@@ -121,9 +121,9 @@
           "lost": 2,
           "drawn": 0,
           "byes": 0,
-          "points_for": 174,
+          "points_for": 138,
           "points_against": 108,
-          "percentage": 161.11,
+          "percentage": 127.78,
           "competition_points": 4
         },
         {
@@ -137,8 +137,8 @@
           "drawn": 0,
           "byes": 0,
           "points_for": 75,
-          "points_against": 171,
-          "percentage": 43.86,
+          "points_against": 156,
+          "percentage": 48.08,
           "competition_points": 0
         },
         {
@@ -167,8 +167,8 @@
           "drawn": 0,
           "byes": 0,
           "points_for": 52,
-          "points_against": 183,
-          "percentage": 28.42,
+          "points_against": 170,
+          "percentage": 30.59,
           "competition_points": 0
         },
         {
@@ -182,8 +182,8 @@
           "drawn": 0,
           "byes": 0,
           "points_for": 26,
-          "points_against": 301,
-          "percentage": 8.64,
+          "points_against": 265,
+          "percentage": 9.81,
           "competition_points": 0
         }
       ]
