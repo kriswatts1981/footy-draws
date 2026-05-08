@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-07T22:10:48.899634+00:00",
+  "updated": "2026-05-08T00:01:12.624068+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -661,20 +661,20 @@
           "suburb": "Mermaid Waters",
           "competitors": [
             {
-              "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
-              "name": "Broadbeach Cats U15 Boys Division 1",
-              "is_home": true,
-              "score": null,
-              "outcome": null,
-              "is_tct": false
-            },
-            {
               "id": "b7b18446-72b0-4722-a5e3-498ffa9f5135",
               "name": "Tweed Coast Tigers U15 Boys Division 1",
               "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": true
+            },
+            {
+              "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
+              "name": "Broadbeach Cats U15 Boys Division 1",
+              "is_home": true,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
             }
           ],
           "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/9f6ca14d"
