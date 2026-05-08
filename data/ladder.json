@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-08T08:26:36.358714+00:00",
+  "updated": "2026-05-08T10:45:19.444852+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -116,18 +116,33 @@
           "team_id": "937f7e78-7a83-4e00-9606-2069eccf9ad0",
           "team_name": "Aspley Hornets U15 Boys Division 1",
           "is_tct": false,
-          "played": 3,
+          "played": 4,
           "won": 1,
-          "lost": 2,
+          "lost": 3,
           "drawn": 0,
           "byes": 0,
-          "points_for": 138,
-          "points_against": 108,
-          "percentage": 127.78,
+          "points_for": 165,
+          "points_against": 176,
+          "percentage": 93.75,
           "competition_points": 4
         },
         {
           "rank": 9,
+          "team_id": "162b505a-d2bf-467e-8aba-577f9039d1ea",
+          "team_name": "Morningside Panthers U15 Boys Division 1",
+          "is_tct": false,
+          "played": 4,
+          "won": 1,
+          "lost": 3,
+          "drawn": 0,
+          "byes": 0,
+          "points_for": 122,
+          "points_against": 201,
+          "percentage": 60.7,
+          "competition_points": 4
+        },
+        {
+          "rank": 10,
           "team_id": "b7b18446-72b0-4722-a5e3-498ffa9f5135",
           "team_name": "Tweed Coast Tigers U15 Boys Division 1",
           "is_tct": true,
@@ -139,21 +154,6 @@
           "points_for": 75,
           "points_against": 156,
           "percentage": 48.08,
-          "competition_points": 0
-        },
-        {
-          "rank": 10,
-          "team_id": "162b505a-d2bf-467e-8aba-577f9039d1ea",
-          "team_name": "Morningside Panthers U15 Boys Division 1",
-          "is_tct": false,
-          "played": 3,
-          "won": 0,
-          "lost": 3,
-          "drawn": 0,
-          "byes": 0,
-          "points_for": 54,
-          "points_against": 174,
-          "percentage": 31.03,
           "competition_points": 0
         },
         {
