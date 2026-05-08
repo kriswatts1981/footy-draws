@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-08T12:15:21.735471+00:00",
+  "updated": "2026-05-08T14:59:25.195397+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -1306,7 +1306,7 @@
         },
         {
           "id": "6e3d4cde-29ba-4d1d-a82b-f78e0c4f627b",
-          "status": "PENDING",
+          "status": "FINAL",
           "round": "Round 4",
           "round_num": 4,
           "is_final_round": false,
@@ -1321,16 +1321,16 @@
               "id": "2144da5b-3f13-4552-b595-378222bf8a16",
               "name": "Palm Beach Currumbin U15 Boys Division 3",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 25,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "3344820e-0b07-429c-9052-88da120683d1",
               "name": "Broadbeach Cats U15 Boys Division 3",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 31,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
