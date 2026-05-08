@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-08T10:45:17.173518+00:00",
+  "updated": "2026-05-08T12:15:21.735471+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -1306,7 +1306,7 @@
         },
         {
           "id": "6e3d4cde-29ba-4d1d-a82b-f78e0c4f627b",
-          "status": null,
+          "status": "PENDING",
           "round": "Round 4",
           "round_num": 4,
           "is_final_round": false,
