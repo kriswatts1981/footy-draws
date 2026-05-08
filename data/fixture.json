@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-08T06:05:24.592035+00:00",
+  "updated": "2026-05-08T08:26:34.550802+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -681,7 +681,7 @@
         },
         {
           "id": "a3f78799-8a84-4e6a-b340-ce8d2aec9458",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Round 4",
           "round_num": 4,
           "is_final_round": false,
@@ -757,17 +757,17 @@
           "suburb": "Labrador",
           "competitors": [
             {
-              "id": "199f79c2-5296-4ac5-86b2-9341f2103655",
-              "name": "Burleigh Bombers U15 Boys Division 1",
-              "is_home": false,
+              "id": "81bf2d43-8900-4176-96c0-df33081d8570",
+              "name": "Labrador Tigers U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "81bf2d43-8900-4176-96c0-df33081d8570",
-              "name": "Labrador Tigers U15 Boys Division 1",
-              "is_home": true,
+              "id": "199f79c2-5296-4ac5-86b2-9341f2103655",
+              "name": "Burleigh Bombers U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
