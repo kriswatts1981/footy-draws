@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-09T00:03:58.670433+00:00",
+  "updated": "2026-05-09T07:24:14.241394+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -725,17 +725,17 @@
           "suburb": "Stafford",
           "competitors": [
             {
-              "id": "741dada3-0717-46d1-ba32-7ad28de74109",
-              "name": "Wilston Grange Gorillas U15 Boys Division 1",
-              "is_home": true,
+              "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
+              "name": "Coorparoo Roos U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
-              "name": "Coorparoo Roos U15 Boys Division 1",
-              "is_home": false,
+              "id": "741dada3-0717-46d1-ba32-7ad28de74109",
+              "name": "Wilston Grange Gorillas U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
