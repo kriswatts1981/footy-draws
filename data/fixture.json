@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-08T22:06:27.498745+00:00",
+  "updated": "2026-05-09T00:03:58.670433+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -1382,17 +1382,17 @@
           "suburb": "Burleigh Waters",
           "competitors": [
             {
-              "id": "10fc3295-bb82-4de4-a694-14d96539b31b",
-              "name": "Ormeau Bulldogs U15 Boys Division 3",
-              "is_home": false,
+              "id": "f9e354ac-3e79-4cde-9f9f-4008a9841ae4",
+              "name": "Burleigh Bombers U15 Boys Division 3",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "f9e354ac-3e79-4cde-9f9f-4008a9841ae4",
-              "name": "Burleigh Bombers U15 Boys Division 3",
-              "is_home": true,
+              "id": "10fc3295-bb82-4de4-a694-14d96539b31b",
+              "name": "Ormeau Bulldogs U15 Boys Division 3",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
