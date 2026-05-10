@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-10T00:06:33.893884+00:00",
+  "updated": "2026-05-10T04:17:15.221376+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -8,6 +8,21 @@
       "standings": [
         {
           "rank": 1,
+          "team_id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
+          "team_name": "Broadbeach Cats U15 Boys Division 1",
+          "is_tct": false,
+          "played": 4,
+          "won": 4,
+          "lost": 0,
+          "drawn": 0,
+          "byes": 0,
+          "points_for": 283,
+          "points_against": 64,
+          "percentage": 442.19,
+          "competition_points": 16
+        },
+        {
+          "rank": 2,
           "team_id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
           "team_name": "Coorparoo Roos U15 Boys Division 1",
           "is_tct": false,
@@ -19,21 +34,6 @@
           "points_for": 289,
           "points_against": 66,
           "percentage": 437.88,
-          "competition_points": 12
-        },
-        {
-          "rank": 2,
-          "team_id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
-          "team_name": "Broadbeach Cats U15 Boys Division 1",
-          "is_tct": false,
-          "played": 3,
-          "won": 3,
-          "lost": 0,
-          "drawn": 0,
-          "byes": 0,
-          "points_for": 176,
-          "points_against": 54,
-          "percentage": 325.93,
           "competition_points": 12
         },
         {
@@ -56,15 +56,15 @@
           "team_id": "81bf2d43-8900-4176-96c0-df33081d8570",
           "team_name": "Labrador Tigers U15 Boys Division 1",
           "is_tct": false,
-          "played": 3,
-          "won": 2,
+          "played": 4,
+          "won": 3,
           "lost": 1,
           "drawn": 0,
           "byes": 0,
-          "points_for": 151,
-          "points_against": 102,
-          "percentage": 148.04,
-          "competition_points": 8
+          "points_for": 201,
+          "points_against": 133,
+          "percentage": 151.13,
+          "competition_points": 12
         },
         {
           "rank": 5,
@@ -101,14 +101,14 @@
           "team_id": "199f79c2-5296-4ac5-86b2-9341f2103655",
           "team_name": "Burleigh Bombers U15 Boys Division 1",
           "is_tct": false,
-          "played": 3,
+          "played": 4,
           "won": 2,
-          "lost": 1,
+          "lost": 2,
           "drawn": 0,
           "byes": 0,
-          "points_for": 79,
-          "points_against": 124,
-          "percentage": 63.71,
+          "points_for": 110,
+          "points_against": 174,
+          "percentage": 63.22,
           "competition_points": 8
         },
         {
@@ -146,14 +146,14 @@
           "team_id": "b7b18446-72b0-4722-a5e3-498ffa9f5135",
           "team_name": "Tweed Coast Tigers U15 Boys Division 1",
           "is_tct": true,
-          "played": 3,
+          "played": 4,
           "won": 0,
-          "lost": 3,
+          "lost": 4,
           "drawn": 0,
           "byes": 0,
-          "points_for": 75,
-          "points_against": 156,
-          "percentage": 48.08,
+          "points_for": 85,
+          "points_against": 263,
+          "percentage": 32.32,
           "competition_points": 0
         },
         {
