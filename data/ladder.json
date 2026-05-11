@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-10T23:59:58.351862+00:00",
+  "updated": "2026-05-11T04:15:56.738750+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -198,15 +198,15 @@
           "team_id": "10fc3295-bb82-4de4-a694-14d96539b31b",
           "team_name": "Ormeau Bulldogs U15 Boys Division 3",
           "is_tct": false,
-          "played": 3,
-          "won": 3,
+          "played": 4,
+          "won": 4,
           "lost": 0,
           "drawn": 0,
           "byes": 0,
-          "points_for": 228,
-          "points_against": 81,
-          "percentage": 281.48,
-          "competition_points": 12
+          "points_for": 336,
+          "points_against": 87,
+          "percentage": 386.21,
+          "competition_points": 16
         },
         {
           "rank": 2,
@@ -318,14 +318,14 @@
           "team_id": "f9e354ac-3e79-4cde-9f9f-4008a9841ae4",
           "team_name": "Burleigh Bombers U15 Boys Division 3",
           "is_tct": false,
-          "played": 2,
+          "played": 3,
           "won": 0,
-          "lost": 2,
+          "lost": 3,
           "drawn": 0,
           "byes": 1,
-          "points_for": 15,
-          "points_against": 216,
-          "percentage": 6.94,
+          "points_for": 21,
+          "points_against": 324,
+          "percentage": 6.48,
           "competition_points": 0
         }
       ]

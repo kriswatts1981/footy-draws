@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-10T23:59:57.618829+00:00",
+  "updated": "2026-05-11T04:15:54.653780+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -1370,7 +1370,7 @@
         },
         {
           "id": "c516c17e-91fa-48a1-a24a-ddf2df0b5606",
-          "status": "PENDING",
+          "status": "FINAL",
           "round": "Round 4",
           "round_num": 4,
           "is_final_round": false,
@@ -1385,16 +1385,16 @@
               "id": "f9e354ac-3e79-4cde-9f9f-4008a9841ae4",
               "name": "Burleigh Bombers U15 Boys Division 3",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 6,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "10fc3295-bb82-4de4-a694-14d96539b31b",
               "name": "Ormeau Bulldogs U15 Boys Division 3",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 108,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
