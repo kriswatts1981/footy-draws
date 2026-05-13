@@ -25,11 +25,70 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Snapshot fixture state BEFORE refresh
+        run: cp data/fixture.json /tmp/fixture-before.json
+
       - name: Fetch PlayHQ (fast)
         env:
           PLAYHQ_API_KEY: ${{ secrets.PLAYHQ_API_KEY }}
         working-directory: scripts
         run: python3 fetch_playhq_fast.py
+
+      - name: Detect new rounds in Div 1 or Div 3
+        id: detect
+        run: |
+          python3 - <<'PY'
+          import json, os
+          before = json.load(open('/tmp/fixture-before.json'))
+          after = json.load(open('data/fixture.json'))
+          summary_lines = []
+          new_found = False
+          for div in ('div1', 'div3'):
+              b_rounds = {g.get('round') for g in (before.get('divisions',{}).get(div,{}).get('games',[]) or [])}
+              a_rounds = {g.get('round') for g in (after.get('divisions',{}).get(div,{}).get('games',[]) or [])}
+              new_rounds = sorted(a_rounds - b_rounds)
+              if new_rounds:
+                  new_found = True
+                  div_label = 'Div 1' if div == 'div1' else 'Div 3'
+                  for r in new_rounds:
+                      games = [g for g in after['divisions'][div]['games'] if g.get('round') == r]
+                      first = sorted(games, key=lambda g: g.get('date') or '')[0] if games else None
+                      first_str = ''
+                      if first:
+                          first_str = f" — first game {first.get('date','?')} {first.get('home_team','?')} v {first.get('away_team','?')}"
+                      summary_lines.append(f"{div_label}: {r} ({len(games)} games){first_str}")
+          gh_out = os.environ['GITHUB_OUTPUT']
+          with open(gh_out, 'a') as f:
+              f.write(f"new_rounds={'true' if new_found else 'false'}\n")
+              f.write("summary<<EOF\n")
+              f.write("\n".join(summary_lines) if summary_lines else "(no new rounds)")
+              f.write("\nEOF\n")
+          if new_found:
+              print("NEW ROUNDS DETECTED:")
+              for s in summary_lines:
+                  print(f"  {s}")
+          else:
+              print("No new rounds.")
+          PY
+
+      - name: Email Kris if new rounds appeared
+        if: steps.detect.outputs.new_rounds == 'true'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASS }}
+          from: Footy Watcher <${{ secrets.SMTP_USER }}>
+          to: kriswatts@gmail.com
+          subject: "Footy: new fixtures published on PlayHQ"
+          body: |
+            New fixtures appeared on PlayHQ for the TCT U15 Boys draw.
+
+            ${{ steps.detect.outputs.summary }}
+
+            Site: https://kriswatts1981.github.io/footy-draws
 
       - name: Commit if changed
         run: |
