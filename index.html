@@ -1209,7 +1209,6 @@ body { overflow-x: hidden; }
             </div>
             <div class="squad-filter" id="player-filters">
               <button class="sq-filter active" data-pf="all">All</button>
-              <button class="sq-filter" data-pf="danger">Locked out</button>
               <button class="sq-filter" data-pf="warn">Working</button>
               <button class="sq-filter" data-pf="ok">Qualified</button>
               <button class="sq-filter" data-pf="none">Not played</button>
@@ -2050,7 +2049,11 @@ function finalsStatus(d1, d3, primary) {
   const total = d1 + d3;
   if (total === 0) return { key: 'none', label: '—' };
   if (primary === 'div3') {
-    if (d1 >= d3 && d3 > 0) return { key: 'danger', label: `Locked · ${d1}≥${d3}` };
+    // Recoverable "Behind" — needs to play more Div 3 (without more Div 1).
+    if (d1 >= d3 && d1 > 0) {
+      const need = d1 - d3 + 1;
+      return { key: 'warn', label: `Behind · need +${need} D3` };
+    }
     if (d3 >= MIN_FINALS_GAMES && d3 > d1) return { key: 'ok', label: 'Qualified' };
     return { key: 'warn', label: `${MIN_FINALS_GAMES - d3} to go` };
   } else {
@@ -2119,10 +2122,28 @@ function buildWarnings() {
       warnings.push({ name: p.name, primary: p.primary, level: 'danger', why: `RPL breach — played ${s.d3} Div 3 game${s.d3>1?'s':''}`, badge: 'RPL' });
       continue;
     }
+    // Finals lockout rule: to play Div 3 finals, a Div 3 player must have
+    // MORE Div 3 games than Div 1 games. Currently below the line is RECOVERABLE
+    // by playing more Div 3 games without adding Div 1 games — not actually "Locked".
+    // True lockout would require knowing remaining-fixture math (d3-games-left less
+    // than gap to recover). Current logic just shows the gap.
     if (p.primary === 'div3' && s.d1 > 0 && s.d1 >= s.d3) {
-      warnings.push({ name: p.name, primary: p.primary, level: 'danger', why: `${s.d1} Div 1 vs ${s.d3} Div 3 — locked out of Div 3 finals`, badge: 'Locked' });
+      const need = s.d1 - s.d3 + 1;
+      warnings.push({
+        name: p.name,
+        primary: p.primary,
+        level: 'warn',
+        why: `${s.d1} Div 1 vs ${s.d3} Div 3 — needs +${need} Div 3 game${need>1?'s':''} (without more Div 1) to be eligible for Div 3 finals`,
+        badge: 'Behind'
+      });
     } else if (p.primary === 'div3' && s.d1 > 0 && s.d1 === s.d3 - 1) {
-      warnings.push({ name: p.name, primary: p.primary, level: 'warn', why: `${s.d1} Div 1 vs ${s.d3} Div 3 — one more Div 1 game = locked`, badge: 'At risk' });
+      warnings.push({
+        name: p.name,
+        primary: p.primary,
+        level: 'warn',
+        why: `${s.d1} Div 1 vs ${s.d3} Div 3 — one more Div 1 game would put them behind the finals line`,
+        badge: 'At risk'
+      });
     }
   }
   return warnings;
