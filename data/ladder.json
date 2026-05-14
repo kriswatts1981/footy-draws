@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-14T07:49:23.330875+00:00",
+  "updated": "2026-05-14T10:28:42.770094+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -84,7 +84,7 @@
         {
           "rank": 6,
           "team_id": "521a6463-1070-4366-82ce-6b57c2ca9245",
-          "team_name": "RVP Sharks U15 Boys Division 2",
+          "team_name": "RVP Sharks U15 Boys Division 1",
           "is_tct": false,
           "played": 4,
           "won": 3,
