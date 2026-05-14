@@ -767,6 +767,13 @@ a { color: inherit; text-decoration: none; }
   margin-left: 4px;
 }
 .pl-career.veteran { color: var(--gold); }
+.pl-career-mark {
+  margin-left: 1px;
+  font-size: 8px;
+  vertical-align: super;
+  opacity: 0.7;
+  cursor: help;
+}
 
 /* ═════════ Ladder ═════════ */
 .lad-wrap { display: flex; flex-direction: column; gap: 18px; }
@@ -2279,8 +2286,18 @@ function renderPlayers(allStats, rpl, isAll) {
     const career = getCareerGames(p.name);
     if (career && career.games_total > 0) {
       const veteranCls = career.games_total >= 50 ? ' veteran' : '';
-      const yrs = career.first_year && career.last_year && career.first_year !== career.last_year
-        ? ` since ${career.first_year}` : '';
+      // PlayHQ public API only goes back to 2023 (some 2022 from migration).
+      // "since 2022" really means "first appears in PlayHQ data in 2022" —
+      // the player may have started earlier on the legacy Gameday system.
+      // Mark 2022 with a "+" and explain via tooltip.
+      let yrs = '';
+      if (career.first_year && career.last_year && career.first_year !== career.last_year) {
+        if (career.first_year <= 2022) {
+          yrs = ` since 2022<span class="pl-career-mark" title="2022 is the earliest year exposed by PlayHQ's public API. Players who started before 2022 will still appear as 'since 2022' here.">+</span>`;
+        } else {
+          yrs = ` since ${career.first_year}`;
+        }
+      }
       subbits.unshift(`<span class="pl-career${veteranCls}">${career.games_total} games${yrs}</span>`);
     }
     return `<tr>
