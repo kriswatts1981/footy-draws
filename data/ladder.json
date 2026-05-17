@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-17T04:33:37.981097+00:00",
+  "updated": "2026-05-17T07:27:48.550129+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -83,6 +83,21 @@
         },
         {
           "rank": 6,
+          "team_id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
+          "team_name": "Sherwood Magpies U15 Boys Division 1",
+          "is_tct": false,
+          "played": 5,
+          "won": 3,
+          "lost": 2,
+          "drawn": 0,
+          "byes": 0,
+          "points_for": 215,
+          "points_against": 207,
+          "percentage": 103.86,
+          "competition_points": 12
+        },
+        {
+          "rank": 7,
           "team_id": "521a6463-1070-4366-82ce-6b57c2ca9245",
           "team_name": "RVP Sharks U15 Boys Division 1",
           "is_tct": false,
@@ -95,21 +110,6 @@
           "points_against": 0,
           "percentage": 0,
           "competition_points": 12
-        },
-        {
-          "rank": 7,
-          "team_id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
-          "team_name": "Sherwood Magpies U15 Boys Division 1",
-          "is_tct": false,
-          "played": 4,
-          "won": 2,
-          "lost": 2,
-          "drawn": 0,
-          "byes": 0,
-          "points_for": 138,
-          "points_against": 177,
-          "percentage": 77.97,
-          "competition_points": 8
         },
         {
           "rank": 8,
@@ -146,14 +146,14 @@
           "team_id": "162b505a-d2bf-467e-8aba-577f9039d1ea",
           "team_name": "Morningside Panthers U15 Boys Division 1",
           "is_tct": false,
-          "played": 4,
+          "played": 5,
           "won": 1,
-          "lost": 3,
+          "lost": 4,
           "drawn": 0,
           "byes": 0,
-          "points_for": 122,
-          "points_against": 201,
-          "percentage": 60.7,
+          "points_for": 152,
+          "points_against": 278,
+          "percentage": 54.68,
           "competition_points": 4
         },
         {
@@ -240,6 +240,21 @@
         },
         {
           "rank": 4,
+          "team_id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
+          "team_name": "Tweed Cooly Blues U15 Boys Division 3",
+          "is_tct": false,
+          "played": 5,
+          "won": 1,
+          "lost": 4,
+          "drawn": 0,
+          "byes": 0,
+          "points_for": 95,
+          "points_against": 9,
+          "percentage": 1055.56,
+          "competition_points": 4
+        },
+        {
+          "rank": 5,
           "team_id": "2144da5b-3f13-4552-b595-378222bf8a16",
           "team_name": "Palm Beach Currumbin U15 Boys Division 3",
           "is_tct": false,
@@ -254,7 +269,7 @@
           "competition_points": 4
         },
         {
-          "rank": 5,
+          "rank": 6,
           "team_id": "2d0ba14a-45b8-4d68-8873-9648e42e132a",
           "team_name": "Pac Power U15 Boys Division 3",
           "is_tct": false,
@@ -269,7 +284,7 @@
           "competition_points": 4
         },
         {
-          "rank": 6,
+          "rank": 7,
           "team_id": "375c16c4-12f4-499e-9e4a-94ba4f5283cf",
           "team_name": "Tweed Coast Tigers U15 Boys Division 3",
           "is_tct": true,
@@ -284,33 +299,18 @@
           "competition_points": 0
         },
         {
-          "rank": 7,
+          "rank": 8,
           "team_id": "f9e354ac-3e79-4cde-9f9f-4008a9841ae4",
           "team_name": "Burleigh Bombers U15 Boys Division 3",
-          "is_tct": false,
-          "played": 3,
-          "won": 0,
-          "lost": 3,
-          "drawn": 0,
-          "byes": 1,
-          "points_for": 21,
-          "points_against": 324,
-          "percentage": 6.48,
-          "competition_points": 0
-        },
-        {
-          "rank": 8,
-          "team_id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
-          "team_name": "Tweed Cooly Blues U15 Boys Division 3",
           "is_tct": false,
           "played": 4,
           "won": 0,
           "lost": 4,
           "drawn": 0,
-          "byes": 0,
-          "points_for": 0,
-          "points_against": 0,
-          "percentage": 0,
+          "byes": 1,
+          "points_for": 30,
+          "points_against": 419,
+          "percentage": 7.16,
           "competition_points": 0
         }
       ]
