@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-19T05:08:16.124975+00:00",
+  "updated": "2026-05-19T10:01:18.559421+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -968,6 +968,198 @@
           "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/06d8a80f"
         },
         {
+          "id": "4811d07f-9f4c-4738-ad0f-5f87dc0996a7",
+          "status": "UPCOMING",
+          "round": "Round 6",
+          "round_num": 6,
+          "is_final_round": false,
+          "date": "2026-05-24",
+          "time": "12:00:00",
+          "venue": "Cooke-Murphy Oval",
+          "surface": "Cooke-Murphy Oval 1",
+          "address": "28 Ashton Street",
+          "suburb": "Labrador",
+          "competitors": [
+            {
+              "id": "81bf2d43-8900-4176-96c0-df33081d8570",
+              "name": "Labrador Tigers U15 Boys Division 1",
+              "is_home": true,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            },
+            {
+              "id": "162b505a-d2bf-467e-8aba-577f9039d1ea",
+              "name": "Morningside Panthers U15 Boys Division 1",
+              "is_home": false,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            }
+          ],
+          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/4811d07f"
+        },
+        {
+          "id": "759875fd-f6d0-472c-bd21-1d12255164b3",
+          "status": "UPCOMING",
+          "round": "Round 6",
+          "round_num": 6,
+          "is_final_round": false,
+          "date": "2026-05-24",
+          "time": "10:30:00",
+          "venue": "South Pine Sporting Complex",
+          "surface": "South Pine Sporting Complex Oval 1",
+          "address": "622 South Pine Road",
+          "suburb": "Brendale",
+          "competitors": [
+            {
+              "id": "937f7e78-7a83-4e00-9606-2069eccf9ad0",
+              "name": "Aspley Hornets U15 Boys Division 1",
+              "is_home": true,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            },
+            {
+              "id": "199f79c2-5296-4ac5-86b2-9341f2103655",
+              "name": "Burleigh Bombers U15 Boys Division 1",
+              "is_home": false,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            }
+          ],
+          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/759875fd"
+        },
+        {
+          "id": "05db2194-9b97-413a-baff-a7cbd2119658",
+          "status": "UPCOMING",
+          "round": "Round 6",
+          "round_num": 6,
+          "is_final_round": false,
+          "date": "2026-05-24",
+          "time": "12:00:00",
+          "venue": "Giffin Park",
+          "surface": "Giffin Park 1",
+          "address": "Birubi Street",
+          "suburb": "Coorparoo",
+          "competitors": [
+            {
+              "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
+              "name": "Coorparoo Roos U15 Boys Division 1",
+              "is_home": true,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            },
+            {
+              "id": "b7b18446-72b0-4722-a5e3-498ffa9f5135",
+              "name": "Tweed Coast Tigers U15 Boys Division 1",
+              "is_home": false,
+              "score": null,
+              "outcome": null,
+              "is_tct": true
+            }
+          ],
+          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/05db2194"
+        },
+        {
+          "id": "3ac3d65f-e579-4ff4-afe0-05f48b9e2eb4",
+          "status": "UPCOMING",
+          "round": "Round 6",
+          "round_num": 6,
+          "is_final_round": false,
+          "date": "2026-05-24",
+          "time": "14:30:00",
+          "venue": "Powenyenna Oval",
+          "surface": "Powenyenna Oval 1",
+          "address": "41 Chelmer St East",
+          "suburb": "Chelmer",
+          "competitors": [
+            {
+              "id": "10f62735-bdac-48e7-89e5-69a6b681993a",
+              "name": "Maroochy Roos Juniors U15 Boys Division 1",
+              "is_home": false,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            },
+            {
+              "id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
+              "name": "Sherwood Magpies U15 Boys Division 1",
+              "is_home": true,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            }
+          ],
+          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/3ac3d65f"
+        },
+        {
+          "id": "2a4d2b14-8c6a-4046-b21e-7d68fdb6c6c0",
+          "status": "UPCOMING",
+          "round": "Round 6",
+          "round_num": 6,
+          "is_final_round": false,
+          "date": "2026-05-24",
+          "time": "13:00:00",
+          "venue": "Kombumerri Park",
+          "surface": "Neptune Homes Oval 1",
+          "address": "21 Dunlop Crt",
+          "suburb": "Mermaid Waters",
+          "competitors": [
+            {
+              "id": "521a6463-1070-4366-82ce-6b57c2ca9245",
+              "name": "RVP Sharks U15 Boys Division 1",
+              "is_home": false,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            },
+            {
+              "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
+              "name": "Broadbeach Cats U15 Boys Division 1",
+              "is_home": true,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            }
+          ],
+          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/2a4d2b14"
+        },
+        {
+          "id": "a31d1cc6-8854-43fc-8dec-f02aadc9685c",
+          "status": "UPCOMING",
+          "round": "Round 6",
+          "round_num": 6,
+          "is_final_round": false,
+          "date": "2026-05-24",
+          "time": "13:00:00",
+          "venue": "Hickey Park",
+          "surface": "Hickey Park",
+          "address": "Babarra St",
+          "suburb": "Stafford",
+          "competitors": [
+            {
+              "id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
+              "name": "Palm Beach Currumbin U15 Boys Division 1",
+              "is_home": false,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            },
+            {
+              "id": "741dada3-0717-46d1-ba32-7ad28de74109",
+              "name": "Wilston Grange Gorillas U15 Boys Division 1",
+              "is_home": true,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            }
+          ],
+          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/a31d1cc6"
+        },
+        {
           "id": "9cc97758-7c4f-4481-99fe-db5b5b9e175d",
           "status": "UPCOMING",
           "round": "Finals Round 1",
@@ -1719,6 +1911,134 @@
             }
           ],
           "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-3-gold-coast-northern-rivers/game-centre/aab2766d"
+        },
+        {
+          "id": "132fcbbf-6d14-48ee-b97f-f290c19cd5aa",
+          "status": "UPCOMING",
+          "round": "Round 6",
+          "round_num": 6,
+          "is_final_round": false,
+          "date": "2026-05-24",
+          "time": "12:00:00",
+          "venue": "Barry Sheppard Oval",
+          "surface": "Beaumont Tiles Tweed Oval",
+          "address": "Round Mountain Road",
+          "suburb": "Pottsville",
+          "competitors": [
+            {
+              "id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
+              "name": "Tweed Cooly Blues U15 Boys Division 3",
+              "is_home": false,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            },
+            {
+              "id": "375c16c4-12f4-499e-9e4a-94ba4f5283cf",
+              "name": "Tweed Coast Tigers U15 Boys Division 3",
+              "is_home": true,
+              "score": null,
+              "outcome": null,
+              "is_tct": true
+            }
+          ],
+          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-3-gold-coast-northern-rivers/game-centre/132fcbbf"
+        },
+        {
+          "id": "d4d46533-d323-43c0-b942-95191c0fa8c9",
+          "status": "UPCOMING",
+          "round": "Round 6",
+          "round_num": 6,
+          "is_final_round": false,
+          "date": "2026-05-24",
+          "time": "13:30:00",
+          "venue": "Salk Oval",
+          "surface": "Stalagmite Oval",
+          "address": "Thrower Drive",
+          "suburb": "Palm Beach",
+          "competitors": [
+            {
+              "id": "2144da5b-3f13-4552-b595-378222bf8a16",
+              "name": "Palm Beach Currumbin U15 Boys Division 3",
+              "is_home": true,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            },
+            {
+              "id": "2d0ba14a-45b8-4d68-8873-9648e42e132a",
+              "name": "Pac Power U15 Boys Division 3",
+              "is_home": false,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            }
+          ],
+          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-3-gold-coast-northern-rivers/game-centre/d4d46533"
+        },
+        {
+          "id": "86e9fb6a-02a1-4df9-8e99-32847d0cd526",
+          "status": "UPCOMING",
+          "round": "Round 6",
+          "round_num": 6,
+          "is_final_round": false,
+          "date": "2026-05-24",
+          "time": "",
+          "venue": null,
+          "surface": null,
+          "address": null,
+          "suburb": null,
+          "competitors": [
+            {
+              "id": "f9e354ac-3e79-4cde-9f9f-4008a9841ae4",
+              "name": "Burleigh Bombers U15 Boys Division 3",
+              "is_home": true,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            },
+            {
+              "id": "3344820e-0b07-429c-9052-88da120683d1",
+              "name": "Broadbeach Cats U15 Boys Division 3",
+              "is_home": false,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            }
+          ],
+          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-3-gold-coast-northern-rivers/game-centre/86e9fb6a"
+        },
+        {
+          "id": "1a336b9e-0c6c-460a-82e3-5681c0d04e18",
+          "status": "UPCOMING",
+          "round": "Round 6",
+          "round_num": 6,
+          "is_final_round": false,
+          "date": "2026-05-24",
+          "time": "14:30:00",
+          "venue": "Sir Bruce Small Park",
+          "surface": "Kallibr Homes Oval",
+          "address": "Allchurch Street",
+          "suburb": "Benowa",
+          "competitors": [
+            {
+              "id": "2c63657f-a39e-4e5d-938f-a16541502f84",
+              "name": "Labrador Tigers U15 Boys Division 3",
+              "is_home": false,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            },
+            {
+              "id": "9dc898ad-8e96-4efe-9e50-475c44499928",
+              "name": "Surfers Paradise Demons U15 Boys Division 3",
+              "is_home": true,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            }
+          ],
+          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-3-gold-coast-northern-rivers/game-centre/1a336b9e"
         },
         {
           "id": "c7a5b34a-b591-422d-a1e6-d3856a8d962d",
