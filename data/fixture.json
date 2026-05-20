@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-19T23:14:01.467586+00:00",
+  "updated": "2026-05-20T04:21:06.871863+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -841,7 +841,7 @@
         },
         {
           "id": "06c77ddf-a3f9-48f0-bfbc-967d03c707b7",
-          "status": "PENDING",
+          "status": "CANCELLED",
           "round": "Round 5",
           "round_num": 5,
           "is_final_round": false,
@@ -856,16 +856,16 @@
               "id": "b7b18446-72b0-4722-a5e3-498ffa9f5135",
               "name": "Tweed Coast Tigers U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 0,
+              "outcome": "CANCELLED",
               "is_tct": true
             },
             {
               "id": "81bf2d43-8900-4176-96c0-df33081d8570",
               "name": "Labrador Tigers U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 0,
+              "outcome": "CANCELLED",
               "is_tct": false
             }
           ],
@@ -1158,111 +1158,6 @@
             }
           ],
           "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/a31d1cc6"
-        },
-        {
-          "id": "9cc97758-7c4f-4481-99fe-db5b5b9e175d",
-          "status": "UPCOMING",
-          "round": "Finals Round 1",
-          "round_num": null,
-          "is_final_round": true,
-          "date": "2026-08-16",
-          "time": "",
-          "venue": null,
-          "surface": null,
-          "address": null,
-          "suburb": null,
-          "competitors": [],
-          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/9cc97758"
-        },
-        {
-          "id": "94073443-1ce1-4c03-aad6-0df55dc6a7df",
-          "status": "UPCOMING",
-          "round": "Finals Round 1",
-          "round_num": null,
-          "is_final_round": true,
-          "date": "2026-08-16",
-          "time": "",
-          "venue": null,
-          "surface": null,
-          "address": null,
-          "suburb": null,
-          "competitors": [],
-          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/94073443"
-        },
-        {
-          "id": "f04c103e-01a5-4ee6-b28c-d2e052fefa93",
-          "status": "UPCOMING",
-          "round": "Finals Round 1",
-          "round_num": null,
-          "is_final_round": true,
-          "date": "2026-08-16",
-          "time": "",
-          "venue": null,
-          "surface": null,
-          "address": null,
-          "suburb": null,
-          "competitors": [],
-          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/f04c103e"
-        },
-        {
-          "id": "3a526574-383b-4d35-abc0-102417f93875",
-          "status": "UPCOMING",
-          "round": "Finals Round 1",
-          "round_num": null,
-          "is_final_round": true,
-          "date": "2026-08-16",
-          "time": "",
-          "venue": null,
-          "surface": null,
-          "address": null,
-          "suburb": null,
-          "competitors": [],
-          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/3a526574"
-        },
-        {
-          "id": "49c64890-b014-4c6e-8ce6-f5b92b7e4be5",
-          "status": "UPCOMING",
-          "round": "Semi Finals",
-          "round_num": null,
-          "is_final_round": true,
-          "date": "2026-08-23",
-          "time": "",
-          "venue": null,
-          "surface": null,
-          "address": null,
-          "suburb": null,
-          "competitors": [],
-          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/49c64890"
-        },
-        {
-          "id": "bf65eae0-fbac-4d57-82d0-5bc57a05fdfa",
-          "status": "UPCOMING",
-          "round": "Semi Finals",
-          "round_num": null,
-          "is_final_round": true,
-          "date": "2026-08-23",
-          "time": "",
-          "venue": null,
-          "surface": null,
-          "address": null,
-          "suburb": null,
-          "competitors": [],
-          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/bf65eae0"
-        },
-        {
-          "id": "cb5fbd1a-17bd-45cc-aa56-45edb6a80ad5",
-          "status": "UPCOMING",
-          "round": "Grand Final",
-          "round_num": null,
-          "is_final_round": true,
-          "date": "2026-08-30",
-          "time": "",
-          "venue": null,
-          "surface": null,
-          "address": null,
-          "suburb": null,
-          "competitors": [],
-          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/cb5fbd1a"
         }
       ]
     },
@@ -1321,7 +1216,7 @@
               "id": "10fc3295-bb82-4de4-a694-14d96539b31b",
               "name": "Ormeau Bulldogs U15 Boys Division 2",
               "is_home": true,
-              "score": 102,
+              "score": 60,
               "outcome": "WON",
               "is_tct": false
             },
@@ -1385,7 +1280,7 @@
               "id": "2144da5b-3f13-4552-b595-378222bf8a16",
               "name": "Palm Beach Currumbin U15 Boys Division 3",
               "is_home": true,
-              "score": 105,
+              "score": 67,
               "outcome": "WON",
               "is_tct": false
             },
@@ -1513,7 +1408,7 @@
               "id": "6fd561fa-fd43-4190-b865-e665a3bdb694",
               "name": "Byron - Ballina U15 Boys Division 2",
               "is_home": true,
-              "score": 111,
+              "score": 68,
               "outcome": "WON",
               "is_tct": false
             },
@@ -1609,7 +1504,7 @@
               "id": "3344820e-0b07-429c-9052-88da120683d1",
               "name": "Broadbeach Cats U15 Boys Division 3",
               "is_home": true,
-              "score": 106,
+              "score": 61,
               "outcome": "WON",
               "is_tct": false
             },
@@ -1777,7 +1672,7 @@
               "id": "10fc3295-bb82-4de4-a694-14d96539b31b",
               "name": "Ormeau Bulldogs U15 Boys Division 2",
               "is_home": false,
-              "score": 108,
+              "score": 66,
               "outcome": "WON",
               "is_tct": false
             }
@@ -1905,7 +1800,7 @@
               "id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
               "name": "Tweed Cooly Blues U15 Boys Division 3",
               "is_home": true,
-              "score": 95,
+              "score": 69,
               "outcome": "WON",
               "is_tct": false
             }
