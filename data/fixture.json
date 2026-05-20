@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-20T04:21:06.871863+00:00",
+  "updated": "2026-05-20T08:33:16.473718+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -1878,11 +1878,11 @@
           "round_num": 6,
           "is_final_round": false,
           "date": "2026-05-24",
-          "time": "",
-          "venue": null,
-          "surface": null,
-          "address": null,
-          "suburb": null,
+          "time": "10:30:00",
+          "venue": "Varsity Central Park",
+          "surface": "Varsity Central Park",
+          "address": "Assembly Drive",
+          "suburb": "Varsity Lakes",
           "competitors": [
             {
               "id": "f9e354ac-3e79-4cde-9f9f-4008a9841ae4",
