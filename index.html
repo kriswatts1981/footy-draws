@@ -684,6 +684,18 @@ a { color: inherit; text-decoration: none; }
   font-size: 12px;
 }
 .pl-table .col-games.zero { color: var(--text-3); font-weight: 500; }
+.pl-table thead th .rh-tag {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 1px 4px;
+  border-radius: 4px;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  vertical-align: middle;
+}
+.pl-table thead th .rh-tag.bye { background: rgba(180,83,9,0.12); color: var(--warn); }
+.pl-table thead th .rh-tag.canc { background: rgba(185,28,28,0.12); color: var(--danger); }
 .pl-table .col-total {
   text-align: center;
   font-weight: 800; color: var(--text);
@@ -2373,16 +2385,39 @@ function renderVotesTab() {
     lb.innerHTML = `<div class="votes-empty">No votes logged yet for ${divLabel}.</div>`;
   } else {
     const allRounds = (attendanceData.votes && attendanceData.votes.rounds) || [];
-    const roundNumbers = allRounds.filter(r => (r[votesDiv + '_cards'] || []).length).map(r => r.round);
+    const seasonRounds = attendanceData.rounds || [];
+    const roundInfo = {};
+    for (const r of seasonRounds) {
+      const dv = r[votesDiv];
+      if (!dv) continue;
+      const cancelled = dv.cancelled === true || dv.result === 'CANCELLED';
+      roundInfo[r.round] = { round: r.round, bye: dv.bye === true, cancelled };
+    }
+    for (const r of allRounds) {
+      if ((r[votesDiv + '_cards'] || []).length) {
+        roundInfo[r.round] = roundInfo[r.round] || { round: r.round };
+        roundInfo[r.round].cards = true;
+      }
+    }
+    const columns = Object.values(roundInfo)
+      .filter(r => r.cards || r.bye || r.cancelled)
+      .sort((a, b) => a.round - b.round);
+    const headCell = r => {
+      let tag = '';
+      if (r.bye) tag = '<span class="rh-tag bye">BYE</span>';
+      else if (r.cancelled) tag = '<span class="rh-tag canc">CNC</span>';
+      return `<th class="center">R${r.round}${tag}</th>`;
+    };
     const headRow = `<thead><tr>
       <th class="num">#</th>
       <th>Player</th>
-      ${roundNumbers.map(rn => `<th class="center">R${rn}</th>`).join('')}
+      ${columns.map(headCell).join('')}
       <th class="center">Total</th>
     </tr></thead>`;
     const body = votes.map(v => {
-      const cells = roundNumbers.map(rn => {
-        const pts = v.perRound[rn] || 0;
+      const cells = columns.map(r => {
+        if (r.bye || r.cancelled) return `<td class="col-games zero" title="${r.bye ? 'Bye' : 'Cancelled'}">–</td>`;
+        const pts = v.perRound[r.round] || 0;
         return `<td class="col-games ${pts ? '' : 'zero'}">${pts || '–'}</td>`;
       }).join('');
       return `<tr>
