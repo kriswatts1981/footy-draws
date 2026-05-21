@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-21T00:14:21.644394+00:00",
+  "updated": "2026-05-21T05:14:52.390761+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -105,7 +105,7 @@
           "won": 3,
           "lost": 1,
           "drawn": 0,
-          "byes": 0,
+          "byes": 1,
           "points_for": 0,
           "points_against": 0,
           "percentage": 0,
@@ -165,7 +165,7 @@
           "won": 0,
           "lost": 4,
           "drawn": 0,
-          "byes": 0,
+          "byes": 1,
           "points_for": 93,
           "points_against": 259,
           "percentage": 35.91,
