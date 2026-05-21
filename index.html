@@ -2754,12 +2754,22 @@ function mergeCoachSecret(secret) {
 }
 
 // Try to apply a previously-cached decryption (so reloading in the same tab
-// keeps the user unlocked without re-prompting).
+// keeps the user unlocked without re-prompting). The cache is keyed by the
+// AES-GCM nonce so a fresh re-encrypt (which randomises the nonce) auto-
+// invalidates stale decrypted blobs — otherwise the user keeps seeing old
+// votes until they manually clear sessionStorage.
 function applyCachedCoachSecret() {
   try {
     const cached = sessionStorage.getItem(SECRET_CACHE_KEY);
-    if (!cached || !attendanceData) return;
-    mergeCoachSecret(JSON.parse(cached));
+    if (!cached || !attendanceData || !attendanceData.encrypted) return;
+    const parsed = JSON.parse(cached);
+    const currentNonce = attendanceData.encrypted.nonce;
+    if (!parsed || parsed.nonce !== currentNonce || !parsed.secret) {
+      sessionStorage.removeItem(SECRET_CACHE_KEY);
+      sessionStorage.removeItem(GATE_KEY);
+      return;
+    }
+    mergeCoachSecret(parsed.secret);
   } catch (e) {}
 }
 
@@ -2804,8 +2814,9 @@ async function submitCoachGate() {
   submitBtn.disabled = true;
   try {
     const secret = await decryptCoachBlob(encMeta, input.value);
-    // Success — cache for the rest of the session and re-render.
-    try { sessionStorage.setItem(SECRET_CACHE_KEY, JSON.stringify(secret)); } catch (e) {}
+    // Success — cache for the rest of the session and re-render. Bind the
+    // cache to the current nonce so re-encrypts invalidate stale blobs.
+    try { sessionStorage.setItem(SECRET_CACHE_KEY, JSON.stringify({ nonce: encMeta.nonce, secret })); } catch (e) {}
     sessionStorage.setItem(GATE_KEY, '1');
     mergeCoachSecret(secret);
     syncCoachLock();
