@@ -2489,13 +2489,21 @@ async function loadResponses() {
     const colNote   = header.findIndex(h => h === 'note');
     const colParent = header.findIndex(h => h.startsWith('parent'));
 
+    // Google Forms timestamps look like "5/19/2026 8:04:14" (M/D/YYYY H:MM:SS, no zero pad).
+    // String comparison gives the wrong order across day-of-month boundaries — parse to epoch ms.
+    function parseGFormTs(s) {
+      const m = String(s).match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})\s+(\d{1,2}):(\d{2}):(\d{2})/);
+      if (!m) return 0;
+      return new Date(+m[3], +m[1] - 1, +m[2], +m[4], +m[5], +m[6]).getTime();
+    }
+
     const latestByPlayer = {};
     for (let i = 1; i < rows.length; i++) {
       const r = rows[i];
       if (!r || r.length < 2) continue;
       const player = (r[colPlayer] || '').trim();
       if (!player) continue;
-      const ts = (r[colTs] || '').trim();
+      const ts = parseGFormTs(r[colTs] || '');
       const prev = latestByPlayer[player];
       if (!prev || ts > prev.ts) {
         latestByPlayer[player] = {
