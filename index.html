@@ -991,8 +991,23 @@ body { overflow-x: hidden; }
   margin-top: 10px;
   font-size: 12px; color: var(--text-3);
   font-variant-numeric: tabular-nums;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
 }
 .av-meta.err { color: var(--danger); }
+.av-refresh {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 8px;
+  font-size: 11px; font-weight: 700;
+  background: var(--bg-2); color: var(--text-2);
+  border: 1px solid var(--border); border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.av-refresh:hover:not(:disabled) { background: var(--bg-3); color: var(--text); border-color: var(--text-3); }
+.av-refresh:disabled { opacity: 0.55; cursor: progress; }
+.av-refresh.spinning .ic { animation: av-spin 0.7s linear infinite; }
+@keyframes av-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
 .av-rounds {
   display: grid;
@@ -2508,8 +2523,8 @@ function parseGFormCSV(text) {
   return rows;
 }
 
-async function loadResponses() {
-  if (Date.now() - responsesLoadedAt < 30000 && responsesLoadedAt > 0) return;
+async function loadResponses(force) {
+  if (!force && Date.now() - responsesLoadedAt < 30000 && responsesLoadedAt > 0) return;
   try {
     const res = await fetch(RESPONSES_CSV_URL + '&_=' + Date.now(), { cache: 'no-store' });
     if (!res.ok) throw new Error('HTTP ' + res.status);
@@ -2576,6 +2591,16 @@ async function loadResponses() {
   }
 }
 
+function formatRelativeTime(ms) {
+  const s = Math.max(0, Math.round((Date.now() - ms) / 1000));
+  if (s < 5) return 'just now';
+  if (s < 60) return `${s}s ago`;
+  const m = Math.round(s / 60);
+  if (m < 60) return `${m}m ago`;
+  const h = Math.round(m / 60);
+  return `${h}h ago`;
+}
+
 function renderAvailMeta() {
   const meta = document.getElementById('av-meta');
   if (!meta) return;
@@ -2585,8 +2610,56 @@ function renderAvailMeta() {
   const mm = t.getMinutes().toString().padStart(2, '0');
   const n = responsesTotal;
   meta.className = 'av-meta';
-  meta.textContent = `Last refreshed ${hh}:${mm} • ${n} player${n === 1 ? '' : 's'} submitted`;
+  meta.innerHTML = `<span>Last refreshed ${hh}:${mm} (${formatRelativeTime(responsesLoadedAt)}) • ${n} player${n === 1 ? '' : 's'} submitted</span><button type="button" class="av-refresh" id="av-refresh-btn" title="Force refresh from Google Forms"><span class="ic">↻</span> Refresh</button>`;
+  const btn = document.getElementById('av-refresh-btn');
+  if (btn) btn.addEventListener('click', () => manualRefreshAvail());
 }
+
+async function manualRefreshAvail() {
+  const btn = document.getElementById('av-refresh-btn');
+  if (btn) { btn.disabled = true; btn.classList.add('spinning'); }
+  try {
+    await loadResponses(true);
+    renderAvailRounds();
+  } finally {
+    if (btn) { btn.disabled = false; btn.classList.remove('spinning'); }
+  }
+}
+
+// ── Auto-poll while the Available tab is open and the document is visible ──
+let availPollTimer = null;
+let availTickTimer = null;
+const AVAIL_POLL_MS = 120000;       // 2 min between background refreshes
+const AVAIL_STALE_MS = 90000;       // if older than 90s when becoming visible, refresh immediately
+
+function startAvailPolling() {
+  stopAvailPolling();
+  // Background CSV poll
+  availPollTimer = setInterval(() => {
+    if (document.hidden) return;
+    loadResponses(true).then(renderAvailRounds).catch(() => {});
+  }, AVAIL_POLL_MS);
+  // Relative-time tick so "Last refreshed Xs/m ago" stays accurate without re-fetching
+  availTickTimer = setInterval(() => {
+    if (activeSection === 'available' && !document.hidden) renderAvailMeta();
+  }, 15000);
+}
+
+function stopAvailPolling() {
+  if (availPollTimer) { clearInterval(availPollTimer); availPollTimer = null; }
+  if (availTickTimer) { clearInterval(availTickTimer); availTickTimer = null; }
+}
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) return;
+  if (activeSection !== 'available') return;
+  // Tab became visible — if data is stale, refresh now.
+  if (!responsesLoadedAt || Date.now() - responsesLoadedAt > AVAIL_STALE_MS) {
+    loadResponses(true).then(renderAvailRounds).catch(() => {});
+  } else {
+    renderAvailMeta();
+  }
+});
 
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({
@@ -2686,6 +2759,9 @@ function switchSection(name) {
   if (name === 'available') {
     renderAvailRounds();
     loadResponses().then(renderAvailRounds);
+    startAvailPolling();
+  } else {
+    stopAvailPolling();
   }
   if (name === 'ladder') {
     loadPlayHQ().then(renderLadder);
