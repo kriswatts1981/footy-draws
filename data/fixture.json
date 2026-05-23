@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-22T23:12:38.625790+00:00",
+  "updated": "2026-05-23T03:49:57.592233+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -1045,17 +1045,17 @@
           "suburb": "Chelmer",
           "competitors": [
             {
-              "id": "10f62735-bdac-48e7-89e5-69a6b681993a",
-              "name": "Maroochy Roos Juniors U15 Boys Division 1",
-              "is_home": false,
+              "id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
+              "name": "Sherwood Magpies U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
-              "name": "Sherwood Magpies U15 Boys Division 1",
-              "is_home": true,
+              "id": "10f62735-bdac-48e7-89e5-69a6b681993a",
+              "name": "Maroochy Roos Juniors U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
@@ -1077,17 +1077,17 @@
           "suburb": "Mermaid Waters",
           "competitors": [
             {
-              "id": "521a6463-1070-4366-82ce-6b57c2ca9245",
-              "name": "RVP Sharks U15 Boys Division 1",
-              "is_home": false,
+              "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
+              "name": "Broadbeach Cats U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
-              "name": "Broadbeach Cats U15 Boys Division 1",
-              "is_home": true,
+              "id": "521a6463-1070-4366-82ce-6b57c2ca9245",
+              "name": "RVP Sharks U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
@@ -1109,17 +1109,17 @@
           "suburb": "Stafford",
           "competitors": [
             {
-              "id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
-              "name": "Palm Beach Currumbin U15 Boys Division 1",
-              "is_home": false,
+              "id": "741dada3-0717-46d1-ba32-7ad28de74109",
+              "name": "Wilston Grange Gorillas U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "741dada3-0717-46d1-ba32-7ad28de74109",
-              "name": "Wilston Grange Gorillas U15 Boys Division 1",
-              "is_home": true,
+              "id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
+              "name": "Palm Beach Currumbin U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
@@ -1853,17 +1853,17 @@
           "suburb": "Varsity Lakes",
           "competitors": [
             {
-              "id": "f9e354ac-3e79-4cde-9f9f-4008a9841ae4",
-              "name": "Burleigh Bombers U15 Boys Division 3",
-              "is_home": true,
+              "id": "3344820e-0b07-429c-9052-88da120683d1",
+              "name": "Broadbeach Cats U15 Boys Division 3",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "3344820e-0b07-429c-9052-88da120683d1",
-              "name": "Broadbeach Cats U15 Boys Division 3",
-              "is_home": false,
+              "id": "f9e354ac-3e79-4cde-9f9f-4008a9841ae4",
+              "name": "Burleigh Bombers U15 Boys Division 3",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
