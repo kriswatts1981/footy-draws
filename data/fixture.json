@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-23T03:49:57.592233+00:00",
+  "updated": "2026-05-23T06:38:11.309005+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -949,17 +949,17 @@
           "suburb": "Labrador",
           "competitors": [
             {
-              "id": "81bf2d43-8900-4176-96c0-df33081d8570",
-              "name": "Labrador Tigers U15 Boys Division 1",
-              "is_home": true,
+              "id": "162b505a-d2bf-467e-8aba-577f9039d1ea",
+              "name": "Morningside Panthers U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "162b505a-d2bf-467e-8aba-577f9039d1ea",
-              "name": "Morningside Panthers U15 Boys Division 1",
-              "is_home": false,
+              "id": "81bf2d43-8900-4176-96c0-df33081d8570",
+              "name": "Labrador Tigers U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
