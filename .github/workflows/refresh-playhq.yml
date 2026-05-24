@@ -44,6 +44,13 @@ jobs:
             echo "No changes."
           else
             git commit -m "data: refresh PlayHQ ($(date -u +%Y-%m-%dT%H:%MZ))"
-            git pull --rebase origin main
-            git push
+            # Slow refresh takes ~38 min; fast refresh can land during the window
+            # and cause merge conflicts on data/*.json. Prefer OUR comprehensive
+            # data when conflicts arise (rebase: -X theirs = the commit being replayed).
+            for attempt in 1 2 3; do
+              git pull --rebase -X theirs origin main && git push && break
+              echo "Push attempt $attempt failed; rebasing again..."
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 5))
+            done
           fi
