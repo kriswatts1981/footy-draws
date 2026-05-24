@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-24T21:40:19.810532+00:00",
+  "updated": "2026-05-24T22:41:21.659974+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -814,7 +814,7 @@
           "round_num": 5,
           "is_final_round": false,
           "date": "2026-07-12",
-          "time": "12:00:00",
+          "time": "11:00:00",
           "venue": "Cooke-Murphy Oval",
           "surface": "Cooke-Murphy Oval 1",
           "address": "28 Ashton Street",
@@ -1718,7 +1718,7 @@
           "round_num": 5,
           "is_final_round": false,
           "date": "2026-07-12",
-          "time": "11:00:00",
+          "time": "09:30:00",
           "venue": "Cooke-Murphy Oval",
           "surface": "Cooke-Murphy Oval 1",
           "address": "28 Ashton Street",
