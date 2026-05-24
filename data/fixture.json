@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-24T04:43:27.604441+00:00",
+  "updated": "2026-05-24T07:43:43.567826+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -1033,7 +1033,7 @@
         },
         {
           "id": "3ac3d65f-e579-4ff4-afe0-05f48b9e2eb4",
-          "status": null,
+          "status": "FINAL",
           "round": "Round 6",
           "round_num": 6,
           "is_final_round": false,
@@ -1048,16 +1048,16 @@
               "id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
               "name": "Sherwood Magpies U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 41,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "10f62735-bdac-48e7-89e5-69a6b681993a",
               "name": "Maroochy Roos Juniors U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 67,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -1097,7 +1097,7 @@
         },
         {
           "id": "a31d1cc6-8854-43fc-8dec-f02aadc9685c",
-          "status": "PENDING",
+          "status": "FINAL",
           "round": "Round 6",
           "round_num": 6,
           "is_final_round": false,
@@ -1112,16 +1112,16 @@
               "id": "741dada3-0717-46d1-ba32-7ad28de74109",
               "name": "Wilston Grange Gorillas U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 49,
+              "outcome": "WON",
               "is_tct": false
             },
             {
               "id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
               "name": "Palm Beach Currumbin U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 45,
+              "outcome": "LOST",
               "is_tct": false
             }
           ],
@@ -1777,7 +1777,7 @@
         },
         {
           "id": "132fcbbf-6d14-48ee-b97f-f290c19cd5aa",
-          "status": "PENDING",
+          "status": "FINAL",
           "round": "Round 6",
           "round_num": 6,
           "is_final_round": false,
@@ -1792,16 +1792,16 @@
               "id": "375c16c4-12f4-499e-9e4a-94ba4f5283cf",
               "name": "Tweed Coast Tigers U15 Boys Division 3",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 7,
+              "outcome": "LOST",
               "is_tct": true
             },
             {
               "id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
               "name": "Tweed Cooly Blues U15 Boys Division 3",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 67,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -1809,7 +1809,7 @@
         },
         {
           "id": "d4d46533-d323-43c0-b942-95191c0fa8c9",
-          "status": null,
+          "status": "PENDING",
           "round": "Round 6",
           "round_num": 6,
           "is_final_round": false,
@@ -1873,7 +1873,7 @@
         },
         {
           "id": "1a336b9e-0c6c-460a-82e3-5681c0d04e18",
-          "status": null,
+          "status": "PENDING",
           "round": "Round 6",
           "round_num": 6,
           "is_final_round": false,
