@@ -13,6 +13,9 @@ round_spec.json schema:
     "venue": "Giffin Park 1",
     "voters": [],                        # optional
     "photo_dir": "/tmp/r6_div1",         # optional - dir of jpegs to copy
+    "played": ["Willo Bennett", "Hudson Vecht", ...],   # CRITICAL: from team sheet
+    "late_outs": [],                                    # optional
+    "dnp": [],                                          # optional
     "cards": [
       {"5": "Saxon Healey", "4": "Samuel Ella", "3": "Hudson Vecht",
        "2": "Archer Abbott", "1": "Skooda Walle"},
@@ -183,6 +186,47 @@ def upsert_round(data: dict, round_num: int, div1_cards: list[dict], div1_voters
     rounds.sort(key=lambda r: r["round"])
 
 
+def upsert_played(data: dict, round_num: int, spec: dict) -> list[str]:
+    """Update rounds[].divN.played/late_outs/dnp. Returns list of warnings.
+
+    CRITICAL: the squad page's per-player game counts come from these arrays,
+    NOT from players.json. Forgetting to fill them is why Grayson showed 4
+    games instead of 5 on 2026-05-25.
+    """
+    rounds = data.setdefault("rounds", [])
+    entry = next((r for r in rounds if r.get("round") == round_num), None)
+    if entry is None:
+        entry = {"round": round_num,
+                 "div1": {"played": [], "late_outs": [], "dnp": []},
+                 "div3": {"played": [], "late_outs": [], "dnp": []}}
+        rounds.append(entry)
+        rounds.sort(key=lambda r: r["round"])
+
+    warnings = []
+    for div_key in ("div1", "div3"):
+        div = spec.get(div_key)
+        if not div:
+            continue
+        played = div.get("played", [])
+        if not played:
+            warnings.append(f"  [WARN] {div_key} has no 'played' list — squad counts will not update for this round")
+            continue
+        entry.setdefault(div_key, {"played": [], "late_outs": [], "dnp": []})
+        entry[div_key]["played"] = played
+        entry[div_key]["late_outs"] = div.get("late_outs", [])
+        entry[div_key]["dnp"] = div.get("dnp", [])
+
+        # Cross-check spelling against squad
+        sq_names = {p["name"] for p in data["squads"][div_key]["players"]}
+        # Also accept cross-div players (they appear in the OTHER squad)
+        other = "div3" if div_key == "div1" else "div1"
+        other_names = {p["name"] for p in data["squads"][other]["players"]}
+        for n in played:
+            if n not in sq_names and n not in other_names:
+                warnings.append(f"  [WARN] {div_key} played: '{n}' not found in either squad — typo?")
+    return warnings
+
+
 def copy_photos(src_dir: Path | None, dest_dir: Path) -> int:
     if not src_dir or not src_dir.exists():
         return 0
@@ -276,6 +320,14 @@ def main():
         spec.get("div3", {}).get("cards", []),
         spec.get("div3", {}).get("voters", []),
     )
+
+    # Played lists (drives the squad page game counts — see playerStats() in index.html)
+    warnings = upsert_played(data, round_num, spec)
+    if warnings:
+        change_lines.append("Played-list warnings:")
+        change_lines.extend(warnings)
+        for w in warnings:
+            print(w)
 
     PLAIN.write_text(json.dumps(data, indent=2))
     print(f"Updated {PLAIN}")
