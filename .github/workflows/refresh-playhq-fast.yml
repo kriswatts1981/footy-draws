@@ -99,6 +99,30 @@ jobs:
             echo "No changes."
           else
             git commit -m "data: fast refresh ($(date -u +%Y-%m-%dT%H:%MZ))"
-            git pull --rebase origin main
-            git push
+            for attempt in 1 2 3; do
+              git pull --rebase -X theirs origin main && git push && break
+              echo "Push attempt $attempt failed; rebasing again..."
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 5))
+            done
           fi
+
+      - name: Email Kris on failure
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASS }}
+          from: Footy Watcher <${{ secrets.SMTP_USER }}>
+          to: kriswatts@gmail.com
+          subject: "FOOTY-DRAWS FAILED: Refresh PlayHQ (fast)"
+          body: |
+            The fast PlayHQ refresh failed.
+
+            Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            Trigger: ${{ github.event_name }}
+
+            Fixture/ladder may be stale until next run (every 15 min on game days).

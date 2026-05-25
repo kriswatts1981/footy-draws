@@ -1,0 +1,30 @@
+{
+  "round": 7,
+  "date": "2026-05-31",
+  "div1": {
+    "opponent": "Example Opponent",
+    "venue": "Example Park 1",
+    "photo_dir": "/tmp/r7_div1",
+    "cards": [
+      {"5": "Player A", "4": "Player B", "3": "Player C", "2": "Player D", "1": "Player E"},
+      {"5": "Player A", "4": "Player C", "3": "Player B", "2": "Player E", "1": "Player D"},
+      {"5": "Player A", "4": "Player D", "3": "Player C", "2": "Player B", "1": "Player E"}
+    ],
+    "squad_updates": [
+      {"name": "New Player", "no": 99}
+    ]
+  },
+  "div3": {
+    "opponent": "Other Opponent",
+    "venue": "Other Park",
+    "photo_dir": "/tmp/r7_div3",
+    "cards": [
+      {"5": "X", "4": "Y", "3": "Z", "2": "W", "1": "V"},
+      {"5": "X", "4": "Y", "3": "Z", "2": "W", "1": "V"},
+      {"5": "X", "4": "Y", "3": "Z", "2": "W", "1": "V"}
+    ]
+  },
+  "auto_push": true,
+  "auto_refresh": true,
+  "send_digest": true
+}

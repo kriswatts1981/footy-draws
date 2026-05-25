@@ -2,9 +2,12 @@ name: Refresh PlayHQ data
 
 on:
   schedule:
-    # Once daily — refreshes players.json (player career stats). Fixture/ladder
-    # are kept current by refresh-playhq-fast.yml every 15 min on weekends.
-    - cron: '15 14 * * *'  # 14:15 UTC = 00:15 AEST
+    # Daily — refreshes players.json (player career stats).
+    - cron: '15 14 * * *'  # 14:15 UTC = 00:15 AEST (post-midnight)
+    # Post-game weekend evenings (Sat=6, Sun=0 in cron). Game counts
+    # for the day's matches usually land on PlayHQ within a few hours.
+    - cron: '0 10 * * 6,0'  # 10:00 UTC = 20:00 AEST
+    - cron: '0 12 * * 6,0'  # 12:00 UTC = 22:00 AEST (safety net)
   workflow_dispatch:
     inputs:
       refetch_all:
@@ -54,3 +57,24 @@ jobs:
               sleep $((attempt * 5))
             done
           fi
+
+      - name: Email Kris on failure
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASS }}
+          from: Footy Watcher <${{ secrets.SMTP_USER }}>
+          to: kriswatts@gmail.com
+          subject: "FOOTY-DRAWS FAILED: Refresh PlayHQ data (slow)"
+          body: |
+            The daily slow PlayHQ refresh failed.
+
+            Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            Trigger: ${{ github.event_name }}
+            Started: ${{ github.event.head_commit.timestamp }}
+
+            Game counts on the squad page may be stale until next run.
