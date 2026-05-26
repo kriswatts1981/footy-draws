@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-26T04:19:37.231540+00:00",
+  "updated": "2026-05-26T08:39:28.665978+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -873,16 +873,16 @@
         },
         {
           "id": "a00bb4eb-bb6d-4f87-99cc-98f63c9ec923",
-          "status": "PENDING",
+          "status": "UPCOMING",
           "round": "Round 5",
           "round_num": 5,
           "is_final_round": false,
-          "date": "2026-05-17",
-          "time": "",
-          "venue": null,
-          "surface": null,
-          "address": null,
-          "suburb": null,
+          "date": "2026-07-12",
+          "time": "11:30:00",
+          "venue": "Bill Godfrey Oval",
+          "surface": "PRD Bill Godfrey Oval",
+          "address": "111 Christine Ave",
+          "suburb": "Burleigh Waters",
           "competitors": [
             {
               "id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
