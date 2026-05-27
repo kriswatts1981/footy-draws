@@ -1175,15 +1175,7 @@ body { overflow-x: hidden; }
     <button class="nav-btn active" data-section="fixtures">Fixtures</button>
     <button class="nav-btn" data-section="ladder">Ladder</button>
     <button class="nav-btn" data-section="squad">Squad</button>
-    <button class="nav-btn" data-section="available" id="nav-available">
-      <span class="nav-lock" id="nav-available-lock" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="4" y="11" width="16" height="10" rx="2"></rect>
-          <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
-        </svg>
-      </span>
-      Available
-    </button>
+    <button class="nav-btn" data-section="available" id="nav-available">Available</button>
     <button class="nav-btn" data-section="votes" id="nav-votes">
       <span class="nav-lock" id="nav-votes-lock" aria-hidden="true">
         <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
@@ -2704,9 +2696,7 @@ function applyCachedCoachSecret() {
 function syncCoachLock() {
   const unlocked = coachUnlocked();
   const v = document.getElementById('nav-votes-lock');
-  const a = document.getElementById('nav-available-lock');
   if (v) v.classList.toggle('hidden', unlocked);
-  if (a) a.classList.toggle('hidden', unlocked);
   document.querySelectorAll('.coach-only').forEach(el => el.classList.toggle('locked', !unlocked));
 }
 
@@ -2766,7 +2756,7 @@ async function submitCoachGate() {
 // Wrap switchSection so gated nav buttons trigger the password modal.
 const _switchSection = window.switchSection;
 window.switchSection = function(name) {
-  if ((name === 'votes' || name === 'available') && !coachUnlocked()) {
+  if (name === 'votes' && !coachUnlocked()) {
     openCoachGate(name);
     return;
   }
@@ -2797,7 +2787,7 @@ syncCoachLock();
 // Restore last active section on reload (skip gated sections if not unlocked).
 try {
   const saved = sessionStorage.getItem('activeSection');
-  const isGated = (s) => s === 'votes' || s === 'available';
+  const isGated = (s) => s === 'votes';
   if (saved && saved !== 'fixtures' && !(isGated(saved) && !coachUnlocked())) {
     window.switchSection(saved);
   }
