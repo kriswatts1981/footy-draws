@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-27T22:04:12.659202+00:00",
+  "updated": "2026-05-27T23:35:49.259465+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -3581,17 +3581,17 @@
           "suburb": "Mermaid Waters",
           "competitors": [
             {
-              "id": "3344820e-0b07-429c-9052-88da120683d1",
-              "name": "Broadbeach Cats U15 Boys Division 3",
-              "is_home": true,
+              "id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
+              "name": "Tweed Cooly Blues U15 Boys Division 3",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
-              "name": "Tweed Cooly Blues U15 Boys Division 3",
-              "is_home": false,
+              "id": "3344820e-0b07-429c-9052-88da120683d1",
+              "name": "Broadbeach Cats U15 Boys Division 3",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
