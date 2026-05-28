@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-28T04:22:11.987060+00:00",
+  "updated": "2026-05-28T08:50:24.415764+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -632,7 +632,7 @@
               "id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
               "name": "Palm Beach Currumbin U15 Boys Division 1",
               "is_home": true,
-              "score": 130,
+              "score": 68,
               "outcome": "WON",
               "is_tct": false
             },
@@ -672,7 +672,7 @@
               "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
               "name": "Broadbeach Cats U15 Boys Division 1",
               "is_home": true,
-              "score": 107,
+              "score": 70,
               "outcome": "WON",
               "is_tct": false
             }
@@ -1024,7 +1024,7 @@
               "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
               "name": "Coorparoo Roos U15 Boys Division 1",
               "is_home": true,
-              "score": 113,
+              "score": 69,
               "outcome": "WON",
               "is_tct": false
             }
@@ -1080,7 +1080,7 @@
               "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
               "name": "Broadbeach Cats U15 Boys Division 1",
               "is_home": true,
-              "score": 98,
+              "score": 73,
               "outcome": "WON",
               "is_tct": false
             },
@@ -1133,25 +1133,25 @@
           "round": "Round 7",
           "round_num": 7,
           "is_final_round": false,
-          "date": "2026-07-12",
-          "time": "11:00:00",
-          "venue": "Bill Godfrey Oval",
-          "surface": "PRD Bill Godfrey Oval",
-          "address": "111 Christine Ave",
-          "suburb": "Burleigh Waters",
+          "date": "2026-05-31",
+          "time": "15:00:00",
+          "venue": "Powenyenna Oval",
+          "surface": "Powenyenna Oval 1",
+          "address": "41 Chelmer St East",
+          "suburb": "Chelmer",
           "competitors": [
             {
-              "id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
-              "name": "Sherwood Magpies U15 Boys Division 1",
-              "is_home": false,
+              "id": "199f79c2-5296-4ac5-86b2-9341f2103655",
+              "name": "Burleigh Bombers U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "199f79c2-5296-4ac5-86b2-9341f2103655",
-              "name": "Burleigh Bombers U15 Boys Division 1",
-              "is_home": true,
+              "id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
+              "name": "Sherwood Magpies U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
