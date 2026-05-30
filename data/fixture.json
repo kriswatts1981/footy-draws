@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-30T03:57:25.762229+00:00",
+  "updated": "2026-05-30T06:52:37.548966+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -1263,10 +1263,10 @@
           "is_final_round": false,
           "date": "2026-05-31",
           "time": "15:00:00",
-          "venue": "Ern & Alma Dowling Sports Ground",
-          "surface": "Totally Workwear Park",
-          "address": "325 Colburn Avenue",
-          "suburb": "Victoria Point",
+          "venue": "Dauth Park",
+          "surface": "Club Beenleigh Oval 1",
+          "address": "Alamein Street",
+          "suburb": "Beenleigh",
           "competitors": [
             {
               "id": "937f7e78-7a83-4e00-9606-2069eccf9ad0",
