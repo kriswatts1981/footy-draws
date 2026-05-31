@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-31T01:55:43.057359+00:00",
+  "updated": "2026-05-31T06:26:21.003712+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -1129,7 +1129,7 @@
         },
         {
           "id": "e38a41f2-42b2-4e8d-8982-312300f765ee",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Round 7",
           "round_num": 7,
           "is_final_round": false,
@@ -1161,7 +1161,7 @@
         },
         {
           "id": "e9b06538-8ed4-46fe-8ea0-6f289fa766ea",
-          "status": "PENDING",
+          "status": "FINAL",
           "round": "Round 7",
           "round_num": 7,
           "is_final_round": false,
@@ -1176,16 +1176,16 @@
               "id": "741dada3-0717-46d1-ba32-7ad28de74109",
               "name": "Wilston Grange Gorillas U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 46,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "10f62735-bdac-48e7-89e5-69a6b681993a",
               "name": "Maroochy Roos Juniors U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 59,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -1193,7 +1193,7 @@
         },
         {
           "id": "6f22f956-4151-4dfe-88ca-9cc38fcb75e7",
-          "status": null,
+          "status": "FINAL",
           "round": "Round 7",
           "round_num": 7,
           "is_final_round": false,
@@ -1208,16 +1208,16 @@
               "id": "162b505a-d2bf-467e-8aba-577f9039d1ea",
               "name": "Morningside Panthers U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 48,
+              "outcome": "WON",
               "is_tct": false
             },
             {
               "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
               "name": "Coorparoo Roos U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 47,
+              "outcome": "LOST",
               "is_tct": false
             }
           ],
@@ -1225,7 +1225,7 @@
         },
         {
           "id": "8813e7d3-08f1-4747-abdd-c433d60592d9",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Round 7",
           "round_num": 7,
           "is_final_round": false,
@@ -1257,7 +1257,7 @@
         },
         {
           "id": "99e463f2-3ef2-4781-ab35-1e4e7b561850",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Round 7",
           "round_num": 7,
           "is_final_round": false,
@@ -1289,7 +1289,7 @@
         },
         {
           "id": "eaaf34e9-fc56-4a56-a72e-3e00605af2ff",
-          "status": "UPCOMING",
+          "status": "PENDING",
           "round": "Round 7",
           "round_num": 7,
           "is_final_round": false,
@@ -3473,7 +3473,7 @@
         },
         {
           "id": "f095f6a6-9b00-4093-8ce0-4175bcc379dc",
-          "status": null,
+          "status": "FINAL",
           "round": "Round 7",
           "round_num": 7,
           "is_final_round": false,
@@ -3488,16 +3488,16 @@
               "id": "2c63657f-a39e-4e5d-938f-a16541502f84",
               "name": "Labrador Tigers U15 Boys Division 3",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 37,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "f9e354ac-3e79-4cde-9f9f-4008a9841ae4",
               "name": "Burleigh Bombers U15 Boys Division 3",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 70,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -3505,7 +3505,7 @@
         },
         {
           "id": "d0901c82-f2fd-479b-b015-17db4413aa76",
-          "status": "UPCOMING",
+          "status": "PENDING",
           "round": "Round 7",
           "round_num": 7,
           "is_final_round": false,
@@ -3537,7 +3537,7 @@
         },
         {
           "id": "8cf20cdc-570e-475a-81df-1ea7c9874c06",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Round 7",
           "round_num": 7,
           "is_final_round": false,
