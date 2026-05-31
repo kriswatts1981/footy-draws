@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-30T23:44:43.613267+00:00",
+  "updated": "2026-05-31T01:55:43.057359+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -1161,7 +1161,7 @@
         },
         {
           "id": "e9b06538-8ed4-46fe-8ea0-6f289fa766ea",
-          "status": null,
+          "status": "PENDING",
           "round": "Round 7",
           "round_num": 7,
           "is_final_round": false,
@@ -1193,7 +1193,7 @@
         },
         {
           "id": "6f22f956-4151-4dfe-88ca-9cc38fcb75e7",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Round 7",
           "round_num": 7,
           "is_final_round": false,
@@ -3473,7 +3473,7 @@
         },
         {
           "id": "f095f6a6-9b00-4093-8ce0-4175bcc379dc",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Round 7",
           "round_num": 7,
           "is_final_round": false,
