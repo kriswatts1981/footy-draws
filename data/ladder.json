@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-31T23:47:25.380073+00:00",
+  "updated": "2026-06-01T05:07:38.254032+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -98,33 +98,33 @@
         },
         {
           "rank": 7,
-          "team_id": "521a6463-1070-4366-82ce-6b57c2ca9245",
-          "team_name": "RVP Sharks U15 Boys Division 1",
+          "team_id": "937f7e78-7a83-4e00-9606-2069eccf9ad0",
+          "team_name": "Aspley Hornets U15 Boys Division 1",
           "is_tct": false,
-          "played": 5,
+          "played": 7,
           "won": 3,
-          "lost": 2,
+          "lost": 4,
           "drawn": 0,
-          "byes": 1,
-          "points_for": 13,
-          "points_against": 73,
-          "percentage": 17.81,
+          "byes": 0,
+          "points_for": 334,
+          "points_against": 313,
+          "percentage": 106.71,
           "competition_points": 12
         },
         {
           "rank": 8,
-          "team_id": "937f7e78-7a83-4e00-9606-2069eccf9ad0",
-          "team_name": "Aspley Hornets U15 Boys Division 1",
+          "team_id": "521a6463-1070-4366-82ce-6b57c2ca9245",
+          "team_name": "RVP Sharks U15 Boys Division 1",
           "is_tct": false,
           "played": 6,
-          "won": 2,
-          "lost": 4,
+          "won": 3,
+          "lost": 3,
           "drawn": 0,
-          "byes": 0,
-          "points_for": 248,
-          "points_against": 292,
-          "percentage": 84.93,
-          "competition_points": 8
+          "byes": 1,
+          "points_for": 34,
+          "points_against": 159,
+          "percentage": 21.38,
+          "competition_points": 12
         },
         {
           "rank": 9,

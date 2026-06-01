@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-31T23:47:23.030773+00:00",
+  "updated": "2026-06-01T05:07:35.742688+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -1257,7 +1257,7 @@
         },
         {
           "id": "99e463f2-3ef2-4781-ab35-1e4e7b561850",
-          "status": null,
+          "status": "FINAL",
           "round": "Round 7",
           "round_num": 7,
           "is_final_round": false,
@@ -1272,16 +1272,16 @@
               "id": "937f7e78-7a83-4e00-9606-2069eccf9ad0",
               "name": "Aspley Hornets U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 86,
+              "outcome": "WON",
               "is_tct": false
             },
             {
               "id": "521a6463-1070-4366-82ce-6b57c2ca9245",
               "name": "RVP Sharks U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 21,
+              "outcome": "LOST",
               "is_tct": false
             }
           ],
@@ -1486,11 +1486,11 @@
           "round_num": 8,
           "is_final_round": false,
           "date": "2026-06-07",
-          "time": "",
-          "venue": null,
-          "surface": null,
-          "address": null,
-          "suburb": null,
+          "time": "11:00:00",
+          "venue": "O'Callaghan Park",
+          "surface": "O'Callaghan Park 1",
+          "address": "340 Zillmere Road",
+          "suburb": "Zillmere",
           "competitors": [
             {
               "id": "10f62735-bdac-48e7-89e5-69a6b681993a",
@@ -1998,11 +1998,11 @@
           "round_num": 12,
           "is_final_round": false,
           "date": "2026-07-19",
-          "time": "",
-          "venue": null,
-          "surface": null,
-          "address": null,
-          "suburb": null,
+          "time": "11:00:00",
+          "venue": "Leyshon Park",
+          "surface": "Leyshon Park 2",
+          "address": "45 Cansdale Street",
+          "suburb": "Yeronga",
           "competitors": [
             {
               "id": "81bf2d43-8900-4176-96c0-df33081d8570",
