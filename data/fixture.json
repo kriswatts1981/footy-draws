@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-03T10:02:15.941297+00:00",
+  "updated": "2026-06-03T14:54:44.196920+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -3645,20 +3645,20 @@
           "suburb": "Benowa",
           "competitors": [
             {
-              "id": "375c16c4-12f4-499e-9e4a-94ba4f5283cf",
-              "name": "Tweed Coast Tigers U15 Boys Division 3",
-              "is_home": false,
-              "score": null,
-              "outcome": null,
-              "is_tct": true
-            },
-            {
               "id": "9dc898ad-8e96-4efe-9e50-475c44499928",
               "name": "Surfers Paradise Demons U15 Boys Division 3",
               "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
+            },
+            {
+              "id": "375c16c4-12f4-499e-9e4a-94ba4f5283cf",
+              "name": "Tweed Coast Tigers U15 Boys Division 3",
+              "is_home": false,
+              "score": null,
+              "outcome": null,
+              "is_tct": true
             }
           ],
           "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-3-gold-coast-northern-rivers/game-centre/7da97393"
