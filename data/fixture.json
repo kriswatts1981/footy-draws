@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-02T21:55:21.805097+00:00",
+  "updated": "2026-06-03T05:04:26.334258+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -815,10 +815,10 @@
           "is_final_round": false,
           "date": "2026-07-12",
           "time": "11:00:00",
-          "venue": "Cooke-Murphy Oval",
-          "surface": "Cooke-Murphy Oval 1",
-          "address": "28 Ashton Street",
-          "suburb": "Labrador",
+          "venue": "Barry Sheppard Oval",
+          "surface": "Beaumont Tiles Tweed Oval",
+          "address": "Round Mountain Road",
+          "suburb": "Pottsville",
           "competitors": [
             {
               "id": "b7b18446-72b0-4722-a5e3-498ffa9f5135",
