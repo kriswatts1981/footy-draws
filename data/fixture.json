@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-03T23:52:55.254625+00:00",
+  "updated": "2026-06-04T04:57:28.242090+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -1333,20 +1333,20 @@
           "suburb": "Carseldine",
           "competitors": [
             {
-              "id": "b7b18446-72b0-4722-a5e3-498ffa9f5135",
-              "name": "Tweed Coast Tigers U15 Boys Division 1",
-              "is_home": false,
-              "score": null,
-              "outcome": null,
-              "is_tct": true
-            },
-            {
               "id": "937f7e78-7a83-4e00-9606-2069eccf9ad0",
               "name": "Aspley Hornets U15 Boys Division 1",
               "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
+            },
+            {
+              "id": "b7b18446-72b0-4722-a5e3-498ffa9f5135",
+              "name": "Tweed Coast Tigers U15 Boys Division 1",
+              "is_home": false,
+              "score": null,
+              "outcome": null,
+              "is_tct": true
             }
           ],
           "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/f292df90"
@@ -1806,7 +1806,7 @@
           "round_num": 10,
           "is_final_round": false,
           "date": "2026-06-21",
-          "time": "12:00:00",
+          "time": "10:30:00",
           "venue": "Salk Oval",
           "surface": "Stalagmite Oval",
           "address": "Thrower Drive",
@@ -2350,11 +2350,11 @@
           "round_num": 14,
           "is_final_round": false,
           "date": "2026-08-02",
-          "time": "",
-          "venue": null,
-          "surface": null,
-          "address": null,
-          "suburb": null,
+          "time": "12:00:00",
+          "venue": "EK (Ted) Anderson Oval",
+          "surface": "EK (Ted) Anderson Oval 1",
+          "address": "Sixth Ave & Mercer Ave",
+          "suburb": "Kedron",
           "competitors": [
             {
               "id": "10f62735-bdac-48e7-89e5-69a6b681993a",
