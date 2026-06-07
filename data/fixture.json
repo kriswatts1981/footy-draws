@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-07T03:21:47.772134+00:00",
+  "updated": "2026-06-07T04:57:03.139105+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -1321,7 +1321,7 @@
         },
         {
           "id": "f292df90-4302-4121-bebc-cd08e2dd62d5",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Round 8",
           "round_num": 8,
           "is_final_round": false,
@@ -1353,7 +1353,7 @@
         },
         {
           "id": "c565bf5a-88fc-42f6-a43c-20d08dc4846b",
-          "status": "PENDING",
+          "status": "FINAL",
           "round": "Round 8",
           "round_num": 8,
           "is_final_round": false,
@@ -1368,16 +1368,16 @@
               "id": "199f79c2-5296-4ac5-86b2-9341f2103655",
               "name": "Burleigh Bombers U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 26,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
               "name": "Broadbeach Cats U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 32,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -3665,7 +3665,7 @@
         },
         {
           "id": "31b1cc68-9c24-4072-94a5-2be365dcba27",
-          "status": null,
+          "status": "PENDING",
           "round": "Round 8",
           "round_num": 8,
           "is_final_round": false,
@@ -3697,7 +3697,7 @@
         },
         {
           "id": "a2e16950-174a-4ef5-84c2-792076d844ab",
-          "status": null,
+          "status": "PENDING",
           "round": "Round 8",
           "round_num": 8,
           "is_final_round": false,

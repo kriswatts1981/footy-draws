@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-07T03:21:49.461658+00:00",
+  "updated": "2026-06-07T04:57:04.851518+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -11,15 +11,15 @@
           "team_id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
           "team_name": "Broadbeach Cats U15 Boys Division 1",
           "is_tct": false,
-          "played": 7,
-          "won": 7,
+          "played": 8,
+          "won": 8,
           "lost": 0,
           "drawn": 0,
           "byes": 0,
-          "points_for": 463,
-          "points_against": 137,
-          "percentage": 337.96,
-          "competition_points": 28
+          "points_for": 495,
+          "points_against": 163,
+          "percentage": 303.68,
+          "competition_points": 32
         },
         {
           "rank": 2,
@@ -131,14 +131,14 @@
           "team_id": "199f79c2-5296-4ac5-86b2-9341f2103655",
           "team_name": "Burleigh Bombers U15 Boys Division 1",
           "is_tct": false,
-          "played": 6,
+          "played": 7,
           "won": 2,
-          "lost": 4,
+          "lost": 5,
           "drawn": 0,
           "byes": 0,
-          "points_for": 190,
-          "points_against": 274,
-          "percentage": 69.34,
+          "points_for": 216,
+          "points_against": 306,
+          "percentage": 70.59,
           "competition_points": 8
         },
         {
