@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-08T04:55:51.064808+00:00",
+  "updated": "2026-06-08T09:51:59.256689+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -1440,7 +1440,7 @@
               "id": "81bf2d43-8900-4176-96c0-df33081d8570",
               "name": "Labrador Tigers U15 Boys Division 1",
               "is_home": true,
-              "score": 84,
+              "score": 82,
               "outcome": "WON",
               "is_tct": false
             }
