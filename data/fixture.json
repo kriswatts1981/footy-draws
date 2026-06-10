@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-09T23:23:33.385524+00:00",
+  "updated": "2026-06-10T04:39:08.870638+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -4374,7 +4374,7 @@
           "round_num": 15,
           "is_final_round": false,
           "date": "2026-08-09",
-          "time": "10:30:00",
+          "time": "15:30:00",
           "venue": "Bill Godfrey Oval",
           "surface": "PRD Bill Godfrey Oval",
           "address": "111 Christine Ave",
