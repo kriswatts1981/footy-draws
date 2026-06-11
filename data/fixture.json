@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-11T18:29:14.696533+00:00",
+  "updated": "2026-06-11T21:27:24.941459+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -3837,17 +3837,17 @@
           "suburb": "Pacific Pines",
           "competitors": [
             {
-              "id": "3344820e-0b07-429c-9052-88da120683d1",
-              "name": "Broadbeach Cats U15 Boys Division 3",
-              "is_home": false,
+              "id": "2d0ba14a-45b8-4d68-8873-9648e42e132a",
+              "name": "Pac Power U15 Boys Division 3",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "2d0ba14a-45b8-4d68-8873-9648e42e132a",
-              "name": "Pac Power U15 Boys Division 3",
-              "is_home": true,
+              "id": "3344820e-0b07-429c-9052-88da120683d1",
+              "name": "Broadbeach Cats U15 Boys Division 3",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
