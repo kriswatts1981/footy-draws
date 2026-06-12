@@ -33,13 +33,19 @@ DATA = ROOT / "data"
 CACHE = DATA / "cache"
 CACHE.mkdir(parents=True, exist_ok=True)
 
-API_KEY = os.environ.get("PLAYHQ_API_KEY", "")
+# .strip(): a stray space/newline in the GitHub secret would otherwise pass the
+# "not API_KEY" guard but send a blank x-api-key header → PlayHQ 403
+# ("x-api-key header is missing or is empty"). Stripping makes a sloppy paste
+# harmless and means the guard below catches a truly-empty secret.
+API_KEY = os.environ.get("PLAYHQ_API_KEY", "").strip()
 ORG_ID = os.environ.get("PLAYHQ_ORG_ID", "ee46372a-3637-4685-97fa-38c43e8a9d78")
 TENANT = "afl"
 BASE = "https://api.playhq.com/v1"
 
 if not API_KEY:
-    print("ERROR: PLAYHQ_API_KEY not set", file=sys.stderr)
+    print("ERROR: PLAYHQ_API_KEY is empty or unset. Set the GitHub repo secret "
+          "PLAYHQ_API_KEY (Settings -> Secrets and variables -> Actions) to the "
+          "PlayHQ key, with no surrounding whitespace.", file=sys.stderr)
     sys.exit(1)
 
 CURRENT_YEAR = datetime.now().year
