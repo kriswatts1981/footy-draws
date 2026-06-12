@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-12T09:07:24.785622+00:00",
+  "updated": "2026-06-12T13:35:18.958905+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -198,15 +198,15 @@
           "team_id": "3344820e-0b07-429c-9052-88da120683d1",
           "team_name": "Broadbeach Cats U15 Boys Division 3",
           "is_tct": false,
-          "played": 8,
-          "won": 5,
+          "played": 9,
+          "won": 6,
           "lost": 3,
           "drawn": 0,
           "byes": 0,
-          "points_for": 359,
-          "points_against": 292,
-          "percentage": 122.95,
-          "competition_points": 20
+          "points_for": 391,
+          "points_against": 301,
+          "percentage": 129.9,
+          "competition_points": 24
         },
         {
           "rank": 2,
@@ -273,14 +273,14 @@
           "team_id": "2d0ba14a-45b8-4d68-8873-9648e42e132a",
           "team_name": "Pac Power U15 Boys Division 3",
           "is_tct": false,
-          "played": 8,
+          "played": 9,
           "won": 2,
-          "lost": 6,
+          "lost": 7,
           "drawn": 0,
           "byes": 0,
-          "points_for": 158,
-          "points_against": 402,
-          "percentage": 39.3,
+          "points_for": 167,
+          "points_against": 434,
+          "percentage": 38.48,
           "competition_points": 8
         },
         {
