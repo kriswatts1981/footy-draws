@@ -57,7 +57,7 @@ SUMMARY_WORKERS = int(os.environ.get("PLAYHQ_WORKERS", "8"))
 HEADERS = {"x-api-key": API_KEY, "x-phq-tenant": TENANT}
 
 
-def api_get(path, retries=4):
+def api_get(path, retries=5):
     url = path if path.startswith("http") else f"{BASE}{path}"
     last_err = None
     for attempt in range(retries):
@@ -66,13 +66,36 @@ def api_get(path, retries=4):
             with urllib.request.urlopen(req, timeout=30) as r:
                 return json.load(r)
         except urllib.error.HTTPError as e:
-            if e.code == 429:
-                wait = min(2 ** attempt, 30)
-                time.sleep(wait)
-                last_err = e
-                continue
             if e.code == 404:
                 return None
+            if e.code == 403:
+                # PlayHQ returns 403 for TWO different reasons; distinguish them
+                # by the body so we don't burn retries on a real config error.
+                body = ""
+                try:
+                    body = e.read().decode("utf-8", "replace")
+                except Exception:
+                    pass
+                if "x-api-key" in body.lower():
+                    # Blank/missing key — a config problem, not transient.
+                    # Fail immediately and loudly so the secret gets fixed.
+                    raise RuntimeError(
+                        "PlayHQ 403: x-api-key header missing or empty — the "
+                        "PLAYHQ_API_KEY secret is blank. Re-set it in GitHub "
+                        "(Settings -> Secrets and variables -> Actions). " + body
+                    ) from e
+                # Otherwise it's PlayHQ throttling / WAF rejecting this request
+                # transiently (the key is fine). Back off and retry — this is
+                # the cause of the occasional 403s on an otherwise-green schedule.
+                if attempt < retries - 1:
+                    time.sleep(min(2 ** attempt, 30))
+                    last_err = e
+                    continue
+                raise
+            if e.code == 429:
+                time.sleep(min(2 ** attempt, 30))
+                last_err = e
+                continue
             if e.code >= 500 and attempt < retries - 1:
                 time.sleep(2 ** attempt)
                 last_err = e
