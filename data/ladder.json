@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-13T23:33:38.503849+00:00",
+  "updated": "2026-06-14T02:02:10.380696+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -26,15 +26,15 @@
           "team_id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
           "team_name": "Coorparoo Roos U15 Boys Division 1",
           "is_tct": false,
-          "played": 8,
-          "won": 7,
+          "played": 9,
+          "won": 8,
           "lost": 1,
           "drawn": 0,
           "byes": 0,
-          "points_for": 560,
-          "points_against": 214,
-          "percentage": 261.68,
-          "competition_points": 28
+          "points_for": 642,
+          "points_against": 223,
+          "percentage": 287.89,
+          "competition_points": 32
         },
         {
           "rank": 3,
@@ -101,14 +101,14 @@
           "team_id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
           "team_name": "Palm Beach Currumbin U15 Boys Division 1",
           "is_tct": false,
-          "played": 7,
+          "played": 8,
           "won": 3,
-          "lost": 4,
+          "lost": 5,
           "drawn": 0,
           "byes": 0,
-          "points_for": 324,
-          "points_against": 271,
-          "percentage": 119.56,
+          "points_for": 333,
+          "points_against": 353,
+          "percentage": 94.33,
           "competition_points": 12
         },
         {
@@ -210,6 +210,21 @@
         },
         {
           "rank": 2,
+          "team_id": "9dc898ad-8e96-4efe-9e50-475c44499928",
+          "team_name": "Surfers Paradise Demons U15 Boys Division 3",
+          "is_tct": false,
+          "played": 8,
+          "won": 5,
+          "lost": 3,
+          "drawn": 0,
+          "byes": 0,
+          "points_for": 273,
+          "points_against": 276,
+          "percentage": 98.91,
+          "competition_points": 20
+        },
+        {
+          "rank": 3,
           "team_id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
           "team_name": "Tweed Cooly Blues U15 Boys Division 3",
           "is_tct": false,
@@ -224,7 +239,7 @@
           "competition_points": 16
         },
         {
-          "rank": 3,
+          "rank": 4,
           "team_id": "2144da5b-3f13-4552-b595-378222bf8a16",
           "team_name": "Palm Beach Currumbin U15 Boys Division 3",
           "is_tct": false,
@@ -236,21 +251,6 @@
           "points_for": 309,
           "points_against": 158,
           "percentage": 195.57,
-          "competition_points": 16
-        },
-        {
-          "rank": 4,
-          "team_id": "9dc898ad-8e96-4efe-9e50-475c44499928",
-          "team_name": "Surfers Paradise Demons U15 Boys Division 3",
-          "is_tct": false,
-          "played": 7,
-          "won": 4,
-          "lost": 3,
-          "drawn": 0,
-          "byes": 0,
-          "points_for": 231,
-          "points_against": 244,
-          "percentage": 94.67,
           "competition_points": 16
         },
         {
@@ -303,14 +303,14 @@
           "team_id": "f9e354ac-3e79-4cde-9f9f-4008a9841ae4",
           "team_name": "Burleigh Bombers U15 Boys Division 3",
           "is_tct": false,
-          "played": 7,
+          "played": 8,
           "won": 1,
-          "lost": 6,
+          "lost": 7,
           "drawn": 0,
           "byes": 1,
-          "points_for": 132,
-          "points_against": 416,
-          "percentage": 31.73,
+          "points_for": 164,
+          "points_against": 458,
+          "percentage": 35.81,
           "competition_points": 4
         }
       ]

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-13T23:33:36.324342+00:00",
+  "updated": "2026-06-14T02:02:09.189327+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -1545,7 +1545,7 @@
         },
         {
           "id": "ab921c25-477c-4915-af60-25f59f628a11",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Round 9",
           "round_num": 9,
           "is_final_round": false,
@@ -1577,7 +1577,7 @@
         },
         {
           "id": "eca786a6-c196-4b4e-9569-c118466d06dc",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "round": "Round 9",
           "round_num": 9,
           "is_final_round": false,
@@ -1592,16 +1592,16 @@
               "id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
               "name": "Palm Beach Currumbin U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 9,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
               "name": "Coorparoo Roos U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 82,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -1609,7 +1609,7 @@
         },
         {
           "id": "bea10631-b451-495f-958a-dc608380265b",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Round 9",
           "round_num": 9,
           "is_final_round": false,
@@ -3761,7 +3761,7 @@
         },
         {
           "id": "072d6c1d-5213-44dd-a1f2-ddd47c0e9f7d",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "round": "Round 9",
           "round_num": 9,
           "is_final_round": false,
@@ -3776,16 +3776,16 @@
               "id": "9dc898ad-8e96-4efe-9e50-475c44499928",
               "name": "Surfers Paradise Demons U15 Boys Division 3",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 42,
+              "outcome": "WON",
               "is_tct": false
             },
             {
               "id": "f9e354ac-3e79-4cde-9f9f-4008a9841ae4",
               "name": "Burleigh Bombers U15 Boys Division 3",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 32,
+              "outcome": "LOST",
               "is_tct": false
             }
           ],
