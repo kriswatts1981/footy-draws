@@ -1627,12 +1627,16 @@ function renderRoundPicker() {
   const games = getFilteredGames();
   const rounds = [...new Set(games.map(g => g.round))].sort((a,b) => a-b);
   const today = new Date(); today.setHours(0,0,0,0);
-  // Determine the "next" round for filtered games
-  let nextRound = rounds[0];
-  for (const rn of rounds) {
-    const anyUpcoming = games.some(g => g.round === rn && parseDate(g.gameDate) >= today);
-    if (anyUpcoming) { nextRound = rn; break; }
-  }
+  // Determine the "next" round = the round of the SOONEST upcoming game by
+  // DATE, not the lowest round NUMBER that has an upcoming game. Rounds can be
+  // rescheduled out of sequence (e.g. R5 deferred to July sits chronologically
+  // after R9), so walking by round number would wrongly land on R5 today.
+  const upcoming = games
+    .filter(g => g.gameDate && parseDate(g.gameDate) >= today)
+    .sort((a, b) => parseDate(a.gameDate) - parseDate(b.gameDate));
+  let nextRound = upcoming.length
+    ? upcoming[0].round
+    : (rounds.length ? rounds[rounds.length - 1] : null);
   if (activeRound === null) activeRound = nextRound;
   const host = document.getElementById('round-picker');
   host.innerHTML = rounds.map(rn => {
