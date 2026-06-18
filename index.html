@@ -2334,6 +2334,44 @@ function parseGFormCSV(text) {
   return rows;
 }
 
+// Map away-form player names to canonical squad names, so a parent's typo
+// (e.g. "Zhyal Blackburn" vs squad "Zhyal Blackburne") still matches the squad.
+function squadNameList() {
+  const s = (attendanceData && attendanceData.squads) || {};
+  const out = [];
+  for (const dk of ['div1', 'div3']) for (const p of ((s[dk] && s[dk].players) || [])) out.push(p.name);
+  return out;
+}
+function normName(s) {
+  return String(s).toLowerCase().replace(/[.'’`]/g, '').replace(/\s+/g, ' ').trim();
+}
+function nameEditDistance(a, b) {
+  const m = a.length, n = b.length;
+  const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+  for (let i = 0; i <= m; i++) dp[i][0] = i;
+  for (let j = 0; j <= n; j++) dp[0][j] = j;
+  for (let i = 1; i <= m; i++) for (let j = 1; j <= n; j++)
+    dp[i][j] = Math.min(dp[i-1][j] + 1, dp[i][j-1] + 1, dp[i-1][j-1] + (a[i-1] === b[j-1] ? 0 : 1));
+  return dp[m][n];
+}
+function canonicalPlayerName(name) {
+  const squad = squadNameList();
+  if (!squad.length) return name;
+  const target = normName(name);
+  for (const sn of squad) if (normName(sn) === target) return sn;      // exact (normalised)
+  // fuzzy: identical first name + last name within one edit (or a prefix) — very low false-match risk
+  const tp = target.split(' '), tFirst = tp[0], tLast = tp.slice(1).join(' ');
+  if (!tLast) return name;
+  let best = null, bestD = Infinity;
+  for (const sn of squad) {
+    const sp = normName(sn).split(' '), sFirst = sp[0], sLast = sp.slice(1).join(' ');
+    if (sFirst !== tFirst || !sLast) continue;
+    const d = nameEditDistance(tLast, sLast);
+    if ((d <= 1 || sLast.startsWith(tLast) || tLast.startsWith(sLast)) && d < bestD) { bestD = d; best = sn; }
+  }
+  return best || name;
+}
+
 async function loadResponses(force) {
   if (!force && Date.now() - responsesLoadedAt < 30000 && responsesLoadedAt > 0) return;
   try {
@@ -2382,11 +2420,12 @@ async function loadResponses(force) {
     for (const sub of Object.values(latestByPlayer)) {
       const items = sub.rounds.split(',').map(s => s.trim()).filter(Boolean);
       const labels = items.filter(item => /^R\d+/i.test(item));
-      byPlayer[sub.player] = { rounds: labels, note: sub.note, parent: sub.parent };
+      const player = canonicalPlayerName(sub.player);
+      byPlayer[player] = { rounds: labels, note: sub.note, parent: sub.parent };
       for (const item of labels) {
         const rn = parseInt(item.match(/^R(\d+)/i)[1], 10);
         if (!next[rn]) next[rn] = [];
-        next[rn].push({ player: sub.player, parent: sub.parent, note: sub.note, ts: sub.ts });
+        next[rn].push({ player, parent: sub.parent, note: sub.note, ts: sub.ts });
       }
     }
     for (const rn of Object.keys(next)) next[rn].sort((a, b) => a.player.localeCompare(b.player));
