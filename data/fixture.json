@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-18T18:09:55.688765+00:00",
+  "updated": "2026-06-18T21:25:34.959117+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -3901,17 +3901,17 @@
           "suburb": "Kirra",
           "competitors": [
             {
-              "id": "9dc898ad-8e96-4efe-9e50-475c44499928",
-              "name": "Surfers Paradise Demons U15 Boys Division 3",
-              "is_home": false,
+              "id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
+              "name": "Tweed Cooly Blues U15 Boys Division 3",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
-              "name": "Tweed Cooly Blues U15 Boys Division 3",
-              "is_home": true,
+              "id": "9dc898ad-8e96-4efe-9e50-475c44499928",
+              "name": "Surfers Paradise Demons U15 Boys Division 3",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
