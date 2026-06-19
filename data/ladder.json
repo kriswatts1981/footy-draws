@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-19T10:53:16.237087+00:00",
+  "updated": "2026-06-19T14:18:03.543081+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -198,14 +198,14 @@
           "team_id": "3344820e-0b07-429c-9052-88da120683d1",
           "team_name": "Broadbeach Cats U15 Boys Division 3",
           "is_tct": false,
-          "played": 9,
+          "played": 10,
           "won": 6,
-          "lost": 3,
+          "lost": 4,
           "drawn": 0,
           "byes": 0,
-          "points_for": 391,
-          "points_against": 301,
-          "percentage": 129.9,
+          "points_for": 421,
+          "points_against": 339,
+          "percentage": 124.19,
           "competition_points": 24
         },
         {
@@ -225,6 +225,21 @@
         },
         {
           "rank": 3,
+          "team_id": "2144da5b-3f13-4552-b595-378222bf8a16",
+          "team_name": "Palm Beach Currumbin U15 Boys Division 3",
+          "is_tct": false,
+          "played": 8,
+          "won": 5,
+          "lost": 3,
+          "drawn": 0,
+          "byes": 0,
+          "points_for": 379,
+          "points_against": 227,
+          "percentage": 166.96,
+          "competition_points": 20
+        },
+        {
+          "rank": 4,
           "team_id": "9dc898ad-8e96-4efe-9e50-475c44499928",
           "team_name": "Surfers Paradise Demons U15 Boys Division 3",
           "is_tct": false,
@@ -237,21 +252,6 @@
           "points_against": 276,
           "percentage": 98.91,
           "competition_points": 20
-        },
-        {
-          "rank": 4,
-          "team_id": "2144da5b-3f13-4552-b595-378222bf8a16",
-          "team_name": "Palm Beach Currumbin U15 Boys Division 3",
-          "is_tct": false,
-          "played": 7,
-          "won": 4,
-          "lost": 3,
-          "drawn": 0,
-          "byes": 0,
-          "points_for": 341,
-          "points_against": 197,
-          "percentage": 173.1,
-          "competition_points": 16
         },
         {
           "rank": 5,
