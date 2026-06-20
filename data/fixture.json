@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-20T04:12:42.980048+00:00",
+  "updated": "2026-06-20T07:59:12.188130+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -1845,20 +1845,20 @@
           "suburb": "Pottsville",
           "competitors": [
             {
-              "id": "199f79c2-5296-4ac5-86b2-9341f2103655",
-              "name": "Burleigh Bombers U15 Boys Division 1",
-              "is_home": false,
-              "score": null,
-              "outcome": null,
-              "is_tct": false
-            },
-            {
               "id": "b7b18446-72b0-4722-a5e3-498ffa9f5135",
               "name": "Tweed Coast Tigers U15 Boys Division 1",
               "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": true
+            },
+            {
+              "id": "199f79c2-5296-4ac5-86b2-9341f2103655",
+              "name": "Burleigh Bombers U15 Boys Division 1",
+              "is_home": false,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
             }
           ],
           "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/58b280b4"
@@ -3965,20 +3965,20 @@
           "suburb": "Pottsville",
           "competitors": [
             {
-              "id": "f9e354ac-3e79-4cde-9f9f-4008a9841ae4",
-              "name": "Burleigh Bombers U15 Boys Division 3",
-              "is_home": false,
-              "score": null,
-              "outcome": null,
-              "is_tct": false
-            },
-            {
               "id": "375c16c4-12f4-499e-9e4a-94ba4f5283cf",
               "name": "Tweed Coast Tigers U15 Boys Division 3",
               "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": true
+            },
+            {
+              "id": "f9e354ac-3e79-4cde-9f9f-4008a9841ae4",
+              "name": "Burleigh Bombers U15 Boys Division 3",
+              "is_home": false,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
             }
           ],
           "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-3-gold-coast-northern-rivers/game-centre/486cf090"
