@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-20T07:59:12.188130+00:00",
+  "updated": "2026-06-20T10:38:26.861398+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -1781,17 +1781,17 @@
           "suburb": "Hawthorne",
           "competitors": [
             {
-              "id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
-              "name": "Sherwood Magpies U15 Boys Division 1",
-              "is_home": false,
+              "id": "162b505a-d2bf-467e-8aba-577f9039d1ea",
+              "name": "Morningside Panthers U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "162b505a-d2bf-467e-8aba-577f9039d1ea",
-              "name": "Morningside Panthers U15 Boys Division 1",
-              "is_home": true,
+              "id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
+              "name": "Sherwood Magpies U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
@@ -1813,17 +1813,17 @@
           "suburb": "Palm Beach",
           "competitors": [
             {
-              "id": "521a6463-1070-4366-82ce-6b57c2ca9245",
-              "name": "RVP Sharks U15 Boys Division 1",
-              "is_home": false,
+              "id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
+              "name": "Palm Beach Currumbin U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
-              "name": "Palm Beach Currumbin U15 Boys Division 1",
-              "is_home": true,
+              "id": "521a6463-1070-4366-82ce-6b57c2ca9245",
+              "name": "RVP Sharks U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
