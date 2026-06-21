@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-20T23:54:01.563904+00:00",
+  "updated": "2026-06-21T04:55:40.115763+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -1705,7 +1705,7 @@
         },
         {
           "id": "afe2569e-46f8-40e6-952a-cc6ea6a200e5",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "round": "Round 10",
           "round_num": 10,
           "is_final_round": false,
@@ -1720,16 +1720,16 @@
               "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
               "name": "Broadbeach Cats U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 72,
+              "outcome": "WON",
               "is_tct": false
             },
             {
               "id": "81bf2d43-8900-4176-96c0-df33081d8570",
               "name": "Labrador Tigers U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 15,
+              "outcome": "LOST",
               "is_tct": false
             }
           ],
@@ -1737,7 +1737,7 @@
         },
         {
           "id": "6b873313-9497-41fb-a781-b1a0e5727945",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Round 10",
           "round_num": 10,
           "is_final_round": false,
@@ -1801,7 +1801,7 @@
         },
         {
           "id": "40b4bd8e-4d6a-4190-802c-150f57f88334",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "round": "Round 10",
           "round_num": 10,
           "is_final_round": false,
@@ -1816,16 +1816,16 @@
               "id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
               "name": "Palm Beach Currumbin U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 86,
+              "outcome": "WON",
               "is_tct": false
             },
             {
               "id": "521a6463-1070-4366-82ce-6b57c2ca9245",
               "name": "RVP Sharks U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 32,
+              "outcome": "LOST",
               "is_tct": false
             }
           ],
@@ -1833,7 +1833,7 @@
         },
         {
           "id": "58b280b4-a5a0-4248-9b77-6e7915faf6a6",
-          "status": "UPCOMING",
+          "status": "PENDING",
           "round": "Round 10",
           "round_num": 10,
           "is_final_round": false,
@@ -1865,7 +1865,7 @@
         },
         {
           "id": "0b384beb-8cad-4855-b6f4-af41baef2153",
-          "status": "UPCOMING",
+          "status": "PENDING",
           "round": "Round 10",
           "round_num": 10,
           "is_final_round": false,
@@ -3889,7 +3889,7 @@
         },
         {
           "id": "5de48264-b9a3-4c8b-a84b-048646e046c8",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "round": "Round 10",
           "round_num": 10,
           "is_final_round": false,
@@ -3904,16 +3904,16 @@
               "id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
               "name": "Tweed Cooly Blues U15 Boys Division 3",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 62,
+              "outcome": "WON",
               "is_tct": false
             },
             {
               "id": "9dc898ad-8e96-4efe-9e50-475c44499928",
               "name": "Surfers Paradise Demons U15 Boys Division 3",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 54,
+              "outcome": "LOST",
               "is_tct": false
             }
           ],
@@ -3921,7 +3921,7 @@
         },
         {
           "id": "bf80c834-498d-4c31-bb47-b6b5e6219004",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "round": "Round 10",
           "round_num": 10,
           "is_final_round": false,
@@ -3936,16 +3936,16 @@
               "id": "2c63657f-a39e-4e5d-938f-a16541502f84",
               "name": "Labrador Tigers U15 Boys Division 3",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 51,
+              "outcome": "WON",
               "is_tct": false
             },
             {
               "id": "2d0ba14a-45b8-4d68-8873-9648e42e132a",
               "name": "Pac Power U15 Boys Division 3",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 30,
+              "outcome": "LOST",
               "is_tct": false
             }
           ],
@@ -3953,7 +3953,7 @@
         },
         {
           "id": "486cf090-ef56-4133-bfc3-75cfe54bbc9f",
-          "status": "UPCOMING",
+          "status": "PENDING",
           "round": "Round 10",
           "round_num": 10,
           "is_final_round": false,
