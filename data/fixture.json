@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-21T04:55:40.115763+00:00",
+  "updated": "2026-06-21T08:59:50.041398+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -1769,7 +1769,7 @@
         },
         {
           "id": "b1a3d74a-4fb4-42be-9d98-8c048b1a82fe",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "round": "Round 10",
           "round_num": 10,
           "is_final_round": false,
@@ -1784,16 +1784,16 @@
               "id": "162b505a-d2bf-467e-8aba-577f9039d1ea",
               "name": "Morningside Panthers U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 41,
+              "outcome": "WON",
               "is_tct": false
             },
             {
               "id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
               "name": "Sherwood Magpies U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 34,
+              "outcome": "LOST",
               "is_tct": false
             }
           ],
@@ -1833,7 +1833,7 @@
         },
         {
           "id": "58b280b4-a5a0-4248-9b77-6e7915faf6a6",
-          "status": "PENDING",
+          "status": "FINAL",
           "round": "Round 10",
           "round_num": 10,
           "is_final_round": false,
@@ -1848,16 +1848,16 @@
               "id": "b7b18446-72b0-4722-a5e3-498ffa9f5135",
               "name": "Tweed Coast Tigers U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 8,
+              "outcome": "LOST",
               "is_tct": true
             },
             {
               "id": "199f79c2-5296-4ac5-86b2-9341f2103655",
               "name": "Burleigh Bombers U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 78,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -1865,7 +1865,7 @@
         },
         {
           "id": "0b384beb-8cad-4855-b6f4-af41baef2153",
-          "status": "PENDING",
+          "status": "FINAL",
           "round": "Round 10",
           "round_num": 10,
           "is_final_round": false,
@@ -1880,16 +1880,16 @@
               "id": "741dada3-0717-46d1-ba32-7ad28de74109",
               "name": "Wilston Grange Gorillas U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 29,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
               "name": "Coorparoo Roos U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 72,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -3953,7 +3953,7 @@
         },
         {
           "id": "486cf090-ef56-4133-bfc3-75cfe54bbc9f",
-          "status": "PENDING",
+          "status": "FINAL",
           "round": "Round 10",
           "round_num": 10,
           "is_final_round": false,
@@ -3968,16 +3968,16 @@
               "id": "375c16c4-12f4-499e-9e4a-94ba4f5283cf",
               "name": "Tweed Coast Tigers U15 Boys Division 3",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 93,
+              "outcome": "WON",
               "is_tct": true
             },
             {
               "id": "f9e354ac-3e79-4cde-9f9f-4008a9841ae4",
               "name": "Burleigh Bombers U15 Boys Division 3",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 17,
+              "outcome": "LOST",
               "is_tct": false
             }
           ],
