@@ -2532,14 +2532,24 @@ function renderAvailRounds() {
   const host = document.getElementById('av-rounds');
   if (!host) return;
   const today = new Date(); today.setHours(0, 0, 0, 0);
-  const fxRounds = buildAvailRounds().filter(r => parseDate(r.date) >= today);
+  const allRounds = buildAvailRounds();
+  // Index every TCT round (incl. byes) so a round surfaced only via away-records
+  // (e.g. an already-played round someone logged unavailable for) still resolves
+  // its real date + fixture instead of falling back to "Date/Fixture TBD".
+  const roundIndex = {};
+  for (const r of allRounds) roundIndex[r.round] = r;
+  const byeIndex = {};
+  for (const g of [...div1Games, ...div3Games].filter(isTCTGame).filter(g => g.isBye)) {
+    if (!byeIndex[g.round]) byeIndex[g.round] = { round: g.round, date: g.gameDate || null, games: [], bye: true };
+  }
+  const fxRounds = allRounds.filter(r => parseDate(r.date) >= today);
   const fxRoundNums = new Set(fxRounds.map(r => r.round));
-  const tbdRounds = Object.keys(awayByRound)
+  const extraRounds = Object.keys(awayByRound)
     .map(n => parseInt(n, 10))
     .filter(rn => Number.isFinite(rn) && !fxRoundNums.has(rn))
     .sort((a, b) => a - b)
-    .map(rn => ({ round: rn, date: null, games: [], tbd: true }));
-  const rounds = [...fxRounds, ...tbdRounds].sort((a, b) => a.round - b.round);
+    .map(rn => roundIndex[rn] || byeIndex[rn] || { round: rn, date: null, games: [], tbd: true });
+  const rounds = [...fxRounds, ...extraRounds].sort((a, b) => a.round - b.round);
   if (!rounds.length) {
     host.innerHTML = '<div style="grid-column:1/-1; color:var(--text-3); font-size:13px;">No upcoming rounds.</div>';
     renderAvailMeta();
@@ -2548,8 +2558,8 @@ function renderAvailRounds() {
   host.innerHTML = rounds.map(r => {
     const away = awayByRound[r.round] || [];
     const has = away.length > 0;
-    const playingDivs = r.tbd ? new Set(['div1', 'div3']) : new Set(r.games.map(g => g.division === 'Div 1' ? 'div1' : 'div3'));
-    const opponents = r.tbd ? 'Fixture TBD' : r.games.map(g => {
+    const playingDivs = (r.tbd || r.bye) ? new Set(['div1', 'div3']) : new Set(r.games.map(g => g.division === 'Div 1' ? 'div1' : 'div3'));
+    const opponents = r.bye ? 'Bye' : r.tbd ? 'Fixture TBD' : r.games.map(g => {
       const opp = g.home === MY_TEAM ? g.away : g.home;
       const ha = g.home === MY_TEAM ? 'vs' : '@';
       const div = g.division.replace('Div ', 'D');
@@ -2579,7 +2589,7 @@ function renderAvailRounds() {
       return `<div class="av-round-name">${badges}<span class="nm">${escapeHtml(a.player)}</span>${a.note ? `<span class="note">${escapeHtml(a.note)}</span>` : ''}<a class="upd" href="${updHref}" target="_blank" rel="noopener" title="Open the form with ${escapeHtml(a.player)}'s current selections pre-ticked">↻ update</a></div>`;
     }).join('')}</div>` : '';
 
-    const dateLabel = r.tbd ? 'Date TBD' : formatDate(r.date);
+    const dateLabel = (r.tbd || !r.date) ? 'Date TBD' : formatDate(r.date);
     return `
       <div class="av-round ${has ? 'has-away' : ''} ${r.tbd ? 'is-tbd' : ''}" data-round="${r.round}">
         <div class="av-round-head">
