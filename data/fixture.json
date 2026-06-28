@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-28T04:21:01.913451+00:00",
+  "updated": "2026-06-28T08:03:01.460105+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -1897,7 +1897,7 @@
         },
         {
           "id": "fd47f998-7cf0-4bad-af49-a71b8d7f85c5",
-          "status": null,
+          "status": "FINAL",
           "round": "Round 11",
           "round_num": 11,
           "is_final_round": false,
@@ -1912,16 +1912,16 @@
               "id": "741dada3-0717-46d1-ba32-7ad28de74109",
               "name": "Wilston Grange Gorillas U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 43,
+              "outcome": "WON",
               "is_tct": false
             },
             {
               "id": "521a6463-1070-4366-82ce-6b57c2ca9245",
               "name": "RVP Sharks U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 9,
+              "outcome": "LOST",
               "is_tct": false
             }
           ],

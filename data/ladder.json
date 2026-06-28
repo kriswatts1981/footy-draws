@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-28T04:21:03.321404+00:00",
+  "updated": "2026-06-28T08:03:03.638205+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -113,6 +113,21 @@
         },
         {
           "rank": 8,
+          "team_id": "741dada3-0717-46d1-ba32-7ad28de74109",
+          "team_name": "Wilston Grange Gorillas U15 Boys Division 1",
+          "is_tct": false,
+          "played": 10,
+          "won": 4,
+          "lost": 6,
+          "drawn": 0,
+          "byes": 1,
+          "points_for": 352,
+          "points_against": 509,
+          "percentage": 69.16,
+          "competition_points": 16
+        },
+        {
+          "rank": 9,
           "team_id": "199f79c2-5296-4ac5-86b2-9341f2103655",
           "team_name": "Burleigh Bombers U15 Boys Division 1",
           "is_tct": false,
@@ -124,21 +139,6 @@
           "points_for": 323,
           "points_against": 420,
           "percentage": 76.9,
-          "competition_points": 12
-        },
-        {
-          "rank": 9,
-          "team_id": "741dada3-0717-46d1-ba32-7ad28de74109",
-          "team_name": "Wilston Grange Gorillas U15 Boys Division 1",
-          "is_tct": false,
-          "played": 9,
-          "won": 3,
-          "lost": 6,
-          "drawn": 0,
-          "byes": 1,
-          "points_for": 309,
-          "points_against": 500,
-          "percentage": 61.8,
           "competition_points": 12
         },
         {
@@ -161,14 +161,14 @@
           "team_id": "521a6463-1070-4366-82ce-6b57c2ca9245",
           "team_name": "RVP Sharks U15 Boys Division 1",
           "is_tct": false,
-          "played": 9,
+          "played": 10,
           "won": 3,
-          "lost": 6,
+          "lost": 7,
           "drawn": 0,
           "byes": 1,
-          "points_for": 127,
-          "points_against": 384,
-          "percentage": 33.07,
+          "points_for": 136,
+          "points_against": 427,
+          "percentage": 31.85,
           "competition_points": 12
         },
         {
