@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-27T23:45:12.684039+00:00",
+  "updated": "2026-06-28T04:21:01.913451+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -809,7 +809,7 @@
         },
         {
           "id": "06c77ddf-a3f9-48f0-bfbc-967d03c707b7",
-          "status": "UPCOMING",
+          "status": "PENDING",
           "round": "Round 5",
           "round_num": 5,
           "is_final_round": false,
@@ -873,7 +873,7 @@
         },
         {
           "id": "a00bb4eb-bb6d-4f87-99cc-98f63c9ec923",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "round": "Round 5",
           "round_num": 5,
           "is_final_round": false,
@@ -888,16 +888,16 @@
               "id": "199f79c2-5296-4ac5-86b2-9341f2103655",
               "name": "Burleigh Bombers U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 30,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
               "name": "Palm Beach Currumbin U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 37,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -1897,7 +1897,7 @@
         },
         {
           "id": "fd47f998-7cf0-4bad-af49-a71b8d7f85c5",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Round 11",
           "round_num": 11,
           "is_final_round": false,
