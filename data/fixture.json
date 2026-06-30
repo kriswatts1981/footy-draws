@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-30T00:13:29.297543+00:00",
+  "updated": "2026-06-30T05:12:31.338652+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -2694,6 +2694,81 @@
             }
           ],
           "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/b7a90f42"
+        },
+        {
+          "id": "6b2fddd7-c9d2-442f-8bf5-33c517125757",
+          "status": "UPCOMING",
+          "round": "Elimination Finals",
+          "round_num": null,
+          "is_final_round": true,
+          "date": "2026-08-16",
+          "time": "",
+          "venue": null,
+          "surface": null,
+          "address": null,
+          "suburb": null,
+          "competitors": [],
+          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/6b2fddd7"
+        },
+        {
+          "id": "bfa9f6a9-bd47-4300-8b9b-621994fd815b",
+          "status": "UPCOMING",
+          "round": "Elimination Finals",
+          "round_num": null,
+          "is_final_round": true,
+          "date": "2026-08-16",
+          "time": "",
+          "venue": null,
+          "surface": null,
+          "address": null,
+          "suburb": null,
+          "competitors": [],
+          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/bfa9f6a9"
+        },
+        {
+          "id": "352745b4-a259-4794-8f33-e2feb4ccd189",
+          "status": "UPCOMING",
+          "round": "Semi Finals",
+          "round_num": null,
+          "is_final_round": true,
+          "date": "2026-08-23",
+          "time": "",
+          "venue": null,
+          "surface": null,
+          "address": null,
+          "suburb": null,
+          "competitors": [],
+          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/352745b4"
+        },
+        {
+          "id": "15b5701b-0299-4f4c-ae9b-ecca3bb453ed",
+          "status": "UPCOMING",
+          "round": "Semi Finals",
+          "round_num": null,
+          "is_final_round": true,
+          "date": "2026-08-23",
+          "time": "",
+          "venue": null,
+          "surface": null,
+          "address": null,
+          "suburb": null,
+          "competitors": [],
+          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/15b5701b"
+        },
+        {
+          "id": "b3795cbf-2100-4e52-9e71-8f14c22fc90d",
+          "status": "UPCOMING",
+          "round": "Grand Final",
+          "round_num": null,
+          "is_final_round": true,
+          "date": "2026-08-30",
+          "time": "",
+          "venue": null,
+          "surface": null,
+          "address": null,
+          "suburb": null,
+          "competitors": [],
+          "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/b3795cbf"
         }
       ]
     },
