@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-05T22:17:14.180430+00:00",
+  "updated": "2026-07-05T23:36:31.247321+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -809,25 +809,17 @@
         },
         {
           "id": "06c77ddf-a3f9-48f0-bfbc-967d03c707b7",
-          "status": "PENDING",
+          "status": "UPCOMING",
           "round": "Round 5",
           "round_num": 5,
           "is_final_round": false,
-          "date": "2026-06-28",
-          "time": "10:00:00",
+          "date": "2026-07-12",
+          "time": "12:00:00",
           "venue": "Barry Sheppard Oval",
           "surface": "Beaumont Tiles Tweed Oval",
           "address": "Round Mountain Road",
           "suburb": "Pottsville",
           "competitors": [
-            {
-              "id": "81bf2d43-8900-4176-96c0-df33081d8570",
-              "name": "Labrador Tigers U15 Boys Division 1",
-              "is_home": false,
-              "score": null,
-              "outcome": null,
-              "is_tct": false
-            },
             {
               "id": "b7b18446-72b0-4722-a5e3-498ffa9f5135",
               "name": "Tweed Coast Tigers U15 Boys Division 1",
@@ -835,6 +827,14 @@
               "score": null,
               "outcome": null,
               "is_tct": true
+            },
+            {
+              "id": "81bf2d43-8900-4176-96c0-df33081d8570",
+              "name": "Labrador Tigers U15 Boys Division 1",
+              "is_home": false,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
             }
           ],
           "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/06c77ddf"
