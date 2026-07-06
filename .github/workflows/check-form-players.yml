@@ -1,0 +1,70 @@
+name: Check away-form players
+
+on:
+  schedule:
+    # Weekly, Thursday 20:15 UTC = Fri 06:15 AEST — before the weekend's games,
+    # so a newly-added squad player gets flagged in time to fix the form.
+    - cron: '15 20 * * 4'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: check-form-players
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compare squad against away-form dropdown
+        id: check
+        run: python3 scripts/check_form_players.py
+
+      - name: Email Kris if any squad player is missing from the form
+        if: steps.check.outputs.missing_found == 'true'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASS }}
+          from: Footy Watcher <${{ secrets.SMTP_USER }}>
+          to: kriswatts@gmail.com
+          subject: "Footy: squad player(s) missing from the away form"
+          body: |
+            These squad players are NOT in the away-form Player Name dropdown, so
+            their parents can't mark them away for any round:
+
+            ${{ steps.check.outputs.summary }}
+
+            Fix: open the form in edit mode, add the missing name(s) to the
+            "Player Name" question (keep alphabetical), save. No re-publish needed.
+
+            Form: https://docs.google.com/forms/d/e/1FAIpQLSenUqRm5mvqYXs4kja5fCLWtiO1x_tY9VHJY7o_nJJf_N7jnA/viewform
+            Site: https://kriswatts1981.github.io/footy-draws
+
+      - name: Email Kris on failure
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASS }}
+          from: Footy Watcher <${{ secrets.SMTP_USER }}>
+          to: kriswatts@gmail.com
+          subject: "FOOTY-DRAWS FAILED: Check away-form players"
+          body: |
+            The away-form player check failed (e.g. the form couldn't be fetched).
+
+            Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
