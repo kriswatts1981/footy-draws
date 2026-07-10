@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-09T23:20:09.725569+00:00",
+  "updated": "2026-07-10T04:05:03.588802+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -3068,7 +3068,7 @@
         },
         {
           "id": "b98312c8-e401-4f8c-bc68-e64e27e6c807",
-          "status": "CANCELLED",
+          "status": "FINAL",
           "round": "Round 3",
           "round_num": 3,
           "is_final_round": false,
@@ -3084,7 +3084,7 @@
               "name": "Surfers Paradise Demons U15 Boys Division 3",
               "is_home": true,
               "score": 0,
-              "outcome": "CANCELLED",
+              "outcome": "DREW",
               "is_tct": false
             },
             {
@@ -3092,7 +3092,7 @@
               "name": "Palm Beach Currumbin U15 Boys Division 3",
               "is_home": false,
               "score": 0,
-              "outcome": "CANCELLED",
+              "outcome": "DREW",
               "is_tct": false
             }
           ],
