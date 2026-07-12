@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-12T03:59:16.937247+00:00",
+  "updated": "2026-07-12T06:43:14.170724+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -809,7 +809,7 @@
         },
         {
           "id": "06c77ddf-a3f9-48f0-bfbc-967d03c707b7",
-          "status": "PENDING",
+          "status": "FINAL",
           "round": "Round 5",
           "round_num": 5,
           "is_final_round": false,
@@ -824,16 +824,16 @@
               "id": "b7b18446-72b0-4722-a5e3-498ffa9f5135",
               "name": "Tweed Coast Tigers U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 36,
+              "outcome": "LOST",
               "is_tct": true
             },
             {
               "id": "81bf2d43-8900-4176-96c0-df33081d8570",
               "name": "Labrador Tigers U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 72,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
