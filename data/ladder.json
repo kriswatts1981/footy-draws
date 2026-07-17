@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-17T10:07:04.248482+00:00",
+  "updated": "2026-07-17T12:16:39.860718+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -210,6 +210,21 @@
         },
         {
           "rank": 2,
+          "team_id": "3344820e-0b07-429c-9052-88da120683d1",
+          "team_name": "Broadbeach Cats U15 Boys Division 3",
+          "is_tct": false,
+          "played": 11,
+          "won": 7,
+          "lost": 4,
+          "drawn": 0,
+          "byes": 1,
+          "points_for": 460,
+          "points_against": 361,
+          "percentage": 127.42,
+          "competition_points": 28
+        },
+        {
+          "rank": 3,
           "team_id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
           "team_name": "Tweed Cooly Blues U15 Boys Division 3",
           "is_tct": false,
@@ -221,21 +236,6 @@
           "points_for": 413,
           "points_against": 142,
           "percentage": 290.85,
-          "competition_points": 24
-        },
-        {
-          "rank": 3,
-          "team_id": "3344820e-0b07-429c-9052-88da120683d1",
-          "team_name": "Broadbeach Cats U15 Boys Division 3",
-          "is_tct": false,
-          "played": 10,
-          "won": 6,
-          "lost": 4,
-          "drawn": 0,
-          "byes": 1,
-          "points_for": 421,
-          "points_against": 339,
-          "percentage": 124.19,
           "competition_points": 24
         },
         {
@@ -273,14 +273,14 @@
           "team_id": "375c16c4-12f4-499e-9e4a-94ba4f5283cf",
           "team_name": "Tweed Coast Tigers U15 Boys Division 3",
           "is_tct": true,
-          "played": 9,
+          "played": 10,
           "won": 3,
-          "lost": 6,
+          "lost": 7,
           "drawn": 0,
           "byes": 2,
-          "points_for": 265,
-          "points_against": 415,
-          "percentage": 63.86,
+          "points_for": 287,
+          "points_against": 454,
+          "percentage": 63.22,
           "competition_points": 12
         },
         {
