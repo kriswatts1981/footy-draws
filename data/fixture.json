@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-17T04:14:35.086475+00:00",
+  "updated": "2026-07-17T07:24:15.747995+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -2095,9 +2095,9 @@
           "is_final_round": false,
           "date": "2026-07-19",
           "time": "12:30:00",
-          "venue": "Barry Sheppard Oval",
-          "surface": "Beaumont Tiles Tweed Oval",
-          "address": "Round Mountain Road",
+          "venue": "Pottsville Memorial Oval",
+          "surface": "Pottsville Memorial Oval 1",
+          "address": "Tweed Coast Road",
           "suburb": "Pottsville",
           "competitors": [
             {
