@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-17T07:24:15.747995+00:00",
+  "updated": "2026-07-17T10:07:01.601155+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -4188,7 +4188,7 @@
         },
         {
           "id": "135de040-844d-461a-ac3a-b1bb243dc113",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Round 12",
           "round_num": 12,
           "is_final_round": false,
