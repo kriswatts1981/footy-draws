@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-18T17:34:29.538456+00:00",
+  "updated": "2026-07-18T18:37:37.204777+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -2005,17 +2005,17 @@
           "suburb": "Yeronga",
           "competitors": [
             {
-              "id": "81bf2d43-8900-4176-96c0-df33081d8570",
-              "name": "Labrador Tigers U15 Boys Division 1",
-              "is_home": true,
+              "id": "10f62735-bdac-48e7-89e5-69a6b681993a",
+              "name": "Maroochy Roos Juniors U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "10f62735-bdac-48e7-89e5-69a6b681993a",
-              "name": "Maroochy Roos Juniors U15 Boys Division 1",
-              "is_home": false,
+              "id": "81bf2d43-8900-4176-96c0-df33081d8570",
+              "name": "Labrador Tigers U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
