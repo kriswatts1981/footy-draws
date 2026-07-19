@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-19T08:57:29.022076+00:00",
+  "updated": "2026-07-19T10:39:52.186432+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -195,21 +195,6 @@
       "standings": [
         {
           "rank": 1,
-          "team_id": "2144da5b-3f13-4552-b595-378222bf8a16",
-          "team_name": "Palm Beach Currumbin U15 Boys Division 3",
-          "is_tct": false,
-          "played": 10,
-          "won": 6,
-          "lost": 3,
-          "drawn": 1,
-          "byes": 0,
-          "points_for": 424,
-          "points_against": 261,
-          "percentage": 162.45,
-          "competition_points": 26
-        },
-        {
-          "rank": 2,
           "team_id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
           "team_name": "Tweed Cooly Blues U15 Boys Division 3",
           "is_tct": false,
@@ -224,7 +209,7 @@
           "competition_points": 28
         },
         {
-          "rank": 3,
+          "rank": 2,
           "team_id": "3344820e-0b07-429c-9052-88da120683d1",
           "team_name": "Broadbeach Cats U15 Boys Division 3",
           "is_tct": false,
@@ -239,19 +224,34 @@
           "competition_points": 28
         },
         {
+          "rank": 3,
+          "team_id": "2144da5b-3f13-4552-b595-378222bf8a16",
+          "team_name": "Palm Beach Currumbin U15 Boys Division 3",
+          "is_tct": false,
+          "played": 11,
+          "won": 6,
+          "lost": 4,
+          "drawn": 1,
+          "byes": 0,
+          "points_for": 436,
+          "points_against": 302,
+          "percentage": 144.37,
+          "competition_points": 26
+        },
+        {
           "rank": 4,
           "team_id": "9dc898ad-8e96-4efe-9e50-475c44499928",
           "team_name": "Surfers Paradise Demons U15 Boys Division 3",
           "is_tct": false,
-          "played": 10,
-          "won": 5,
+          "played": 11,
+          "won": 6,
           "lost": 4,
           "drawn": 1,
           "byes": 1,
-          "points_for": 327,
-          "points_against": 338,
-          "percentage": 96.75,
-          "competition_points": 22
+          "points_for": 368,
+          "points_against": 350,
+          "percentage": 105.14,
+          "competition_points": 26
         },
         {
           "rank": 5,
