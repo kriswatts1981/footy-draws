@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-18T22:58:21.561561+00:00",
+  "updated": "2026-07-19T00:01:46.951846+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -1941,17 +1941,17 @@
           "suburb": "Carseldine",
           "competitors": [
             {
-              "id": "937f7e78-7a83-4e00-9606-2069eccf9ad0",
-              "name": "Aspley Hornets U15 Boys Division 1",
-              "is_home": true,
+              "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
+              "name": "Coorparoo Roos U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
-              "name": "Coorparoo Roos U15 Boys Division 1",
-              "is_home": false,
+              "id": "937f7e78-7a83-4e00-9606-2069eccf9ad0",
+              "name": "Aspley Hornets U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
@@ -4092,7 +4092,7 @@
         },
         {
           "id": "d3ac8d17-dac2-47ad-93bc-ec486560e271",
-          "status": null,
+          "status": "PENDING",
           "round": "Round 12",
           "round_num": 12,
           "is_final_round": false,
