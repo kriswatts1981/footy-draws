@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-19T03:56:11.086254+00:00",
+  "updated": "2026-07-19T06:38:24.302206+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -2089,7 +2089,7 @@
         },
         {
           "id": "0e583d0d-f1a4-420d-b092-079ee9f68186",
-          "status": null,
+          "status": "FINAL",
           "round": "Round 12",
           "round_num": 12,
           "is_final_round": false,
@@ -2104,16 +2104,16 @@
               "id": "741dada3-0717-46d1-ba32-7ad28de74109",
               "name": "Wilston Grange Gorillas U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 61,
+              "outcome": "WON",
               "is_tct": false
             },
             {
               "id": "b7b18446-72b0-4722-a5e3-498ffa9f5135",
               "name": "Tweed Coast Tigers U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 35,
+              "outcome": "LOST",
               "is_tct": true
             }
           ],
@@ -4156,7 +4156,7 @@
         },
         {
           "id": "6bc9b1e8-0b1d-4953-9292-1a689f55409a",
-          "status": null,
+          "status": "FINAL",
           "round": "Round 12",
           "round_num": 12,
           "is_final_round": false,
@@ -4171,16 +4171,16 @@
               "id": "2c63657f-a39e-4e5d-938f-a16541502f84",
               "name": "Labrador Tigers U15 Boys Division 3",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 15,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
               "name": "Tweed Cooly Blues U15 Boys Division 3",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 72,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
