@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-20T03:53:27.475730+00:00",
+  "updated": "2026-07-20T06:55:35.307074+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -4092,7 +4092,7 @@
         },
         {
           "id": "d3ac8d17-dac2-47ad-93bc-ec486560e271",
-          "status": "PENDING",
+          "status": "FINAL",
           "round": "Round 12",
           "round_num": 12,
           "is_final_round": false,
@@ -4107,16 +4107,16 @@
               "id": "2d0ba14a-45b8-4d68-8873-9648e42e132a",
               "name": "Pac Power U15 Boys Division 3",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 29,
+              "outcome": "WON",
               "is_tct": false
             },
             {
               "id": "f9e354ac-3e79-4cde-9f9f-4008a9841ae4",
               "name": "Burleigh Bombers U15 Boys Division 3",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 24,
+              "outcome": "LOST",
               "is_tct": false
             }
           ],

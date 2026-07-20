@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-20T03:53:29.865853+00:00",
+  "updated": "2026-07-20T06:55:37.173360+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -288,29 +288,29 @@
           "team_id": "2d0ba14a-45b8-4d68-8873-9648e42e132a",
           "team_name": "Pac Power U15 Boys Division 3",
           "is_tct": false,
-          "played": 10,
-          "won": 2,
+          "played": 11,
+          "won": 3,
           "lost": 8,
           "drawn": 0,
           "byes": 1,
-          "points_for": 197,
-          "points_against": 485,
-          "percentage": 40.62,
-          "competition_points": 8
+          "points_for": 226,
+          "points_against": 509,
+          "percentage": 44.4,
+          "competition_points": 12
         },
         {
           "rank": 8,
           "team_id": "f9e354ac-3e79-4cde-9f9f-4008a9841ae4",
           "team_name": "Burleigh Bombers U15 Boys Division 3",
           "is_tct": false,
-          "played": 9,
+          "played": 10,
           "won": 1,
-          "lost": 8,
+          "lost": 9,
           "drawn": 0,
           "byes": 2,
-          "points_for": 181,
-          "points_against": 551,
-          "percentage": 32.85,
+          "points_for": 205,
+          "points_against": 580,
+          "percentage": 35.34,
           "competition_points": 4
         }
       ]
