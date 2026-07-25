@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-25T08:24:51.531404+00:00",
+  "updated": "2026-07-25T10:09:38.961723+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -2229,17 +2229,17 @@
           "suburb": "Hawthorne",
           "competitors": [
             {
-              "id": "162b505a-d2bf-467e-8aba-577f9039d1ea",
-              "name": "Morningside Panthers U15 Boys Division 1",
-              "is_home": true,
+              "id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
+              "name": "Palm Beach Currumbin U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
-              "name": "Palm Beach Currumbin U15 Boys Division 1",
-              "is_home": false,
+              "id": "162b505a-d2bf-467e-8aba-577f9039d1ea",
+              "name": "Morningside Panthers U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
@@ -4296,17 +4296,17 @@
           "suburb": "Burleigh Waters",
           "competitors": [
             {
-              "id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
-              "name": "Tweed Cooly Blues U15 Boys Division 3",
-              "is_home": false,
+              "id": "f9e354ac-3e79-4cde-9f9f-4008a9841ae4",
+              "name": "Burleigh Bombers U15 Boys Division 3",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "f9e354ac-3e79-4cde-9f9f-4008a9841ae4",
-              "name": "Burleigh Bombers U15 Boys Division 3",
-              "is_home": true,
+              "id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
+              "name": "Tweed Cooly Blues U15 Boys Division 3",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
