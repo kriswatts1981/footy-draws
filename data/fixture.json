@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-26T01:17:18.229588+00:00",
+  "updated": "2026-07-26T05:01:35.222392+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -2121,7 +2121,7 @@
         },
         {
           "id": "8dc4ce51-87a8-4c64-b1af-30918071666f",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Round 13",
           "round_num": 13,
           "is_final_round": false,
@@ -2133,17 +2133,17 @@
           "suburb": "Stafford",
           "competitors": [
             {
-              "id": "741dada3-0717-46d1-ba32-7ad28de74109",
-              "name": "Wilston Grange Gorillas U15 Boys Division 1",
-              "is_home": true,
+              "id": "199f79c2-5296-4ac5-86b2-9341f2103655",
+              "name": "Burleigh Bombers U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "199f79c2-5296-4ac5-86b2-9341f2103655",
-              "name": "Burleigh Bombers U15 Boys Division 1",
-              "is_home": false,
+              "id": "741dada3-0717-46d1-ba32-7ad28de74109",
+              "name": "Wilston Grange Gorillas U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
@@ -2153,7 +2153,7 @@
         },
         {
           "id": "72544873-5b85-4425-8801-8450861135ab",
-          "status": null,
+          "status": "FINAL",
           "round": "Round 13",
           "round_num": 13,
           "is_final_round": false,
@@ -2168,16 +2168,16 @@
               "id": "81bf2d43-8900-4176-96c0-df33081d8570",
               "name": "Labrador Tigers U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 36,
+              "outcome": "WON",
               "is_tct": false
             },
             {
               "id": "937f7e78-7a83-4e00-9606-2069eccf9ad0",
               "name": "Aspley Hornets U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 29,
+              "outcome": "LOST",
               "is_tct": false
             }
           ],
@@ -2185,7 +2185,7 @@
         },
         {
           "id": "7fbd3dab-b582-46b0-ae9e-8d5164515ec6",
-          "status": "UPCOMING",
+          "status": "PENDING",
           "round": "Round 13",
           "round_num": 13,
           "is_final_round": false,
@@ -2217,7 +2217,7 @@
         },
         {
           "id": "690ec08c-4fd7-4ee4-b777-2d90f8ac0b8c",
-          "status": "UPCOMING",
+          "status": "PENDING",
           "round": "Round 13",
           "round_num": 13,
           "is_final_round": false,
@@ -2249,7 +2249,7 @@
         },
         {
           "id": "05e1d151-c908-4963-a0ba-f351222b4e48",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "round": "Round 13",
           "round_num": 13,
           "is_final_round": false,
@@ -2264,16 +2264,16 @@
               "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
               "name": "Broadbeach Cats U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 105,
+              "outcome": "WON",
               "is_tct": false
             },
             {
               "id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
               "name": "Sherwood Magpies U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 20,
+              "outcome": "LOST",
               "is_tct": false
             }
           ],
@@ -2281,7 +2281,7 @@
         },
         {
           "id": "17b39d3b-f8a6-4f21-b003-9e4e659ed455",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Round 13",
           "round_num": 13,
           "is_final_round": false,
@@ -4220,7 +4220,7 @@
         },
         {
           "id": "20dfdc99-b07e-45e4-b373-d3bba8b262df",
-          "status": "UPCOMING",
+          "status": "PENDING",
           "round": "Round 13",
           "round_num": 13,
           "is_final_round": false,
@@ -4252,7 +4252,7 @@
         },
         {
           "id": "a3632529-cd29-4bfc-b7f9-38074f235256",
-          "status": "UPCOMING",
+          "status": "PENDING",
           "round": "Round 13",
           "round_num": 13,
           "is_final_round": false,
@@ -4284,7 +4284,7 @@
         },
         {
           "id": "b2f9bf28-f60c-465f-a4ae-6887a4e3fc2b",
-          "status": "UPCOMING",
+          "status": "PENDING",
           "round": "Round 13",
           "round_num": 13,
           "is_final_round": false,
@@ -4316,7 +4316,7 @@
         },
         {
           "id": "5ded60ba-d0e1-4e30-a0cd-d128c581c8aa",
-          "status": "UPCOMING",
+          "status": "PENDING",
           "round": "Round 13",
           "round_num": 13,
           "is_final_round": false,

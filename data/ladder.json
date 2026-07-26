@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-26T01:17:19.815047+00:00",
+  "updated": "2026-07-26T05:01:37.564817+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -11,15 +11,15 @@
           "team_id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
           "team_name": "Broadbeach Cats U15 Boys Division 1",
           "is_tct": false,
-          "played": 11,
-          "won": 11,
+          "played": 12,
+          "won": 12,
           "lost": 0,
           "drawn": 0,
           "byes": 1,
-          "points_for": 718,
-          "points_against": 236,
-          "percentage": 304.24,
-          "competition_points": 44
+          "points_for": 823,
+          "points_against": 256,
+          "percentage": 321.48,
+          "competition_points": 48
         },
         {
           "rank": 2,
@@ -56,15 +56,15 @@
           "team_id": "81bf2d43-8900-4176-96c0-df33081d8570",
           "team_name": "Labrador Tigers U15 Boys Division 1",
           "is_tct": false,
-          "played": 11,
-          "won": 8,
+          "played": 12,
+          "won": 9,
           "lost": 3,
           "drawn": 0,
           "byes": 1,
-          "points_for": 598,
-          "points_against": 401,
-          "percentage": 149.13,
-          "competition_points": 32
+          "points_for": 634,
+          "points_against": 430,
+          "percentage": 147.44,
+          "competition_points": 36
         },
         {
           "rank": 5,
@@ -86,14 +86,14 @@
           "team_id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
           "team_name": "Sherwood Magpies U15 Boys Division 1",
           "is_tct": false,
-          "played": 11,
+          "played": 12,
           "won": 5,
-          "lost": 6,
+          "lost": 7,
           "drawn": 0,
           "byes": 1,
-          "points_for": 448,
-          "points_against": 510,
-          "percentage": 87.84,
+          "points_for": 468,
+          "points_against": 615,
+          "percentage": 76.1,
           "competition_points": 20
         },
         {
@@ -116,14 +116,14 @@
           "team_id": "937f7e78-7a83-4e00-9606-2069eccf9ad0",
           "team_name": "Aspley Hornets U15 Boys Division 1",
           "is_tct": false,
-          "played": 11,
+          "played": 12,
           "won": 4,
-          "lost": 7,
+          "lost": 8,
           "drawn": 0,
           "byes": 1,
-          "points_for": 490,
-          "points_against": 519,
-          "percentage": 94.41,
+          "points_for": 519,
+          "points_against": 555,
+          "percentage": 93.51,
           "competition_points": 16
         },
         {
