@@ -215,6 +215,23 @@ def upsert_played(data: dict, round_num: int, spec: dict) -> list[str]:
         entry[div_key]["played"] = played
         entry[div_key]["late_outs"] = div.get("late_outs", [])
         entry[div_key]["dnp"] = div.get("dnp", [])
+        # A make-up game fills a slot previously marked CANCELLED (washout).
+        # A non-empty played list means the game HAPPENED — clear the stale
+        # cancellation or the site keeps rendering CNC / dashed game counts
+        # (index.html keys off dv.cancelled / result === 'CANCELLED').
+        if entry[div_key].get("cancelled") or entry[div_key].get("result") == "CANCELLED":
+            entry[div_key].pop("cancelled", None)
+            if entry[div_key].get("result") == "CANCELLED":
+                entry[div_key].pop("result", None)
+            warnings.append(f"  [NOTE] {div_key} round {round_num}: cleared stale CANCELLED flag (make-up game played)")
+        # Keep opponent/ground/result current when the spec carries them
+        # (make-up games often move venue vs the original washed-out slot).
+        if div.get("opponent"):
+            entry[div_key]["opponent"] = div["opponent"]
+        if div.get("venue"):
+            entry[div_key]["ground"] = div["venue"]
+        if div.get("result"):
+            entry[div_key]["result"] = div["result"]
 
         # Cross-check spelling against squad
         sq_names = {p["name"] for p in data["squads"][div_key]["players"]}
