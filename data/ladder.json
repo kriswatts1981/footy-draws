@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-27T07:41:19.689357+00:00",
+  "updated": "2026-07-27T11:33:57.010589+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -198,15 +198,15 @@
           "team_id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
           "team_name": "Tweed Cooly Blues U15 Boys Division 3",
           "is_tct": false,
-          "played": 11,
-          "won": 7,
+          "played": 12,
+          "won": 8,
           "lost": 4,
           "drawn": 0,
           "byes": 1,
-          "points_for": 485,
-          "points_against": 157,
-          "percentage": 308.92,
-          "competition_points": 28
+          "points_for": 558,
+          "points_against": 170,
+          "percentage": 328.24,
+          "competition_points": 32
         },
         {
           "rank": 2,
@@ -303,14 +303,14 @@
           "team_id": "f9e354ac-3e79-4cde-9f9f-4008a9841ae4",
           "team_name": "Burleigh Bombers U15 Boys Division 3",
           "is_tct": false,
-          "played": 10,
+          "played": 11,
           "won": 1,
-          "lost": 9,
+          "lost": 10,
           "drawn": 0,
           "byes": 2,
-          "points_for": 205,
-          "points_against": 580,
-          "percentage": 35.34,
+          "points_for": 218,
+          "points_against": 653,
+          "percentage": 33.38,
           "competition_points": 4
         }
       ]
