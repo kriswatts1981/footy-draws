@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-28T04:16:56.033423+00:00",
+  "updated": "2026-07-28T07:43:29.452418+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -16,9 +16,9 @@
           "lost": 0,
           "drawn": 0,
           "byes": 1,
-          "points_for": 823,
+          "points_for": 798,
           "points_against": 256,
-          "percentage": 321.48,
+          "percentage": 311.72,
           "competition_points": 48
         },
         {
@@ -31,9 +31,9 @@
           "lost": 1,
           "drawn": 0,
           "byes": 1,
-          "points_for": 894,
+          "points_for": 858,
           "points_against": 292,
-          "percentage": 306.16,
+          "percentage": 293.84,
           "competition_points": 44
         },
         {
@@ -107,8 +107,8 @@
           "drawn": 0,
           "byes": 1,
           "points_for": 468,
-          "points_against": 615,
-          "percentage": 76.1,
+          "points_against": 590,
+          "percentage": 79.32,
           "competition_points": 20
         },
         {
@@ -182,8 +182,8 @@
           "drawn": 0,
           "byes": 1,
           "points_for": 320,
-          "points_against": 783,
-          "percentage": 40.87,
+          "points_against": 747,
+          "percentage": 42.84,
           "competition_points": 4
         }
       ]
