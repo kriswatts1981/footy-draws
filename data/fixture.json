@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-31T23:10:48.850609+00:00",
+  "updated": "2026-08-01T03:29:36.401262+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -4392,20 +4392,20 @@
           "suburb": "Kirra",
           "competitors": [
             {
-              "id": "375c16c4-12f4-499e-9e4a-94ba4f5283cf",
-              "name": "Tweed Coast Tigers U15 Boys Division 3",
-              "is_home": false,
-              "score": null,
-              "outcome": null,
-              "is_tct": true
-            },
-            {
               "id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
               "name": "Tweed Cooly Blues U15 Boys Division 3",
               "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
+            },
+            {
+              "id": "375c16c4-12f4-499e-9e4a-94ba4f5283cf",
+              "name": "Tweed Coast Tigers U15 Boys Division 3",
+              "is_home": false,
+              "score": null,
+              "outcome": null,
+              "is_tct": true
             }
           ],
           "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-3-gold-coast-northern-rivers/game-centre/9456ab78"
