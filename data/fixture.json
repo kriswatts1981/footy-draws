@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-01T22:11:58.912044+00:00",
+  "updated": "2026-08-01T23:13:37.802059+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -2325,17 +2325,17 @@
           "suburb": "Carseldine",
           "competitors": [
             {
-              "id": "937f7e78-7a83-4e00-9606-2069eccf9ad0",
-              "name": "Aspley Hornets U15 Boys Division 1",
-              "is_home": true,
+              "id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
+              "name": "Sherwood Magpies U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
-              "name": "Sherwood Magpies U15 Boys Division 1",
-              "is_home": false,
+              "id": "937f7e78-7a83-4e00-9606-2069eccf9ad0",
+              "name": "Aspley Hornets U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
@@ -2357,17 +2357,17 @@
           "suburb": "Kedron",
           "competitors": [
             {
-              "id": "10f62735-bdac-48e7-89e5-69a6b681993a",
-              "name": "Maroochy Roos Juniors U15 Boys Division 1",
-              "is_home": false,
+              "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
+              "name": "Broadbeach Cats U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
-              "name": "Broadbeach Cats U15 Boys Division 1",
-              "is_home": true,
+              "id": "10f62735-bdac-48e7-89e5-69a6b681993a",
+              "name": "Maroochy Roos Juniors U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
@@ -2421,20 +2421,20 @@
           "suburb": "Palm Beach",
           "competitors": [
             {
-              "id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
-              "name": "Palm Beach Currumbin U15 Boys Division 1",
-              "is_home": true,
-              "score": null,
-              "outcome": null,
-              "is_tct": false
-            },
-            {
               "id": "b7b18446-72b0-4722-a5e3-498ffa9f5135",
               "name": "Tweed Coast Tigers U15 Boys Division 1",
               "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": true
+            },
+            {
+              "id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
+              "name": "Palm Beach Currumbin U15 Boys Division 1",
+              "is_home": true,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
             }
           ],
           "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/f76f0b99"
@@ -2485,17 +2485,17 @@
           "suburb": "Stafford",
           "competitors": [
             {
-              "id": "741dada3-0717-46d1-ba32-7ad28de74109",
-              "name": "Wilston Grange Gorillas U15 Boys Division 1",
-              "is_home": true,
+              "id": "81bf2d43-8900-4176-96c0-df33081d8570",
+              "name": "Labrador Tigers U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "81bf2d43-8900-4176-96c0-df33081d8570",
-              "name": "Labrador Tigers U15 Boys Division 1",
-              "is_home": false,
+              "id": "741dada3-0717-46d1-ba32-7ad28de74109",
+              "name": "Wilston Grange Gorillas U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
@@ -4380,7 +4380,7 @@
         },
         {
           "id": "9456ab78-fd9e-4afa-aff1-707e77a3484a",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Round 14",
           "round_num": 14,
           "is_final_round": false,
