@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-02T06:46:01.244724+00:00",
+  "updated": "2026-08-02T09:12:32.996018+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -2441,7 +2441,7 @@
         },
         {
           "id": "42e3c617-b027-404f-b269-0fd4b3b20acb",
-          "status": "PENDING",
+          "status": "FINAL",
           "round": "Round 14",
           "round_num": 14,
           "is_final_round": false,
@@ -2456,16 +2456,16 @@
               "id": "521a6463-1070-4366-82ce-6b57c2ca9245",
               "name": "RVP Sharks U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 28,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "162b505a-d2bf-467e-8aba-577f9039d1ea",
               "name": "Morningside Panthers U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 73,
+              "outcome": "WON",
               "is_tct": false
             }
           ],

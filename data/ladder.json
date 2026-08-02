@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-02T06:46:03.136447+00:00",
+  "updated": "2026-08-02T09:12:35.559221+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -146,29 +146,29 @@
           "team_id": "162b505a-d2bf-467e-8aba-577f9039d1ea",
           "team_name": "Morningside Panthers U15 Boys Division 1",
           "is_tct": false,
-          "played": 12,
-          "won": 3,
+          "played": 13,
+          "won": 4,
           "lost": 9,
           "drawn": 0,
           "byes": 1,
-          "points_for": 348,
-          "points_against": 648,
-          "percentage": 53.7,
-          "competition_points": 12
+          "points_for": 421,
+          "points_against": 676,
+          "percentage": 62.28,
+          "competition_points": 16
         },
         {
           "rank": 11,
           "team_id": "521a6463-1070-4366-82ce-6b57c2ca9245",
           "team_name": "RVP Sharks U15 Boys Division 1",
           "is_tct": false,
-          "played": 12,
+          "played": 13,
           "won": 3,
-          "lost": 9,
+          "lost": 10,
           "drawn": 0,
           "byes": 1,
-          "points_for": 163,
-          "points_against": 568,
-          "percentage": 28.7,
+          "points_for": 191,
+          "points_against": 641,
+          "percentage": 29.8,
           "competition_points": 12
         },
         {
