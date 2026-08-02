@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-02T04:04:21.452185+00:00",
+  "updated": "2026-08-02T06:46:01.244724+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -2313,7 +2313,7 @@
         },
         {
           "id": "9d1ff247-975d-480a-8b70-f21418d3e53b",
-          "status": "PENDING",
+          "status": "FINAL",
           "round": "Round 14",
           "round_num": 14,
           "is_final_round": false,
@@ -2328,16 +2328,16 @@
               "id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
               "name": "Sherwood Magpies U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 41,
+              "outcome": "WON",
               "is_tct": false
             },
             {
               "id": "937f7e78-7a83-4e00-9606-2069eccf9ad0",
               "name": "Aspley Hornets U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 26,
+              "outcome": "LOST",
               "is_tct": false
             }
           ],
@@ -2409,7 +2409,7 @@
         },
         {
           "id": "f76f0b99-90cd-4fbb-8dc6-7b915f13c632",
-          "status": null,
+          "status": "FINAL",
           "round": "Round 14",
           "round_num": 14,
           "is_final_round": false,
@@ -2424,16 +2424,16 @@
               "id": "b7b18446-72b0-4722-a5e3-498ffa9f5135",
               "name": "Tweed Coast Tigers U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 17,
+              "outcome": "LOST",
               "is_tct": true
             },
             {
               "id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
               "name": "Palm Beach Currumbin U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 100,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -2441,7 +2441,7 @@
         },
         {
           "id": "42e3c617-b027-404f-b269-0fd4b3b20acb",
-          "status": "UPCOMING",
+          "status": "PENDING",
           "round": "Round 14",
           "round_num": 14,
           "is_final_round": false,
@@ -2473,7 +2473,7 @@
         },
         {
           "id": "ecf2e652-cd17-4bce-8b8f-73d330c80ad1",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "round": "Round 14",
           "round_num": 14,
           "is_final_round": false,
@@ -2488,16 +2488,16 @@
               "id": "81bf2d43-8900-4176-96c0-df33081d8570",
               "name": "Labrador Tigers U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 43,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "741dada3-0717-46d1-ba32-7ad28de74109",
               "name": "Wilston Grange Gorillas U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 54,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -4348,7 +4348,7 @@
         },
         {
           "id": "e4c2c54a-7938-44d4-85bf-9ee432b78df2",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "round": "Round 14",
           "round_num": 14,
           "is_final_round": false,
@@ -4363,16 +4363,16 @@
               "id": "2d0ba14a-45b8-4d68-8873-9648e42e132a",
               "name": "Pac Power U15 Boys Division 3",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 14,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "2144da5b-3f13-4552-b595-378222bf8a16",
               "name": "Palm Beach Currumbin U15 Boys Division 3",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 84,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
