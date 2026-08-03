@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-03T21:13:34.971048+00:00",
+  "updated": "2026-08-03T23:12:18.616273+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -4371,7 +4371,7 @@
               "id": "2144da5b-3f13-4552-b595-378222bf8a16",
               "name": "Palm Beach Currumbin U15 Boys Division 3",
               "is_home": false,
-              "score": 84,
+              "score": 74,
               "outcome": "WON",
               "is_tct": false
             }
