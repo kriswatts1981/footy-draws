@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-04T23:11:03.267587+00:00",
+  "updated": "2026-08-05T03:23:25.563086+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -31,9 +31,9 @@
           "lost": 1,
           "drawn": 0,
           "byes": 1,
-          "points_for": 943,
+          "points_for": 919,
           "points_against": 293,
-          "percentage": 321.84,
+          "percentage": 313.65,
           "competition_points": 48
         },
         {
@@ -137,8 +137,8 @@
           "drawn": 0,
           "byes": 1,
           "points_for": 385,
-          "points_against": 567,
-          "percentage": 67.9,
+          "points_against": 543,
+          "percentage": 70.9,
           "competition_points": 16
         },
         {
