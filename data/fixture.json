@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-07T00:09:40.951637+00:00",
+  "updated": "2026-08-07T03:55:16.948823+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -2517,17 +2517,17 @@
           "suburb": "Mermaid Waters",
           "competitors": [
             {
-              "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
-              "name": "Broadbeach Cats U15 Boys Division 1",
-              "is_home": true,
+              "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
+              "name": "Coorparoo Roos U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
-              "name": "Coorparoo Roos U15 Boys Division 1",
-              "is_home": false,
+              "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
+              "name": "Broadbeach Cats U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
@@ -2581,17 +2581,17 @@
           "suburb": "Labrador",
           "competitors": [
             {
-              "id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
-              "name": "Sherwood Magpies U15 Boys Division 1",
-              "is_home": false,
+              "id": "81bf2d43-8900-4176-96c0-df33081d8570",
+              "name": "Labrador Tigers U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "81bf2d43-8900-4176-96c0-df33081d8570",
-              "name": "Labrador Tigers U15 Boys Division 1",
-              "is_home": true,
+              "id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
+              "name": "Sherwood Magpies U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
