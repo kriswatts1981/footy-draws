@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-07T20:50:57.066152+00:00",
+  "updated": "2026-08-07T22:47:02.065795+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -4584,17 +4584,17 @@
           "suburb": "Kirra",
           "competitors": [
             {
-              "id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
-              "name": "Tweed Cooly Blues U15 Boys Division 3",
-              "is_home": true,
+              "id": "3344820e-0b07-429c-9052-88da120683d1",
+              "name": "Broadbeach Cats U15 Boys Division 3",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "3344820e-0b07-429c-9052-88da120683d1",
-              "name": "Broadbeach Cats U15 Boys Division 3",
-              "is_home": false,
+              "id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
+              "name": "Tweed Cooly Blues U15 Boys Division 3",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
