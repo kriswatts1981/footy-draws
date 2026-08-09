@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-09T03:53:34.803315+00:00",
+  "updated": "2026-08-09T05:10:12.125638+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -71,33 +71,18 @@
           "team_id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
           "team_name": "Palm Beach Currumbin U15 Boys Division 1",
           "is_tct": false,
-          "played": 13,
-          "won": 7,
+          "played": 14,
+          "won": 8,
           "lost": 6,
           "drawn": 0,
           "byes": 1,
-          "points_for": 634,
-          "points_against": 516,
-          "percentage": 122.87,
-          "competition_points": 28
+          "points_for": 692,
+          "points_against": 552,
+          "percentage": 125.36,
+          "competition_points": 32
         },
         {
           "rank": 6,
-          "team_id": "741dada3-0717-46d1-ba32-7ad28de74109",
-          "team_name": "Wilston Grange Gorillas U15 Boys Division 1",
-          "is_tct": false,
-          "played": 13,
-          "won": 7,
-          "lost": 6,
-          "drawn": 0,
-          "byes": 1,
-          "points_for": 520,
-          "points_against": 609,
-          "percentage": 85.39,
-          "competition_points": 28
-        },
-        {
-          "rank": 7,
           "team_id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
           "team_name": "Sherwood Magpies U15 Boys Division 1",
           "is_tct": false,
@@ -109,6 +94,21 @@
           "points_for": 554,
           "points_against": 651,
           "percentage": 85.1,
+          "competition_points": 28
+        },
+        {
+          "rank": 7,
+          "team_id": "741dada3-0717-46d1-ba32-7ad28de74109",
+          "team_name": "Wilston Grange Gorillas U15 Boys Division 1",
+          "is_tct": false,
+          "played": 14,
+          "won": 7,
+          "lost": 7,
+          "drawn": 0,
+          "byes": 1,
+          "points_for": 556,
+          "points_against": 667,
+          "percentage": 83.36,
           "competition_points": 28
         },
         {
@@ -243,15 +243,15 @@
           "team_id": "9dc898ad-8e96-4efe-9e50-475c44499928",
           "team_name": "Surfers Paradise Demons U15 Boys Division 3",
           "is_tct": false,
-          "played": 13,
-          "won": 7,
+          "played": 14,
+          "won": 8,
           "lost": 5,
           "drawn": 1,
           "byes": 1,
-          "points_for": 466,
-          "points_against": 445,
-          "percentage": 104.72,
-          "competition_points": 30
+          "points_for": 503,
+          "points_against": 478,
+          "percentage": 105.23,
+          "competition_points": 34
         },
         {
           "rank": 5,
@@ -273,14 +273,14 @@
           "team_id": "2d0ba14a-45b8-4d68-8873-9648e42e132a",
           "team_name": "Pac Power U15 Boys Division 3",
           "is_tct": false,
-          "played": 13,
+          "played": 14,
           "won": 4,
-          "lost": 9,
+          "lost": 10,
           "drawn": 0,
           "byes": 1,
-          "points_for": 271,
-          "points_against": 584,
-          "percentage": 46.4,
+          "points_for": 304,
+          "points_against": 621,
+          "percentage": 48.95,
           "competition_points": 16
         },
         {

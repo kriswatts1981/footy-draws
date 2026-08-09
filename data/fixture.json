@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-09T03:53:32.288816+00:00",
+  "updated": "2026-08-09T05:10:09.759866+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -2633,7 +2633,7 @@
         },
         {
           "id": "5c599740-e46e-4f5b-8b27-949f04c0d27b",
-          "status": null,
+          "status": "FINAL",
           "round": "Round 15",
           "round_num": 15,
           "is_final_round": false,
@@ -2648,16 +2648,16 @@
               "id": "741dada3-0717-46d1-ba32-7ad28de74109",
               "name": "Wilston Grange Gorillas U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 36,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
               "name": "Palm Beach Currumbin U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 58,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -2665,7 +2665,7 @@
         },
         {
           "id": "b7a90f42-91f6-46e4-a0d6-8637de82cb5e",
-          "status": null,
+          "status": "PENDING",
           "round": "Round 15",
           "round_num": 15,
           "is_final_round": false,
@@ -4508,7 +4508,7 @@
         },
         {
           "id": "cb33cd8b-f26d-40ef-874f-d908c758a357",
-          "status": null,
+          "status": "FINAL",
           "round": "Round 15",
           "round_num": 15,
           "is_final_round": false,
@@ -4523,16 +4523,16 @@
               "id": "2d0ba14a-45b8-4d68-8873-9648e42e132a",
               "name": "Pac Power U15 Boys Division 3",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 33,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "9dc898ad-8e96-4efe-9e50-475c44499928",
               "name": "Surfers Paradise Demons U15 Boys Division 3",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 37,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -4540,7 +4540,7 @@
         },
         {
           "id": "9277cfdd-13b8-4b3e-9cb0-da4f4962e575",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Round 15",
           "round_num": 15,
           "is_final_round": false,
