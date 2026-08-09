@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-09T07:09:25.725846+00:00",
+  "updated": "2026-08-09T08:02:39.583709+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -121,13 +121,28 @@
           "lost": 9,
           "drawn": 0,
           "byes": 1,
-          "points_for": 494,
+          "points_for": 460,
           "points_against": 558,
-          "percentage": 88.53,
+          "percentage": 82.44,
           "competition_points": 20
         },
         {
           "rank": 9,
+          "team_id": "162b505a-d2bf-467e-8aba-577f9039d1ea",
+          "team_name": "Morningside Panthers U15 Boys Division 1",
+          "is_tct": false,
+          "played": 14,
+          "won": 5,
+          "lost": 9,
+          "drawn": 0,
+          "byes": 1,
+          "points_for": 505,
+          "points_against": 705,
+          "percentage": 71.63,
+          "competition_points": 20
+        },
+        {
+          "rank": 10,
           "team_id": "937f7e78-7a83-4e00-9606-2069eccf9ad0",
           "team_name": "Aspley Hornets U15 Boys Division 1",
           "is_tct": false,
@@ -142,21 +157,6 @@
           "competition_points": 16
         },
         {
-          "rank": 10,
-          "team_id": "162b505a-d2bf-467e-8aba-577f9039d1ea",
-          "team_name": "Morningside Panthers U15 Boys Division 1",
-          "is_tct": false,
-          "played": 13,
-          "won": 4,
-          "lost": 9,
-          "drawn": 0,
-          "byes": 1,
-          "points_for": 421,
-          "points_against": 676,
-          "percentage": 62.28,
-          "competition_points": 16
-        },
-        {
           "rank": 11,
           "team_id": "521a6463-1070-4366-82ce-6b57c2ca9245",
           "team_name": "RVP Sharks U15 Boys Division 1",
@@ -167,8 +167,8 @@
           "drawn": 0,
           "byes": 1,
           "points_for": 206,
-          "points_against": 750,
-          "percentage": 27.47,
+          "points_against": 716,
+          "percentage": 28.77,
           "competition_points": 12
         },
         {
@@ -176,14 +176,14 @@
           "team_id": "b7b18446-72b0-4722-a5e3-498ffa9f5135",
           "team_name": "Tweed Coast Tigers U15 Boys Division 1",
           "is_tct": true,
-          "played": 13,
+          "played": 14,
           "won": 1,
-          "lost": 12,
+          "lost": 13,
           "drawn": 0,
           "byes": 1,
-          "points_for": 337,
-          "points_against": 824,
-          "percentage": 40.9,
+          "points_for": 366,
+          "points_against": 908,
+          "percentage": 40.31,
           "competition_points": 4
         }
       ]
@@ -198,33 +198,18 @@
           "team_id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
           "team_name": "Tweed Cooly Blues U15 Boys Division 3",
           "is_tct": false,
-          "played": 13,
-          "won": 9,
+          "played": 14,
+          "won": 10,
           "lost": 4,
           "drawn": 0,
           "byes": 1,
-          "points_for": 610,
-          "points_against": 190,
-          "percentage": 321.05,
-          "competition_points": 36
+          "points_for": 702,
+          "points_against": 223,
+          "percentage": 314.8,
+          "competition_points": 40
         },
         {
           "rank": 2,
-          "team_id": "3344820e-0b07-429c-9052-88da120683d1",
-          "team_name": "Broadbeach Cats U15 Boys Division 3",
-          "is_tct": false,
-          "played": 13,
-          "won": 8,
-          "lost": 5,
-          "drawn": 0,
-          "byes": 1,
-          "points_for": 534,
-          "points_against": 436,
-          "percentage": 122.48,
-          "competition_points": 32
-        },
-        {
-          "rank": 3,
           "team_id": "2144da5b-3f13-4552-b595-378222bf8a16",
           "team_name": "Palm Beach Currumbin U15 Boys Division 3",
           "is_tct": false,
@@ -239,7 +224,7 @@
           "competition_points": 34
         },
         {
-          "rank": 4,
+          "rank": 3,
           "team_id": "9dc898ad-8e96-4efe-9e50-475c44499928",
           "team_name": "Surfers Paradise Demons U15 Boys Division 3",
           "is_tct": false,
@@ -252,6 +237,21 @@
           "points_against": 478,
           "percentage": 105.23,
           "competition_points": 34
+        },
+        {
+          "rank": 4,
+          "team_id": "3344820e-0b07-429c-9052-88da120683d1",
+          "team_name": "Broadbeach Cats U15 Boys Division 3",
+          "is_tct": false,
+          "played": 14,
+          "won": 8,
+          "lost": 6,
+          "drawn": 0,
+          "byes": 1,
+          "points_for": 567,
+          "points_against": 528,
+          "percentage": 107.39,
+          "competition_points": 32
         },
         {
           "rank": 5,

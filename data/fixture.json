@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-09T07:09:23.970995+00:00",
+  "updated": "2026-08-09T08:02:37.364700+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -2560,7 +2560,7 @@
               "id": "199f79c2-5296-4ac5-86b2-9341f2103655",
               "name": "Burleigh Bombers U15 Boys Division 1",
               "is_home": true,
-              "score": 109,
+              "score": 75,
               "outcome": "WON",
               "is_tct": false
             }
@@ -2665,7 +2665,7 @@
         },
         {
           "id": "b7a90f42-91f6-46e4-a0d6-8637de82cb5e",
-          "status": "PENDING",
+          "status": "FINAL",
           "round": "Round 15",
           "round_num": 15,
           "is_final_round": false,
@@ -2680,16 +2680,16 @@
               "id": "b7b18446-72b0-4722-a5e3-498ffa9f5135",
               "name": "Tweed Coast Tigers U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 29,
+              "outcome": "LOST",
               "is_tct": true
             },
             {
               "id": "162b505a-d2bf-467e-8aba-577f9039d1ea",
               "name": "Morningside Panthers U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 84,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -4572,7 +4572,7 @@
         },
         {
           "id": "821d4318-b20e-4c27-be8f-5e0233aef27d",
-          "status": null,
+          "status": "FINAL",
           "round": "Round 15",
           "round_num": 15,
           "is_final_round": false,
@@ -4587,16 +4587,16 @@
               "id": "3344820e-0b07-429c-9052-88da120683d1",
               "name": "Broadbeach Cats U15 Boys Division 3",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 33,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
               "name": "Tweed Cooly Blues U15 Boys Division 3",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 92,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
