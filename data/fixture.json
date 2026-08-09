@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-09T05:10:09.759866+00:00",
+  "updated": "2026-08-09T05:58:48.721916+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -4476,7 +4476,7 @@
         },
         {
           "id": "e6c722ec-09f4-4183-889e-db06cc92815e",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Round 15",
           "round_num": 15,
           "is_final_round": false,
@@ -4540,7 +4540,7 @@
         },
         {
           "id": "9277cfdd-13b8-4b3e-9cb0-da4f4962e575",
-          "status": null,
+          "status": "FINAL",
           "round": "Round 15",
           "round_num": 15,
           "is_final_round": false,
@@ -4555,16 +4555,16 @@
               "id": "2144da5b-3f13-4552-b595-378222bf8a16",
               "name": "Palm Beach Currumbin U15 Boys Division 3",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 34,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "375c16c4-12f4-499e-9e4a-94ba4f5283cf",
               "name": "Tweed Coast Tigers U15 Boys Division 3",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 37,
+              "outcome": "WON",
               "is_tct": true
             }
           ],

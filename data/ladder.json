@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-09T05:10:12.125638+00:00",
+  "updated": "2026-08-09T05:58:51.165274+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -210,21 +210,6 @@
         },
         {
           "rank": 2,
-          "team_id": "2144da5b-3f13-4552-b595-378222bf8a16",
-          "team_name": "Palm Beach Currumbin U15 Boys Division 3",
-          "is_tct": false,
-          "played": 13,
-          "won": 8,
-          "lost": 4,
-          "drawn": 1,
-          "byes": 0,
-          "points_for": 553,
-          "points_against": 338,
-          "percentage": 163.61,
-          "competition_points": 34
-        },
-        {
-          "rank": 3,
           "team_id": "3344820e-0b07-429c-9052-88da120683d1",
           "team_name": "Broadbeach Cats U15 Boys Division 3",
           "is_tct": false,
@@ -237,6 +222,21 @@
           "points_against": 436,
           "percentage": 122.48,
           "competition_points": 32
+        },
+        {
+          "rank": 3,
+          "team_id": "2144da5b-3f13-4552-b595-378222bf8a16",
+          "team_name": "Palm Beach Currumbin U15 Boys Division 3",
+          "is_tct": false,
+          "played": 14,
+          "won": 8,
+          "lost": 5,
+          "drawn": 1,
+          "byes": 0,
+          "points_for": 587,
+          "points_against": 375,
+          "percentage": 156.53,
+          "competition_points": 34
         },
         {
           "rank": 4,
@@ -270,6 +270,21 @@
         },
         {
           "rank": 6,
+          "team_id": "375c16c4-12f4-499e-9e4a-94ba4f5283cf",
+          "team_name": "Tweed Coast Tigers U15 Boys Division 3",
+          "is_tct": true,
+          "played": 13,
+          "won": 4,
+          "lost": 9,
+          "drawn": 0,
+          "byes": 2,
+          "points_for": 348,
+          "points_against": 583,
+          "percentage": 59.69,
+          "competition_points": 16
+        },
+        {
+          "rank": 7,
           "team_id": "2d0ba14a-45b8-4d68-8873-9648e42e132a",
           "team_name": "Pac Power U15 Boys Division 3",
           "is_tct": false,
@@ -282,21 +297,6 @@
           "points_against": 621,
           "percentage": 48.95,
           "competition_points": 16
-        },
-        {
-          "rank": 7,
-          "team_id": "375c16c4-12f4-499e-9e4a-94ba4f5283cf",
-          "team_name": "Tweed Coast Tigers U15 Boys Division 3",
-          "is_tct": true,
-          "played": 12,
-          "won": 3,
-          "lost": 9,
-          "drawn": 0,
-          "byes": 2,
-          "points_for": 311,
-          "points_against": 549,
-          "percentage": 56.65,
-          "competition_points": 12
         },
         {
           "rank": 8,
