@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-09T02:06:49.019448+00:00",
+  "updated": "2026-08-09T03:53:32.288816+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -2505,7 +2505,7 @@
         },
         {
           "id": "d283bc9b-82f7-43e1-97b2-56fdf830af8f",
-          "status": null,
+          "status": "FINAL",
           "round": "Round 15",
           "round_num": 15,
           "is_final_round": false,
@@ -2520,16 +2520,16 @@
               "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
               "name": "Coorparoo Roos U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 19,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
               "name": "Broadbeach Cats U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 58,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -2537,7 +2537,7 @@
         },
         {
           "id": "2e5df23d-1ec2-469c-9ddb-8e589214730d",
-          "status": null,
+          "status": "FINAL",
           "round": "Round 15",
           "round_num": 15,
           "is_final_round": false,
@@ -2552,16 +2552,16 @@
               "id": "521a6463-1070-4366-82ce-6b57c2ca9245",
               "name": "RVP Sharks U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 15,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "199f79c2-5296-4ac5-86b2-9341f2103655",
               "name": "Burleigh Bombers U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 109,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -2569,7 +2569,7 @@
         },
         {
           "id": "9d3990c6-cad6-4f64-8c47-244b5ac2e7f0",
-          "status": null,
+          "status": "FINAL",
           "round": "Round 15",
           "round_num": 15,
           "is_final_round": false,
@@ -2584,16 +2584,16 @@
               "id": "81bf2d43-8900-4176-96c0-df33081d8570",
               "name": "Labrador Tigers U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 35,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
               "name": "Sherwood Magpies U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 45,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -2601,7 +2601,7 @@
         },
         {
           "id": "ec106be3-d77c-472f-9925-25071336f0ae",
-          "status": "PENDING",
+          "status": "FINAL",
           "round": "Round 15",
           "round_num": 15,
           "is_final_round": false,
@@ -2613,19 +2613,19 @@
           "suburb": "Maroochydore",
           "competitors": [
             {
-              "id": "937f7e78-7a83-4e00-9606-2069eccf9ad0",
-              "name": "Aspley Hornets U15 Boys Division 1",
-              "is_home": false,
-              "score": null,
-              "outcome": null,
-              "is_tct": false
-            },
-            {
               "id": "10f62735-bdac-48e7-89e5-69a6b681993a",
               "name": "Maroochy Roos Juniors U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 72,
+              "outcome": "WON",
+              "is_tct": false
+            },
+            {
+              "id": "937f7e78-7a83-4e00-9606-2069eccf9ad0",
+              "name": "Aspley Hornets U15 Boys Division 1",
+              "is_home": false,
+              "score": 20,
+              "outcome": "LOST",
               "is_tct": false
             }
           ],
@@ -2633,7 +2633,7 @@
         },
         {
           "id": "5c599740-e46e-4f5b-8b27-949f04c0d27b",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Round 15",
           "round_num": 15,
           "is_final_round": false,
@@ -2665,7 +2665,7 @@
         },
         {
           "id": "b7a90f42-91f6-46e4-a0d6-8637de82cb5e",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Round 15",
           "round_num": 15,
           "is_final_round": false,
@@ -4508,7 +4508,7 @@
         },
         {
           "id": "cb33cd8b-f26d-40ef-874f-d908c758a357",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Round 15",
           "round_num": 15,
           "is_final_round": false,
