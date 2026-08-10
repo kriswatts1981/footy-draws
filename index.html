@@ -577,6 +577,13 @@ a { color: inherit; text-decoration: none; }
   text-align: center; color: var(--text-3); font-size: 13px;
 }
 
+/* Combined club B&F */
+.grade-pill { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.3px;
+  padding:2px 7px; border-radius:999px; white-space:nowrap; }
+.grade-pill.g1 { background:var(--gold-bg); color:var(--gold-dim); border:1px solid var(--gold); }
+.grade-pill.g3 { background:#0E1117; color:var(--gold); border:1px solid var(--gold-dim); }
+.dual-note { font-size:10px; color:var(--text-3); font-weight:500; }
+
 /* Vote sheets per round */
 .vote-sheets { margin-top: 14px; }
 .vs-round {
@@ -1299,6 +1306,7 @@ body { overflow-x: hidden; }
     <div class="chip-row">
       <button class="chip active" data-vd="div1">Div 1</button>
       <button class="chip" data-vd="div3">Div 3</button>
+      <button class="chip" data-vd="combined">🏆 Club</button>
     </div>
     <div id="votes-loading" class="empty" style="margin-top:24px;">Loading votes…</div>
     <div id="votes-body" style="display:none;">
@@ -1909,6 +1917,55 @@ function seasonVotes(divKey) {
     .map(([player, points], i) => ({ rank: i+1, player, points, perRound: perRound[player] || {} }));
 }
 
+// Games a player is recorded as having played in a given division (from the
+// played lists that drive squad counts). Used to decide a dual-grade player's
+// "main" division for the combined club B&F.
+function playedCountDiv(name, divKey) {
+  let c = 0;
+  for (const r of (attendanceData.rounds || [])) {
+    const dv = r[divKey];
+    if (dv && (dv.played || []).includes(name)) c++;
+  }
+  return c;
+}
+
+// Combined club-wide Best & Fairest. A player who turned out in both grades the
+// same season is counted in their MAIN grade only (the one they played more
+// games for) so call-ups aren't double-counted across divisions.
+function combinedVotes() {
+  const rounds = (attendanceData.votes && attendanceData.votes.rounds) || [];
+  const d1 = {}, d3 = {};
+  for (const r of rounds) {
+    for (const dk of ['div1', 'div3']) {
+      const bucket = dk === 'div1' ? d1 : d3;
+      for (const card of (r[dk + '_cards'] || [])) {
+        for (const pts of [5, 4, 3, 2, 1]) {
+          const p = card[String(pts)];
+          if (p) bucket[p] = (bucket[p] || 0) + pts;
+        }
+      }
+    }
+  }
+  const names = new Set([...Object.keys(d1), ...Object.keys(d3)]);
+  const rows = [];
+  for (const p of names) {
+    const g1 = playedCountDiv(p, 'div1'), g3 = playedCountDiv(p, 'div3');
+    let home;
+    if (g1 !== g3) home = g1 > g3 ? 'div1' : 'div3';
+    else home = (d1[p] || 0) >= (d3[p] || 0) ? 'div1' : 'div3'; // tie-break by votes
+    rows.push({
+      player: p,
+      points: home === 'div1' ? (d1[p] || 0) : (d3[p] || 0),
+      home,
+      dual: (d1[p] || 0) > 0 && (d3[p] || 0) > 0,
+      otherPts: home === 'div1' ? (d3[p] || 0) : (d1[p] || 0),
+    });
+  }
+  rows.sort((a, b) => b.points - a.points || a.player.localeCompare(b.player));
+  rows.forEach((r, i) => r.rank = i + 1);
+  return rows;
+}
+
 function recentBog(divKey) {
   const rounds = (attendanceData.votes && attendanceData.votes.rounds) || [];
   if (!rounds.length) return null;
@@ -2163,10 +2220,61 @@ function setPlayerFilter(f) {
 }
 
 // ═══════════════════ VOTES TAB ═══════════════════
+function renderCombinedVotes() {
+  const rows = combinedVotes();
+  const gradeTag = h => h === 'div1'
+    ? '<span class="grade-pill g1">Div 1</span>'
+    : '<span class="grade-pill g3">Div 3</span>';
+
+  // Club champion hero
+  const bogHost = document.getElementById('votes-bog');
+  if (rows.length) {
+    const c = rows[0];
+    bogHost.innerHTML = `<div class="bog-hero">
+      <div class="bog-label">🏆 Club Best &amp; Fairest · both grades</div>
+      <div class="bog-player">${c.player}</div>
+      <div class="bog-foot">
+        <div class="bog-pts">${c.points}<small>pts</small></div>
+        <div class="bog-note">Leads the whole club${c.dual ? ` (counted in ${c.home === 'div1' ? 'Div 1' : 'Div 3'})` : ''}<br><span style="opacity:0.55;font-size:10px;">Every player counted in their main grade only</span></div>
+      </div>
+    </div>`;
+  } else {
+    bogHost.innerHTML = `<div class="empty"><strong>No votes yet</strong></div>`;
+  }
+
+  // Combined leaderboard
+  const lb = document.getElementById('votes-board-tab');
+  if (!rows.length) {
+    lb.innerHTML = `<div class="votes-empty">No votes logged yet.</div>`;
+  } else {
+    const body = rows.map(v => `<tr>
+      <td class="col-num"><span class="rank-badge r-${v.rank <= 3 ? v.rank : 'x'}">${v.rank}</span></td>
+      <td class="col-name">${v.player}${v.dual ? `<span class="dual-note"> · also ${v.otherPts} in ${v.home === 'div1' ? 'Div 3' : 'Div 1'}</span>` : ''}</td>
+      <td class="center">${gradeTag(v.home)}</td>
+      <td class="col-total">${v.points}</td>
+    </tr>`).join('');
+    lb.innerHTML = `<div class="player-list" style="max-height:none;"><table class="pl-table"><thead><tr>
+      <th class="num">#</th><th>Player</th><th class="center">Grade</th><th class="center">Votes</th>
+    </tr></thead><tbody>${body}</tbody></table></div>`;
+  }
+  document.getElementById('vt-bf-sub').textContent = `Whole club · ${rows.length} players`;
+
+  // Explainer replaces round cards for the combined view
+  const dual = rows.filter(r => r.dual);
+  const rh = document.getElementById('votes-rounds-tab');
+  rh.innerHTML = `<div class="rules-list">
+    <div class="rule-row"><span class="icon">·</span><div>Both grades on one ladder. Kids who played <strong>both</strong> Div 1 and Div 3 are counted in their <strong>main grade only</strong> (most games played), so call-ups aren't double-counted.</div></div>
+    ${dual.length ? `<div class="rule-row"><span class="icon">·</span><div><strong>Played both grades:</strong> ${dual.map(d => `${d.player} <span style="opacity:.6">(${d.home === 'div1' ? 'Div 1' : 'Div 3'})</span>`).join(', ')}</div></div>` : ''}
+  </div>`;
+  document.getElementById('vt-rounds-sub').textContent = 'Main-grade rule';
+}
+
 function renderVotesTab() {
   if (!attendanceData) return;
   document.getElementById('votes-loading').style.display = 'none';
   document.getElementById('votes-body').style.display = 'block';
+
+  if (votesDiv === 'combined') { renderCombinedVotes(); return; }
 
   const divLabel = votesDiv === 'div1' ? 'Div 1' : 'Div 3';
 
