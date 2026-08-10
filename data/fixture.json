@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-10T06:16:12.841697+00:00",
+  "updated": "2026-08-10T09:51:15.876543+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -2702,12 +2702,29 @@
           "round_num": null,
           "is_final_round": true,
           "date": "2026-08-16",
-          "time": "",
-          "venue": null,
-          "surface": null,
-          "address": null,
-          "suburb": null,
-          "competitors": [],
+          "time": "11:45:00",
+          "venue": "Landsborough Sport & Recreation Centre",
+          "surface": "Landsborough Sport & Recreation Centre 1",
+          "address": "Tunnel Ridge Rd & Gympie ST Nth",
+          "suburb": "Landsborough",
+          "competitors": [
+            {
+              "id": "10f62735-bdac-48e7-89e5-69a6b681993a",
+              "name": "Maroochy Roos Juniors U15 Boys Division 1",
+              "is_home": true,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            },
+            {
+              "id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
+              "name": "Sherwood Magpies U15 Boys Division 1",
+              "is_home": false,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            }
+          ],
           "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/6b2fddd7"
         },
         {
@@ -2717,12 +2734,29 @@
           "round_num": null,
           "is_final_round": true,
           "date": "2026-08-16",
-          "time": "",
-          "venue": null,
-          "surface": null,
-          "address": null,
-          "suburb": null,
-          "competitors": [],
+          "time": "12:30:00",
+          "venue": "Cooke-Murphy Oval",
+          "surface": "Cooke-Murphy Oval 1",
+          "address": "28 Ashton Street",
+          "suburb": "Labrador",
+          "competitors": [
+            {
+              "id": "1007a8d8-c68d-4dbd-8fe9-de79a08aff6d",
+              "name": "Palm Beach Currumbin U15 Boys Division 1",
+              "is_home": false,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            },
+            {
+              "id": "81bf2d43-8900-4176-96c0-df33081d8570",
+              "name": "Labrador Tigers U15 Boys Division 1",
+              "is_home": true,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            }
+          ],
           "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/bfa9f6a9"
         },
         {
@@ -2737,7 +2771,16 @@
           "surface": null,
           "address": null,
           "suburb": null,
-          "competitors": [],
+          "competitors": [
+            {
+              "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
+              "name": "Broadbeach Cats U15 Boys Division 1",
+              "is_home": true,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            }
+          ],
           "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/352745b4"
         },
         {
@@ -2752,7 +2795,16 @@
           "surface": null,
           "address": null,
           "suburb": null,
-          "competitors": [],
+          "competitors": [
+            {
+              "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
+              "name": "Coorparoo Roos U15 Boys Division 1",
+              "is_home": true,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            }
+          ],
           "url": "https://www.playhq.com/afl/org/south-east-queensland-juniors-seqj/south-east-queensland-juniors-2026/u-15-boys-division-1/game-centre/15b5701b"
         },
         {
@@ -4609,11 +4661,11 @@
           "round_num": null,
           "is_final_round": true,
           "date": "2026-08-16",
-          "time": "",
-          "venue": null,
-          "surface": null,
-          "address": null,
-          "suburb": null,
+          "time": "10:45:00",
+          "venue": "Cooke-Murphy Oval",
+          "surface": "Cooke-Murphy Oval 1",
+          "address": "28 Ashton Street",
+          "suburb": "Labrador",
           "competitors": [
             {
               "id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
@@ -4641,11 +4693,11 @@
           "round_num": null,
           "is_final_round": true,
           "date": "2026-08-16",
-          "time": "",
-          "venue": null,
-          "surface": null,
-          "address": null,
-          "suburb": null,
+          "time": "13:00:00",
+          "venue": "Sir Bruce Small Park",
+          "surface": "Kallibr Homes Oval",
+          "address": "Allchurch Street",
+          "suburb": "Benowa",
           "competitors": [
             {
               "id": "3344820e-0b07-429c-9052-88da120683d1",
