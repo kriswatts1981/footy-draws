@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-13T22:53:14.925278+00:00",
+  "updated": "2026-08-13T23:50:54.016398+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -2709,17 +2709,17 @@
           "suburb": "Landsborough",
           "competitors": [
             {
-              "id": "10f62735-bdac-48e7-89e5-69a6b681993a",
-              "name": "Maroochy Roos Juniors U15 Boys Division 1",
-              "is_home": true,
+              "id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
+              "name": "Sherwood Magpies U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
-              "name": "Sherwood Magpies U15 Boys Division 1",
-              "is_home": false,
+              "id": "10f62735-bdac-48e7-89e5-69a6b681993a",
+              "name": "Maroochy Roos Juniors U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
