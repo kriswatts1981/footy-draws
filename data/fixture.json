@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-16T02:46:57.660366+00:00",
+  "updated": "2026-08-16T03:51:53.515780+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -2697,7 +2697,7 @@
         },
         {
           "id": "6b2fddd7-c9d2-442f-8bf5-33c517125757",
-          "status": null,
+          "status": "PENDING",
           "round": "Elimination Finals",
           "round_num": null,
           "is_final_round": true,
@@ -4688,7 +4688,7 @@
         },
         {
           "id": "7342ab28-697a-41ef-876f-6f2dd03ada23",
-          "status": "UPCOMING",
+          "status": null,
           "round": "Finals Round 1",
           "round_num": null,
           "is_final_round": true,
