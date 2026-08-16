@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-16T08:47:41.180043+00:00",
+  "updated": "2026-08-16T09:31:39.701016+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -2697,7 +2697,7 @@
         },
         {
           "id": "6b2fddd7-c9d2-442f-8bf5-33c517125757",
-          "status": "PENDING",
+          "status": "FINAL",
           "round": "Elimination Finals",
           "round_num": null,
           "is_final_round": true,
@@ -2712,16 +2712,16 @@
               "id": "05d7698d-ffde-469f-a91d-497d3c7c47cb",
               "name": "Sherwood Magpies U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 34,
+              "outcome": "LOST",
               "is_tct": false
             },
             {
               "id": "10f62735-bdac-48e7-89e5-69a6b681993a",
               "name": "Maroochy Roos Juniors U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 38,
+              "outcome": "WON",
               "is_tct": false
             }
           ],
@@ -2804,6 +2804,14 @@
           "address": null,
           "suburb": null,
           "competitors": [
+            {
+              "id": "10f62735-bdac-48e7-89e5-69a6b681993a",
+              "name": "Maroochy Roos Juniors U15 Boys Division 1",
+              "is_home": false,
+              "score": null,
+              "outcome": null,
+              "is_tct": false
+            },
             {
               "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
               "name": "Coorparoo Roos U15 Boys Division 1",
