@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-24T03:11:21.406550+00:00",
+  "updated": "2026-08-24T07:12:59.569471+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -2829,25 +2829,25 @@
           "round": "Grand Final",
           "round_num": null,
           "is_final_round": true,
-          "date": "2026-08-30",
-          "time": "",
-          "venue": null,
-          "surface": null,
-          "address": null,
-          "suburb": null,
+          "date": "2026-08-29",
+          "time": "10:30:00",
+          "venue": "O'Callaghan Park",
+          "surface": "O'Callaghan Park 1",
+          "address": "340 Zillmere Road",
+          "suburb": "Zillmere",
           "competitors": [
             {
-              "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
-              "name": "Broadbeach Cats U15 Boys Division 1",
-              "is_home": true,
+              "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
+              "name": "Coorparoo Roos U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
-              "name": "Coorparoo Roos U15 Boys Division 1",
-              "is_home": false,
+              "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
+              "name": "Broadbeach Cats U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
@@ -4790,11 +4790,11 @@
           "round_num": null,
           "is_final_round": true,
           "date": "2026-08-30",
-          "time": "",
-          "venue": null,
-          "surface": null,
-          "address": null,
-          "suburb": null,
+          "time": "11:00:00",
+          "venue": "Fankhauser Reserve",
+          "surface": "Fankhauser Reserve 1",
+          "address": "Cnr Olsen & Musgraves Dr",
+          "suburb": "Southport",
           "competitors": [
             {
               "id": "2144da5b-3f13-4552-b595-378222bf8a16",
