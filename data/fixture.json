@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-27T20:17:24.593124+00:00",
+  "updated": "2026-08-28T00:27:11.398778+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -2837,17 +2837,17 @@
           "suburb": "Zillmere",
           "competitors": [
             {
-              "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
-              "name": "Coorparoo Roos U15 Boys Division 1",
-              "is_home": false,
+              "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
+              "name": "Broadbeach Cats U15 Boys Division 1",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
-              "name": "Broadbeach Cats U15 Boys Division 1",
-              "is_home": true,
+              "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
+              "name": "Coorparoo Roos U15 Boys Division 1",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
@@ -4797,17 +4797,17 @@
           "suburb": "Southport",
           "competitors": [
             {
-              "id": "2144da5b-3f13-4552-b595-378222bf8a16",
-              "name": "Palm Beach Currumbin U15 Boys Division 3",
-              "is_home": false,
+              "id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
+              "name": "Tweed Cooly Blues U15 Boys Division 3",
+              "is_home": true,
               "score": null,
               "outcome": null,
               "is_tct": false
             },
             {
-              "id": "e0cca45f-a299-4aeb-860b-f0d2d92f41c2",
-              "name": "Tweed Cooly Blues U15 Boys Division 3",
-              "is_home": true,
+              "id": "2144da5b-3f13-4552-b595-378222bf8a16",
+              "name": "Palm Beach Currumbin U15 Boys Division 3",
+              "is_home": false,
               "score": null,
               "outcome": null,
               "is_tct": false
