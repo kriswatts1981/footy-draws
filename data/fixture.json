@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-29T02:03:37.014500+00:00",
+  "updated": "2026-08-29T06:36:56.621312+00:00",
   "divisions": {
     "div1": {
       "grade_id": "037e3d3f-4c39-428d-a464-58d31093e357",
@@ -2825,7 +2825,7 @@
         },
         {
           "id": "b3795cbf-2100-4e52-9e71-8f14c22fc90d",
-          "status": "PENDING",
+          "status": "FINAL",
           "round": "Grand Final",
           "round_num": null,
           "is_final_round": true,
@@ -2840,16 +2840,16 @@
               "id": "e5787feb-e994-4f8f-a125-8711b62d57f6",
               "name": "Broadbeach Cats U15 Boys Division 1",
               "is_home": true,
-              "score": null,
-              "outcome": null,
+              "score": 43,
+              "outcome": "WON",
               "is_tct": false
             },
             {
               "id": "593f6f3a-c431-4af3-8dd4-941d66486b2a",
               "name": "Coorparoo Roos U15 Boys Division 1",
               "is_home": false,
-              "score": null,
-              "outcome": null,
+              "score": 33,
+              "outcome": "LOST",
               "is_tct": false
             }
           ],
